@@ -1,0 +1,23 @@
+# Environnement
+.env
+.env.local
+.env.*.local
+
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Vercel
+.vercel
+
+# Logs
+*.log
+npm-debug.log*

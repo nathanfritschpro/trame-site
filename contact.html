@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Contact — Trame</title>
+<meta name="description" content="Un projet en tête ? Écrivez-nous. On répond dans la journée. Nathan et Manon Fritsch, Nouvelle-Aquitaine.">
+<meta name="theme-color" content="#EFE8DA">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact — Trame">
+<meta property="og:description" content="Écrivez-nous. On répond dans la journée.">
+<meta property="og:url" content="https://trame.fr/contact.html">
+<meta property="og:image" content="https://trame.fr/assets/og/og-home.jpg">
+
+<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+<link rel="canonical" href="https://trame.fr/contact.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/pages.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<header class="header">
+  <a href="/" class="brand-logo">Trame<span class="dot">.</span></a>
+  <nav class="nav" aria-label="Principale">
+    <a href="/">Accueil</a>
+    <a href="/portfolio.html">Projets</a>
+    <a href="/contact.html" class="active">Contact</a>
+  </nav>
+  <button class="burger" aria-label="Ouvrir le menu"><span></span><span></span></button>
+</header>
+
+<div class="mobile-nav">
+  <ul>
+    <li><a href="/">Accueil</a></li>
+    <li><a href="/portfolio.html">Projets</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+  </ul>
+</div>
+
+<section class="contact-page">
+  <div class="contact-grid">
+
+    <div class="contact-side">
+      <span class="eyebrow reveal">Prendre contact</span>
+      <h1 class="reveal reveal-delay-1">Écrivez-nous.<br>On répond <em>vite</em>.</h1>
+      <p class="reveal reveal-delay-2">Dites-nous en deux lignes ce que vous faites, ce que vous voulez. On revient vers vous dans la journée avec un premier retour, honnête. Si on n'est pas les bons pour votre projet, on vous le dira aussi.</p>
+
+      <dl class="contact-infos reveal reveal-delay-3">
+        <div>
+          <dt>Email</dt>
+          <dd><a href="mailto:contact@trame.fr">contact@trame.fr</a></dd>
+        </div>
+        <div>
+          <dt>Téléphone</dt>
+          <dd><a href="tel:+33651339482">06 51 33 94 82</a></dd>
+        </div>
+        <div>
+          <dt>Le duo</dt>
+          <dd>Nathan Fritsch &amp; Manon Fritsch</dd>
+        </div>
+        <div>
+          <dt>Zone</dt>
+          <dd>France entière · ateliers en Nouvelle-Aquitaine</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="contact-form reveal reveal-delay-2">
+      <form id="contact-form" novalidate>
+        <div class="form-row">
+          <label for="name">Votre nom</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+
+        <div class="form-row">
+          <label for="email">Votre email</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+
+        <div class="form-row">
+          <label for="phone">Téléphone <span style="text-transform: none; color: var(--brume); letter-spacing: 0; font-weight: 400;">(facultatif)</span></label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel">
+        </div>
+
+        <div class="form-row">
+          <label for="project">Type de projet</label>
+          <select id="project" name="project" required>
+            <option value="">Choisir…</option>
+            <option value="site">Site internet</option>
+            <option value="photo">Shooting photo</option>
+            <option value="video">Vidéo</option>
+            <option value="combine">Site + photo + vidéo</option>
+            <option value="autre">Autre / à discuter</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="message">Votre message</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Dites-nous en quelques lignes qui vous êtes et ce que vous cherchez."></textarea>
+        </div>
+
+        <div class="form-error" id="form-error"></div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+          <span class="helper">On répond dans la journée.</span>
+        </div>
+      </form>
+
+      <div class="form-success" id="form-success">
+        Message reçu. On revient vers vous dans la journée — souvent bien plus vite. À très bientôt.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Trame<span class="dot">.</span></h3>
+        <p>Un duo qui pense les sites, les photos et les films — comme un tout.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Naviguer</h4>
+        <ul>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/portfolio.html">Projets</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Écrire</h4>
+        <ul>
+          <li><a href="mailto:contact@trame.fr">contact@trame.fr</a></li>
+          <li><a href="tel:+33651339482">06 51 33 94 82</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Le duo</h4>
+        <ul>
+          <li>Nathan Fritsch</li>
+          <li>Manon Fritsch</li>
+          <li>Nouvelle-Aquitaine</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-signature">Trame<span class="dot">.</span> — Sites, photos et films.</span>
+      <span>© <span data-year>2026</span> · <a href="/mentions-legales.html">Mentions légales</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js" defer></script>
+<script src="/js/contact.js" defer></script>
+</body>
+</html>
