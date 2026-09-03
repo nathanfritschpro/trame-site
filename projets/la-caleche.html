@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>La Calèche, gîtes du Médoc — Projet Trame</title>
 <meta name="description" content="Site multi-pages d'un domaine familial de 8 gîtes de charme à Bégadan, au cœur des vignobles du Médoc.">
-<meta name="theme-color" content="#EFE8DA">
+<meta name="theme-color" content="#0A0A0A">
 
 <meta property="og:type" content="article">
 <meta property="og:title" content="La Calèche, gîtes du Médoc — Projet Trame">
@@ -18,7 +18,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/css/tokens.css">
 <link rel="stylesheet" href="/css/base.css">
@@ -27,15 +27,19 @@
 </head>
 <body>
 
-<div class="grain" aria-hidden="true"></div>
-
 <header class="header">
   <a href="/" class="brand-logo">Trame<span class="dot">.</span></a>
   <nav class="nav" aria-label="Principale">
     <a href="/">Accueil</a>
     <a href="/portfolio.html" class="active">Projets</a>
+    <a href="/#services">Services</a>
     <a href="/contact.html">Contact</a>
   </nav>
+  <div class="header-cta">
+    <a href="/contact.html" class="btn btn-primary btn-icon">Prendre contact
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
   <button class="burger" aria-label="Ouvrir le menu"><span></span><span></span></button>
 </header>
 
@@ -43,15 +47,18 @@
   <ul>
     <li><a href="/">Accueil</a></li>
     <li><a href="/portfolio.html">Projets</a></li>
+    <li><a href="/#services">Services</a></li>
     <li><a href="/contact.html">Contact</a></li>
   </ul>
 </div>
 
-<section class="case-hero">
-  <a href="/portfolio.html" class="case-back">Retour aux projets</a>
-  <span class="eyebrow reveal">04 — Gîtes · Bégadan · Médoc</span>
-  <h1 class="reveal reveal-delay-1">La Calèche,<br>les <em>gîtes</em> du Médoc.</h1>
-  <p class="tagline reveal reveal-delay-2">Un domaine familial de huit gîtes de charme entre estuaire de la Gironde, châteaux et plages atlantiques. Un site qui parle vacances plus qu'immobilier locatif.</p>
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <a href="/portfolio.html" class="case-back">Retour aux projets</a>
+    <span class="eyebrow reveal">◆ 04 · Gîtes · Bégadan · Médoc</span>
+    <h1 class="reveal reveal-delay-1">La Calèche,<br>les <span class="accent">gîtes</span> du Médoc.</h1>
+    <p class="page-hero-desc reveal reveal-delay-2">Un domaine familial de huit gîtes de charme entre estuaire de la Gironde, châteaux et plages atlantiques. Un site qui parle vacances plus qu'immobilier locatif.</p>
+  </div>
 </section>
 
 <div class="case-cover reveal">
@@ -70,29 +77,35 @@
   </aside>
 
   <div class="case-content">
-    <h2>Le brief</h2>
+    <h2>Le <span class="accent">brief</span></h2>
     <p>Un domaine familial de huit gîtes 3 étoiles, capacités de 2 à 15 personnes. Un site existant qui présentait mal les gîtes individuellement, avec des tarifs difficiles à comprendre et des réservations dispersées. Public visé : familles, groupes d'amis, œnotouristes, weekends piscine.</p>
 
-    <h2>Notre approche</h2>
-    <p>Structure multi-pages avec une page dédiée par typologie de gîte, tarifs clairs par saison, et surtout une page <em>activités</em> qui vend la région autant que les gîtes eux-mêmes — vignobles prestigieux, pêche au carrelet, plages de Montalivet, châteaux du Médoc. On a redirigé les réservations vers Booking pour ne pas doubler l'admin, tout en gardant un formulaire de contact direct pour les demandes hors normes (groupes, événements).</p>
+    <h2>Notre <span class="accent">approche</span></h2>
+    <p>Structure multi-pages avec une page dédiée par typologie de gîte, tarifs clairs par saison, et surtout une page <strong>activités</strong> qui vend la région autant que les gîtes eux-mêmes — vignobles prestigieux, pêche au carrelet, plages de Montalivet, châteaux du Médoc.</p>
+    <p>On a redirigé les réservations vers Booking pour ne pas doubler l'admin, tout en gardant un formulaire de contact direct pour les demandes hors normes (groupes, événements).</p>
 
-    <h2>Ce qu'on a livré</h2>
+    <h2>Ce qu'on a <span class="accent">livré</span></h2>
     <p>Cinq pages : accueil, gîtes, activités, tarifs, contact. Photos du domaine, de la piscine, des chambres, des extérieurs. Palette or Médoc + vert vignoble, typographie Cormorant Garamond pour l'esprit domaine.</p>
   </div>
 </div>
 
 <section class="case-gallery">
-  <figure class="cell-6"><img src="/assets/projets/la-caleche/02-piscine.jpg" alt="La piscine de 15×6 mètres" loading="lazy"></figure>
-  <figure class="cell-3"><img src="/assets/projets/la-caleche/03-facade.jpg" alt="Façade d'un gîte Haut-Médoc" loading="lazy"></figure>
-  <figure class="cell-3"><img src="/assets/projets/la-caleche/04-terrasse.jpg" alt="Terrasse gîte Pauillac" loading="lazy"></figure>
-  <figure class="cell-6"><img src="/assets/projets/la-caleche/05-chambre.jpg" alt="Chambre d'un gîte" loading="lazy"></figure>
+  <figure class="c-6"><img src="/assets/projets/la-caleche/02-piscine.jpg" alt="La piscine de 15×6 mètres" loading="lazy"></figure>
+  <figure class="c-3"><img src="/assets/projets/la-caleche/03-facade.jpg" alt="Façade d'un gîte Haut-Médoc" loading="lazy"></figure>
+  <figure class="c-3"><img src="/assets/projets/la-caleche/04-terrasse.jpg" alt="Terrasse gîte Pauillac" loading="lazy"></figure>
+  <figure class="c-6"><img src="/assets/projets/la-caleche/05-chambre.jpg" alt="Chambre d'un gîte" loading="lazy"></figure>
 </section>
 
-<section class="case-cta">
-  <h3>Envie du même travail pour <em>votre projet</em> ?</h3>
-  <div class="cta-ctas">
-    <a href="/contact.html" class="btn btn-primary">Nous écrire</a>
-    <a href="/projets/franck-labasse.html" class="btn btn-ghost">Projet suivant →</a>
+<section class="cta-final">
+  <div class="cta-final-inner">
+    <span class="eyebrow reveal">◆ Envie du même travail ?</span>
+    <h2 class="reveal reveal-delay-1">Parlons de <span class="accent">votre projet</span>.</h2>
+    <div class="cta-ctas reveal reveal-delay-2">
+      <a href="/contact.html" class="btn btn-primary">Nous écrire
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="/projets/franck-labasse.html" class="btn btn-ghost">Projet suivant →</a>
+    </div>
   </div>
 </section>
 
@@ -101,18 +114,22 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <h3>Trame<span class="dot">.</span></h3>
-        <p>Un duo qui pense les sites, les photos et les films — comme un tout.</p>
+        <p>Un duo qui crée des sites internet pour artisans et petites entreprises, avec shooting photo &amp; vidéo pro toujours inclus.</p>
       </div>
-      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Projets</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Projets</a></li><li><a href="/#services">Services</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
       <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@trame.fr">contact@trame.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li></ul></div>
       <div class="footer-col"><h4>Le duo</h4><ul><li>Nathan Fritsch</li><li>Manon Fritsch</li><li>Nouvelle-Aquitaine</li></ul></div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-signature">Trame<span class="dot">.</span> — Sites, photos et films.</span>
+      <span>Trame — Sites, photos et films.</span>
       <span>© <span data-year>2026</span> · <a href="/mentions-legales.html">Mentions légales</a></span>
     </div>
   </div>
 </footer>
+
+<a href="/contact.html" class="float-cta" aria-label="Nous contacter">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1 0 2 1 2 2v12c0 1-1 2-2 2H4c-1 0-2-1-2-2V6c0-1 1-2 2-2z"/><path d="M2 6l10 7 10-7"/></svg>
+</a>
 
 <script src="/js/main.js" defer></script>
 </body>

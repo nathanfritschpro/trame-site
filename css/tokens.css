@@ -1,72 +1,74 @@
-/* ============ TRAME — Design tokens (direction "Grain") ============ */
+/* ============ TRAME — Design tokens v2 (dark + lime électrique) ============ */
 
 :root {
   /* ---- Couleurs ---- */
-  --lin:              #EFE8DA;   /* fond principal, lin brut */
-  --lin-clair:        #F5F1E5;   /* surface légèrement claire */
-  --lin-fonce:        #DDD3BF;   /* dividers, cards, surfaces */
-  --foret:            #1E2E24;   /* texte principal, vert forêt profond */
-  --foret-nuit:       #14201A;   /* texte titre extra-dark */
-  --sauge:            #7A8B7C;   /* texte secondaire, dividers */
-  --laiton:           #C9A87A;   /* accent chaud, liens, CTA */
-  --laiton-fonce:     #A88856;   /* accent hover */
-  --brume:            #5C6B62;   /* texte muted */
+  --bg:              #0A0A0A;   /* fond principal, noir profond */
+  --bg-elev:         #131313;   /* surfaces élevées, cards */
+  --bg-soft:         #1A1A1A;   /* hover cards */
+  --line:            rgba(255, 255, 255, 0.08);
+  --line-strong:     rgba(255, 255, 255, 0.16);
+
+  --text:            #F5F5F0;   /* texte principal, blanc cassé */
+  --text-dim:        #B8B8B0;   /* texte secondaire */
+  --text-muted:      #8A8A85;   /* texte muted */
+
+  --lime:            #C4F542;   /* accent principal, lime électrique */
+  --lime-hover:      #B3E32B;   /* accent hover */
+  --lime-soft:       rgba(196, 245, 66, 0.14);
+  --lime-glow:       rgba(196, 245, 66, 0.35);
 
   /* ---- Typographies ---- */
-  --font-display: "Newsreader", "GT Alpina", Georgia, serif;
-  --font-text:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-text:    "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 
   /* ---- Échelle fluide (clamp) ---- */
-  --fs-xs:    0.75rem;                                       /* 12px */
+  --fs-xs:    0.75rem;                                       /* 12 */
   --fs-sm:    clamp(0.813rem, 0.78rem + 0.16vw, 0.875rem);   /* 13-14 */
   --fs-base:  clamp(1rem, 0.95rem + 0.25vw, 1.125rem);       /* 16-18 */
   --fs-lg:    clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);    /* 18-22 */
   --fs-xl:    clamp(1.5rem, 1.25rem + 1.2vw, 2rem);          /* 24-32 */
-  --fs-2xl:   clamp(2rem, 1.5rem + 2.5vw, 3rem);             /* 32-48 */
-  --fs-3xl:   clamp(2.75rem, 1.8rem + 4.5vw, 4.5rem);        /* 44-72 */
-  --fs-hero:  clamp(3rem, 1.5rem + 8vw, 7.5rem);             /* 48-120 */
-  --fs-mega:  clamp(4rem, 2rem + 12vw, 10rem);               /* 64-160 */
+  --fs-2xl:   clamp(2rem, 1.5rem + 2.5vw, 3.25rem);          /* 32-52 */
+  --fs-3xl:   clamp(2.75rem, 1.8rem + 4.5vw, 4.75rem);       /* 44-76 */
+  --fs-hero:  clamp(3.25rem, 1.8rem + 8vw, 8rem);            /* 52-128 */
+  --fs-mega:  clamp(4.5rem, 2rem + 14vw, 12rem);             /* 72-192 */
 
   /* ---- Line-heights ---- */
-  --lh-tight:  1.02;
-  --lh-title:  1.1;
-  --lh-serif:  1.15;
-  --lh-body:   1.65;
-  --lh-loose:  1.8;
+  --lh-tight:  0.92;
+  --lh-title:  1.02;
+  --lh-heading:1.1;
+  --lh-body:   1.6;
 
-  /* ---- Espacements (8pt grid) ---- */
-  --sp-1:  0.25rem;   /* 4  */
-  --sp-2:  0.5rem;    /* 8  */
-  --sp-3:  0.75rem;   /* 12 */
-  --sp-4:  1rem;      /* 16 */
-  --sp-6:  1.5rem;    /* 24 */
-  --sp-8:  2rem;      /* 32 */
-  --sp-12: 3rem;      /* 48 */
-  --sp-16: 4rem;      /* 64 */
-  --sp-20: 5rem;      /* 80 */
-  --sp-24: 6rem;      /* 96 */
-  --sp-32: 8rem;      /* 128 */
-  --sp-40: 10rem;     /* 160 */
+  /* ---- Espacements ---- */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-6:  1.5rem;
+  --sp-8:  2rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+  --sp-20: 5rem;
+  --sp-24: 6rem;
+  --sp-32: 8rem;
+  --sp-40: 10rem;
 
-  /* ---- Section paddings (fluid) ---- */
-  --sec-y: clamp(4rem, 2rem + 6vw, 9rem);
-  --gut:   clamp(1.5rem, 1rem + 2vw, 3rem);
+  --sec-y: clamp(5rem, 3rem + 6vw, 10rem);
+  --gut:   clamp(1.25rem, 1rem + 2vw, 2.5rem);
 
-  /* ---- Wrap / grille ---- */
+  /* ---- Wrap ---- */
   --wrap-max: 1440px;
-  --content-max: 720px;
 
   /* ---- Bordures ---- */
-  --br-sm: 4px;
-  --br-md: 8px;
-  --br-lg: 14px;
-  --border-color: rgba(30, 46, 36, 0.12);
-  --border-strong: rgba(30, 46, 36, 0.24);
+  --br-sm: 6px;
+  --br-md: 12px;
+  --br-lg: 20px;
+  --br-pill: 999px;
 
   /* ---- Transitions ---- */
   --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
-  --dur-fast: 200ms;
-  --dur-med:  400ms;
-  --dur-slow: 800ms;
+  --dur-fast: 180ms;
+  --dur-med:  340ms;
+  --dur-slow: 700ms;
 }

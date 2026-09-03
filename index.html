@@ -3,15 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Trame — Sites, photos et films, pensés à deux.</title>
-<meta name="description" content="Un duo — pas une agence. Nous créons des sites internet pour les artisans et petites entreprises, et nous shootons les photos et vidéos qui vont avec. Nouvelle-Aquitaine.">
-<meta name="theme-color" content="#EFE8DA">
+<title>Trame — Sites, photos et films. Faits à deux.</title>
+<meta name="description" content="Un duo, pas une agence. Nous créons des sites internet pour artisans et petites entreprises. Shooting photo & vidéo pro toujours inclus. Nouvelle-Aquitaine.">
+<meta name="theme-color" content="#0A0A0A">
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Trame">
-<meta property="og:title" content="Trame — Sites, photos et films, pensés à deux.">
-<meta property="og:description" content="Un duo qui crée des sites internet pour les artisans et petites entreprises, avec shooting photo & vidéo pro inclus.">
+<meta property="og:title" content="Trame — Sites, photos et films. Faits à deux.">
+<meta property="og:description" content="Un duo qui crée sites, photos et vidéos pour artisans et petites entreprises.">
 <meta property="og:url" content="https://trame.fr/">
 <meta property="og:image" content="https://trame.fr/assets/og/og-home.jpg">
 <meta property="og:locale" content="fr_FR">
@@ -22,7 +21,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/css/tokens.css">
 <link rel="stylesheet" href="/css/base.css">
@@ -31,166 +30,214 @@
 </head>
 <body>
 
-<div class="grain" aria-hidden="true"></div>
-
 <header class="header">
   <a href="/" class="brand-logo" aria-label="Trame — accueil">Trame<span class="dot">.</span></a>
   <nav class="nav" aria-label="Principale">
     <a href="/" class="active">Accueil</a>
     <a href="/portfolio.html">Projets</a>
+    <a href="/#services">Services</a>
     <a href="/contact.html">Contact</a>
   </nav>
-  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
+  <div class="header-cta">
+    <a href="/contact.html" class="btn btn-primary btn-icon">Prendre contact
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+  <button class="burger" aria-label="Ouvrir le menu"><span></span><span></span></button>
 </header>
 
-<div class="mobile-nav" aria-hidden="true">
+<div class="mobile-nav">
   <ul>
     <li><a href="/">Accueil</a></li>
     <li><a href="/portfolio.html">Projets</a></li>
+    <li><a href="/#services">Services</a></li>
     <li><a href="/contact.html">Contact</a></li>
+    <li><a href="/contact.html" class="btn btn-primary">Prendre contact →</a></li>
   </ul>
 </div>
 
 <!-- ============ HERO ============ -->
-<section class="hero-home">
+<section class="hero">
   <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-noise" aria-hidden="true"></div>
   <div class="hero-inner">
-    <span class="hero-eyebrow reveal">Un duo — pas une agence · Nouvelle-Aquitaine</span>
-    <h1 class="hero-baseline reveal reveal-delay-1">
-      Sites, photos<br>
-      <span class="amp">et</span> films <span class="dash"></span><br>
-      pensés à deux.
+    <span class="hero-eyebrow eyebrow reveal"><span class="dot-live"></span>Duo créatif · Nouvelle-Aquitaine</span>
+    <h1 class="reveal reveal-delay-1">
+      Sites, photos, films.<br>
+      Faits <span class="accent"><span class="underline">à deux</span></span>.
     </h1>
-    <div class="hero-foot reveal reveal-delay-3">
-      <p class="hero-manifesto-teaser">Nous créons le site, on shoote les photos, on filme la vidéo. Un seul interlocuteur, un seul style, un seul engagement.</p>
-      <div class="hero-links">
-        <a href="/portfolio.html" class="btn-link">Voir les projets</a>
-        <a href="/contact.html" class="btn btn-primary">Nous écrire</a>
-      </div>
+    <p class="hero-desc reveal reveal-delay-2">Nous créons le site, nous shootons les photos, nous filmons la vidéo. Un seul interlocuteur, aucune sous-traitance, un rendu qui parle d'une seule voix.</p>
+    <div class="hero-ctas reveal reveal-delay-3">
+      <a href="/portfolio.html" class="btn btn-primary">Voir nos projets
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="/contact.html" class="btn btn-ghost">Nous écrire</a>
     </div>
+    <div class="hero-scroll reveal reveal-delay-4">Faites défiler</div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat reveal">
+      <div class="stat-num">05</div>
+      <div class="stat-label">Projets livrés</div>
+    </div>
+    <div class="stat reveal reveal-delay-1">
+      <div class="stat-num">02</div>
+      <div class="stat-label">Personnes, toujours</div>
+    </div>
+    <div class="stat reveal reveal-delay-2">
+      <div class="stat-num">03 <span class="unit">sem.</span></div>
+      <div class="stat-label">Livraison moyenne</div>
+    </div>
+    <div class="stat reveal reveal-delay-3">
+      <div class="stat-num">12 <span class="unit">mois</span></div>
+      <div class="stat-label">Retouches offertes</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLIENT LOGOS MARQUEE ============ -->
+<section class="logos">
+  <div class="logos-label">Ils nous ont fait confiance</div>
+  <div class="logos-track">
+    <span class="logos-item"><span class="bullet"></span>Villa Zénith Hostel</span>
+    <span class="logos-item"><span class="bullet"></span>Comme une Fleur</span>
+    <span class="logos-item"><span class="bullet"></span>Fromagerie Croûte</span>
+    <span class="logos-item"><span class="bullet"></span>La Calèche</span>
+    <span class="logos-item"><span class="bullet"></span>Franck Labasse Pâtisserie</span>
+    <span class="logos-item"><span class="bullet"></span>Villa Zénith Hostel</span>
+    <span class="logos-item"><span class="bullet"></span>Comme une Fleur</span>
+    <span class="logos-item"><span class="bullet"></span>Fromagerie Croûte</span>
+    <span class="logos-item"><span class="bullet"></span>La Calèche</span>
+    <span class="logos-item"><span class="bullet"></span>Franck Labasse Pâtisserie</span>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="services-head">
+    <span class="eyebrow reveal"><span class="accent">◆</span> Nos services</span>
+    <h2 class="reveal reveal-delay-1">Trois métiers, un même <span class="accent">duo</span>.</h2>
+  </div>
+  <div class="services-grid">
+    <article class="service-card reveal">
+      <span class="service-num">01 / Sites internet</span>
+      <h3>Sites vitrine sur-mesure.</h3>
+      <p>Codés à la main, sans template, sans WordPress bricolé. Ultra-rapides, référencés localement, faciles à maintenir.</p>
+      <ul class="service-list">
+        <li>Design sur-mesure</li>
+        <li>Réservation intégrée</li>
+        <li>SEO local + Google Business</li>
+        <li>Hébergement 1 an inclus</li>
+      </ul>
+    </article>
+    <article class="service-card reveal reveal-delay-1">
+      <span class="service-num">02 / Photographie</span>
+      <h3>Photos qui font venir.</h3>
+      <p>Une journée entière chez vous. Boutique, produits, équipe, ambiance. Vos photos vous appartiennent — pour le site, l'Instagram, la carte, les flyers.</p>
+      <ul class="service-list">
+        <li>Reportage boutique</li>
+        <li>Produits en studio ou sur place</li>
+        <li>Portraits d'équipe</li>
+        <li>Livraison retouchée</li>
+      </ul>
+    </article>
+    <article class="service-card reveal reveal-delay-2">
+      <span class="service-num">03 / Vidéo</span>
+      <h3>Films courts, sincères.</h3>
+      <p>Sans voix off IA, sans musique de stock. Le geste, l'atelier, le regard des clients. Format web et Instagram, livré en dix jours.</p>
+      <ul class="service-list">
+        <li>Film d'entreprise court</li>
+        <li>Reels & formats verticaux</li>
+        <li>Montage & étalonnage</li>
+        <li>Livraison en 10 jours</li>
+      </ul>
+    </article>
   </div>
 </section>
 
 <!-- ============ MANIFESTE ============ -->
 <section class="manifeste">
   <div class="manifeste-inner">
-    <span class="eyebrow reveal">Qui nous sommes</span>
-    <h2 class="reveal reveal-delay-1">Nous sommes deux — et c'est délibéré.</h2>
-    <p class="reveal reveal-delay-2">Un duo qui fait tout de A à Z : le site internet, les photos, la vidéo. Pas d'intermédiaire, pas de sous-traitance, pas de commercial qui vend puis disparaît. Vous parlez aux deux personnes qui font le travail.</p>
-    <p class="reveal reveal-delay-3">On travaille avec des artisans et des petites entreprises qui tiennent à leur métier — fleuristes, fromagers, pâtissiers, hôteliers, gîtes. Des gens qui font les choses bien, et qui méritent un site à la hauteur de ce qu'ils vendent.</p>
-
-    <div class="chiffres reveal reveal-delay-4">
-      <div class="chiffre">
-        <span class="chiffre-num">5</span>
-        <span class="chiffre-label">Projets livrés</span>
-      </div>
-      <div class="chiffre">
-        <span class="chiffre-num">2</span>
-        <span class="chiffre-label">Personnes, toujours</span>
-      </div>
-      <div class="chiffre">
-        <span class="chiffre-num">3 <span style="font-size: 0.55em; vertical-align: middle;">sem.</span></span>
-        <span class="chiffre-label">Livraison moyenne</span>
-      </div>
+    <span class="eyebrow reveal">◆ Manifeste</span>
+    <h2 class="manifeste-title reveal reveal-delay-1">Un duo, pas une agence. <span class="dim">Et c'est</span> <span class="accent">exprès</span>.</h2>
+    <div class="manifeste-body">
+      <p class="reveal reveal-delay-2">Entre le commercial qui vous vend et le stagiaire qui code, un projet perd son âme. Chez nous, vous parlez aux <strong>deux personnes</strong> qui font le travail. Toujours. Pas d'intermédiaire, pas de sous-traitance, pas de brief interne à recopier.</p>
+      <p class="reveal reveal-delay-3">On travaille avec des artisans et des petites entreprises qui tiennent à leur métier — <strong>fleuristes, fromagers, pâtissiers, hôteliers, gîtes</strong>. Des gens qui font les choses bien, et qui méritent un site à la hauteur de ce qu'ils vendent.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ PORTFOLIO ============ -->
-<section class="portfolio" id="projets">
+<section class="portfolio">
   <div class="portfolio-head">
-    <h2 class="reveal">Ce que nous avons <em>fait</em>.</h2>
-    <p class="reveal reveal-delay-1">Cinq projets récents. Chaque site inclut son shooting photo — parfois vidéo. Cliquez pour voir le détail.</p>
+    <h2 class="reveal">Nos <span class="accent">projets</span>.</h2>
+    <p class="reveal reveal-delay-1">Cinq sites récents. Chacun avec son shooting photo. Certains avec vidéo. Tous en ligne, tous vérifiables.</p>
   </div>
-
-  <div class="portfolio-list">
-    <!-- Projet 1 : Villa Zénith -->
-    <a class="project-row reveal" href="/projets/villa-zenith.html" aria-label="Voir le projet Villa Zénith">
-      <div class="project-media">
-        <img src="/assets/projets/villa-zenith/01-hero.png" alt="Façade de la Villa Zénith Hostel à Lacanau-Océan" loading="eager">
-      </div>
+  <div class="portfolio-grid">
+    <a class="project-card span-4 reveal" href="/projets/villa-zenith.html">
+      <img src="/assets/projets/villa-zenith/01-hero.png" alt="Villa Zénith Hostel — Lacanau-Océan" loading="eager">
       <div class="project-info">
-        <span class="eyebrow">01 — Auberge · Lacanau-Océan</span>
-        <h3>Villa Zénith Hostel</h3>
-        <p class="tagline">Refonte totale, effets scroll, page annexes, boussole géo pour orienter les surfeurs.</p>
-        <div class="project-meta">
-          <span>Site multi-pages</span>
-          <span>Photo</span>
-          <span>2026</span>
+        <div class="project-info-text">
+          <span class="eyebrow">01 · Auberge · Lacanau</span>
+          <h3>Villa Zénith Hostel</h3>
+          <p class="tagline">Refonte totale, 7 pages, effets scroll, boussole géo.</p>
         </div>
-        <span class="btn-link">Voir le projet →</span>
+        <span class="project-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+    <a class="project-card span-2 reveal reveal-delay-1" href="/projets/comme-une-fleur.html">
+      <img src="/assets/projets/comme-une-fleur/01-hero.jpg" alt="Comme une Fleur — Mérignac" loading="lazy">
+      <div class="project-info">
+        <div class="project-info-text">
+          <span class="eyebrow">02 · Fleuriste</span>
+          <h3>Comme une Fleur</h3>
+        </div>
+        <span class="project-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
       </div>
     </a>
 
-    <!-- Projet 2 : Comme une Fleur -->
-    <a class="project-row reverse reveal" href="/projets/comme-une-fleur.html" aria-label="Voir le projet Comme une Fleur">
-      <div class="project-media">
-        <img src="/assets/projets/comme-une-fleur/01-hero.jpg" alt="Devanture de la boutique Comme une Fleur à Mérignac" loading="lazy">
-      </div>
+    <a class="project-card span-2 reveal" href="/projets/fromagerie-croute.html">
+      <img src="/assets/projets/fromagerie-croute/01-hero.jpg" alt="Fromagerie Croûte — Lacanau" loading="lazy">
       <div class="project-info">
-        <span class="eyebrow">02 — Fleuriste · Mérignac</span>
-        <h3>Comme une Fleur</h3>
-        <p class="tagline">Site vitrine avec animation scroll de 155 frames de la devanture réelle, pétales flottants.</p>
-        <div class="project-meta">
-          <span>Site one-page</span>
-          <span>Photo</span>
-          <span>2026</span>
+        <div class="project-info-text">
+          <span class="eyebrow">03 · Fromagerie</span>
+          <h3>Croûte</h3>
         </div>
-        <span class="btn-link">Voir le projet →</span>
+        <span class="project-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
       </div>
     </a>
-
-    <!-- Projet 3 : Croûte -->
-    <a class="project-row reveal" href="/projets/fromagerie-croute.html" aria-label="Voir le projet Croûte">
-      <div class="project-media">
-        <img src="/assets/projets/fromagerie-croute/01-hero.jpg" alt="Comptoir de la fromagerie Croûte à Lacanau" loading="lazy">
-      </div>
+    <a class="project-card span-2 reveal reveal-delay-1" href="/projets/la-caleche.html">
+      <img src="/assets/projets/la-caleche/01-hero.jpg" alt="La Calèche — Bégadan, Médoc" loading="lazy">
       <div class="project-info">
-        <span class="eyebrow">03 — Fromagerie · Lacanau-Océan</span>
-        <h3>Croûte</h3>
-        <p class="tagline">Fromages, charcuterie, épicerie fine — un site à l'image de la boutique : brut, honnête, généreux.</p>
-        <div class="project-meta">
-          <span>Site one-page</span>
-          <span>Photo</span>
-          <span>2026</span>
+        <div class="project-info-text">
+          <span class="eyebrow">04 · Gîtes · Médoc</span>
+          <h3>La Calèche</h3>
         </div>
-        <span class="btn-link">Voir le projet →</span>
+        <span class="project-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
       </div>
     </a>
-
-    <!-- Projet 4 : La Calèche -->
-    <a class="project-row reverse reveal" href="/projets/la-caleche.html" aria-label="Voir le projet La Calèche">
-      <div class="project-media">
-        <img src="/assets/projets/la-caleche/01-hero.jpg" alt="Domaine La Calèche, gîtes du Médoc" loading="lazy">
-      </div>
+    <a class="project-card span-2 reveal reveal-delay-2" href="/projets/franck-labasse.html">
+      <img src="/assets/projets/franck-labasse/01-hero.jpg" alt="Franck Labasse Pâtisserie — Pessac" loading="lazy">
       <div class="project-info">
-        <span class="eyebrow">04 — Gîtes · Bégadan · Médoc</span>
-        <h3>La Calèche</h3>
-        <p class="tagline">Huit gîtes de charme au cœur des vignobles, un site qui parle vacances plus qu'immobilier.</p>
-        <div class="project-meta">
-          <span>Site multi-pages</span>
-          <span>Photo</span>
-          <span>2026</span>
+        <div class="project-info-text">
+          <span class="eyebrow">05 · Pâtisserie</span>
+          <h3>Franck Labasse</h3>
         </div>
-        <span class="btn-link">Voir le projet →</span>
-      </div>
-    </a>
-
-    <!-- Projet 5 : Franck Labasse -->
-    <a class="project-row reveal" href="/projets/franck-labasse.html" aria-label="Voir le projet Franck Labasse">
-      <div class="project-media">
-        <img src="/assets/projets/franck-labasse/01-hero.jpg" alt="Saint-Honoré signé Franck Labasse, pâtissier à Pessac" loading="lazy">
-      </div>
-      <div class="project-info">
-        <span class="eyebrow">05 — Pâtisserie · Pessac</span>
-        <h3>Franck Labasse</h3>
-        <p class="tagline">Un chef passé Plaza Athénée et Alain Ducasse. Un site à la hauteur de son parcours.</p>
-        <div class="project-meta">
-          <span>Site multi-pages</span>
-          <span>Photo</span>
-          <span>2026</span>
-        </div>
-        <span class="btn-link">Voir le projet →</span>
+        <span class="project-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
       </div>
     </a>
   </div>
@@ -198,90 +245,51 @@
 
 <!-- ============ ENGAGEMENTS ============ -->
 <section class="engagements">
-  <div class="wrap">
-    <div class="engagements-head reveal">
-      <span class="eyebrow">Nos engagements</span>
-      <h2>Ce sur quoi on <em>ne bouge pas</em>.</h2>
-    </div>
-
-    <div class="engagements-grid">
-      <div class="engagement-item reveal">
-        <span class="engagement-num">01</span>
-        <h3>Un aperçu avant tout devis.</h3>
-        <p>On code le site avant de vous facturer quoi que ce soit. Vous voyez ce que vous achetez, sur votre écran, avec votre nom dessus. Si ça ne vous plaît pas, on n'insiste pas.</p>
+  <div class="engagements-head">
+    <span class="eyebrow reveal">◆ Nos engagements</span>
+    <h2 class="reveal reveal-delay-1">Quatre promesses sur lesquelles on <span class="accent">ne bouge pas</span>.</h2>
+  </div>
+  <div class="engagements-grid">
+    <article class="engagement-item reveal">
+      <div class="engagement-num">01</div>
+      <div class="engagement-body">
+        <h3>Un aperçu <span class="accent">avant tout devis</span>.</h3>
+        <p>On code le site avant de vous facturer quoi que ce soit. Vous voyez ce que vous achetez, sur votre écran, avec votre nom dessus.</p>
       </div>
-      <div class="engagement-item reveal reveal-delay-1">
-        <span class="engagement-num">02</span>
-        <h3>Shooting photo &amp; vidéo pro <em>inclus</em>.</h3>
-        <p>Un beau site sans belles images ne sert à rien. Puisqu'on fait les deux, on refuse de vous facturer le shooting comme un extra. Il vient avec, systématiquement.</p>
+    </article>
+    <article class="engagement-item reveal reveal-delay-1">
+      <div class="engagement-num">02</div>
+      <div class="engagement-body">
+        <h3>Shooting photo &amp; vidéo <span class="accent">toujours inclus</span>.</h3>
+        <p>Un beau site sans belles images ne sert à rien. On refuse de vous facturer le shooting comme un extra — il vient avec.</p>
       </div>
-      <div class="engagement-item reveal reveal-delay-2">
-        <span class="engagement-num">03</span>
-        <h3>Livraison en trois semaines.</h3>
+    </article>
+    <article class="engagement-item reveal reveal-delay-2">
+      <div class="engagement-num">03</div>
+      <div class="engagement-body">
+        <h3>Livraison en <span class="accent">trois semaines</span>.</h3>
         <p>Du brief à la mise en ligne, trois semaines suffisent quand on ne passe pas par cinq intermédiaires. On tient, ou on rembourse.</p>
       </div>
-      <div class="engagement-item reveal reveal-delay-3">
-        <span class="engagement-num">04</span>
-        <h3>Un an de retouches offertes.</h3>
-        <p>Textes à ajuster, photos à changer, horaires qui bougent, nouveau menu, nouvelle prestation — pendant un an, on s'en occupe. Sans facturer.</p>
+    </article>
+    <article class="engagement-item reveal reveal-delay-3">
+      <div class="engagement-num">04</div>
+      <div class="engagement-body">
+        <h3>Un an de retouches <span class="accent">offertes</span>.</h3>
+        <p>Nouveaux horaires, nouveau menu, nouvelles photos, nouvelle prestation — pendant un an, on s'en occupe. Sans facturer.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SERVICES ============ -->
-<section class="services">
-  <div class="wrap">
-    <div class="services-head reveal">
-      <span class="eyebrow">Ce qu'on fait</span>
-      <h2>Trois métiers, un même <em>duo</em>.</h2>
-    </div>
-
-    <div class="services-grid">
-      <div class="service-block reveal">
-        <span class="num">01</span>
-        <h3>Sites internet</h3>
-        <p>Sites vitrine sur-mesure, sans template. Ultra-rapides, responsive, référencés. On code chaque page — pas de WordPress bricolé, pas de constructeur qui bloque après trois mois.</p>
-        <ul class="service-list">
-          <li>Design sur-mesure</li>
-          <li>Réservation intégrée</li>
-          <li>SEO local</li>
-          <li>Hébergement inclus 1 an</li>
-        </ul>
-      </div>
-      <div class="service-block reveal reveal-delay-1">
-        <span class="num">02</span>
-        <h3>Photographie</h3>
-        <p>Boutique, produits, équipe, ambiance. On passe une journée entière chez vous. Les photos vous appartiennent — pour le site, votre Instagram, votre carte, vos flyers.</p>
-        <ul class="service-list">
-          <li>Reportage boutique</li>
-          <li>Produits en studio ou sur place</li>
-          <li>Portraits d'équipe</li>
-          <li>Livraison retouchée</li>
-        </ul>
-      </div>
-      <div class="service-block reveal reveal-delay-2">
-        <span class="num">03</span>
-        <h3>Vidéo</h3>
-        <p>Un film court, sincère, sans voix off IA ni musique de stock. Format qui marche sur Instagram et sur votre site. Le geste, l'atelier, le regard des clients — ce qui vend vraiment.</p>
-        <ul class="service-list">
-          <li>Film d'entreprise court</li>
-          <li>Reels &amp; formats verticaux</li>
-          <li>Montage &amp; étalonnage</li>
-          <li>Livraison en 10 jours</li>
-        </ul>
-      </div>
-    </div>
+    </article>
   </div>
 </section>
 
 <!-- ============ CTA FINAL ============ -->
 <section class="cta-final">
   <div class="cta-final-inner">
-    <span class="eyebrow reveal">Prêt à voir votre site ?</span>
-    <h2 class="reveal reveal-delay-1">Écrivez-nous. On répond<br>dans <em>la journée</em>.</h2>
+    <span class="eyebrow reveal">◆ Prêt à démarrer ?</span>
+    <h2 class="reveal reveal-delay-1">Écrivez-nous.<br>On répond dans <span class="accent">la journée</span>.</h2>
     <div class="cta-ctas reveal reveal-delay-2">
-      <a href="/contact.html" class="btn btn-primary">Nous écrire</a>
+      <a href="/contact.html" class="btn btn-primary">Nous écrire
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
       <a href="tel:+33651339482" class="btn btn-ghost">06 51 33 94 82</a>
     </div>
   </div>
@@ -290,16 +298,18 @@
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="wrap">
+    <div class="footer-mega">Sites, photos, films —<br><span class="accent">à deux</span>.</div>
     <div class="footer-grid">
       <div class="footer-brand">
         <h3>Trame<span class="dot">.</span></h3>
-        <p>Un duo qui pense les sites, les photos et les films — comme un tout.</p>
+        <p>Un duo qui crée des sites internet pour artisans et petites entreprises, avec shooting photo &amp; vidéo pro toujours inclus.</p>
       </div>
       <div class="footer-col">
         <h4>Naviguer</h4>
         <ul>
           <li><a href="/">Accueil</a></li>
           <li><a href="/portfolio.html">Projets</a></li>
+          <li><a href="/#services">Services</a></li>
           <li><a href="/contact.html">Contact</a></li>
         </ul>
       </div>
@@ -320,11 +330,15 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-signature">Trame<span class="dot">.</span> — Sites, photos et films.</span>
+      <span>Trame — Sites, photos et films.</span>
       <span>© <span data-year>2026</span> · <a href="/mentions-legales.html">Mentions légales</a></span>
     </div>
   </div>
 </footer>
+
+<a href="/contact.html" class="float-cta" aria-label="Nous contacter">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1 0 2 1 2 2v12c0 1-1 2-2 2H4c-1 0-2-1-2-2V6c0-1 1-2 2-2z"/><path d="M2 6l10 7 10-7"/></svg>
+</a>
 
 <script src="/js/main.js" defer></script>
 </body>
