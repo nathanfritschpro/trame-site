@@ -1,4 +1,4 @@
-/* ============ TRAME — JS principal ============ */
+/* ============ TRAME — JS principal v4 ============ */
 
 (() => {
   // ---- Header : ajouter .scrolled après un peu de scroll
@@ -29,7 +29,6 @@
   // ---- Reveal on scroll (IntersectionObserver)
   const revealEls = document.querySelectorAll('.reveal');
   if (revealEls.length && 'IntersectionObserver' in window) {
-    // Réveler immédiatement ce qui est déjà dans le viewport (au-dessus du fold)
     const revealIfInView = (el) => {
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight * 0.95 && rect.bottom > 0) {
@@ -49,44 +48,39 @@
     }, { rootMargin: '0px 0px -5% 0px', threshold: 0 });
 
     revealEls.forEach(el => {
-      if (revealIfInView(el)) return;   // au-dessus du fold : révélé de suite
-      io.observe(el);                    // sinon : observer au scroll
+      if (revealIfInView(el)) return;
+      io.observe(el);
     });
   } else {
     revealEls.forEach(el => el.classList.add('is-visible'));
   }
 
-  // ---- Curseur custom (desktop uniquement)
-  const isTouch = matchMedia('(hover: none), (pointer: coarse)').matches;
-  if (!isTouch) {
-    const ring = document.createElement('div');
-    ring.className = 'cursor-ring';
-    document.body.appendChild(ring);
+  // ---- Engagements — scroll-pinned stacking cards
+  const stackOuter = document.querySelector('.engagements-stack-outer');
+  const slides = document.querySelectorAll('.engagement-slide');
+  const progressDots = document.querySelectorAll('.engagements-progress span');
 
-    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-    let visible = false;
+  if (stackOuter && slides.length) {
+    const updateStack = () => {
+      const rect = stackOuter.getBoundingClientRect();
+      const total = rect.height - window.innerHeight;
+      if (total <= 0) return;
+      const raw = -rect.top / total;
+      const progress = Math.max(0, Math.min(0.999, raw));
+      const activeIndex = Math.floor(progress * slides.length);
 
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      if (!visible) { ring.classList.add('visible'); visible = true; }
-    });
-    document.addEventListener('mouseleave', () => { ring.classList.remove('visible'); visible = false; });
-    document.addEventListener('mouseenter', () => { ring.classList.add('visible'); visible = true; });
-
-    const raf = () => {
-      ringX += (mouseX - ringX) * 0.18;
-      ringY += (mouseY - ringY) * 0.18;
-      ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-      requestAnimationFrame(raf);
+      slides.forEach((slide, i) => {
+        slide.classList.remove('is-active', 'is-exit');
+        if (i === activeIndex) slide.classList.add('is-active');
+        else if (i < activeIndex) slide.classList.add('is-exit');
+      });
+      progressDots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === activeIndex);
+      });
     };
-    requestAnimationFrame(raf);
-
-    // Hover states — agrandir sur les liens/boutons
-    document.querySelectorAll('a, button, .project-row').forEach(el => {
-      el.addEventListener('mouseenter', () => ring.classList.add('hover-target'));
-      el.addEventListener('mouseleave', () => ring.classList.remove('hover-target'));
-    });
+    window.addEventListener('scroll', updateStack, { passive: true });
+    window.addEventListener('resize', updateStack, { passive: true });
+    updateStack();
   }
 
   // ---- Année dynamique dans le footer

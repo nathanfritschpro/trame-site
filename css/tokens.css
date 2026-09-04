@@ -1,21 +1,28 @@
-/* ============ TRAME — Design tokens v2 (dark + lime électrique) ============ */
+/* ============ TRAME — Design tokens v4 (navy + bleu pâle) ============ */
 
 :root {
   /* ---- Couleurs ---- */
-  --bg:              #0A0A0A;   /* fond principal, noir profond */
-  --bg-elev:         #131313;   /* surfaces élevées, cards */
-  --bg-soft:         #1A1A1A;   /* hover cards */
-  --line:            rgba(255, 255, 255, 0.08);
-  --line-strong:     rgba(255, 255, 255, 0.16);
+  --bg:              #0F1520;   /* fond principal, navy profond (remplace noir) */
+  --bg-elev:         #171F2D;   /* surfaces élevées, cards */
+  --bg-soft:         #1F2939;   /* hover cards */
+  --line:            rgba(255, 255, 255, 0.09);
+  --line-strong:     rgba(255, 255, 255, 0.20);
 
-  --text:            #F5F5F0;   /* texte principal, blanc cassé */
-  --text-dim:        #B8B8B0;   /* texte secondaire */
-  --text-muted:      #8A8A85;   /* texte muted */
+  --text:            #F5F7FA;   /* texte principal */
+  --text-dim:        #B4BCC9;   /* texte secondaire */
+  --text-muted:      #7C8697;   /* texte muted */
 
-  --lime:            #C4F542;   /* accent principal, lime électrique */
-  --lime-hover:      #B3E32B;   /* accent hover */
-  --lime-soft:       rgba(196, 245, 66, 0.14);
-  --lime-glow:       rgba(196, 245, 66, 0.35);
+  /* Accent bleu pâle (remplace le lime). Variable "--lime" gardée en alias
+     pour éviter de casser toutes les autres feuilles CSS/JS qui la référencent. */
+  --accent:          #A5D0F5;   /* bleu ciel pâle, très joli */
+  --accent-hover:    #7DBAE8;   /* hover un peu plus soutenu */
+  --accent-soft:     rgba(165, 208, 245, 0.14);
+  --accent-glow:     rgba(165, 208, 245, 0.35);
+
+  --lime:            var(--accent);
+  --lime-hover:      var(--accent-hover);
+  --lime-soft:       var(--accent-soft);
+  --lime-glow:       var(--accent-glow);
 
   /* ---- Typographies ---- */
   --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -23,15 +30,15 @@
   --font-mono:    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 
   /* ---- Échelle fluide (clamp) ---- */
-  --fs-xs:    0.75rem;                                       /* 12 */
-  --fs-sm:    clamp(0.813rem, 0.78rem + 0.16vw, 0.875rem);   /* 13-14 */
-  --fs-base:  clamp(1rem, 0.95rem + 0.25vw, 1.125rem);       /* 16-18 */
-  --fs-lg:    clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);    /* 18-22 */
-  --fs-xl:    clamp(1.5rem, 1.25rem + 1.2vw, 2rem);          /* 24-32 */
-  --fs-2xl:   clamp(2rem, 1.5rem + 2.5vw, 3.25rem);          /* 32-52 */
-  --fs-3xl:   clamp(2.75rem, 1.8rem + 4.5vw, 4.75rem);       /* 44-76 */
-  --fs-hero:  clamp(3.25rem, 1.8rem + 8vw, 8rem);            /* 52-128 */
-  --fs-mega:  clamp(4.5rem, 2rem + 14vw, 12rem);             /* 72-192 */
+  --fs-xs:    0.75rem;
+  --fs-sm:    clamp(0.813rem, 0.78rem + 0.16vw, 0.875rem);
+  --fs-base:  clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --fs-lg:    clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
+  --fs-xl:    clamp(1.5rem, 1.25rem + 1.2vw, 2rem);
+  --fs-2xl:   clamp(2rem, 1.5rem + 2.5vw, 3.25rem);
+  --fs-3xl:   clamp(2.75rem, 1.8rem + 4.5vw, 4.75rem);
+  --fs-hero:  clamp(3.25rem, 1.8rem + 8vw, 8rem);
+  --fs-mega:  clamp(4.5rem, 2rem + 14vw, 12rem);
 
   /* ---- Line-heights ---- */
   --lh-tight:  0.92;
@@ -46,6 +53,7 @@
   --sp-4:  1rem;
   --sp-6:  1.5rem;
   --sp-8:  2rem;
+  --sp-10: 2.5rem;
   --sp-12: 3rem;
   --sp-16: 4rem;
   --sp-20: 5rem;
@@ -56,13 +64,13 @@
   --sec-y: clamp(5rem, 3rem + 6vw, 10rem);
   --gut:   clamp(1.25rem, 1rem + 2vw, 2.5rem);
 
-  /* ---- Wrap ---- */
   --wrap-max: 1440px;
 
   /* ---- Bordures ---- */
   --br-sm: 6px;
   --br-md: 12px;
   --br-lg: 20px;
+  --br-xl: 28px;
   --br-pill: 999px;
 
   /* ---- Transitions ---- */
