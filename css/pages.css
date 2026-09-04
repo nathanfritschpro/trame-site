@@ -563,7 +563,7 @@
   box-shadow: 0 20px 60px rgba(196, 245, 66, 0.08);
 }
 .formule.featured::before {
-  content: "Recommandé";
+  content: "Le plus populaire";
   position: absolute;
   top: -12px; left: 50%;
   transform: translateX(-50%);
