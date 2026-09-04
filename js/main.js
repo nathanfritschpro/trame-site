@@ -1,4 +1,4 @@
-/* ============ TRAME — JS principal v4 ============ */
+/* ============ TRAME — JS principal v5 ============ */
 
 (() => {
   // ---- Header : ajouter .scrolled après un peu de scroll
@@ -55,32 +55,69 @@
     revealEls.forEach(el => el.classList.add('is-visible'));
   }
 
-  // ---- Engagements — scroll-pinned stacking cards
-  const stackOuter = document.querySelector('.engagements-stack-outer');
-  const slides = document.querySelectorAll('.engagement-slide');
-  const progressDots = document.querySelectorAll('.engagements-progress span');
-
-  if (stackOuter && slides.length) {
+  // ---- Engagements — stacking cards : scale + opacity des cards derrière
+  const stackCards = document.querySelectorAll('.stack .stack-card');
+  if (stackCards.length) {
+    const spacing = 24;
+    const baseTop = 100;
     const updateStack = () => {
-      const rect = stackOuter.getBoundingClientRect();
-      const total = rect.height - window.innerHeight;
-      if (total <= 0) return;
-      const raw = -rect.top / total;
-      const progress = Math.max(0, Math.min(0.999, raw));
-      const activeIndex = Math.floor(progress * slides.length);
-
-      slides.forEach((slide, i) => {
-        slide.classList.remove('is-active', 'is-exit');
-        if (i === activeIndex) slide.classList.add('is-active');
-        else if (i < activeIndex) slide.classList.add('is-exit');
-      });
-      progressDots.forEach((dot, i) => {
-        dot.classList.toggle('is-active', i === activeIndex);
+      stackCards.forEach((card, i) => {
+        // Combien de cards suivantes ont atteint leur position sticky ?
+        let behind = 0;
+        for (let j = i + 1; j < stackCards.length; j++) {
+          const jRect = stackCards[j].getBoundingClientRect();
+          const jTargetTop = baseTop + j * spacing;
+          if (jRect.top <= jTargetTop + 8) behind++;
+        }
+        const scale = Math.max(0.88, 1 - behind * 0.04);
+        card.style.setProperty('--scale', scale.toFixed(3));
       });
     };
     window.addEventListener('scroll', updateStack, { passive: true });
     window.addEventListener('resize', updateStack, { passive: true });
     updateStack();
+  }
+
+  // ---- Curseur custom (desktop uniquement, respecte reduced-motion)
+  const supportsCursor =
+    window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (supportsCursor) {
+    const cursor = document.createElement('div');
+    cursor.className = 'cursor';
+    cursor.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(cursor);
+    document.body.classList.add('has-cursor');
+
+    let x = window.innerWidth / 2, y = window.innerHeight / 2;
+    let cx = x, cy = y;
+    let raf = 0;
+
+    const tick = () => {
+      cx += (x - cx) * 0.28;
+      cy += (y - cy) * 0.28;
+      cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+      raf = requestAnimationFrame(tick);
+    };
+    tick();
+
+    window.addEventListener('mousemove', (e) => {
+      x = e.clientX;
+      y = e.clientY;
+      if (!cursor.classList.contains('is-ready')) cursor.classList.add('is-ready');
+    }, { passive: true });
+
+    window.addEventListener('mouseleave', () => cursor.classList.remove('is-ready'));
+    window.addEventListener('mouseenter', () => cursor.classList.add('is-ready'));
+
+    // Hover state sur les éléments interactifs
+    const hoverSelector = 'a, button, input[type="submit"], input[type="button"], [role="button"], .project-window, .service-card, .formule, .stack-card';
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest(hoverSelector)) cursor.classList.add('is-hover');
+    });
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.closest(hoverSelector)) cursor.classList.remove('is-hover');
+    });
   }
 
   // ---- Année dynamique dans le footer

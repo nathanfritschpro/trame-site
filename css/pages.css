@@ -140,6 +140,14 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
 }
+.stats-grid--three {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 900px;
+  justify-items: center;
+  text-align: center;
+}
+.stats-grid--three .stat { align-items: center; text-align: center; }
+.stats-grid--three .stat-label { text-align: center; }
 .stat {
   padding: var(--sp-4) var(--sp-6);
   border-left: 1px solid var(--line);
@@ -699,14 +707,14 @@
   .formule.featured:hover { transform: translateY(-4px); }
 }
 
-/* ============ ENGAGEMENTS — stack scroll-pin ============ */
+/* ============ ENGAGEMENTS — vrai stacking cards ============ */
 .engagements-scroll {
   padding: var(--sec-y) 0 0;
   background: linear-gradient(180deg, var(--bg) 0%, var(--bg-elev) 50%, var(--bg) 100%);
 }
 .engagements-head {
   max-width: var(--wrap-max);
-  margin: 0 auto;
+  margin: 0 auto var(--sp-16);
   padding: 0 var(--gut);
   text-align: center;
 }
@@ -714,100 +722,89 @@
 .engagements-head h2 { max-width: 22ch; margin: 0 auto; font-weight: 700; letter-spacing: -0.035em; }
 .engagements-head h2 .accent { color: var(--accent); }
 
-.engagements-stack-outer { position: relative; height: 400vh; }
-.engagements-stack-viewport {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.engagements-stack {
+/* Stack container: chaque card sticky à des tops différents pour l'effet d'empilement */
+.stack {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 var(--gut) 30vh;
   position: relative;
-  width: min(720px, calc(100vw - 2 * var(--gut)));
-  height: 340px;
 }
-.engagement-slide {
-  position: absolute;
-  inset: 0;
-  padding: clamp(2rem, 1rem + 3vw, 3.5rem);
-  background: var(--bg-elev);
+.stack-card {
+  position: sticky;
+  margin: 0 0 12vh;
+  will-change: transform;
+  transform: translateY(0) scale(var(--scale, 1));
+  transform-origin: center top;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.stack-card:nth-child(1) { top: 100px; z-index: 1; }
+.stack-card:nth-child(2) { top: 124px; z-index: 2; }
+.stack-card:nth-child(3) { top: 148px; z-index: 3; }
+.stack-card:nth-child(4) { top: 172px; z-index: 4; margin-bottom: 0; }
+
+.stack-card-inner {
+  padding: clamp(2rem, 2.5vw + 1rem, 3.75rem);
+  background: linear-gradient(180deg, var(--bg-elev) 0%, var(--bg-soft) 100%);
   border: 1px solid var(--line);
   border-radius: var(--br-xl);
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.55);
   display: flex;
   flex-direction: column;
+  gap: var(--sp-5);
+  min-height: 300px;
   justify-content: center;
-  gap: var(--sp-4);
-  opacity: 0;
-  transform: translateY(80px) scale(0.94);
-  transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out), border-color 0.55s var(--ease-soft);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
 }
-.engagement-slide.is-active {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  border-color: var(--accent-soft);
+.stack-card-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--br-xl);
+  background: radial-gradient(circle at top right, var(--accent-glow), transparent 60%);
+  opacity: 0.4;
+  pointer-events: none;
 }
-.engagement-slide.is-exit {
-  opacity: 0;
-  transform: translateY(-80px) scale(0.94);
-}
-
-.engagement-slide-num {
+.stack-card-num {
   font-family: var(--font-mono);
   font-weight: 500;
   font-size: var(--fs-xs);
   color: var(--accent);
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  position: relative;
 }
-.engagement-slide h3 {
+.stack-card h3 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.75rem, 1rem + 2.5vw, 2.75rem);
+  font-size: clamp(1.75rem, 1rem + 2.5vw, 2.6rem);
   color: var(--text);
   margin: 0;
   letter-spacing: -0.03em;
   line-height: 1.1;
+  position: relative;
 }
-.engagement-slide h3 .accent { color: var(--accent); }
-.engagement-slide p {
+.stack-card h3 .accent { color: var(--accent); }
+.stack-card p {
   color: var(--text-dim);
   font-size: var(--fs-lg);
   line-height: 1.55;
   margin: 0;
-  max-width: 55ch;
-}
-
-/* Progress indicator (dots on side) */
-.engagements-progress {
-  position: absolute;
-  top: 50%;
-  right: max(var(--gut), 24px);
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 10;
-}
-.engagements-progress span {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--line-strong);
-  transition: background var(--dur-med) var(--ease-soft), transform var(--dur-med) var(--ease-out);
-}
-.engagements-progress span.is-active {
-  background: var(--accent);
-  transform: scale(1.4);
-  box-shadow: 0 0 12px var(--accent-glow);
+  max-width: 60ch;
+  position: relative;
 }
 
 @media (max-width: 780px) {
-  .engagements-stack-outer { height: 320vh; }
-  .engagements-stack { height: 380px; }
-  .engagements-progress { display: none; }
+  .stack { padding-bottom: 20vh; }
+  .stack-card { margin-bottom: 6vh; }
+  .stack-card:nth-child(1) { top: 80px; }
+  .stack-card:nth-child(2) { top: 96px; }
+  .stack-card:nth-child(3) { top: 112px; }
+  .stack-card:nth-child(4) { top: 128px; }
+  .stack-card-inner { min-height: 260px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stack-card { position: static; transform: none !important; margin-bottom: var(--sp-8); }
 }
 
 /* ============ CTA FINAL ============ */

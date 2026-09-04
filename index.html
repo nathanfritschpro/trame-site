@@ -61,12 +61,12 @@
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-noise" aria-hidden="true"></div>
   <div class="hero-inner">
-    <span class="hero-eyebrow eyebrow reveal"><span class="dot-live"></span>Nathan + Manon · Duo créatif · Nouvelle-Aquitaine</span>
+    <span class="hero-eyebrow eyebrow reveal"><span class="dot-live"></span>Duo créatif · Nouvelle-Aquitaine</span>
     <h1 class="reveal reveal-delay-1">
-      Votre activité n'a pas <span class="accent"><span class="underline">deux chances</span></span><br>
-      de faire une bonne première impression.
+      Nous créons votre site internet <span class="accent"><span class="underline">à la hauteur</span></span><br>
+      de votre activité.
     </h1>
-    <p class="hero-desc reveal reveal-delay-2">Votre site, c'est cette chance. Un duo, pas une agence — on le construit sur-mesure, avec les photos et la vidéo qui vont avec. Livré en trois semaines.</p>
+    <p class="hero-desc reveal reveal-delay-2">Votre site sert à faire bonne impression dès le premier regard. Nous le créons sur-mesure, avec les photos et la vidéo qui vont avec — livré en trois semaines. Un duo, pas une agence.</p>
     <div class="hero-ctas reveal reveal-delay-3">
       <a href="/portfolio.html" class="btn btn-primary">Voir nos projets
         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -79,7 +79,7 @@
 
 <!-- ============ STATS ============ -->
 <section class="stats">
-  <div class="stats-grid">
+  <div class="stats-grid stats-grid--three">
     <div class="stat reveal">
       <div class="stat-num">07</div>
       <div class="stat-label">Sites &amp; aperçus</div>
@@ -91,10 +91,6 @@
     <div class="stat reveal reveal-delay-2">
       <div class="stat-num">06 <span class="unit">mois</span></div>
       <div class="stat-label">Retouches offertes</div>
-    </div>
-    <div class="stat reveal reveal-delay-3">
-      <div class="stat-num">01 <span class="unit">an</span></div>
-      <div class="stat-label">Nom de domaine offert</div>
     </div>
   </div>
 </section>
@@ -182,12 +178,12 @@
 
   <div class="portfolio-grid">
 
-    <a class="project-window reveal" href="https://nathanfritsch.com" target="_blank" rel="noopener">
+    <a class="project-window reveal" href="/projets/nathan-photo.html">
       <span class="duo-badge">◆ Projet du duo</span>
       <div class="project-chrome">
         <div class="project-chrome-dots"><span></span><span></span><span></span></div>
         <div class="project-chrome-url">nathanfritsch.com</div>
-        <div class="project-chrome-tag">↗ Externe</div>
+        <div class="project-chrome-tag">Voir</div>
       </div>
       <div class="project-screenshot">
         <img src="/assets/screenshots/nathanfritsch.jpg" alt="Nathan Fritsch — site photographe" loading="eager">
@@ -197,16 +193,16 @@
           <span class="meta">Site perso · Photographe</span>
           <h3>Nathan Fritsch — Photo</h3>
         </div>
-        <span class="project-arrow-mini"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+        <span class="project-arrow-mini"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
       </div>
     </a>
 
-    <a class="project-window reveal reveal-delay-1" href="https://modevia.fr" target="_blank" rel="noopener">
+    <a class="project-window reveal reveal-delay-1" href="/projets/modevia.html">
       <span class="duo-badge">◆ Projet du duo</span>
       <div class="project-chrome">
         <div class="project-chrome-dots"><span></span><span></span><span></span></div>
         <div class="project-chrome-url">modevia.fr</div>
-        <div class="project-chrome-tag">↗ Externe</div>
+        <div class="project-chrome-tag">Voir</div>
       </div>
       <div class="project-screenshot">
         <img src="/assets/screenshots/modevia.jpg" alt="Modevia SaaS" loading="eager">
@@ -216,7 +212,7 @@
           <span class="meta">SaaS · Produit interne (Manon)</span>
           <h3>Modevia</h3>
         </div>
-        <span class="project-arrow-mini"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+        <span class="project-arrow-mini"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
       </div>
     </a>
 
@@ -327,50 +323,45 @@
   </div>
 </section>
 
-<!-- ============ ENGAGEMENTS — stack scroll-pin ============ -->
-<section class="engagements-scroll">
+<!-- ============ ENGAGEMENTS — vrai stacking cards ============ -->
+<section class="engagements-scroll" id="engagements">
   <div class="engagements-head">
     <span class="eyebrow reveal">◆ Nos engagements</span>
     <h2 class="reveal reveal-delay-1">Quatre promesses sur lesquelles on <span class="accent">ne bouge pas</span>.</h2>
   </div>
 
-  <div class="engagements-stack-outer">
-    <div class="engagements-stack-viewport">
-
-      <div class="engagements-progress" aria-hidden="true">
-        <span class="is-active"></span>
-        <span></span>
-        <span></span>
-        <span></span>
+  <div class="stack">
+    <article class="stack-card" style="--i:0">
+      <div class="stack-card-inner">
+        <span class="stack-card-num">01 / Aperçu avant devis</span>
+        <h3>Un aperçu <span class="accent">avant tout devis</span>.</h3>
+        <p>On code une première version du site avant de vous facturer quoi que ce soit. Vous voyez ce que vous achetez, sur votre écran, avec votre nom dessus.</p>
       </div>
+    </article>
 
-      <div class="engagements-stack">
-        <article class="engagement-slide is-active" data-slide="0">
-          <span class="engagement-slide-num">01 / Aperçu avant devis</span>
-          <h3>Un aperçu <span class="accent">avant tout devis</span>.</h3>
-          <p>On code une première version du site avant de vous facturer quoi que ce soit. Vous voyez ce que vous achetez, sur votre écran, avec votre nom dessus.</p>
-        </article>
-
-        <article class="engagement-slide" data-slide="1">
-          <span class="engagement-slide-num">02 / Shooting inclus</span>
-          <h3>Shooting photo <span class="accent">inclus</span>. Vidéo en option.</h3>
-          <p>Un beau site sans belles images ne sert à rien. Les photos viennent avec, jamais en extra. La vidéo se rajoute uniquement si vous en voulez une.</p>
-        </article>
-
-        <article class="engagement-slide" data-slide="2">
-          <span class="engagement-slide-num">03 / Livraison chrono</span>
-          <h3>Livraison en <span class="accent">trois semaines</span>. Chrono.</h3>
-          <p>Du brief à la mise en ligne, trois semaines suffisent quand on ne passe pas par cinq intermédiaires. Si on dépasse, on rembourse la différence au prorata.</p>
-        </article>
-
-        <article class="engagement-slide" data-slide="3">
-          <span class="engagement-slide-num">04 / Domaine offert</span>
-          <h3>Nom de domaine <span class="accent">offert un an</span>.</h3>
-          <p>On prend en charge votre nom de domaine (.fr, .com…) la première année. Plus six mois de retouches offertes après la mise en ligne.</p>
-        </article>
+    <article class="stack-card" style="--i:1">
+      <div class="stack-card-inner">
+        <span class="stack-card-num">02 / Shooting inclus</span>
+        <h3>Shooting photo <span class="accent">inclus</span>. Vidéo en option.</h3>
+        <p>Un beau site sans belles images ne sert à rien. Les photos viennent avec, jamais en extra. La vidéo se rajoute uniquement si vous en voulez une.</p>
       </div>
+    </article>
 
-    </div>
+    <article class="stack-card" style="--i:2">
+      <div class="stack-card-inner">
+        <span class="stack-card-num">03 / Livraison chrono</span>
+        <h3>Livraison en <span class="accent">trois semaines</span>. Chrono.</h3>
+        <p>Du brief à la mise en ligne, trois semaines suffisent quand on ne passe pas par cinq intermédiaires. Si on dépasse, on rembourse la différence au prorata.</p>
+      </div>
+    </article>
+
+    <article class="stack-card" style="--i:3">
+      <div class="stack-card-inner">
+        <span class="stack-card-num">04 / Domaine offert</span>
+        <h3>Nom de domaine <span class="accent">offert un an</span>.</h3>
+        <p>On prend en charge votre nom de domaine (.fr, .com…) la première année. Plus six mois de retouches offertes après la mise en ligne.</p>
+      </div>
+    </article>
   </div>
 </section>
 
