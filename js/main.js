@@ -69,22 +69,25 @@
       deckCards.forEach((card, i) => {
         const d = i - activeIdx;
         if (d < 0) {
-          // Carte déjà passée : envolée vers le haut-gauche
-          card.style.transform = 'translate(-70px, -90px) rotate(-8deg) scale(0.92)';
+          // Carte envolée : dégage franchement vers le haut-gauche avec rotation forte
+          card.style.transform = 'translate(-140%, -70%) rotate(-24deg) scale(0.9)';
           card.style.opacity = '0';
           card.style.zIndex = '0';
         } else {
-          // d = 0 : active, sur le dessus ; d > 0 : dans la pile derrière
-          const offX = d * 12;
-          const offY = d * -6;
-          const rot = d * 2;
-          const scale = Math.max(0.9, 1 - d * 0.035);
+          // d = 0 : active, devant. d > 0 : cartes du deck derrière, fanées.
+          const offX = d * 22;
+          const offY = d * -14;
+          const rot = d * 5;
+          const scale = Math.max(0.86, 1 - d * 0.05);
           card.style.transform = `translate(${offX}px, ${offY}px) rotate(${rot}deg) scale(${scale})`;
-          card.style.opacity = d > 3 ? '0' : '1';
+          card.style.opacity = '1';
           card.style.zIndex = String(20 - d);
         }
       });
-      deckDots.forEach((dot, i) => dot.classList.toggle('is-active', i === activeIdx));
+      deckDots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === activeIdx);
+        dot.classList.toggle('is-past', i < activeIdx);
+      });
       deckStage.dataset.active = String(activeIdx);
     };
 
@@ -104,7 +107,9 @@
       if (total <= 0) return;
       const rawProgress = -rect.top / total;
       const progress = Math.max(0, Math.min(0.9999, rawProgress));
-      const active = Math.min(deckCards.length - 1, Math.floor(progress * deckCards.length));
+      // (deckCards.length + 1) zones : 4 cartes actives + 1 zone "deck vide" à la fin.
+      // Ex : progress 0-20% = active 0, 20-40% = 1, ..., 80-100% = 4 (toutes parties).
+      const active = Math.min(deckCards.length, Math.floor(progress * (deckCards.length + 1)));
       if (active !== currentActive) {
         currentActive = active;
         applyLayout(active);
