@@ -55,27 +55,68 @@
     revealEls.forEach(el => el.classList.add('is-visible'));
   }
 
-  // ---- Engagements — stacking cards : scale + opacity des cards derrière
-  const stackCards = document.querySelectorAll('.stack .stack-card');
-  if (stackCards.length) {
-    const spacing = 24;
-    const baseTop = 100;
-    const updateStack = () => {
-      stackCards.forEach((card, i) => {
-        // Combien de cards suivantes ont atteint leur position sticky ?
-        let behind = 0;
-        for (let j = i + 1; j < stackCards.length; j++) {
-          const jRect = stackCards[j].getBoundingClientRect();
-          const jTargetTop = baseTop + j * spacing;
-          if (jRect.top <= jTargetTop + 8) behind++;
+  // ---- Engagements — deck-flip pinned scroll
+  const deckSection = document.querySelector('.engagements-pin');
+  const deckStage = deckSection && deckSection.querySelector('.deck-stage');
+  const deckCards = deckStage ? deckStage.querySelectorAll('.deck-card') : [];
+  const deckDots = deckSection ? deckSection.querySelectorAll('.deck-dot') : [];
+
+  if (deckSection && deckCards.length) {
+    const mobileMQ = window.matchMedia('(max-width: 900px)');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const applyLayout = (activeIdx) => {
+      deckCards.forEach((card, i) => {
+        const d = i - activeIdx;
+        if (d < 0) {
+          // Carte déjà passée : envolée vers le haut-gauche
+          card.style.transform = 'translate(-70px, -90px) rotate(-8deg) scale(0.92)';
+          card.style.opacity = '0';
+          card.style.zIndex = '0';
+        } else {
+          // d = 0 : active, sur le dessus ; d > 0 : dans la pile derrière
+          const offX = d * 12;
+          const offY = d * -6;
+          const rot = d * 2;
+          const scale = Math.max(0.9, 1 - d * 0.035);
+          card.style.transform = `translate(${offX}px, ${offY}px) rotate(${rot}deg) scale(${scale})`;
+          card.style.opacity = d > 3 ? '0' : '1';
+          card.style.zIndex = String(20 - d);
         }
-        const scale = Math.max(0.88, 1 - behind * 0.04);
-        card.style.setProperty('--scale', scale.toFixed(3));
       });
+      deckDots.forEach((dot, i) => dot.classList.toggle('is-active', i === activeIdx));
+      deckStage.dataset.active = String(activeIdx);
     };
-    window.addEventListener('scroll', updateStack, { passive: true });
-    window.addEventListener('resize', updateStack, { passive: true });
-    updateStack();
+
+    let currentActive = -1;
+    const updateDeck = () => {
+      // Sur mobile ou reduced-motion : tout à plat, pas de scroll-jack
+      if (mobileMQ.matches || reducedMotion.matches) {
+        deckCards.forEach(card => {
+          card.style.transform = '';
+          card.style.opacity = '';
+          card.style.zIndex = '';
+        });
+        return;
+      }
+      const rect = deckSection.getBoundingClientRect();
+      const total = rect.height - window.innerHeight;
+      if (total <= 0) return;
+      const rawProgress = -rect.top / total;
+      const progress = Math.max(0, Math.min(0.9999, rawProgress));
+      const active = Math.min(deckCards.length - 1, Math.floor(progress * deckCards.length));
+      if (active !== currentActive) {
+        currentActive = active;
+        applyLayout(active);
+      }
+    };
+
+    window.addEventListener('scroll', updateDeck, { passive: true });
+    window.addEventListener('resize', updateDeck, { passive: true });
+    mobileMQ.addEventListener('change', updateDeck);
+    updateDeck();
+    // Force layout initial même si on n'a pas scrollé
+    if (!mobileMQ.matches && !reducedMotion.matches) applyLayout(0);
   }
 
   // ---- Curseur custom (desktop uniquement, respecte reduced-motion)
@@ -111,7 +152,7 @@
     window.addEventListener('mouseenter', () => cursor.classList.add('is-ready'));
 
     // Hover state sur les éléments interactifs
-    const hoverSelector = 'a, button, input[type="submit"], input[type="button"], [role="button"], .project-window, .service-card, .formule, .stack-card';
+    const hoverSelector = 'a, button, input[type="submit"], input[type="button"], [role="button"], .project-window, .service-card, .formule, .deck-card';
     document.addEventListener('mouseover', (e) => {
       if (e.target.closest(hoverSelector)) cursor.classList.add('is-hover');
     });
