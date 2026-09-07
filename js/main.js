@@ -1,4 +1,4 @@
-/* ============ TRAME — JS principal v5 ============ */
+/* ============ TRAME · JS principal v5 ============ */
 
 (() => {
   // ---- Header : ajouter .scrolled après un peu de scroll
@@ -25,6 +25,41 @@
       document.body.style.overflow = '';
     }));
   }
+
+  // ---- Mobile nav accordéons (Services + Portfolio)
+  document.querySelectorAll('.mobile-nav-toggle').forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+
+  // ---- Desktop nav dropdowns (accessibilité clavier + click sur touch)
+  document.querySelectorAll('.nav-toggle').forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      // Ferme les autres dropdowns d'abord
+      document.querySelectorAll('.nav-toggle[aria-expanded="true"]').forEach(t => {
+        if (t !== toggle) t.setAttribute('aria-expanded', 'false');
+      });
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+  // Ferme les dropdowns au click extérieur
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-toggle[aria-expanded="true"]').forEach(t => t.setAttribute('aria-expanded', 'false'));
+  });
+  // Ferme au Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.nav-toggle[aria-expanded="true"]').forEach(t => {
+        t.setAttribute('aria-expanded', 'false');
+        t.focus();
+      });
+    }
+  });
 
   // ---- Reveal on scroll (IntersectionObserver)
   const revealEls = document.querySelectorAll('.reveal');
@@ -55,7 +90,7 @@
     revealEls.forEach(el => el.classList.add('is-visible'));
   }
 
-  // ---- Engagements — deck-flip pinned scroll
+  // ---- Engagements · deck-flip pinned scroll
   const deckSection = document.querySelector('.engagements-pin');
   const deckStage = deckSection && deckSection.querySelector('.deck-stage');
   const deckCards = deckStage ? deckStage.querySelectorAll('.deck-card') : [];

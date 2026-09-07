@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Comme une Fleur — Projet Trame</title>
+<title>Comme une Fleur, Projet Trame</title>
 <meta name="description" content="Site vitrine d'une fleuriste à Mérignac, avec animation scroll de 155 frames de la devanture réelle et pétales flottants.">
 <meta name="theme-color" content="#0F1520">
 
 <meta property="og:type" content="article">
-<meta property="og:title" content="Comme une Fleur — Projet Trame">
+<meta property="og:title" content="Comme une Fleur, Projet Trame">
 <meta property="og:description" content="Site vitrine avec animation scroll de la devanture réelle.">
 <meta property="og:url" content="https://trame-site-fawn.vercel.app/projets/comme-une-fleur.html">
 <meta property="og:image" content="https://trame-site-fawn.vercel.app/assets/screenshots/comme-une-fleur.jpg">
@@ -31,8 +31,30 @@
   <a href="/" class="brand-logo">Trame<span class="dot">.</span></a>
   <nav class="nav" aria-label="Principale">
     <a href="/">Accueil</a>
-    <a href="/portfolio.html" class="active">Projets</a>
-    <a href="/#services">Services</a>
+    <div class="nav-item nav-item--dropdown">
+      <button type="button" class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Services
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <a href="/services/sites-internet.html">Sites internet</a>
+        <a href="/services/applications.html">Applications métier</a>
+        <a href="/services/photo-video-drone.html">Photo, vidéo et drone</a>
+        <a href="/services/chef-de-projet.html">Chef de projet digital</a>
+      </div>
+    </div>
+    <div class="nav-item nav-item--dropdown">
+      <button type="button" class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Portfolio
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <a href="/portfolio.html">Tous les projets</a>
+        <a href="/portfolio.html?filter=sites">Sites internet</a>
+        <a href="/portfolio.html?filter=photo">Photo</a>
+        <a href="/portfolio.html?filter=video">Vidéo et drone</a>
+        <a href="/portfolio.html?filter=applications">Applications</a>
+      </div>
+    </div>
+    <a href="/formules.html">Formules</a>
     <a href="/contact.html">Contact</a>
   </nav>
   <div class="header-cta">
@@ -46,9 +68,28 @@
 <div class="mobile-nav">
   <ul>
     <li><a href="/">Accueil</a></li>
-    <li><a href="/portfolio.html">Projets</a></li>
-    <li><a href="/#services">Services</a></li>
+    <li class="mobile-nav-group">
+      <button type="button" class="mobile-nav-toggle" aria-expanded="false">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <ul class="mobile-nav-sub">
+        <li><a href="/services/sites-internet.html">Sites internet</a></li>
+        <li><a href="/services/applications.html">Applications métier</a></li>
+        <li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li>
+        <li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li>
+      </ul>
+    </li>
+    <li class="mobile-nav-group">
+      <button type="button" class="mobile-nav-toggle" aria-expanded="false">Portfolio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <ul class="mobile-nav-sub">
+        <li><a href="/portfolio.html">Tous les projets</a></li>
+        <li><a href="/portfolio.html?filter=sites">Sites internet</a></li>
+        <li><a href="/portfolio.html?filter=photo">Photo</a></li>
+        <li><a href="/portfolio.html?filter=video">Vidéo et drone</a></li>
+        <li><a href="/portfolio.html?filter=applications">Applications</a></li>
+      </ul>
+    </li>
+    <li><a href="/formules.html">Formules</a></li>
     <li><a href="/contact.html">Contact</a></li>
+    <li><a href="/contact.html" class="btn btn-primary">Prendre contact →</a></li>
   </ul>
 </div>
 
@@ -57,7 +98,7 @@
     <a href="/portfolio.html" class="case-back">Retour aux projets</a>
     <span class="eyebrow reveal">◆ 02 · Fleuriste · Mérignac</span>
     <h1 class="reveal reveal-delay-1">Comme<br>une <span class="accent">fleur.</span></h1>
-    <p class="page-hero-desc reveal reveal-delay-2">Une fleuriste de quartier depuis des années à Mérignac. Un site qui donne l'impression de pousser la porte de la boutique — 155 frames de la devanture réelle s'animent au scroll.</p>
+    <p class="page-hero-desc reveal reveal-delay-2">Une fleuriste de quartier depuis des années à Mérignac. Un site qui donne l'impression de pousser la porte de la boutique, 155 frames de la devanture réelle s'animent au scroll.</p>
   </div>
 </section>
 
@@ -87,10 +128,10 @@
 
   <div class="case-content">
     <h2>Le <span class="accent">brief</span></h2>
-    <p>Une fleuriste installée depuis des années à Mérignac, connue de son quartier mais sans site internet — juste une fiche Google Business. Beaucoup de clients qui la découvrent en cherchant "fleuriste Mérignac" et repartent parce qu'ils ne trouvent rien à regarder. Objectif : un site vitrine qui donne envie de pousser la porte.</p>
+    <p>Une fleuriste installée depuis des années à Mérignac, connue de son quartier mais sans site internet, juste une fiche Google Business. Beaucoup de clients qui la découvrent en cherchant "fleuriste Mérignac" et repartent parce qu'ils ne trouvent rien à regarder. Objectif : un site vitrine qui donne envie de pousser la porte.</p>
 
     <h2>Notre <span class="accent">approche</span></h2>
-    <p>Photos prises sur place, dans la vraie boutique. Idée forte : capturer la devanture en 155 photos successives, puis les rejouer en séquence au scroll — l'utilisateur a l'impression de s'approcher de la vitrine à mesure qu'il descend la page. Pétales flottants en canvas dans le hero, palette bottle green + powder pink + cream, typographie Fraunces italique.</p>
+    <p>Photos prises sur place, dans la vraie boutique. Idée forte : capturer la devanture en 155 photos successives, puis les rejouer en séquence au scroll, l'utilisateur a l'impression de s'approcher de la vitrine à mesure qu'il descend la page. Pétales flottants en canvas dans le hero, palette bottle green + powder pink + cream, typographie Fraunces italique.</p>
 
     <h2>Ce qu'on a <span class="accent">construit</span></h2>
     <p>Un site vitrine one-page complet, sections atelier / créations / occasions / avis / contact, animation scroll signature, formulaire de commande. Livraison en trois semaines, hébergé sur Vercel.</p>
@@ -115,14 +156,14 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <h3>Trame<span class="dot">.</span></h3>
-        <p>Un duo qui crée des sites internet pour artisans et petites entreprises, avec shooting photo &amp; vidéo pro toujours inclus.</p>
+        <p>Un duo qui code à la main des sites internet pour artisans et petites entreprises. Photo et vidéo en option.</p>
       </div>
-      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Projets</a></li><li><a href="/#services">Services</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
-      <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@trame.fr">contact@trame.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li></ul></div>
-      <div class="footer-col"><h4>Le duo</h4><ul><li>Nathan Fritsch</li><li>Manon Fritsch</li><li>Nouvelle-Aquitaine</li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="/services/sites-internet.html">Sites internet</a></li><li><a href="/services/applications.html">Applications métier</a></li><li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li><li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li></ul></div>
+      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Portfolio</a></li><li><a href="/formules.html">Formules</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@trame.fr">contact@trame.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li><li>Nouvelle-Aquitaine</li></ul></div>
     </div>
     <div class="footer-bottom">
-      <span>Trame — Sites, photos et films.</span>
+      <span>Trame · Sites, photos et films.</span>
       <span>© <span data-year>2026</span> · <a href="/mentions-legales.html">Mentions légales</a></span>
     </div>
   </div>

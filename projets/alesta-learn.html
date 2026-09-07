@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Alesta Learn · Projet Trame</title>
+<meta name="description" content="Alesta Learn, plateforme de formation en ligne. Site WordPress avec thème sur mesure livré par Trame.">
+<meta name="theme-color" content="#0F1520">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Alesta Learn · Projet Trame">
+<meta property="og:description" content="Plateforme de formation en ligne, WordPress à thème sur mesure.">
+<meta property="og:url" content="https://trame-site-fawn.vercel.app/projets/alesta-learn.html">
+<meta property="og:image" content="https://trame-site-fawn.vercel.app/assets/og/og-home.jpg">
+
+<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+<link rel="canonical" href="https://trame-site-fawn.vercel.app/projets/alesta-learn.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/pages.css">
+</head>
+<body>
+
+<header class="header">
+  <a href="/" class="brand-logo">Trame<span class="dot">.</span></a>
+  <nav class="nav" aria-label="Principale">
+    <a href="/">Accueil</a>
+    <div class="nav-item nav-item--dropdown">
+      <button type="button" class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Services
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <a href="/services/sites-internet.html">Sites internet</a>
+        <a href="/services/applications.html">Applications métier</a>
+        <a href="/services/photo-video-drone.html">Photo, vidéo et drone</a>
+        <a href="/services/chef-de-projet.html">Chef de projet digital</a>
+      </div>
+    </div>
+    <div class="nav-item nav-item--dropdown">
+      <button type="button" class="nav-link nav-toggle active" aria-haspopup="true" aria-expanded="false">Portfolio
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <a href="/portfolio.html">Tous les projets</a>
+        <a href="/portfolio.html?filter=sites">Sites internet</a>
+        <a href="/portfolio.html?filter=photo">Photo</a>
+        <a href="/portfolio.html?filter=video">Vidéo et drone</a>
+        <a href="/portfolio.html?filter=applications">Applications</a>
+      </div>
+    </div>
+    <a href="/formules.html">Formules</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+  <div class="header-cta">
+    <a href="/contact.html" class="btn btn-primary btn-icon">Prendre contact
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+  <button class="burger" aria-label="Ouvrir le menu"><span></span><span></span></button>
+</header>
+
+<div class="mobile-nav">
+  <ul>
+    <li><a href="/">Accueil</a></li>
+    <li class="mobile-nav-group">
+      <button type="button" class="mobile-nav-toggle" aria-expanded="false">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <ul class="mobile-nav-sub">
+        <li><a href="/services/sites-internet.html">Sites internet</a></li>
+        <li><a href="/services/applications.html">Applications métier</a></li>
+        <li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li>
+        <li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li>
+      </ul>
+    </li>
+    <li class="mobile-nav-group">
+      <button type="button" class="mobile-nav-toggle" aria-expanded="true">Portfolio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <ul class="mobile-nav-sub">
+        <li><a href="/portfolio.html">Tous les projets</a></li>
+        <li><a href="/portfolio.html?filter=sites">Sites internet</a></li>
+        <li><a href="/portfolio.html?filter=photo">Photo</a></li>
+        <li><a href="/portfolio.html?filter=video">Vidéo et drone</a></li>
+        <li><a href="/portfolio.html?filter=applications">Applications</a></li>
+      </ul>
+    </li>
+    <li><a href="/formules.html">Formules</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+    <li><a href="/contact.html" class="btn btn-primary">Prendre contact →</a></li>
+  </ul>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <a href="/portfolio.html" class="case-back">Retour aux projets</a>
+    <span class="eyebrow reveal">◆ Réalisation client · Plateforme de formation</span>
+    <h1 class="reveal reveal-delay-1">Alesta <span class="accent">Learn</span>.</h1>
+    <p class="page-hero-desc reveal reveal-delay-2">Plateforme de formation en ligne. Site WordPress avec thème sur mesure, en ligne sur alesta-learn.com.</p>
+  </div>
+</section>
+
+<section class="case-notice-wrap">
+  <div class="signal-box reveal">
+    <span class="signal-tag">◆ Contenu détaillé à venir</span>
+    <p>Cette page est en cours de préparation. Le screenshot du site, la description détaillée du projet et les captures d'écran seront ajoutés très bientôt. En attendant, vous pouvez nous écrire pour toute question.</p>
+  </div>
+</section>
+
+<div class="case-body">
+  <aside class="case-side">
+    <dl>
+      <div><dt>Client</dt><dd>Alesta Learn</dd></div>
+      <div><dt>Type</dt><dd>Plateforme WordPress</dd></div>
+      <div><dt>Techno</dt><dd>WordPress + thème sur mesure</dd></div>
+      <div><dt>Prestations</dt><dd>Site internet</dd></div>
+      <div><dt>Statut</dt><dd>Livré, en ligne</dd></div>
+    </dl>
+  </aside>
+
+  <div class="case-content">
+    <h2>Le <span class="accent">brief</span></h2>
+    <p>Une plateforme dédiée à la formation en ligne, avec ses propres besoins (catalogue de formations, inscriptions, présentation des formateurs). WordPress choisi pour la souplesse de contenu. Le détail complet du brief et des choix graphiques sera ajouté prochainement.</p>
+
+    <h2>Notre <span class="accent">approche</span></h2>
+    <p>Thème WordPress développé spécifiquement pour cette activité formation, avec présentation des sessions, formulaires d&apos;inscription et espace formateurs.</p>
+  </div>
+</div>
+
+<section class="cta-final">
+  <div class="cta-final-inner">
+    <span class="eyebrow reveal">◆ Envie du même travail ?</span>
+    <h2 class="reveal reveal-delay-1">Parlons de <span class="accent">votre projet</span>.</h2>
+    <div class="cta-ctas reveal reveal-delay-2">
+      <a href="/contact.html" class="btn btn-primary">Nous écrire
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="/portfolio.html" class="btn btn-ghost">Tous les projets →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Trame<span class="dot">.</span></h3>
+        <p>Un duo qui code à la main des sites internet pour artisans et petites entreprises. Photo et vidéo en option.</p>
+      </div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="/services/sites-internet.html">Sites internet</a></li><li><a href="/services/applications.html">Applications métier</a></li><li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li><li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li></ul></div>
+      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Portfolio</a></li><li><a href="/formules.html">Formules</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@trame.fr">contact@trame.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li><li>Nouvelle-Aquitaine</li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>Trame · Sites, applications, photo et vidéo.</span>
+      <span>© <span data-year>2026</span> · <a href="/mentions-legales.html">Mentions légales</a></span>
+    </div>
+  </div>
+</footer>
+
+<a href="/contact.html" class="float-cta" aria-label="Nous contacter">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1 0 2 1 2 2v12c0 1-1 2-2 2H4c-1 0-2-1-2-2V6c0-1 1-2 2-2z"/><path d="M2 6l10 7 10-7"/></svg>
+</a>
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>

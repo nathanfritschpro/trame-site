@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Projets — Trame</title>
-<meta name="description" content="Nos projets internes (Nathan Fritsch Photo, Modevia) et les aperçus créés en prospection pour des prospects locaux (Franck Labasse, Villa Zénith, Comme une Fleur, Croûte, La Calèche).">
+<title>Portfolio · Trame · Sites, applications, photo et vidéo</title>
+<meta name="description" content="Nos réalisations : sites internet, applications métier, photo et vidéo pour artisans, hébergeurs et entreprises. Vraies réalisations client et aperçus de prospection, clairement distingués.">
 <meta name="theme-color" content="#0F1520">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Projets — Trame">
-<meta property="og:description" content="Projets internes du duo + aperçus de prospection.">
+<meta property="og:title" content="Portfolio · Trame">
+<meta property="og:description" content="Nos réalisations client et aperçus de prospection, filtrés par service.">
 <meta property="og:url" content="https://trame-site-fawn.vercel.app/portfolio.html">
 <meta property="og:image" content="https://trame-site-fawn.vercel.app/assets/og/og-portfolio.jpg">
 
@@ -31,8 +31,30 @@
   <a href="/" class="brand-logo">Trame<span class="dot">.</span></a>
   <nav class="nav" aria-label="Principale">
     <a href="/">Accueil</a>
-    <a href="/portfolio.html" class="active">Projets</a>
-    <a href="/#formules">Formules</a>
+    <div class="nav-item nav-item--dropdown">
+      <button type="button" class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Services
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <a href="/services/sites-internet.html">Sites internet</a>
+        <a href="/services/applications.html">Applications métier</a>
+        <a href="/services/photo-video-drone.html">Photo, vidéo et drone</a>
+        <a href="/services/chef-de-projet.html">Chef de projet digital</a>
+      </div>
+    </div>
+    <div class="nav-item nav-item--dropdown">
+      <button type="button" class="nav-link nav-toggle active" aria-haspopup="true" aria-expanded="false">Portfolio
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <a href="/portfolio.html">Tous les projets</a>
+        <a href="/portfolio.html?filter=sites">Sites internet</a>
+        <a href="/portfolio.html?filter=photo">Photo</a>
+        <a href="/portfolio.html?filter=video">Vidéo et drone</a>
+        <a href="/portfolio.html?filter=applications">Applications</a>
+      </div>
+    </div>
+    <a href="/formules.html">Formules</a>
     <a href="/contact.html">Contact</a>
   </nav>
   <div class="header-cta">
@@ -46,8 +68,26 @@
 <div class="mobile-nav">
   <ul>
     <li><a href="/">Accueil</a></li>
-    <li><a href="/portfolio.html">Projets</a></li>
-    <li><a href="/#formules">Formules</a></li>
+    <li class="mobile-nav-group">
+      <button type="button" class="mobile-nav-toggle" aria-expanded="false">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <ul class="mobile-nav-sub">
+        <li><a href="/services/sites-internet.html">Sites internet</a></li>
+        <li><a href="/services/applications.html">Applications métier</a></li>
+        <li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li>
+        <li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li>
+      </ul>
+    </li>
+    <li class="mobile-nav-group">
+      <button type="button" class="mobile-nav-toggle" aria-expanded="true">Portfolio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <ul class="mobile-nav-sub">
+        <li><a href="/portfolio.html">Tous les projets</a></li>
+        <li><a href="/portfolio.html?filter=sites">Sites internet</a></li>
+        <li><a href="/portfolio.html?filter=photo">Photo</a></li>
+        <li><a href="/portfolio.html?filter=video">Vidéo et drone</a></li>
+        <li><a href="/portfolio.html?filter=applications">Applications</a></li>
+      </ul>
+    </li>
+    <li><a href="/formules.html">Formules</a></li>
     <li><a href="/contact.html">Contact</a></li>
     <li><a href="/contact.html" class="btn btn-primary">Prendre contact →</a></li>
   </ul>
@@ -55,190 +95,314 @@
 
 <section class="page-hero">
   <div class="page-hero-inner">
-    <span class="eyebrow reveal">◆ Portfolio · 2026</span>
-    <h1 class="reveal reveal-delay-1">Nos projets<br><span class="accent">et nos aperçus</span>.</h1>
-    <p class="page-hero-desc reveal reveal-delay-2">Deux projets qu'on développe en interne (nathanfritsch.com et modevia.fr — la preuve qu'on sait tenir un vrai produit dans le temps), et cinq aperçus qu'on a créés en prospection pour montrer à des prospects locaux ce qu'on savait faire. Chaque aperçu est un vrai site codé, mis en ligne, prêt à être livré si le prospect concrétise.</p>
+    <span class="eyebrow reveal">◆ Portfolio</span>
+    <h1 class="reveal reveal-delay-1">Ce qu'on a <span class="accent">fait</span>.<br>Et ce qu'on peut faire pour vous.</h1>
+    <p class="page-hero-desc reveal reveal-delay-2">Vraies réalisations livrées à des clients, aperçus créés en prospection, et projets internes du duo. Chaque projet indique clairement de quoi il s'agit.</p>
   </div>
 </section>
 
-<!-- ============ Projets du duo ============ -->
-<section class="portfolio">
-  <div class="portfolio-head">
-    <h2 class="reveal">Projets du <span class="accent">duo</span>.</h2>
-    <p class="reveal reveal-delay-1">Nos propres produits. Nathan avec son site perso de photographe, Manon avec Modevia (le SaaS qu'elle développe en parallèle de Trame). On les met en tête parce que ce sont ceux qu'on maintient et fait évoluer sur la durée.</p>
+<section class="portfolio-filters">
+  <div class="portfolio-filters-inner">
+    <div class="filters-group" role="tablist" aria-label="Filtrer par service">
+      <button type="button" class="filter-btn is-active" data-filter="all">Tous les projets</button>
+      <button type="button" class="filter-btn" data-filter="sites">Sites internet</button>
+      <button type="button" class="filter-btn" data-filter="photo">Photo</button>
+      <button type="button" class="filter-btn" data-filter="video">Vidéo et drone</button>
+      <button type="button" class="filter-btn" data-filter="applications">Applications</button>
+    </div>
+    <div class="filters-count">
+      <span id="filter-count">12</span> projets
+    </div>
   </div>
-  <div class="portfolio-grid">
-    <a class="project-window reveal" href="/projets/nathan-photo.html">
-      <span class="duo-badge">◆ Projet du duo</span>
+</section>
+
+<section class="portfolio-grid-section">
+  <div class="portfolio-grid" id="portfolio-grid">
+
+    <!-- ============ RÉALISATIONS CLIENT (5 nouveaux + Villa Zénith, etc.) ============ -->
+
+    <a href="/projets/villa-nikkita.html" class="project-window project-card" data-tags="sites photo">
+      <div class="project-badge project-badge--client">◆ Réalisation client</div>
+      <div class="project-chrome">
+        <div class="project-chrome-dots"><span></span><span></span><span></span></div>
+        <div class="project-chrome-url">villa-nikkita.com</div>
+        <div class="project-chrome-tag">Livré</div>
+      </div>
+      <div class="project-screenshot" style="aspect-ratio: 16/10;">
+        <div class="project-placeholder">
+          <span>Villa Nikkita</span>
+          <small>Screenshot bientôt</small>
+        </div>
+      </div>
+      <div class="project-caption">
+        <div class="project-caption-head">
+          <h3>Villa Nikkita.</h3>
+          <span class="project-caption-tag">Voir →</span>
+        </div>
+        <p>Hébergement à Lacanau Océan. Site vitrine multi-pages livré et en ligne.</p>
+      </div>
+    </a>
+
+    <a href="/projets/clair-net.html" class="project-window project-card" data-tags="sites">
+      <div class="project-badge project-badge--client">◆ Réalisation client</div>
+      <div class="project-chrome">
+        <div class="project-chrome-dots"><span></span><span></span><span></span></div>
+        <div class="project-chrome-url">cnet77.fr</div>
+        <div class="project-chrome-tag">En ligne</div>
+      </div>
+      <div class="project-screenshot" style="aspect-ratio: 16/10;">
+        <div class="project-placeholder">
+          <span>Clair &amp; Net</span>
+          <small>Screenshot bientôt</small>
+        </div>
+      </div>
+      <div class="project-caption">
+        <div class="project-caption-head">
+          <h3>Clair &amp; Net.</h3>
+          <span class="project-caption-tag">Voir →</span>
+        </div>
+        <p>Entreprise de nettoyage professionnel en Seine-et-Marne. Site vitrine.</p>
+      </div>
+    </a>
+
+    <a href="/projets/alesta-computer.html" class="project-window project-card" data-tags="sites">
+      <div class="project-badge project-badge--client">◆ Réalisation client</div>
+      <div class="project-chrome">
+        <div class="project-chrome-dots"><span></span><span></span><span></span></div>
+        <div class="project-chrome-url">alesta-computer.com</div>
+        <div class="project-chrome-tag">En ligne</div>
+      </div>
+      <div class="project-screenshot" style="aspect-ratio: 16/10;">
+        <div class="project-placeholder">
+          <span>Alesta Computer</span>
+          <small>Screenshot bientôt</small>
+        </div>
+      </div>
+      <div class="project-caption">
+        <div class="project-caption-head">
+          <h3>Alesta Computer.</h3>
+          <span class="project-caption-tag">Voir →</span>
+        </div>
+        <p>Prestataire informatique. Site WordPress à thème sur mesure.</p>
+      </div>
+    </a>
+
+    <a href="/projets/alesta-learn.html" class="project-window project-card" data-tags="sites">
+      <div class="project-badge project-badge--client">◆ Réalisation client</div>
+      <div class="project-chrome">
+        <div class="project-chrome-dots"><span></span><span></span><span></span></div>
+        <div class="project-chrome-url">alesta-learn.com</div>
+        <div class="project-chrome-tag">En ligne</div>
+      </div>
+      <div class="project-screenshot" style="aspect-ratio: 16/10;">
+        <div class="project-placeholder">
+          <span>Alesta Learn</span>
+          <small>Screenshot bientôt</small>
+        </div>
+      </div>
+      <div class="project-caption">
+        <div class="project-caption-head">
+          <h3>Alesta Learn.</h3>
+          <span class="project-caption-tag">Voir →</span>
+        </div>
+        <p>Plateforme de formation en ligne. WordPress avec thème sur mesure.</p>
+      </div>
+    </a>
+
+    <a href="/projets/drams-nettoyage.html" class="project-window project-card" data-tags="sites">
+      <div class="project-badge project-badge--client">◆ Réalisation client</div>
+      <div class="project-chrome">
+        <div class="project-chrome-dots"><span></span><span></span><span></span></div>
+        <div class="project-chrome-url">drams-nettoyage.com</div>
+        <div class="project-chrome-tag">En ligne</div>
+      </div>
+      <div class="project-screenshot" style="aspect-ratio: 16/10;">
+        <div class="project-placeholder">
+          <span>Drams Nettoyage</span>
+          <small>Screenshot bientôt</small>
+        </div>
+      </div>
+      <div class="project-caption">
+        <div class="project-caption-head">
+          <h3>Drams Nettoyage.</h3>
+          <span class="project-caption-tag">Voir →</span>
+        </div>
+        <p>Société de nettoyage. Site WordPress à thème sur mesure.</p>
+      </div>
+    </a>
+
+    <!-- ============ PROJETS DUO (Nathan Photo + Modevia) ============ -->
+
+    <a href="/projets/nathan-photo.html" class="project-window project-card" data-tags="sites photo">
+      <div class="project-badge project-badge--duo">◇ Projet du duo</div>
       <div class="project-chrome">
         <div class="project-chrome-dots"><span></span><span></span><span></span></div>
         <div class="project-chrome-url">nathanfritsch.com</div>
-        <div class="project-chrome-tag">Voir</div>
+        <div class="project-chrome-tag">En ligne</div>
       </div>
-      <div class="project-screenshot">
-        <img src="/assets/screenshots/nathanfritsch.jpg" alt="Nathan Fritsch — site photographe" loading="eager">
+      <div class="project-screenshot" style="aspect-ratio: 16/10;">
+        <img src="/assets/screenshots/nathanfritsch.jpg" alt="Nathan Fritsch, site photographe" loading="lazy">
       </div>
       <div class="project-caption">
-        <div class="project-caption-text">
-          <span class="meta">Site perso · Photographe</span>
-          <h3>Nathan Fritsch — Photo</h3>
+        <div class="project-caption-head">
+          <h3>Nathan Fritsch, Photo.</h3>
+          <span class="project-caption-tag">Voir →</span>
         </div>
-        <span class="project-arrow-mini"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <p>Portfolio du photographe du duo. Direction éditoriale, ambiance galerie.</p>
       </div>
     </a>
 
-    <a class="project-window reveal reveal-delay-1" href="/projets/modevia.html">
-      <span class="duo-badge">◆ Projet du duo</span>
+    <a href="/projets/modevia.html" class="project-window project-card" data-tags="applications sites">
+      <div class="project-badge project-badge--duo">◇ Projet du duo</div>
       <div class="project-chrome">
         <div class="project-chrome-dots"><span></span><span></span><span></span></div>
         <div class="project-chrome-url">modevia.fr</div>
-        <div class="project-chrome-tag">Voir</div>
+        <div class="project-chrome-tag">En production</div>
       </div>
-      <div class="project-screenshot">
-        <img src="/assets/screenshots/modevia.jpg" alt="Modevia SaaS" loading="eager">
-      </div>
-      <div class="project-caption">
-        <div class="project-caption-text">
-          <span class="meta">SaaS · Produit interne (Manon)</span>
-          <h3>Modevia</h3>
-        </div>
-        <span class="project-arrow-mini"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-      </div>
-    </a>
-  </div>
-</section>
-
-<!-- ============ Aperçus prospection ============ -->
-<section class="portfolio" style="padding-top: 0;">
-  <div class="portfolio-head">
-    <h2 class="reveal">Aperçus de <span class="accent">prospection</span>.</h2>
-    <p class="reveal reveal-delay-1">Cinq sites qu'on a codés pour montrer à des prospects locaux ce qu'on pouvait produire. Ce sont de vrais sites, en ligne, prêts à être livrés dès qu'un des prospects concrétise. On les partage tels quels — pour vous donner une idée de notre travail.</p>
-  </div>
-  <div class="portfolio-grid">
-    <a class="project-window reveal" href="/projets/franck-labasse.html">
-      <span class="duo-badge preview">Aperçu prospection</span>
-      <div class="project-chrome">
-        <div class="project-chrome-dots"><span></span><span></span><span></span></div>
-        <div class="project-chrome-url">apercu-franck-labasse.vercel.app</div>
-        <div class="project-chrome-tag">Voir</div>
-      </div>
-      <div class="project-screenshot">
-        <img src="/assets/screenshots/franck-labasse.jpg" alt="Franck Labasse Pâtisserie" loading="lazy">
+      <div class="project-screenshot" style="aspect-ratio: 16/10;">
+        <img src="/assets/screenshots/modevia.jpg" alt="Modevia, plateforme SaaS" loading="lazy">
       </div>
       <div class="project-caption">
-        <div class="project-caption-text">
-          <span class="meta">Pâtisserie · Pessac</span>
-          <h3>Franck Labasse</h3>
+        <div class="project-caption-head">
+          <h3>Modevia.</h3>
+          <span class="project-caption-tag">Voir →</span>
         </div>
-        <span class="project-arrow-mini"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <p>Plateforme SaaS complète : comptes, paiement, automatisations. En production avec vrais clients.</p>
       </div>
     </a>
 
-    <a class="project-window reveal reveal-delay-1" href="/projets/villa-zenith.html">
-      <span class="duo-badge preview">Aperçu prospection</span>
+    <!-- ============ APERÇUS DE PROSPECTION (5) ============ -->
+
+    <a href="/projets/villa-zenith.html" class="project-window project-card" data-tags="sites photo">
+      <div class="project-badge project-badge--apercu">◇ Aperçu de prospection</div>
       <div class="project-chrome">
         <div class="project-chrome-dots"><span></span><span></span><span></span></div>
         <div class="project-chrome-url">apercu-lacanau-zenith.vercel.app</div>
-        <div class="project-chrome-tag">Voir</div>
+        <div class="project-chrome-tag">Aperçu</div>
       </div>
-      <div class="project-screenshot">
-        <img src="/assets/screenshots/villa-zenith.jpg" alt="Villa Zénith Hostel" loading="lazy">
+      <div class="project-screenshot" style="aspect-ratio: 16/10;">
+        <img src="/assets/screenshots/villa-zenith.jpg" alt="Villa Zénith Hostel, aperçu" loading="lazy">
       </div>
       <div class="project-caption">
-        <div class="project-caption-text">
-          <span class="meta">Auberge · Lacanau-Océan</span>
-          <h3>Villa Zénith Hostel</h3>
+        <div class="project-caption-head">
+          <h3>Villa Zénith Hostel.</h3>
+          <span class="project-caption-tag">Voir →</span>
         </div>
-        <span class="project-arrow-mini"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <p>Aperçu 7 pages pour une auberge de charme à Lacanau-Océan.</p>
       </div>
     </a>
 
-    <a class="project-window reveal" href="/projets/comme-une-fleur.html">
-      <span class="duo-badge preview">Aperçu prospection</span>
+    <a href="/projets/comme-une-fleur.html" class="project-window project-card" data-tags="sites">
+      <div class="project-badge project-badge--apercu">◇ Aperçu de prospection</div>
       <div class="project-chrome">
         <div class="project-chrome-dots"><span></span><span></span><span></span></div>
         <div class="project-chrome-url">apercu-comme-une-fleur.vercel.app</div>
-        <div class="project-chrome-tag">Voir</div>
+        <div class="project-chrome-tag">Aperçu</div>
       </div>
-      <div class="project-screenshot">
-        <img src="/assets/screenshots/comme-une-fleur.jpg" alt="Comme une Fleur" loading="lazy">
+      <div class="project-screenshot" style="aspect-ratio: 16/10;">
+        <img src="/assets/screenshots/comme-une-fleur.jpg" alt="Comme une Fleur, aperçu" loading="lazy">
       </div>
       <div class="project-caption">
-        <div class="project-caption-text">
-          <span class="meta">Fleuriste · Mérignac</span>
-          <h3>Comme une Fleur</h3>
+        <div class="project-caption-head">
+          <h3>Comme une Fleur.</h3>
+          <span class="project-caption-tag">Voir →</span>
         </div>
-        <span class="project-arrow-mini"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <p>Aperçu vitrine pour une fleuriste à Mérignac. Animation scroll de la devanture.</p>
       </div>
     </a>
 
-    <a class="project-window reveal reveal-delay-1" href="/projets/fromagerie-croute.html">
-      <span class="duo-badge preview">Aperçu prospection</span>
+    <a href="/projets/fromagerie-croute.html" class="project-window project-card" data-tags="sites">
+      <div class="project-badge project-badge--apercu">◇ Aperçu de prospection</div>
       <div class="project-chrome">
         <div class="project-chrome-dots"><span></span><span></span><span></span></div>
         <div class="project-chrome-url">apercu-fromagerie-croute.vercel.app</div>
-        <div class="project-chrome-tag">Voir</div>
+        <div class="project-chrome-tag">Aperçu</div>
       </div>
-      <div class="project-screenshot">
-        <img src="/assets/screenshots/fromagerie-croute.jpg" alt="Croûte, Fromagerie" loading="lazy">
+      <div class="project-screenshot" style="aspect-ratio: 16/10;">
+        <img src="/assets/screenshots/fromagerie-croute.jpg" alt="Fromagerie Croûte, aperçu" loading="lazy">
       </div>
       <div class="project-caption">
-        <div class="project-caption-text">
-          <span class="meta">Fromagerie · Lacanau-Océan</span>
-          <h3>Croûte</h3>
+        <div class="project-caption-head">
+          <h3>Croûte, Fromagerie.</h3>
+          <span class="project-caption-tag">Voir →</span>
         </div>
-        <span class="project-arrow-mini"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <p>Aperçu one-page pour une nouvelle fromagerie à Lacanau-Océan.</p>
       </div>
     </a>
 
-    <a class="project-window reveal" href="/projets/la-caleche.html">
-      <span class="duo-badge preview">Aperçu prospection</span>
+    <a href="/projets/la-caleche.html" class="project-window project-card" data-tags="sites">
+      <div class="project-badge project-badge--apercu">◇ Aperçu de prospection</div>
       <div class="project-chrome">
         <div class="project-chrome-dots"><span></span><span></span><span></span></div>
         <div class="project-chrome-url">apercu-gites-medoc.vercel.app</div>
-        <div class="project-chrome-tag">Voir</div>
+        <div class="project-chrome-tag">Aperçu</div>
       </div>
-      <div class="project-screenshot">
-        <img src="/assets/screenshots/la-caleche.jpg" alt="La Calèche" loading="lazy">
+      <div class="project-screenshot" style="aspect-ratio: 16/10;">
+        <img src="/assets/screenshots/la-caleche.jpg" alt="La Calèche, aperçu" loading="lazy">
       </div>
       <div class="project-caption">
-        <div class="project-caption-text">
-          <span class="meta">Gîtes · Bégadan · Médoc</span>
-          <h3>La Calèche</h3>
+        <div class="project-caption-head">
+          <h3>La Calèche, gîtes du Médoc.</h3>
+          <span class="project-caption-tag">Voir →</span>
         </div>
-        <span class="project-arrow-mini"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <p>Aperçu 5 pages pour un domaine familial de 8 gîtes de charme.</p>
       </div>
     </a>
+
+    <a href="/projets/franck-labasse.html" class="project-window project-card" data-tags="sites">
+      <div class="project-badge project-badge--apercu">◇ Aperçu de prospection</div>
+      <div class="project-chrome">
+        <div class="project-chrome-dots"><span></span><span></span><span></span></div>
+        <div class="project-chrome-url">apercu-franck-labasse.vercel.app</div>
+        <div class="project-chrome-tag">Aperçu</div>
+      </div>
+      <div class="project-screenshot" style="aspect-ratio: 16/10;">
+        <img src="/assets/screenshots/franck-labasse.jpg" alt="Franck Labasse Pâtisserie, aperçu" loading="lazy">
+      </div>
+      <div class="project-caption">
+        <div class="project-caption-head">
+          <h3>Franck Labasse, Pâtisserie.</h3>
+          <span class="project-caption-tag">Voir →</span>
+        </div>
+        <p>Aperçu 4 pages pour un chef pâtissier de Pessac au parcours prestigieux.</p>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="portfolio-empty" id="portfolio-empty" hidden>
+    <p>Rien à afficher dans cette catégorie pour l'instant.</p>
+    <p class="portfolio-empty-hint">Notre portfolio évolue au fil des projets. Revenez bientôt.</p>
   </div>
 </section>
 
 <section class="cta-final">
   <div class="cta-final-inner">
-    <span class="eyebrow reveal">◆ Le vôtre ?</span>
-    <h2 class="reveal reveal-delay-1">Si vous cherchez <span class="accent">ce genre</span> de résultat.</h2>
-    <p class="lead reveal reveal-delay-2">Dites-nous en deux lignes ce que vous faites. On revient vers vous dans la journée avec un premier retour honnête.</p>
+    <span class="eyebrow reveal">◆ Un projet en tête ?</span>
+    <h2 class="reveal reveal-delay-1">Parlons du <span class="accent">vôtre</span>.</h2>
+    <p class="lead reveal reveal-delay-2">On code un aperçu de votre site avant même que vous ayez à sortir la carte. Dites-nous ce que vous cherchez, on revient dans la journée avec un premier retour.</p>
     <div class="cta-ctas reveal reveal-delay-3">
       <a href="/contact.html" class="btn btn-primary">Nous écrire
         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
-      <a href="tel:+33651339482" class="btn btn-ghost">06 51 33 94 82</a>
+      <a href="/formules.html" class="btn btn-ghost">Voir les formules</a>
     </div>
   </div>
 </section>
 
 <footer class="site-footer">
   <div class="wrap">
-    <div class="footer-grid" style="border-top: 0; padding-top: 0;">
+    <div class="footer-grid">
       <div class="footer-brand">
         <h3>Trame<span class="dot">.</span></h3>
-        <p>Un duo qui crée des sites internet pour artisans et petites entreprises, avec shooting photo pro toujours inclus.</p>
+        <p>Un duo qui code à la main des sites internet pour artisans et petites entreprises. Photo et vidéo en option.</p>
       </div>
-      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Projets</a></li><li><a href="/#formules">Formules</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
-      <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@trame.fr">contact@trame.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li></ul></div>
-      <div class="footer-col"><h4>Le duo</h4><ul><li>Nathan Fritsch</li><li>Manon Fritsch</li><li>Nouvelle-Aquitaine</li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="/services/sites-internet.html">Sites internet</a></li><li><a href="/services/applications.html">Applications métier</a></li><li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li><li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li></ul></div>
+      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Portfolio</a></li><li><a href="/formules.html">Formules</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@trame.fr">contact@trame.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li><li>Nouvelle-Aquitaine</li></ul></div>
     </div>
     <div class="footer-bottom">
-      <span>Trame — Sites, photos et films.</span>
+      <span>Trame · Sites, applications, photo et vidéo.</span>
       <span>© <span data-year>2026</span> · <a href="/mentions-legales.html">Mentions légales</a></span>
     </div>
   </div>
@@ -249,5 +413,6 @@
 </a>
 
 <script src="/js/main.js" defer></script>
+<script src="/js/portfolio.js" defer></script>
 </body>
 </html>

@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Franck Labasse, pâtisserie — Projet Trame</title>
+<title>Franck Labasse, pâtisserie, Projet Trame</title>
 <meta name="description" content="Site multi-pages d'un chef pâtissier de Pessac au parcours prestigieux (Plaza Athénée, Alain Ducasse, Wynn Las Vegas).">
 <meta name="theme-color" content="#0F1520">
 
 <meta property="og:type" content="article">
-<meta property="og:title" content="Franck Labasse, pâtisserie — Projet Trame">
+<meta property="og:title" content="Franck Labasse, pâtisserie, Projet Trame">
 <meta property="og:description" content="Chef pâtissier de Pessac, site à la hauteur de son parcours.">
 <meta property="og:url" content="https://trame-site-fawn.vercel.app/projets/franck-labasse.html">
 <meta property="og:image" content="https://trame-site-fawn.vercel.app/assets/screenshots/franck-labasse.jpg">
@@ -31,8 +31,30 @@
   <a href="/" class="brand-logo">Trame<span class="dot">.</span></a>
   <nav class="nav" aria-label="Principale">
     <a href="/">Accueil</a>
-    <a href="/portfolio.html" class="active">Projets</a>
-    <a href="/#services">Services</a>
+    <div class="nav-item nav-item--dropdown">
+      <button type="button" class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Services
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <a href="/services/sites-internet.html">Sites internet</a>
+        <a href="/services/applications.html">Applications métier</a>
+        <a href="/services/photo-video-drone.html">Photo, vidéo et drone</a>
+        <a href="/services/chef-de-projet.html">Chef de projet digital</a>
+      </div>
+    </div>
+    <div class="nav-item nav-item--dropdown">
+      <button type="button" class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Portfolio
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <a href="/portfolio.html">Tous les projets</a>
+        <a href="/portfolio.html?filter=sites">Sites internet</a>
+        <a href="/portfolio.html?filter=photo">Photo</a>
+        <a href="/portfolio.html?filter=video">Vidéo et drone</a>
+        <a href="/portfolio.html?filter=applications">Applications</a>
+      </div>
+    </div>
+    <a href="/formules.html">Formules</a>
     <a href="/contact.html">Contact</a>
   </nav>
   <div class="header-cta">
@@ -46,9 +68,28 @@
 <div class="mobile-nav">
   <ul>
     <li><a href="/">Accueil</a></li>
-    <li><a href="/portfolio.html">Projets</a></li>
-    <li><a href="/#services">Services</a></li>
+    <li class="mobile-nav-group">
+      <button type="button" class="mobile-nav-toggle" aria-expanded="false">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <ul class="mobile-nav-sub">
+        <li><a href="/services/sites-internet.html">Sites internet</a></li>
+        <li><a href="/services/applications.html">Applications métier</a></li>
+        <li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li>
+        <li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li>
+      </ul>
+    </li>
+    <li class="mobile-nav-group">
+      <button type="button" class="mobile-nav-toggle" aria-expanded="false">Portfolio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <ul class="mobile-nav-sub">
+        <li><a href="/portfolio.html">Tous les projets</a></li>
+        <li><a href="/portfolio.html?filter=sites">Sites internet</a></li>
+        <li><a href="/portfolio.html?filter=photo">Photo</a></li>
+        <li><a href="/portfolio.html?filter=video">Vidéo et drone</a></li>
+        <li><a href="/portfolio.html?filter=applications">Applications</a></li>
+      </ul>
+    </li>
+    <li><a href="/formules.html">Formules</a></li>
     <li><a href="/contact.html">Contact</a></li>
+    <li><a href="/contact.html" class="btn btn-primary">Prendre contact →</a></li>
   </ul>
 </div>
 
@@ -87,14 +128,14 @@
 
   <div class="case-content">
     <h2>Le <span class="accent">brief</span></h2>
-    <p>Chef pâtissier de Pessac, treize ans de boutique, un parcours d'exception derrière lui. Le site précédent — quand il y en avait un — ne racontait rien de son histoire. Objectif : un site qui hisse la boutique au niveau de son savoir-faire, sans tomber dans l'esthétique "grande maison parisienne" qui ne lui ressemble pas.</p>
+    <p>Chef pâtissier de Pessac, treize ans de boutique, un parcours d'exception derrière lui. Le site précédent, quand il y en avait un, ne racontait rien de son histoire. Objectif : un site qui hisse la boutique au niveau de son savoir-faire, sans tomber dans l'esthétique "grande maison parisienne" qui ne lui ressemble pas.</p>
 
     <h2>Notre <span class="accent">approche</span></h2>
-    <p>Direction premium sobre : palette or laiton sur fond crème, typographie Cormorant Garamond pour l'esprit éditorial. Hero avec slider fade et effet Ken Burns sur les créations phares — Saint-Honoré, Paris-Brest, macarons, Mont-Saint-Michel signature.</p>
+    <p>Direction premium sobre : palette or laiton sur fond crème, typographie Cormorant Garamond pour l'esprit éditorial. Hero avec slider fade et effet Ken Burns sur les créations phares, Saint-Honoré, Paris-Brest, macarons, Mont-Saint-Michel signature.</p>
     <p>Une page dédiée au chef, à son parcours, pour laisser sa légitimité s'installer sans qu'il ait à la répéter dans chaque page.</p>
 
     <h2>Ce qu'on a <span class="accent">construit</span></h2>
-    <p>Quatre pages : accueil, créations (avec galerie typologique — entremets, gâteaux d'anniversaire, wedding cakes, chocolats), le chef, contact avec formulaire de commande. Curseur custom discret, effet parallax subtil, photographie des créations en lumière naturelle.</p>
+    <p>Quatre pages : accueil, créations (avec galerie typologique, entremets, gâteaux d'anniversaire, wedding cakes, chocolats), le chef, contact avec formulaire de commande. Curseur custom discret, effet parallax subtil, photographie des créations en lumière naturelle.</p>
   </div>
 </div>
 
@@ -116,14 +157,14 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <h3>Trame<span class="dot">.</span></h3>
-        <p>Un duo qui crée des sites internet pour artisans et petites entreprises, avec shooting photo &amp; vidéo pro toujours inclus.</p>
+        <p>Un duo qui code à la main des sites internet pour artisans et petites entreprises. Photo et vidéo en option.</p>
       </div>
-      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Projets</a></li><li><a href="/#services">Services</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
-      <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@trame.fr">contact@trame.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li></ul></div>
-      <div class="footer-col"><h4>Le duo</h4><ul><li>Nathan Fritsch</li><li>Manon Fritsch</li><li>Nouvelle-Aquitaine</li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="/services/sites-internet.html">Sites internet</a></li><li><a href="/services/applications.html">Applications métier</a></li><li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li><li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li></ul></div>
+      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Portfolio</a></li><li><a href="/formules.html">Formules</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@trame.fr">contact@trame.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li><li>Nouvelle-Aquitaine</li></ul></div>
     </div>
     <div class="footer-bottom">
-      <span>Trame — Sites, photos et films.</span>
+      <span>Trame · Sites, photos et films.</span>
       <span>© <span data-year>2026</span> · <a href="/mentions-legales.html">Mentions légales</a></span>
     </div>
   </div>

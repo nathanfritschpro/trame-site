@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Contact — Trame</title>
+<title>Contact · Trame</title>
 <meta name="description" content="Un projet en tête ? Écrivez-nous. On répond dans la journée. Nathan et Manon Fritsch, Nouvelle-Aquitaine.">
 <meta name="theme-color" content="#0F1520">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Contact — Trame">
+<meta property="og:title" content="Contact · Trame">
 <meta property="og:description" content="Écrivez-nous. On répond dans la journée.">
 <meta property="og:url" content="https://trame-site-fawn.vercel.app/contact.html">
 <meta property="og:image" content="https://trame-site-fawn.vercel.app/assets/og/og-home.jpg">
@@ -31,9 +31,31 @@
   <a href="/" class="brand-logo">Trame<span class="dot">.</span></a>
   <nav class="nav" aria-label="Principale">
     <a href="/">Accueil</a>
-    <a href="/portfolio.html">Projets</a>
-    <a href="/#services">Services</a>
-    <a href="/contact.html" class="active">Contact</a>
+    <div class="nav-item nav-item--dropdown">
+      <button type="button" class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Services
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <a href="/services/sites-internet.html">Sites internet</a>
+        <a href="/services/applications.html">Applications métier</a>
+        <a href="/services/photo-video-drone.html">Photo, vidéo et drone</a>
+        <a href="/services/chef-de-projet.html">Chef de projet digital</a>
+      </div>
+    </div>
+    <div class="nav-item nav-item--dropdown">
+      <button type="button" class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Portfolio
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <a href="/portfolio.html">Tous les projets</a>
+        <a href="/portfolio.html?filter=sites">Sites internet</a>
+        <a href="/portfolio.html?filter=photo">Photo</a>
+        <a href="/portfolio.html?filter=video">Vidéo et drone</a>
+        <a href="/portfolio.html?filter=applications">Applications</a>
+      </div>
+    </div>
+    <a href="/formules.html">Formules</a>
+    <a href="/contact.html">Contact</a>
   </nav>
   <div class="header-cta"></div>
   <button class="burger" aria-label="Ouvrir le menu"><span></span><span></span></button>
@@ -42,9 +64,28 @@
 <div class="mobile-nav">
   <ul>
     <li><a href="/">Accueil</a></li>
-    <li><a href="/portfolio.html">Projets</a></li>
-    <li><a href="/#services">Services</a></li>
+    <li class="mobile-nav-group">
+      <button type="button" class="mobile-nav-toggle" aria-expanded="false">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <ul class="mobile-nav-sub">
+        <li><a href="/services/sites-internet.html">Sites internet</a></li>
+        <li><a href="/services/applications.html">Applications métier</a></li>
+        <li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li>
+        <li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li>
+      </ul>
+    </li>
+    <li class="mobile-nav-group">
+      <button type="button" class="mobile-nav-toggle" aria-expanded="false">Portfolio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <ul class="mobile-nav-sub">
+        <li><a href="/portfolio.html">Tous les projets</a></li>
+        <li><a href="/portfolio.html?filter=sites">Sites internet</a></li>
+        <li><a href="/portfolio.html?filter=photo">Photo</a></li>
+        <li><a href="/portfolio.html?filter=video">Vidéo et drone</a></li>
+        <li><a href="/portfolio.html?filter=applications">Applications</a></li>
+      </ul>
+    </li>
+    <li><a href="/formules.html">Formules</a></li>
     <li><a href="/contact.html">Contact</a></li>
+    <li><a href="/contact.html" class="btn btn-primary">Prendre contact →</a></li>
   </ul>
 </div>
 
@@ -121,7 +162,7 @@
       </form>
 
       <div class="form-success" id="form-success">
-        Message reçu. On revient vers vous dans la journée — souvent bien plus vite. À très bientôt.
+        Message reçu. On revient vers vous dans la journée, souvent bien plus vite. À très bientôt.
       </div>
     </div>
 
@@ -133,14 +174,14 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <h3>Trame<span class="dot">.</span></h3>
-        <p>Un duo qui crée des sites internet pour artisans et petites entreprises, avec shooting photo &amp; vidéo pro toujours inclus.</p>
+        <p>Un duo qui code à la main des sites internet pour artisans et petites entreprises. Photo et vidéo en option.</p>
       </div>
-      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Projets</a></li><li><a href="/#services">Services</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
-      <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@trame.fr">contact@trame.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li></ul></div>
-      <div class="footer-col"><h4>Le duo</h4><ul><li>Nathan Fritsch</li><li>Manon Fritsch</li><li>Nouvelle-Aquitaine</li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="/services/sites-internet.html">Sites internet</a></li><li><a href="/services/applications.html">Applications métier</a></li><li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li><li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li></ul></div>
+      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Portfolio</a></li><li><a href="/formules.html">Formules</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@trame.fr">contact@trame.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li><li>Nouvelle-Aquitaine</li></ul></div>
     </div>
     <div class="footer-bottom">
-      <span>Trame — Sites, photos et films.</span>
+      <span>Trame · Sites, photos et films.</span>
       <span>© <span data-year>2026</span> · <a href="/mentions-legales.html">Mentions légales</a></span>
     </div>
   </div>

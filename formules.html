@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Formules et tarifs · Trame · Sites, applications, photo, chef de projet</title>
+<meta name="description" content="Toutes nos prestations et leurs tarifs. Sites internet à partir de 490 €, applications sur devis, photo et vidéo sur devis, chef de projet à 400 € par jour.">
+<meta name="theme-color" content="#0F1520">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Formules et tarifs · Trame">
+<meta property="og:description" content="Toutes nos prestations et leurs tarifs, en clair.">
+<meta property="og:url" content="https://trame-site-fawn.vercel.app/formules.html">
+<meta property="og:image" content="https://trame-site-fawn.vercel.app/assets/og/og-home.jpg">
+
+<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+<link rel="canonical" href="https://trame-site-fawn.vercel.app/formules.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/pages.css">
+</head>
+<body>
+
+<header class="header">
+  <a href="/" class="brand-logo">Trame<span class="dot">.</span></a>
+  <nav class="nav" aria-label="Principale">
+    <a href="/">Accueil</a>
+    <div class="nav-item nav-item--dropdown">
+      <button type="button" class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Services
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <a href="/services/sites-internet.html">Sites internet</a>
+        <a href="/services/applications.html">Applications métier</a>
+        <a href="/services/photo-video-drone.html">Photo, vidéo et drone</a>
+        <a href="/services/chef-de-projet.html">Chef de projet digital</a>
+      </div>
+    </div>
+    <div class="nav-item nav-item--dropdown">
+      <button type="button" class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Portfolio
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <a href="/portfolio.html">Tous les projets</a>
+        <a href="/portfolio.html?filter=sites">Sites internet</a>
+        <a href="/portfolio.html?filter=photo">Photo</a>
+        <a href="/portfolio.html?filter=video">Vidéo et drone</a>
+        <a href="/portfolio.html?filter=applications">Applications</a>
+      </div>
+    </div>
+    <a href="/formules.html" class="active">Formules</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+  <div class="header-cta">
+    <a href="/contact.html" class="btn btn-primary btn-icon">Prendre contact
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+  <button class="burger" aria-label="Ouvrir le menu"><span></span><span></span></button>
+</header>
+
+<div class="mobile-nav">
+  <ul>
+    <li><a href="/">Accueil</a></li>
+    <li class="mobile-nav-group">
+      <button type="button" class="mobile-nav-toggle" aria-expanded="false">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <ul class="mobile-nav-sub">
+        <li><a href="/services/sites-internet.html">Sites internet</a></li>
+        <li><a href="/services/applications.html">Applications métier</a></li>
+        <li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li>
+        <li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li>
+      </ul>
+    </li>
+    <li class="mobile-nav-group">
+      <button type="button" class="mobile-nav-toggle" aria-expanded="false">Portfolio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <ul class="mobile-nav-sub">
+        <li><a href="/portfolio.html">Tous les projets</a></li>
+        <li><a href="/portfolio.html?filter=sites">Sites internet</a></li>
+        <li><a href="/portfolio.html?filter=photo">Photo</a></li>
+        <li><a href="/portfolio.html?filter=video">Vidéo et drone</a></li>
+        <li><a href="/portfolio.html?filter=applications">Applications</a></li>
+      </ul>
+    </li>
+    <li><a href="/formules.html">Formules</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+    <li><a href="/contact.html" class="btn btn-primary">Prendre contact →</a></li>
+  </ul>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow reveal">◆ Formules et tarifs</span>
+    <h1 class="reveal reveal-delay-1">Tout ce qu'on fait,<br>et ce que <span class="accent">ça coûte</span>.</h1>
+    <p class="page-hero-desc reveal reveal-delay-2">Quatre métiers, quatre grilles claires. Un projet peut mélanger plusieurs formules : dites-nous ce que vous cherchez, on vous fait un chiffrage global honnête.</p>
+  </div>
+</section>
+
+<!-- ============ BLOC 1 · SITES INTERNET ============ -->
+<section class="pricing-section">
+  <div class="pricing-section-head">
+    <div class="pricing-head-inner">
+      <span class="pricing-num">01 / 04</span>
+      <h2 class="reveal">Sites <span class="accent">internet</span>.</h2>
+      <p class="reveal reveal-delay-1">Codés à la main, sans template ni constructeur. Rapides, trouvables sur Google, à vous entièrement.</p>
+      <a href="/services/sites-internet.html" class="pricing-see-more">Voir la page complète →</a>
+    </div>
+  </div>
+
+  <div class="pricing-cards">
+    <article class="pricing-card reveal">
+      <h3>Basique</h3>
+      <p class="pricing-price">à partir de <strong>490 €</strong></p>
+      <p class="pricing-timing">2 à 3 semaines</p>
+      <p class="pricing-desc">Une page unique mais complète.</p>
+    </article>
+    <article class="pricing-card pricing-card--featured reveal reveal-delay-1">
+      <div class="pricing-tag-top">Le plus demandé</div>
+      <h3>Complet</h3>
+      <p class="pricing-price">à partir de <strong>890 €</strong></p>
+      <p class="pricing-timing">à partir de 3 semaines</p>
+      <p class="pricing-desc">Jusqu'à 5 pages structurées.</p>
+    </article>
+    <article class="pricing-card reveal reveal-delay-2">
+      <h3>Optimisé</h3>
+      <p class="pricing-price">à partir de <strong>1 690 €</strong></p>
+      <p class="pricing-timing">à partir de 4 semaines</p>
+      <p class="pricing-desc">Multi-pages, animations sur mesure.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============ BLOC 2 · APPLICATIONS ============ -->
+<section class="pricing-section pricing-section--alt">
+  <div class="pricing-section-head">
+    <div class="pricing-head-inner">
+      <span class="pricing-num">02 / 04</span>
+      <h2 class="reveal">Applications <span class="accent">métier</span>.</h2>
+      <p class="reveal reveal-delay-1">Quand le tableur ne suffit plus et qu'aucun logiciel du marché ne correspond à votre façon de travailler.</p>
+      <a href="/services/applications.html" class="pricing-see-more">Voir la page complète →</a>
+    </div>
+  </div>
+
+  <div class="pricing-cards pricing-cards--four">
+    <article class="pricing-card reveal">
+      <h3>Cadrage</h3>
+      <p class="pricing-price"><strong>890 €</strong></p>
+      <p class="pricing-timing">2 demi-journées</p>
+      <p class="pricing-desc">Déduit du projet si vous nous le confiez.</p>
+    </article>
+    <article class="pricing-card reveal reveal-delay-1">
+      <h3>Simple</h3>
+      <p class="pricing-price">à partir de <strong>3 500 €</strong></p>
+      <p class="pricing-timing">après cadrage</p>
+      <p class="pricing-desc">Un métier, quelques écrans, une base.</p>
+    </article>
+    <article class="pricing-card pricing-card--featured reveal reveal-delay-2">
+      <h3>Complète</h3>
+      <p class="pricing-price">à partir de <strong>7 000 €</strong></p>
+      <p class="pricing-timing">après cadrage</p>
+      <p class="pricing-desc">Rôles, paiement, automatisations.</p>
+    </article>
+    <article class="pricing-card reveal reveal-delay-3">
+      <h3>Suivi</h3>
+      <p class="pricing-price">à partir de <strong>190 €</strong> / mois</p>
+      <p class="pricing-timing">sans engagement</p>
+      <p class="pricing-desc">Correctifs, sauvegardes, évolutions.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============ BLOC 3 · PHOTO, VIDÉO, DRONE ============ -->
+<section class="pricing-section">
+  <div class="pricing-section-head">
+    <div class="pricing-head-inner">
+      <span class="pricing-num">03 / 04</span>
+      <h2 class="reveal">Photo, vidéo <span class="accent">et drone</span>.</h2>
+      <p class="reveal reveal-delay-1">Sur devis. Une prestation d'image ne se chiffre pas au forfait : ça dépend de la durée, de la distance, du nombre de lieux, et de ce que vous en ferez.</p>
+      <a href="/services/photo-video-drone.html" class="pricing-see-more">Voir la page complète →</a>
+    </div>
+  </div>
+
+  <div class="pricing-devis reveal">
+    <h3>Tout sur devis.</h3>
+    <p>Dites-nous ce que vous avez en tête en deux lignes. Nous revenons vers vous avec un prix ferme dans la journée.</p>
+    <a href="/contact.html" class="btn btn-primary">Demander un devis
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============ BLOC 4 · CHEF DE PROJET ============ -->
+<section class="pricing-section pricing-section--alt">
+  <div class="pricing-section-head">
+    <div class="pricing-head-inner">
+      <span class="pricing-num">04 / 04</span>
+      <h2 class="reveal">Chef de projet <span class="accent">digital</span>.</h2>
+      <p class="reveal reveal-delay-1">Piloter vos projets digitaux du cadrage à la mise en production. Prestation assurée par Manon seule.</p>
+      <a href="/services/chef-de-projet.html" class="pricing-see-more">Voir la page complète →</a>
+    </div>
+  </div>
+
+  <div class="pricing-devis reveal">
+    <h3><strong>400 €</strong> par jour.</h3>
+    <p>Missions ponctuelles ou récurrentes, de un à trois jours par semaine généralement. À distance, ou sur site en Nouvelle-Aquitaine. Disponible immédiatement.</p>
+    <a href="/contact.html" class="btn btn-primary">Prendre contact
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="cta-final-inner">
+    <span class="eyebrow reveal">◆ Un chiffrage global ?</span>
+    <h2 class="reveal reveal-delay-1">Envoyez-nous votre besoin.<br>On combine <span class="accent">au juste prix</span>.</h2>
+    <p class="lead reveal reveal-delay-2">La plupart des projets mélangent plusieurs formules : un site + un shooting, une application + un site de présentation, etc. On chiffre l'ensemble d'un bloc, pas en additionnant des lignes.</p>
+    <div class="cta-ctas reveal reveal-delay-3">
+      <a href="/contact.html" class="btn btn-primary">Nous écrire
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="tel:+33651339482" class="btn btn-ghost">06 51 33 94 82</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Trame<span class="dot">.</span></h3>
+        <p>Un duo qui code à la main des sites internet pour artisans et petites entreprises. Photo et vidéo en option.</p>
+      </div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="/services/sites-internet.html">Sites internet</a></li><li><a href="/services/applications.html">Applications métier</a></li><li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li><li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li></ul></div>
+      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Portfolio</a></li><li><a href="/formules.html">Formules</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@trame.fr">contact@trame.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li><li>Nouvelle-Aquitaine</li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>Trame · Sites, applications, photo et vidéo.</span>
+      <span>© <span data-year>2026</span> · <a href="/mentions-legales.html">Mentions légales</a></span>
+    </div>
+  </div>
+</footer>
+
+<a href="/contact.html" class="float-cta" aria-label="Nous contacter">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1 0 2 1 2 2v12c0 1-1 2-2 2H4c-1 0-2-1-2-2V6c0-1 1-2 2-2z"/><path d="M2 6l10 7 10-7"/></svg>
+</a>
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>

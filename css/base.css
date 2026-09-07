@@ -1,4 +1,4 @@
-/* ============ TRAME — Base v2 : reset + typo + layout dark ============ */
+/* ============ TRAME · Base v2 : reset + typo + layout dark ============ */
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }

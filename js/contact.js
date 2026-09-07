@@ -1,4 +1,4 @@
-/* ============ TRAME — Formulaire contact (Formspree) ============ */
+/* ============ TRAME · Formulaire contact (Formspree) ============ */
 
 (() => {
   const form = document.getElementById('contact-form');
@@ -9,7 +9,7 @@
   const submitBtn = form.querySelector('[type="submit"]');
 
   // ⚠️ Remplacer par le vrai Formspree endpoint (dans .env.local puis remplacé au build,
-  // ou en dur ici après création du form — voir README)
+  // ou en dur ici après création du form, voir README)
   const FORMSPREE_ENDPOINT = form.dataset.endpoint || 'https://formspree.io/f/YOUR_FORMSPREE_ID';
 
   form.addEventListener('submit', async (e) => {
