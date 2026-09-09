@@ -1983,10 +1983,39 @@
 .form-error {
   color: #FF6B4A;
   font-size: var(--fs-sm);
-  margin-top: var(--sp-2);
+  margin-top: var(--sp-4);
+  padding: 10px 14px;
+  background: rgba(255, 107, 74, 0.08);
+  border: 1px solid rgba(255, 107, 74, 0.4);
+  border-radius: 8px;
   display: none;
+  line-height: 1.45;
 }
 .form-error.show { display: block; }
+
+/* Astérisque des champs obligatoires + légende */
+.req-star {
+  color: #FF6B4A;
+  font-weight: 700;
+  margin-left: 2px;
+}
+.form-legend {
+  font-size: var(--fs-xs);
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin: 0 0 var(--sp-6);
+  padding: 0 0 var(--sp-4);
+  border-bottom: 1px solid var(--line);
+}
+
+/* État invalide sur un champ */
+.form-row input.is-invalid,
+.form-row select.is-invalid,
+.form-row textarea.is-invalid {
+  border-color: #FF6B4A;
+  box-shadow: 0 0 0 3px rgba(255, 107, 74, 0.15);
+}
 
 @media (max-width: 900px) {
   .contact-grid { grid-template-columns: 1fr; }
