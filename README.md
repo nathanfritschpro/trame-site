@@ -1,4 +1,4 @@
-# Trame — site vitrine du duo
+# Vera Studio, site vitrine du duo
 
 Site vitrine + portfolio du duo Nathan & Manon Fritsch. HTML + CSS + JS vanilla, zéro framework, hébergé sur Vercel.
 
@@ -45,7 +45,7 @@ site-trame/
    - **Simple (recommandé)** : éditer `contact.html`, ajouter l'attribut `data-endpoint="https://formspree.io/f/xyzabcde"` sur `<form id="contact-form">`
    - **Ou** : remplacer la constante `FORMSPREE_ENDPOINT` dans `js/contact.js`
 
-Ne pas commit l'endpoint réel : soit tu le mets seulement en prod, soit tu le mets et c'est OK — Formspree est côté client, pas de secret sensible, juste une ligne à changer si tu changes de fournisseur.
+Ne pas commit l'endpoint réel : soit tu le mets seulement en prod, soit tu le mets et c'est OK, Formspree est côté client, pas de secret sensible, juste une ligne à changer si tu changes de fournisseur.
 
 ## Déploiement Vercel
 
@@ -68,7 +68,7 @@ Une fois le domaine acquis, dans Vercel : Settings → Domains → Add, suivre l
 
 ## OG images
 
-Pour l'instant, les meta `og:image` pointent vers les images de projet (ou vers `/assets/og/og-home.jpg` qui n'existe pas encore). À faire : créer les OG images 1200×630 avec le logo Trame et un visuel par page, puis les mettre dans `/assets/og/`.
+Pour l'instant, les meta `og:image` pointent vers les images de projet (ou vers `/assets/og/og-home.jpg` qui n'existe pas encore). À faire : créer les OG images 1200×630 avec le logo Vera Studio et un visuel par page, puis les mettre dans `/assets/og/`.
 
 ## À faire avant mise en ligne publique
 
@@ -76,12 +76,12 @@ Pour l'instant, les meta `og:image` pointent vers les images de projet (ou vers 
 - [ ] Créer et brancher l'endpoint Formspree
 - [ ] Créer OG images 1200×630
 - [ ] Acquérir le domaine et configurer Vercel
-- [ ] Retirer `noindex` (aucun `noindex` sur ce site — bien vérifier avant mise en ligne)
+- [ ] Retirer `noindex` (aucun `noindex` sur ce site, bien vérifier avant mise en ligne)
 - [ ] Vérifier tous les liens vers les previews Vercel des clients (déjà OK)
 
 ## Notes design
 
-Direction visuelle : **Grain** — lin brut, vert forêt, laiton doux.
+Direction visuelle : **Grain**, lin brut, vert forêt, laiton doux.
 - Fond `#EFE8DA`, texte `#1E2E24`, accent `#C9A87A`, sauge `#7A8B7C`
 - Typographies : Newsreader (display italique) + Inter (texte)
 - Grain SVG en overlay fixed sur toutes les pages
