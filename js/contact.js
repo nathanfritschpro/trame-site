@@ -7,6 +7,8 @@
   const successBox = document.getElementById('form-success');
   const errorBox = document.getElementById('form-error');
   const submitBtn = form.querySelector('[type="submit"]');
+  const submitBtnLabel = submitBtn.querySelector('.btn-label') || submitBtn;
+  const newFormBtn = document.getElementById('new-form-btn');
   const FORMSPREE_ENDPOINT = form.dataset.endpoint || 'https://formspree.io/f/YOUR_FORMSPREE_ID';
 
   // Regex email raisonnable (bloque les cas grossièrement invalides)
@@ -69,7 +71,7 @@
     if (!validate()) return;
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Envoi…';
+    submitBtnLabel.textContent = 'Envoi…';
 
     const data = new FormData(form);
 
@@ -90,7 +92,22 @@
     } catch (err) {
       showError('L\'envoi a échoué. Écris-nous directement à contact@verastudio.fr, on te répond dans la journée.');
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Envoyer';
+      submitBtnLabel.textContent = 'Envoyer';
     }
   });
+
+  // ---- Réinitialiser le formulaire pour envoyer un nouveau message
+  if (newFormBtn) {
+    newFormBtn.addEventListener('click', () => {
+      form.reset();
+      clearErrors();
+      form.style.display = '';
+      successBox.classList.remove('show');
+      submitBtn.disabled = false;
+      submitBtnLabel.textContent = 'Envoyer';
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Petit focus sur le premier champ pour la fluidité
+      setTimeout(() => form.name.focus(), 400);
+    });
+  }
 })();

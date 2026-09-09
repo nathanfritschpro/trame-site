@@ -156,7 +156,8 @@
         <div class="form-error" id="form-error" role="alert" aria-live="polite"></div>
 
         <div class="form-actions">
-          <button type="submit" class="btn btn-primary">Envoyer
+          <button type="submit" class="btn btn-primary">
+            <span class="btn-label">Envoyer</span>
             <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </button>
           <span class="helper">Réponse dans la journée</span>
@@ -164,7 +165,10 @@
       </form>
 
       <div class="form-success" id="form-success">
-        Message reçu. On revient vers vous dans la journée, souvent bien plus vite. À très bientôt.
+        <p>Message reçu. On revient vers vous dans la journée, souvent bien plus vite. À très bientôt.</p>
+        <button type="button" class="btn btn-ghost" id="new-form-btn">Envoyer un nouveau message
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
       </div>
     </div>
 

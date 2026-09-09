@@ -1980,6 +1980,8 @@
   letter-spacing: -0.01em;
 }
 .form-success.show { display: block; }
+.form-success p { margin: 0 0 var(--sp-6); }
+.form-success .btn { font-family: var(--font-text); font-size: var(--fs-sm); }
 .form-error {
   color: #FF6B4A;
   font-size: var(--fs-sm);
