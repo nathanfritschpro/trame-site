@@ -69,6 +69,11 @@
   margin: 0 auto var(--sp-8);
   color: var(--text);
 }
+/* Variante compacte du H1 hero (phrase courte, on réduit la police) */
+.hero h1.hero-h1--compact {
+  font-size: clamp(2.5rem, 1.4rem + 5.5vw, 5.5rem);
+  max-width: 18ch;
+}
 .hero h1 .accent { color: var(--lime); }
 .hero h1 .underline { position: relative; display: inline-block; }
 .hero h1 .underline::after {
