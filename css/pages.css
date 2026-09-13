@@ -74,29 +74,33 @@
   font-size: clamp(2.5rem, 1.4rem + 5.5vw, 5.5rem);
   max-width: 18ch;
 }
-/* Variante avec 2 niveaux : ligne principale grosse, ligne de continuité plus discrète */
-.hero h1.hero-h1--split {
+/* Variante 3 lignes : Votre / PROJET WEB (gros, accent) / à la hauteur de votre activité. */
+.hero h1.hero-h1--stack {
   max-width: none;
   margin: 0 auto var(--sp-8);
   display: flex;
   flex-direction: column;
-  gap: var(--sp-4);
+  gap: var(--sp-2);
+  line-height: 1;
+}
+.hero-h1-top,
+.hero-h1-sub {
+  display: block;
+  font-size: clamp(1.75rem, 0.9rem + 3vw, 3.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  font-weight: 600;
 }
 .hero-h1-main {
   display: block;
-  font-size: clamp(2.75rem, 1.4rem + 7vw, 7rem);
+  font-size: clamp(3.25rem, 1.5rem + 8.5vw, 8rem);
   line-height: 0.95;
-  letter-spacing: -0.05em;
-  color: var(--text);
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  font-weight: 700;
   white-space: nowrap;
-}
-.hero-h1-sub {
-  display: block;
-  font-size: clamp(1.25rem, 0.6rem + 2vw, 2.5rem);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: var(--text-dim);
-  font-weight: 500;
+  margin: var(--sp-1) 0;
 }
 @media (max-width: 640px) {
   .hero-h1-main { white-space: normal; }
