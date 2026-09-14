@@ -11,6 +11,54 @@
   const newFormBtn = document.getElementById('new-form-btn');
   const FORMSPREE_ENDPOINT = form.dataset.endpoint || 'https://formspree.io/f/YOUR_FORMSPREE_ID';
 
+  // ---- Préremplissage via ?devis=<slug>
+  const DEVIS_TEMPLATES = {
+    'site-basique':      { label: 'Site internet, formule Basique',              project: 'site' },
+    'site-complet':      { label: 'Site internet, formule Complet',              project: 'site' },
+    'site-optimise':     { label: 'Site internet, formule Optimisé',             project: 'site' },
+    'app-cadrage':       { label: 'Application métier, audit et cadrage',        project: 'application' },
+    'app-simple':        { label: 'Application métier, formule Simple',          project: 'application' },
+    'app-complete':      { label: 'Application métier, formule Complète',        project: 'application' },
+    'app-suivi':         { label: 'Application métier, maintenance et évolutions', project: 'application' },
+    'photo-video':       { label: 'Photo, vidéo ou drone',                       project: 'combine' },
+    'chef-de-projet':    { label: 'Chef de projet digital',                      project: 'chef-de-projet' },
+    'option-reservation':{ label: 'Option : réservation ou commande intégrée',   project: 'site' },
+    'option-redaction':  { label: 'Option : rédaction de textes',                project: 'site' },
+    'option-page-supp':  { label: 'Option : page supplémentaire',                project: 'site' },
+    'option-reprise':    { label: 'Option : reprise de contenus',                project: 'site' },
+    'option-suivi':      { label: 'Option : suivi annuel',                       project: 'site' },
+    'global':            { label: 'Chiffrage global (plusieurs prestations)',    project: 'combine' },
+  };
+
+  const prefillFromQuery = () => {
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get('devis');
+    if (!slug || !DEVIS_TEMPLATES[slug]) return;
+    const tpl = DEVIS_TEMPLATES[slug];
+
+    if (form.project) {
+      const opt = Array.from(form.project.options).find(o => o.value === tpl.project);
+      if (opt) form.project.value = tpl.project;
+    }
+    if (form.message && !form.message.value.trim()) {
+      form.message.value =
+`Bonjour,
+
+Je souhaite obtenir un devis gratuit pour : ${tpl.label}.
+
+Voici quelques éléments sur mon projet :
+`;
+    }
+    // Petit repère visuel : on scrolle sur le form et on focus le premier champ vide
+    requestAnimationFrame(() => {
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        if (!form.name.value.trim()) form.name.focus();
+      }, 400);
+    });
+  };
+  prefillFromQuery();
+
   // Regex email raisonnable (bloque les cas grossièrement invalides)
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 

@@ -2085,3 +2085,48 @@
 .legal p { color: var(--text-dim); font-size: var(--fs-base); line-height: 1.65; margin-bottom: var(--sp-4); }
 .legal a { color: var(--lime); }
 .legal a:hover { color: var(--lime-hover); }
+
+/* ============ Lien "Sur devis gratuit" (remplace les prix) ============ */
+.devis-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--lime);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.375rem;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  line-height: 1.15;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.devis-link:hover {
+  color: var(--lime-hover);
+}
+.devis-link .arrow {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  transition: transform 0.2s ease;
+}
+.devis-link:hover .arrow {
+  transform: translateX(4px);
+}
+.pricing-price .devis-link,
+.formule-price .devis-link {
+  display: inline-flex;
+}
+.options-price.devis-link {
+  color: var(--lime);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.options-price.devis-link:hover {
+  color: var(--lime-hover);
+  text-decoration: underline;
+}
