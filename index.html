@@ -27,8 +27,24 @@
 <link rel="stylesheet" href="/css/base.css">
 <link rel="stylesheet" href="/css/components.css">
 <link rel="stylesheet" href="/css/pages.css">
+<script>
+  // Applique le thème AVANT le render pour éviter le flash (FOUC)
+  (function(){
+    try {
+      var t = localStorage.getItem('vera-theme');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    } catch(e) {}
+  })();
+</script>
 </head>
 <body>
+
+<div class="site-bg" aria-hidden="true">
+  <div class="site-grid"></div>
+  <div class="site-spotlight"></div>
+  <div class="site-grain"></div>
+</div>
 
 <header class="header">
   <a href="/" class="brand-logo" aria-label="Vera Studio, accueil">Vera Studio<span class="dot">.</span></a>
@@ -61,6 +77,10 @@
     <a href="/contact.html">Contact</a>
   </nav>
   <div class="header-cta">
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Basculer le thème" title="Basculer clair / sombre">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
     <a href="/contact.html" class="btn btn-primary btn-icon">Prendre contact
       <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
     </a>
@@ -98,9 +118,7 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero-orb" aria-hidden="true"></div>
   <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-noise" aria-hidden="true"></div>
   <div class="hero-inner">
     <span class="hero-eyebrow eyebrow reveal"><span class="dot-live"></span>Duo créatif · Nouvelle-Aquitaine</span>
     <h1 class="hero-h1--compact reveal reveal-delay-1">
@@ -153,6 +171,73 @@
     <span class="marquee-item">Photo</span>
     <span class="marquee-item">Vidéo et drone</span>
     <span class="marquee-item">Chef de projet digital</span>
+  </div>
+</section>
+
+<!-- ============ QUEL TYPE DE PROJET ============ -->
+<section class="project-types">
+  <div class="project-types-inner">
+    <div class="project-types-head">
+      <span class="eyebrow reveal">◆ Vous vous lancez ?</span>
+      <h2 class="reveal reveal-delay-1">Quel type de <span class="accent">projet</span> ?</h2>
+      <p class="reveal reveal-delay-2">Six formats qu'on maîtrise, avec les mêmes deux personnes du premier appel à la mise en ligne.</p>
+    </div>
+
+    <div class="pt-grid">
+      <a class="pt-card reveal-up" href="/services/sites-internet.html" style="--pt-i:0">
+        <div class="pt-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 18v2M16 18v2M6 20h12"/></svg>
+        </div>
+        <h3>Site vitrine</h3>
+        <p>Présenter votre activité, capter des clients, être trouvable sur Google.</p>
+        <span class="pt-cta">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+
+      <a class="pt-card reveal-up" href="/services/sites-internet.html" style="--pt-i:1">
+        <div class="pt-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.5a2 2 0 0 0 2 1.5h7.7a2 2 0 0 0 2-1.5L21 8H6"/></svg>
+        </div>
+        <h3>Boutique en ligne</h3>
+        <p>Vendre vos produits ou vos créations avec paiement en ligne.</p>
+        <span class="pt-cta">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+
+      <a class="pt-card reveal-up" href="/services/sites-internet.html" style="--pt-i:2">
+        <div class="pt-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v6M16 4v6M7 15h4M7 18h6"/></svg>
+        </div>
+        <h3>Réservation en ligne</h3>
+        <p>Vos clients réservent seuls, vous récupérez le calendrier prêt à l'emploi.</p>
+        <span class="pt-cta">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+
+      <a class="pt-card reveal-up" href="/services/applications.html" style="--pt-i:3">
+        <div class="pt-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+        </div>
+        <h3>Application métier</h3>
+        <p>Un outil qui remplace vos tableurs, adapté à votre façon de travailler.</p>
+        <span class="pt-cta">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+
+      <a class="pt-card reveal-up" href="/services/photo-video-drone.html" style="--pt-i:4">
+        <div class="pt-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </div>
+        <h3>Photo et vidéo</h3>
+        <p>Contenus authentiques pour donner à voir votre travail et votre lieu.</p>
+        <span class="pt-cta">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+
+      <a class="pt-card reveal-up" href="/services/chef-de-projet.html" style="--pt-i:5">
+        <div class="pt-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>Chef de projet</h3>
+        <p>Piloter votre projet digital du cadrage à la mise en production.</p>
+        <span class="pt-cta">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+    </div>
   </div>
 </section>
 

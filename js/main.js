@@ -324,17 +324,40 @@
     });
   }
 
-  // ---- PARALLAX · fond du hero qui bouge doucement au scroll
-  const heroBg = document.querySelector('.hero-orb, .hero-parallax');
-  if (heroBg && !reducedMotionMQ.matches) {
-    const onScrollParallax = () => {
-      const y = window.scrollY;
-      if (y > 900) return;
-      heroBg.style.transform = `translate3d(0, ${y * 0.25}px, 0)`;
+  // ---- SPOTLIGHT · point lumineux qui suit le curseur (fond global)
+  const spotlight = document.querySelector('.site-spotlight');
+  if (spotlight && isFine()) {
+    let px = 50, py = 0, tx = 50, ty = 0, rafSpot = 0;
+    const tickSpot = () => {
+      px += (tx - px) * 0.14;
+      py += (ty - py) * 0.14;
+      spotlight.style.setProperty('--spot-x', px.toFixed(1) + '%');
+      spotlight.style.setProperty('--spot-y', py.toFixed(1) + '%');
+      rafSpot = requestAnimationFrame(tickSpot);
     };
-    window.addEventListener('scroll', onScrollParallax, { passive: true });
-    onScrollParallax();
+    tickSpot();
+    window.addEventListener('mousemove', (e) => {
+      tx = (e.clientX / window.innerWidth) * 100;
+      ty = (e.clientY / window.innerHeight) * 100;
+    }, { passive: true });
   }
+
+  // ---- THEME TOGGLE · bascule light/dark avec persistance
+  const themeBtn = document.getElementById('theme-toggle');
+  const themeBtnMobile = document.getElementById('theme-toggle-mobile');
+  const applyTheme = (t) => {
+    if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    else document.documentElement.removeAttribute('data-theme');
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', t === 'light' ? '#F7F8FB' : '#0F1520');
+    try { localStorage.setItem('vera-theme', t); } catch(e) {}
+  };
+  const toggleTheme = () => {
+    const cur = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    applyTheme(cur === 'light' ? 'dark' : 'light');
+  };
+  if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+  if (themeBtnMobile) themeBtnMobile.addEventListener('click', toggleTheme);
 
   // ---- REVEAL variants · applique une classe unique .reveal-in quand tout devient visible
   //      (utilisé par les nouvelles variantes fade-left/right/scale/blur)
