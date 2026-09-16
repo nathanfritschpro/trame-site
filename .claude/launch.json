@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "4200"],
       "port": 4200
+    },
+    {
+      "name": "trame-polish",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4231"],
+      "port": 4231
     }
   ]
 }

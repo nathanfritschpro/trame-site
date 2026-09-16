@@ -389,3 +389,311 @@
 .reveal-delay-2 { transition-delay: 0.16s; }
 .reveal-delay-3 { transition-delay: 0.24s; }
 .reveal-delay-4 { transition-delay: 0.32s; }
+
+/* ============ POLISH · nouvelles variantes de reveal ============ */
+.reveal-up, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur {
+  opacity: 0;
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+.reveal-up    { transform: translateY(40px); }
+.reveal-left  { transform: translateX(-40px); }
+.reveal-right { transform: translateX(40px); }
+.reveal-scale { transform: scale(0.94); }
+.reveal-blur  { filter: blur(14px); transform: translateY(20px); }
+.reveal-up.is-in, .reveal-left.is-in, .reveal-right.is-in, .reveal-scale.is-in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+.reveal-blur.is-in { opacity: 1; transform: none; filter: none; }
+
+/* ============ POLISH · SPLIT-TEXT hero ============ */
+h1.hero-h1--compact,
+h1.hero-h1--split,
+h1.hero-h1--stack,
+.page-hero h1 {
+  overflow-wrap: normal;
+}
+.word-reveal {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.6em) rotateX(-40deg);
+  transform-origin: 50% 100%;
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--i, 0) * 55ms + 120ms);
+  will-change: transform, opacity;
+}
+.is-split .word-reveal { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .word-reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ============ POLISH · BOUTONS magnétiques + effet shine ============ */
+.is-magnetic {
+  transform: translate3d(var(--mx, 0), var(--my, 0), 0);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, background 0.2s ease;
+  position: relative;
+}
+.btn.btn-primary.is-magnetic,
+.btn-primary.is-magnetic {
+  overflow: hidden;
+}
+.btn-primary.is-magnetic::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.28) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+.btn-primary.is-magnetic:hover::before { transform: translateX(100%); }
+.btn-primary.is-magnetic:hover {
+  box-shadow:
+    0 12px 32px -8px var(--accent-glow),
+    0 4px 12px -4px rgba(0, 0, 0, 0.2);
+}
+
+/* ============ POLISH · CARTES tilt 3D + shine ============ */
+.is-tilt {
+  transform-style: preserve-3d;
+  transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+  position: relative;
+  will-change: transform;
+}
+.is-tilt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    600px circle at var(--sx, 50%) var(--sy, 50%),
+    rgba(165, 208, 245, 0.14),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.is-tilt:hover::after { opacity: 1; }
+.is-tilt > * { position: relative; z-index: 2; }
+.is-tilt:hover {
+  box-shadow:
+    0 30px 60px -30px rgba(0, 0, 0, 0.45),
+    0 12px 24px -12px rgba(165, 208, 245, 0.18);
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-tilt { transform: none; }
+  .is-tilt::after { display: none; }
+}
+
+/* ============ POLISH · HEADER scrolled : blur + rétrécissement ============ */
+.header {
+  transition: padding 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.35s ease,
+              backdrop-filter 0.35s ease,
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+}
+.header.scrolled {
+  background: rgba(15, 21, 32, 0.72);
+  backdrop-filter: saturate(140%) blur(14px);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  border-bottom: 1px solid rgba(165, 208, 245, 0.08);
+  box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.4);
+  padding-top: var(--sp-3);
+  padding-bottom: var(--sp-3);
+}
+
+/* ============ POLISH · HERO orb animée + parallax ============ */
+.hero-orb {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: min(900px, 90vw);
+  height: min(900px, 90vw);
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(165, 208, 245, 0.22), transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(165, 208, 245, 0.12), transparent 55%);
+  filter: blur(60px);
+  animation: heroOrbFloat 14s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes heroOrbFloat {
+  0%   { transform: translate(-50%, 0)     scale(1); }
+  50%  { transform: translate(-46%, 3%)   scale(1.06); }
+  100% { transform: translate(-54%, -2%)  scale(0.98); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb { animation: none; }
+}
+
+/* ============ POLISH · TITRES de section, underline animé ============ */
+h2.reveal.is-visible .accent,
+.page-hero h1.reveal.is-visible .accent,
+.hero h1 .accent {
+  position: relative;
+}
+h2 .accent::after,
+.section-title .accent::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -0.15em;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 0.35s;
+}
+.reveal.is-visible h2 .accent::after,
+h2.reveal.is-visible .accent::after,
+.reveal.is-visible.section-title .accent::after {
+  transform: scaleX(1);
+}
+
+/* ============ POLISH · MARQUEE horizontal (pour bandeau spécialités) ============ */
+.marquee {
+  overflow: hidden;
+  position: relative;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: var(--sp-6) 0;
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  gap: var(--sp-12);
+  width: max-content;
+  animation: marqueeSlide 34s linear infinite;
+}
+.marquee-item {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  font-weight: 600;
+  color: var(--text-dim);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-12);
+}
+.marquee-item::after {
+  content: "◆";
+  color: var(--accent);
+  font-size: 0.6em;
+  opacity: 0.6;
+}
+@keyframes marqueeSlide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* ============ POLISH · CARTES formule / pricing shine au survol ============ */
+.pricing-card,
+.formule {
+  overflow: hidden;
+  isolation: isolate;
+}
+.pricing-card::before,
+.formule::before {
+  content: "";
+  position: absolute;
+  top: -60%; left: -30%;
+  width: 60%; height: 220%;
+  background: linear-gradient(120deg, transparent, rgba(165, 208, 245, 0.08), transparent);
+  transform: translateX(-120%) rotate(12deg);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+.pricing-card:hover::before,
+.formule:hover::before {
+  transform: translateX(280%) rotate(12deg);
+}
+
+/* ============ POLISH · liens .devis-link, flèche qui glisse + soulignement ============ */
+.devis-link {
+  position: relative;
+}
+.devis-link::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 24px;
+  bottom: -2px;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.devis-link:hover::before { transform: scaleX(1); }
+
+/* ============ POLISH · pointer/cursor grow sur devis-link ============ */
+.has-cursor .devis-link { cursor: none; }
+
+/* ============ POLISH · lien nav underline plus soigné ============ */
+.nav a { position: relative; }
+.nav > a::after {
+  content: "";
+  position: absolute;
+  left: 6px; right: 6px;
+  bottom: 4px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 2px;
+}
+.nav > a:hover::after,
+.nav > a.active::after { transform: scaleX(1); }
+
+/* ============ POLISH · scroll indicator subtil en bas de hero ============ */
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: var(--sp-8);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  pointer-events: none;
+  animation: scrollCueFloat 2.2s ease-in-out infinite;
+}
+.scroll-cue::after {
+  content: "";
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+@keyframes scrollCueFloat {
+  0%, 100% { transform: translate(-50%, 0); opacity: 0.5; }
+  50%      { transform: translate(-50%, 6px); opacity: 0.85; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue { animation: none; }
+}

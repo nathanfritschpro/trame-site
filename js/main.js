@@ -204,4 +204,150 @@
   // ---- Année dynamique dans le footer
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // ============================================================
+  //  POLISH · animations et micro-interactions
+  // ============================================================
+  const reducedMotionMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const fineMQ = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const isFine = () => fineMQ.matches && !reducedMotionMQ.matches;
+
+  // ---- SPLIT · révélation mot-à-mot du H1 hero au chargement
+  const splitTargets = document.querySelectorAll('h1.hero-h1--compact, h1.hero-h1--split, h1.hero-h1--stack, .page-hero h1');
+  splitTargets.forEach(h1 => {
+    if (h1.dataset.split === 'done') return;
+    // Ne split que les nœuds text directs (garde les <span>, <br>, <strong>)
+    const wrap = (node) => {
+      Array.from(node.childNodes).forEach(child => {
+        if (child.nodeType === Node.TEXT_NODE) {
+          const words = child.textContent.split(/(\s+)/);
+          const frag = document.createDocumentFragment();
+          words.forEach(w => {
+            if (/^\s+$/.test(w)) {
+              frag.appendChild(document.createTextNode(w));
+            } else if (w.length) {
+              const span = document.createElement('span');
+              span.className = 'word-reveal';
+              span.textContent = w;
+              frag.appendChild(span);
+            }
+          });
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains('word-reveal')) {
+          wrap(child);
+        }
+      });
+    };
+    wrap(h1);
+    h1.dataset.split = 'done';
+    // Stagger via CSS var --i
+    const words = h1.querySelectorAll('.word-reveal');
+    words.forEach((w, i) => w.style.setProperty('--i', i));
+    requestAnimationFrame(() => h1.classList.add('is-split'));
+  });
+
+  // ---- COUNTERS · nombres qui se comptent en entrant dans le viewport
+  const counters = document.querySelectorAll('[data-count]');
+  if (counters.length && 'IntersectionObserver' in window) {
+    const counterIO = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        counterIO.unobserve(el);
+        const end = parseFloat(el.dataset.count);
+        const dur = parseInt(el.dataset.countDuration || '1400', 10);
+        const suffix = el.dataset.countSuffix || '';
+        const decimals = parseInt(el.dataset.countDecimals || '0', 10);
+        if (reducedMotionMQ.matches) {
+          el.textContent = end.toFixed(decimals) + suffix;
+          return;
+        }
+        const start = performance.now();
+        const easeOut = t => 1 - Math.pow(1 - t, 3);
+        const step = (now) => {
+          const t = Math.min(1, (now - start) / dur);
+          const v = end * easeOut(t);
+          el.textContent = v.toFixed(decimals) + suffix;
+          if (t < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(c => counterIO.observe(c));
+  }
+
+  // ---- MAGNETIC · boutons qui attirent doucement le curseur
+  if (isFine()) {
+    const magnets = document.querySelectorAll('.btn-primary, .float-cta, .btn.btn-ghost');
+    magnets.forEach(el => {
+      el.classList.add('is-magnetic');
+      const strength = el.classList.contains('float-cta') ? 0.35 : 0.22;
+      const onMove = (e) => {
+        const r = el.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        el.style.setProperty('--mx', `${dx * strength}px`);
+        el.style.setProperty('--my', `${dy * strength}px`);
+      };
+      const reset = () => {
+        el.style.setProperty('--mx', '0px');
+        el.style.setProperty('--my', '0px');
+      };
+      el.addEventListener('mousemove', onMove);
+      el.addEventListener('mouseleave', reset);
+    });
+  }
+
+  // ---- TILT · cartes qui inclinent légèrement selon la position du curseur
+  if (isFine()) {
+    const tilts = document.querySelectorAll('.pricing-card, .formule, .project-window, .service-card, .team-member, .avantage, .expertise-card');
+    tilts.forEach(card => {
+      card.classList.add('is-tilt');
+      const max = 6; // degrés
+      const onMove = (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width;
+        const py = (e.clientY - r.top) / r.height;
+        const rx = (0.5 - py) * max;
+        const ry = (px - 0.5) * max;
+        card.style.setProperty('--rx', `${rx}deg`);
+        card.style.setProperty('--ry', `${ry}deg`);
+        card.style.setProperty('--sx', `${(px * 100).toFixed(1)}%`);
+        card.style.setProperty('--sy', `${(py * 100).toFixed(1)}%`);
+      };
+      const reset = () => {
+        card.style.setProperty('--rx', '0deg');
+        card.style.setProperty('--ry', '0deg');
+      };
+      card.addEventListener('mousemove', onMove);
+      card.addEventListener('mouseleave', reset);
+    });
+  }
+
+  // ---- PARALLAX · fond du hero qui bouge doucement au scroll
+  const heroBg = document.querySelector('.hero-orb, .hero-parallax');
+  if (heroBg && !reducedMotionMQ.matches) {
+    const onScrollParallax = () => {
+      const y = window.scrollY;
+      if (y > 900) return;
+      heroBg.style.transform = `translate3d(0, ${y * 0.25}px, 0)`;
+    };
+    window.addEventListener('scroll', onScrollParallax, { passive: true });
+    onScrollParallax();
+  }
+
+  // ---- REVEAL variants · applique une classe unique .reveal-in quand tout devient visible
+  //      (utilisé par les nouvelles variantes fade-left/right/scale/blur)
+  const variantEls = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur');
+  if (variantEls.length && 'IntersectionObserver' in window) {
+    const vio = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          vio.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
+    variantEls.forEach(el => vio.observe(el));
+  }
 })();
