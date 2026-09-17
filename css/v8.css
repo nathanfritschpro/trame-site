@@ -2603,3 +2603,72 @@
   background-size: cover;
   background-position: top center;
 }
+
+/* Comme une fleur · works portfolio */
+.work-card .mockup-body[data-project="Comme une fleur"]::before {
+  background-image: url("/assets/tiles/comme-une-fleur-ordi.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.work-card .mockup-phone-body[data-project="Comme une fleur"]::before {
+  background-image: url("/assets/tiles/comme-une-fleur-mobile.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+
+/* ============ V8.6 · Carte "Bientôt · Prospune" dans works ============ */
+.works-soon {
+  max-width: 880px;
+  margin: var(--sp-14) auto 0;
+  padding: var(--sp-8) var(--sp-8);
+  border-radius: 22px;
+  background:
+    linear-gradient(140deg, rgba(29, 111, 196, 0.06) 0%, rgba(29, 111, 196, 0.02) 100%),
+    var(--surface);
+  border: 1px dashed color-mix(in srgb, var(--accent) 40%, transparent);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.works-soon::before {
+  content: "";
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 22%, transparent) 0%, transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+.works-soon-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: var(--sp-4);
+}
+.works-soon h4 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  margin: 0 0 var(--sp-3);
+  color: var(--text);
+  font-weight: 600;
+}
+.works-soon h4 strong { color: var(--accent); font-weight: 700; }
+.works-soon p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--text-soft);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+@media (max-width: 720px) {
+  .works-soon { padding: var(--sp-6) var(--sp-5); margin-top: var(--sp-10); }
+  .works-soon h4 { font-size: 1.2rem; }
+  .works-soon p { font-size: 0.95rem; }
+}
