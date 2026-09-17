@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Prospune · Vera Studio · Application métier de prospection intelligente</title>
+<meta name="description" content="Prospune, notre seconde application métier en cours de développement. Un SaaS de prospection intelligente pour indépendants : surveille les sources publiques, repère les signaux, rédige les messages.">
+<meta name="theme-color" content="#F7F5EE">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Prospune · Vera Studio">
+<meta property="og:description" content="Vos prochains clients, trouvés pendant que vous travaillez. SaaS de prospection intelligente, développé en interne.">
+<meta property="og:url" content="https://trame-site-fawn.vercel.app/projets/prospune.html">
+<meta property="og:image" content="https://trame-site-fawn.vercel.app/assets/og/og-home.jpg">
+
+<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+<link rel="canonical" href="https://trame-site-fawn.vercel.app/projets/prospune.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="/css/v8.css?v=8.8">
+<script>
+  (function(){
+    try {
+      var t = localStorage.getItem('vera-theme');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    } catch(e) {}
+  })();
+</script>
+</head>
+<body class="portfolio-overlay">
+
+<!-- ============ HEADER MINIMAL (retour + logo + toggle) ============ -->
+<header class="header header--minimal" id="site-header">
+  <a href="/portfolio.html" class="portfolio-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span>Retour aux projets</span>
+  </a>
+  <a href="/" class="brand-logo brand-logo--center">Vera Studio<span class="dot">.</span></a>
+  <div class="header-cta">
+    <button type="button" class="theme-toggle" aria-label="Basculer clair / sombre" title="Basculer clair / sombre">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO PROJET ============ -->
+<section class="portfolio-hero">
+  <div class="portfolio-hero-inner">
+    <span class="eyebrow reveal">◆ Application métier · SaaS · En développement</span>
+    <h1 class="reveal reveal-delay-1">Prospune<span class="accent">.</span></h1>
+    <p class="reveal reveal-delay-2"><em>Vos prochains clients, trouvés pendant que vous travaillez.</em></p>
+    <p class="reveal reveal-delay-3" style="max-width:680px;margin:var(--sp-4) auto 0;color:var(--text-soft);font-size:0.95rem">Notre seconde application métier, développée en interne. Un SaaS de prospection intelligente pour les indépendants. Bientôt en beta ouverte, 20 places au prix fondateur.</p>
+    <div class="reveal reveal-delay-3" style="margin-top:var(--sp-6)">
+      <a href="https://prospune.vercel.app" target="_blank" rel="noopener" class="btn btn-primary">Voir prospune.vercel.app
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPROCHE ============ -->
+<section class="service-detail">
+  <div class="service-detail-inner">
+    <div class="service-detail-block reveal">
+      <h2>L'idée : <span class="accent">chercher pour vous, en continu</span>.</h2>
+      <p>Un indépendant passe généralement une heure et demie chaque soir à scroller LinkedIn, à fouiller des annonces, à taper des noms au hasard dans Google. Il finit la journée fatigué, avec peut-être deux prospects notés sur un coin de bureau.</p>
+      <p>Prospune inverse la logique. L'IA surveille les sources publiques toute la nuit, repère les entreprises qui ont une raison de solliciter un indépendant maintenant, et prépare chaque matin les premiers messages, déjà rédigés dans le ton de l'utilisateur. Il ne reste qu'un café à passer dessus : cinq minutes, quatre opportunités triées, quatre messages prêts à partir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMMENT ============ -->
+<section class="service-detail">
+  <div class="service-detail-inner">
+    <div class="service-detail-block reveal">
+      <h2>Comment <span class="accent">ça marche</span>.</h2>
+      <p style="color:var(--text-soft);margin-bottom:var(--sp-6)">Cinq étapes, une seule vous demande d'être là.</p>
+
+      <div class="skill-list">
+        <div class="skill-list-item">
+          <h3>01 · Détection.</h3>
+          <p>Prospune scrute les sources publiques toute la nuit : registre Sirene, dépôts de marques à l'INPI, annonces légales, agendas d'événements pro. À la recherche de signaux qui bougent dans la zone de l'utilisateur.</p>
+        </div>
+        <div class="skill-list-item">
+          <h3>02 · Ciblage.</h3>
+          <p>Chaque indépendant décrit ce qu'il cherche : sa zone, ses critères, son budget minimum. Une quinzaine de réglages, tous modifiables après coup. Une veille par offre, plusieurs veilles en parallèle possible.</p>
+        </div>
+        <div class="skill-list-item">
+          <h3>03 · Rédaction.</h3>
+          <p>Pour chaque occasion détectée, Prospune écrit un premier message dans le ton de l'utilisateur, avec un objet et un corps déjà prêts. Envoyé depuis son adresse, pas d'expéditeur inconnu.</p>
+        </div>
+        <div class="skill-list-item">
+          <h3>04 · Validation.</h3>
+          <p>Un récapitulatif chaque matin. Quatre opportunités triées, quatre messages écrits. On lit, on ajuste si besoin, on envoie. Le reste de la journée est à soi.</p>
+        </div>
+        <div class="skill-list-item">
+          <h3>05 · Suivi.</h3>
+          <p>Séquences de relance automatiques, statistiques détaillées, historique complet. Alerte immédiate quand une occasion sort du lot.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GARANTIES ============ -->
+<section class="service-detail">
+  <div class="service-detail-inner">
+    <div class="service-detail-block service-detail-block--highlight reveal">
+      <span class="service-tag">◆ Trois garanties, non négociables</span>
+      <h3>Ce sur quoi on peut compter.</h3>
+      <div class="skill-list" style="margin-top:var(--sp-5)">
+        <div class="skill-list-item">
+          <h3>Tout vient de sources publiques.</h3>
+          <p>Sirene, INPI, annonces légales, agendas ouverts. Rien derrière un mot de passe, rien acheté à un revendeur de fichiers. Chaque opportunité affiche sa source et sa date.</p>
+        </div>
+        <div class="skill-list-item">
+          <h3>Les emails partent de votre adresse.</h3>
+          <p>Pas d'expéditeur inconnu, pas de domaine partagé. Les messages arrivent comme si l'utilisateur les avait écrits lui-même. La réputation d'expéditeur reste la sienne.</p>
+        </div>
+        <div class="skill-list-item">
+          <h3>On part quand on veut.</h3>
+          <p>Pas d'engagement, pas de préavis. Export CSV complet des prospects et de l'historique en un clic. Suppression définitive sur demande.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TARIFS ============ -->
+<section class="service-detail">
+  <div class="service-detail-inner">
+    <div class="service-detail-block reveal">
+      <h2>Tarif <span class="accent">fondateur</span>.</h2>
+      <p>20 places au prix fondateur, verrouillé à vie pour les 20 premiers. Le statut Fondateur suit l'utilisateur partout : Starter, Pro, mensuel, annuel. Même prix, même quand les tarifs publics remontent.</p>
+      <div class="skill-list" style="margin-top:var(--sp-6)">
+        <div class="skill-list-item">
+          <h3>Starter · 15 € / mois <span style="color:var(--text-soft);font-weight:400;font-size:0.85em">(au lieu de 19 €)</span></h3>
+          <p>Pour tester la méthode sur une première activité. 2 veilles, 50 opportunités par mois, 30 messages rédigés, hub prospects complet, export des données.</p>
+        </div>
+        <div class="skill-list-item">
+          <h3>Pro · 40 € / mois <span style="color:var(--text-soft);font-weight:400;font-size:0.85em">(au lieu de 49 €)</span></h3>
+          <p>Pour en faire son canal principal d'acquisition. Veilles et opportunités illimitées, 200 messages rédigés, alertes immédiates, séquences de relance automatiques, statistiques détaillées.</p>
+        </div>
+      </div>
+      <p style="margin-top:var(--sp-6);color:var(--text-soft);font-size:0.95rem">Sans engagement, résiliable en un clic. Prix fondateur conservé à vie même après résiliation puis retour.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CE QUE C'EST POUR NOUS ============ -->
+<section class="service-detail">
+  <div class="service-detail-inner">
+    <div class="service-detail-block service-detail-block--highlight reveal">
+      <span class="service-tag">◆ Ce que ça représente pour Vera Studio</span>
+      <h3>Notre seconde application métier.</h3>
+      <p>Après <a href="/projets/modevia.html">Modevia</a>, Prospune est la deuxième plateforme SaaS complète que nous portons en interne : conception, développement, mise en production, opérations. Une nouvelle preuve concrète que Vera Studio ne fait pas que des sites internet, et qu'une application métier bien pensée peut remplacer plusieurs abonnements et beaucoup d'heures perdues.</p>
+      <p>Prospune est en beta ouverte, avec 20 places au prix fondateur. La page complète, le détail des fonctionnalités et la liste d'attente sont sur <a href="https://prospune.vercel.app" target="_blank" rel="noopener">prospune.vercel.app</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="portfolio-cta">
+  <div class="portfolio-cta-inner">
+    <h2 class="reveal">Une application métier à construire chez vous ?</h2>
+    <p class="reveal reveal-delay-1">On l'a fait deux fois pour nous. On peut le faire une fois pour vous.</p>
+    <div class="reveal reveal-delay-2">
+      <a href="/#contact" class="btn btn-primary btn-lg">Nous en parler
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Vera Studio<span class="dot">.</span></h3>
+        <p>Un duo indépendant. Sites internet, applications métier et pilotage de projet, en Nouvelle-Aquitaine.</p>
+      </div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="/services/sites-internet.html">Sites internet</a></li><li><a href="/services/applications.html">Applications métier</a></li><li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li></ul></div>
+      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Le travail</a></li><li><a href="/#offre">L'offre</a></li><li><a href="/#contact">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@verastudio.fr">contact@verastudio.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li><li>Nouvelle-Aquitaine</li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>Vera Studio · Duo indépendant</span>
+      <span>© <span data-year>2026</span> · <a href="/mentions-legales.html">Mentions légales</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/main.js?v=8.8" defer></script>
+<script src="/js/v8.js?v=8.8" defer></script>
+</body>
+</html>

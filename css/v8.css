@@ -2616,6 +2616,18 @@
   background-position: top center;
 }
 
+/* Prospune · V8.8 · seconde application metier (SaaS) */
+.work-card .mockup-body[data-project="Prospune"]::before {
+  background-image: url("/assets/tiles/prospune-ordi.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.work-card .mockup-phone-body[data-project="Prospune"]::before {
+  background-image: url("/assets/tiles/prospune-mobile.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+
 /* ============ V8.6 · Carte "Bientôt · Prospune" dans works ============ */
 .works-soon {
   max-width: 880px;
