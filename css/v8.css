@@ -88,12 +88,12 @@
 .hero-v8-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2.5rem, 1.5rem + 5.5vw, 5.5rem);
-  line-height: 1.02;
-  letter-spacing: -0.04em;
+  font-size: clamp(3rem, 1.8rem + 6.8vw, 7rem);
+  line-height: 1.0;
+  letter-spacing: -0.045em;
   color: var(--text);
   margin: 0 auto var(--sp-8);
-  max-width: 20ch;
+  max-width: 22ch;
 }
 .hero-v8-title .accent {
   color: var(--accent);
@@ -2684,3 +2684,324 @@
   .works-soon h4 { font-size: 1.2rem; }
   .works-soon p { font-size: 0.95rem; }
 }
+
+/* ============================================================================
+   V8.9 · Nouveaux screenshots (aperçus prospection) + design updates
+   ============================================================================ */
+
+/* --- Aperçus screenshots dans works portfolio --- */
+.work-card .mockup-body[data-project="Franck Labasse"]::before {
+  background-image: url("/assets/tiles/franck-labasse-ordi.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.work-card .mockup-phone-body[data-project="Franck Labasse"]::before {
+  background-image: url("/assets/tiles/franck-labasse-mobile.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.work-card .mockup-body[data-project="Fromagerie Croûte"]::before {
+  background-image: url("/assets/tiles/fromagerie-croute-ordi.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.work-card .mockup-phone-body[data-project="Fromagerie Croûte"]::before {
+  background-image: url("/assets/tiles/fromagerie-croute-mobile.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.work-card .mockup-body[data-project="La Calèche"]::before {
+  background-image: url("/assets/tiles/la-caleche-ordi.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.work-card .mockup-phone-body[data-project="La Calèche"]::before {
+  background-image: url("/assets/tiles/la-caleche-mobile.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.work-card .mockup-body[data-project="Villa Zenith"]::before {
+  background-image: url("/assets/tiles/villa-zenith-ordi.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.work-card .mockup-phone-body[data-project="Villa Zenith"]::before {
+  background-image: url("/assets/tiles/villa-zenith-mobile.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+
+/* --- Bandeau promesses redesign (style tmoo : bande inclinée) --- */
+.promises-band {
+  position: relative;
+  padding: var(--sp-12) 0;
+  overflow: hidden;
+  background: var(--bg);
+}
+.promises-band .promises-strip {
+  position: relative;
+  width: 120%;
+  margin-left: -10%;
+  overflow: hidden;
+  padding: 18px 0;
+  transform: rotate(-2deg);
+  transform-origin: center;
+}
+.promises-band .promises-strip--dark {
+  background: var(--text);
+  color: var(--bg);
+  z-index: 1;
+}
+.promises-band .promises-strip--accent {
+  background: var(--accent);
+  color: #fff;
+  transform: rotate(1.5deg);
+  margin-top: -22px;
+  z-index: 2;
+}
+.promises-band .promises-track-2 {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-6);
+  width: max-content;
+  animation: promisesSlide 42s linear infinite;
+}
+.promises-band .promises-strip--dark .promises-track-2 {
+  animation-direction: reverse;
+  animation-duration: 55s;
+}
+.promises-band .promises-item-2 {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 0.7rem + 0.9vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.promises-band .promises-sep-2 {
+  font-size: 1.1rem;
+  opacity: 0.55;
+}
+@media (prefers-reduced-motion: reduce) {
+  .promises-band .promises-track-2 { animation: none; }
+}
+@media (max-width: 720px) {
+  .promises-band { padding: var(--sp-8) 0; }
+  .promises-band .promises-strip { padding: 14px 0; }
+}
+
+/* --- Works head v3 : titre gauche + ghost text mobile au scroll --- */
+.works-head--v3 {
+  max-width: none;
+  margin: 0 0 var(--sp-14);
+  text-align: left;
+  padding: 0 var(--gut);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.works-head--v3 .works-head-title h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 1.4rem + 4.5vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  color: var(--text);
+  margin: 0;
+  max-width: 12ch;
+  position: relative;
+  z-index: 3;
+}
+.works-head--v3 .works-head-title h2 .accent {
+  color: var(--accent);
+  font-style: italic;
+}
+.works-head--v3 .works-head-ghost {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+}
+.works-head--v3 .works-ghost-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(4rem, 3rem + 8vw, 12rem);
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--text) 22%, transparent);
+          text-stroke: 1.5px color-mix(in srgb, var(--text) 22%, transparent);
+  white-space: nowrap;
+  transform: translateX(var(--ghost-shift, 0));
+  transition: transform 0.15s linear;
+  will-change: transform;
+  padding-right: 8vw;
+}
+@media (max-width: 720px) {
+  .works-head--v3 { padding: 0 var(--gut); margin-bottom: var(--sp-8); }
+  .works-head--v3 .works-ghost-text { font-size: 3.5rem; }
+}
+
+/* --- Signature v3 : 2 colonnes (texte gauche + dark box droite) --- */
+.signature--v3 { padding: var(--sec-y) var(--gut); background: var(--bg); }
+.signature--v3 .signature-inner {
+  max-width: var(--wrap-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(var(--sp-8), 5vw, var(--sp-16));
+  align-items: start;
+}
+.signature--v3 .signature-left { position: sticky; top: 100px; }
+.signature--v3 .signature-left .eyebrow {
+  display: inline-block;
+  margin-bottom: var(--sp-6);
+  color: var(--text-soft);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.signature--v3 .signature-left h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 1.2rem + 3.4vw, 3.8rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  margin: 0 0 var(--sp-8);
+}
+.signature--v3 .signature-left h2 .u-accent {
+  position: relative;
+  display: inline;
+  background-image: linear-gradient(to top, color-mix(in srgb, var(--accent) 55%, transparent) 12%, transparent 12.5%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 0 2px;
+}
+.signature--v3 .signature-lead {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--text-soft);
+  margin: 0 0 var(--sp-8);
+  max-width: 46ch;
+}
+.signature--v3 .signature-lead strong { color: var(--text); font-weight: 700; }
+.signature--v3 .signature-checks {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--sp-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.signature--v3 .signature-checks li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.signature--v3 .signature-checks li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  border: 2px solid var(--accent);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231D6FC4' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 14px 14px;
+}
+:root[data-theme="dark"] .signature--v3 .signature-checks li::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A5D0F5' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+}
+.signature--v3 .signature-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+  text-decoration-color: var(--accent);
+}
+.signature--v3 .signature-more:hover { text-decoration-thickness: 3px; }
+
+.signature--v3 .validation-box {
+  background: var(--text);
+  color: var(--bg);
+  padding: clamp(var(--sp-8), 3vw, var(--sp-12));
+  border-radius: 26px;
+  position: relative;
+}
+:root[data-theme="dark"] .signature--v3 .validation-box {
+  background: #0A0F1A;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.signature--v3 .validation-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: var(--sp-6);
+}
+.signature--v3 .validation-box h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.4rem, 0.9rem + 1.8vw, 2.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--bg);
+  margin: 0 0 var(--sp-6);
+}
+.signature--v3 .validation-box h3 .accent-soft {
+  color: color-mix(in srgb, var(--accent) 65%, #fff);
+}
+:root[data-theme="dark"] .signature--v3 .validation-box h3 { color: #F7F5EE; }
+:root[data-theme="dark"] .signature--v3 .validation-box h3 .accent-soft {
+  color: color-mix(in srgb, var(--accent) 80%, #fff);
+}
+.signature--v3 .validation-box p {
+  color: color-mix(in srgb, var(--bg) 75%, transparent);
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0 0 var(--sp-6);
+}
+.signature--v3 .validation-box .val-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--bg);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+  text-decoration-color: color-mix(in srgb, var(--accent) 70%, #fff);
+}
+@media (max-width: 900px) {
+  .signature--v3 .signature-inner { grid-template-columns: 1fr; gap: var(--sp-10); }
+  .signature--v3 .signature-left { position: static; }
+}
+
+/* --- Hide the OLD signature-grid quand on utilise v3 --- */
+.signature--v3 .signature-grid { display: none; }

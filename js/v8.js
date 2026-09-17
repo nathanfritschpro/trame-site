@@ -1,6 +1,34 @@
 /* ============ Vera Studio · V8 (preloader, smart-hide, before/after slider, hero tiles auto) ============ */
 
 (() => {
+  // ---- GHOST TEXT · "realisations" bouge horizontalement selon le scroll
+  const ghost = document.getElementById('works-ghost');
+  if (ghost) {
+    const section = ghost.closest('.works-head--v3');
+    if (section) {
+      let ticking = false;
+      const updateGhost = () => {
+        const rect = section.getBoundingClientRect();
+        const viewportH = window.innerHeight;
+        // progress : 0 quand la section entre dans le viewport, 1 quand elle en sort par le haut
+        const totalDistance = viewportH + rect.height;
+        const traveled = viewportH - rect.top;
+        const progress = Math.max(0, Math.min(1, traveled / totalDistance));
+        // Deplace de -30% (a droite) a +30% (encore plus a gauche) selon le scroll
+        const shiftPct = -30 + progress * 60;
+        ghost.style.setProperty('--ghost-shift', `${shiftPct}%`);
+        ticking = false;
+      };
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateGhost);
+          ticking = true;
+        }
+      }, { passive: true });
+      updateGhost();
+    }
+  }
+
   // ---- HERO TILES · charge les captures reelles si elles existent
   const heroShots = document.querySelectorAll('.ht-shot[data-project]');
   heroShots.forEach(shot => {

@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="/css/base.css">
 <link rel="stylesheet" href="/css/components.css">
 <link rel="stylesheet" href="/css/pages.css">
-<link rel="stylesheet" href="/css/v8.css?v=8.8">
+<link rel="stylesheet" href="/css/v8.css?v=8.9">
 <script>
   (function(){
     try {
@@ -175,37 +175,59 @@
   </div>
 </section>
 
-<!-- ============ MARQUEE PROMESSES ============ -->
-<section class="promises-marquee" aria-hidden="true">
-  <div class="promises-track">
-    <span class="promises-item">Aperçu offert sous 48 h</span>
-    <span class="promises-sep">✦</span>
-    <span class="promises-item">Identité prête en trois semaines</span>
-    <span class="promises-sep">✦</span>
-    <span class="promises-item">Textes, design et développement inclus</span>
-    <span class="promises-sep">✦</span>
-    <span class="promises-item">Trente jours d'accompagnement offerts</span>
-    <span class="promises-sep">✦</span>
-    <span class="promises-item">Aucune carte bancaire avant validation</span>
-    <span class="promises-sep">✦</span>
-    <span class="promises-item">Aperçu offert sous 48 h</span>
-    <span class="promises-sep">✦</span>
-    <span class="promises-item">Identité prête en trois semaines</span>
-    <span class="promises-sep">✦</span>
-    <span class="promises-item">Textes, design et développement inclus</span>
-    <span class="promises-sep">✦</span>
-    <span class="promises-item">Trente jours d'accompagnement offerts</span>
-    <span class="promises-sep">✦</span>
-    <span class="promises-item">Aucune carte bancaire avant validation</span>
-    <span class="promises-sep">✦</span>
+<!-- ============ BANDEAU PROMESSES (V8.9 · deux bandes croisées style tmoo) ============ -->
+<section class="promises-band" aria-hidden="true">
+  <div class="promises-strip promises-strip--dark">
+    <div class="promises-track-2">
+      <span class="promises-item-2">Textes, design et développement inclus</span>
+      <span class="promises-sep-2">✦</span>
+      <span class="promises-item-2">Aperçu offert sous 48 h</span>
+      <span class="promises-sep-2">✦</span>
+      <span class="promises-item-2">Trente jours d'accompagnement offerts</span>
+      <span class="promises-sep-2">✦</span>
+      <span class="promises-item-2">Aucune carte bancaire avant validation</span>
+      <span class="promises-sep-2">✦</span>
+      <span class="promises-item-2">Textes, design et développement inclus</span>
+      <span class="promises-sep-2">✦</span>
+      <span class="promises-item-2">Aperçu offert sous 48 h</span>
+      <span class="promises-sep-2">✦</span>
+      <span class="promises-item-2">Trente jours d'accompagnement offerts</span>
+      <span class="promises-sep-2">✦</span>
+      <span class="promises-item-2">Aucune carte bancaire avant validation</span>
+      <span class="promises-sep-2">✦</span>
+    </div>
+  </div>
+  <div class="promises-strip promises-strip--accent">
+    <div class="promises-track-2">
+      <span class="promises-item-2">Aperçu Vera offert sous 48 h</span>
+      <span class="promises-sep-2">✦</span>
+      <span class="promises-item-2">Identité prête en trois semaines</span>
+      <span class="promises-sep-2">✦</span>
+      <span class="promises-item-2">50 % seulement après validation</span>
+      <span class="promises-sep-2">✦</span>
+      <span class="promises-item-2">Duo indépendant, peu de projets en parallèle</span>
+      <span class="promises-sep-2">✦</span>
+      <span class="promises-item-2">Aperçu Vera offert sous 48 h</span>
+      <span class="promises-sep-2">✦</span>
+      <span class="promises-item-2">Identité prête en trois semaines</span>
+      <span class="promises-sep-2">✦</span>
+      <span class="promises-item-2">50 % seulement après validation</span>
+      <span class="promises-sep-2">✦</span>
+      <span class="promises-item-2">Duo indépendant, peu de projets en parallèle</span>
+      <span class="promises-sep-2">✦</span>
+    </div>
   </div>
 </section>
 
-<!-- ============ RÉALISATIONS ============ -->
+<!-- ============ RÉALISATIONS (V8.9 · titre concis + ghost text mobile au scroll) ============ -->
 <section class="works" id="travail">
-  <div class="works-head reveal">
-    <h2>Le travail, d'abord. <span class="accent">Des sites entiers, en ligne aujourd'hui.</span></h2>
-    <p>Pas des maquettes. Cliquez sur un domaine, tout fonctionne, tout est publié.</p>
+  <div class="works-head works-head--v3 reveal">
+    <div class="works-head-title">
+      <h2>Le travail, <span class="accent">d'abord</span>.</h2>
+    </div>
+    <div class="works-head-ghost" aria-hidden="true">
+      <span class="works-ghost-text" id="works-ghost">réalisations</span>
+    </div>
   </div>
 
   <!-- Carte 1 · Nathan Photo -->
@@ -382,73 +404,38 @@
   </div>
 </section>
 
-<!-- ============ SIGNATURE (positionnement) ============ -->
-<section class="signature signature--v2">
+<!-- ============ SIGNATURE V3 (positionnement · 2 colonnes style tmoo) ============ -->
+<section class="signature signature--v3">
   <div class="signature-inner">
-    <span class="eyebrow reveal">◆ La présence digitale</span>
-    <h2 class="reveal reveal-delay-1">Ce n'est pas un site de plus. <span class="accent">C'est la version numérique de votre entreprise.</span></h2>
-    <p class="signature-lead reveal reveal-delay-2">Vos prospects jugent votre niveau avant même de vous parler. Un site qui hésite, c'est un client qui ne rappelle pas. Un site qui affirme, c'est un rendez-vous pris.</p>
 
-    <div class="signature-grid">
-
-      <div class="sig-card reveal">
-        <div class="sig-icon" data-num="01">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="3"/>
-            <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>
-          </svg>
-        </div>
-        <div class="sig-body">
-          <span class="sig-num">01</span>
-          <h3>Positionnement immédiatement compréhensible</h3>
-          <p>En cinq secondes, on comprend ce que vous faites, pour qui, et pourquoi vous êtes différent.</p>
-        </div>
-      </div>
-
-      <div class="sig-card reveal reveal-delay-1">
-        <div class="sig-icon" data-num="02">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 19l7-7 3 3-7 7-3-3z"/>
-            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
-            <path d="M2 2l7.586 7.586"/>
-            <circle cx="11" cy="11" r="2"/>
-          </svg>
-        </div>
-        <div class="sig-body">
-          <span class="sig-num">02</span>
-          <h3>Direction artistique reconnaissable</h3>
-          <p>Une identité visuelle qui vous ressemble, pas un thème repris sur un catalogue.</p>
-        </div>
-      </div>
-
-      <div class="sig-card reveal reveal-delay-2">
-        <div class="sig-icon" data-num="03">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="16 18 22 12 16 6"/>
-            <polyline points="8 6 2 12 8 18"/>
-          </svg>
-        </div>
-        <div class="sig-body">
-          <span class="sig-num">03</span>
-          <h3>Textes, design et développement inclus</h3>
-          <p>De l'idée à la mise en ligne, tout est fait par le duo. Aucun sous-traitant, aucun angle mort.</p>
-        </div>
-      </div>
-
-      <div class="sig-card reveal reveal-delay-3">
-        <div class="sig-icon" data-num="04">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2l3 6 6 1-4.5 4.5 1 6.5L12 17l-5.5 3 1-6.5L3 9l6-1z"/>
-          </svg>
-        </div>
-        <div class="sig-body">
-          <span class="sig-num">04</span>
-          <h3>Parcours de conviction</h3>
-          <p>Chaque section pousse vers l'action, dans un ordre pensé pour vos clients, pas pour la mode du moment.</p>
-        </div>
-      </div>
-
+    <!-- Colonne gauche · titre + description + checklist -->
+    <div class="signature-left">
+      <span class="eyebrow reveal">◆ La présence digitale</span>
+      <h2 class="reveal reveal-delay-1">Ce n'est pas un site de plus. <span class="u-accent">La version numérique de votre entreprise.</span></h2>
+      <p class="signature-lead reveal reveal-delay-2">Vos prospects jugent votre niveau avant même de vous parler. Un site qui hésite, c'est un client qui ne rappelle pas. <strong>Un site qui affirme, c'est un rendez-vous pris.</strong></p>
+      <ul class="signature-checks reveal reveal-delay-3">
+        <li>Positionnement et message rendus immédiatement compréhensibles</li>
+        <li>Direction artistique reconnaissable, jamais issue d'un modèle générique</li>
+        <li>Textes, design, développement et mise en ligne gérés de A à Z</li>
+        <li>Parcours conçu pour rassurer, qualifier et déclencher le contact</li>
+      </ul>
+      <a href="#offre" class="signature-more reveal reveal-delay-3">Découvrir toute notre offre
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
     </div>
+
+    <!-- Colonne droite · encadré double validation -->
+    <div class="signature-right reveal reveal-delay-2">
+      <div class="validation-box">
+        <span class="validation-tag">Double validation</span>
+        <h3>Vous validez avant qu'on construise. <span class="accent-soft">Vous soldez après avoir validé.</span></h3>
+        <p>La direction artistique est validée avant le développement. Ensuite, un acompte seulement au départ ; le solde est réglé lorsque la version finale est approuvée et prête à être mise en ligne. Vous ne découvrez jamais le résultat après avoir tout payé.</p>
+        <a href="#comment" class="val-link">Voir notre méthode
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -832,8 +819,8 @@
   </div>
 </footer>
 
-<script src="/js/main.js?v=8.8" defer></script>
-<script src="/js/v8.js?v=8.8" defer></script>
-<script src="/js/contact.js?v=8.8" defer></script>
+<script src="/js/main.js?v=8.9" defer></script>
+<script src="/js/v8.js?v=8.9" defer></script>
+<script src="/js/contact.js?v=8.9" defer></script>
 </body>
 </html>
