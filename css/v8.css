@@ -2347,3 +2347,238 @@
   .sig-icon { width: 48px; height: 48px; }
   .sig-icon svg { width: 24px; height: 24px; }
 }
+
+/* ============ V8.4 · AVANT/APRÈS · vraie capture + site 2015 moche ============ */
+.ba-shot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* ---- Site "AVANT" style 2015 WordPress générique nettoyage ---- */
+.old-site {
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+  font-family: Arial, sans-serif;
+  color: #333;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.old-header {
+  background: #FFFFFF;
+  border-bottom: 3px solid #FF0080;
+}
+.old-header-top {
+  background: #FFDCEC;
+  color: #C4006B;
+  padding: 4px 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: bold;
+}
+.old-header-main {
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed #FFB3D9;
+}
+.old-logo {
+  font-family: "Comic Sans MS", "Trebuchet MS", cursive;
+  color: #FF0080;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 #FFCCE0;
+}
+.old-nav {
+  font-size: 11px;
+  color: #333;
+}
+.old-nav a {
+  color: #0066CC;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.old-banner {
+  padding: 24px 20px;
+  background: linear-gradient(180deg, #FFB3D9 0%, #FFCCE5 100%);
+  border-top: 1px solid #FF66B3;
+  text-align: center;
+  color: #4A0033;
+  position: relative;
+}
+.old-slider-dots {
+  font-size: 14px;
+  color: #C4006B;
+  margin-bottom: 6px;
+  font-family: "Times New Roman", serif;
+}
+.old-banner-title {
+  display: block;
+  font-family: "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: bold;
+  color: #C4006B;
+  margin-bottom: 4px;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+}
+.old-banner-sub {
+  display: block;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 12px;
+  color: #7A0044;
+}
+
+.old-content {
+  flex: 1;
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  background: #FFFFFF;
+}
+.old-col-main { min-width: 0; }
+.old-h2 {
+  font-family: "Times New Roman", serif;
+  color: #C4006B;
+  font-size: 18px;
+  border-bottom: 2px dotted #FF66B3;
+  padding-bottom: 4px;
+  margin: 0 0 8px;
+  font-weight: bold;
+}
+.old-p {
+  font-size: 11px;
+  color: #444;
+  margin: 0 0 8px;
+  text-align: justify;
+}
+.old-list {
+  padding: 0;
+  margin: 0 0 8px 8px;
+  list-style: none;
+  font-size: 11px;
+  color: #444;
+}
+.old-list li { padding: 2px 0; }
+.old-link {
+  color: #0066CC;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.old-col-side { display: flex; flex-direction: column; gap: 10px; }
+.old-widget {
+  border: 1px solid #FF66B3;
+  background: #FFF5FA;
+}
+.old-widget-title {
+  background: #FF0080;
+  color: white;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+.old-widget-body {
+  padding: 8px;
+  font-size: 10px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.old-footer {
+  background: #C4006B;
+  color: #FFCCE0;
+  text-align: center;
+  padding: 6px;
+  font-size: 10px;
+  border-top: 3px solid #660033;
+}
+
+/* Petit glow "clip parfait" pour le slider avant/après en mode Clair & Net */
+.ba-slider { background: #F5F5F5; }
+
+/* ============ V8.4 · WORKS · injection des vrais screenshots via data-project ============ */
+.works .mockup-body[data-project],
+.works .mockup-phone-body[data-project] {
+  background-size: cover;
+  background-position: top center;
+  position: relative;
+}
+
+/* Cache le texte fake sous le screenshot */
+.works .mockup-body[data-project]::before,
+.works .mockup-phone-body[data-project]::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: inherit;
+  z-index: 2;
+  pointer-events: none;
+}
+.works .mockup-body[data-project] > *,
+.works .mockup-phone-body[data-project] > * {
+  position: relative;
+  z-index: 3;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Villa Nikkita */
+.work-card .mockup-body[data-project="Villa Nikkita"]::before {
+  background-image: url("/assets/tiles/villa-nikkita-ordi.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.work-card .mockup-phone-body[data-project="Villa Nikkita"]::before {
+  background-image: url("/assets/tiles/villa-nikkita-mobile.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+
+/* Clair & Net */
+.work-card .mockup-body[data-project="Clair & Net"]::before {
+  background-image: url("/assets/tiles/clair-net-ordi.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.work-card .mockup-phone-body[data-project="Clair & Net"]::before {
+  background-image: url("/assets/tiles/clair-net-mobile.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+
+/* Modevia */
+.work-card .mockup-body[data-project="Modevia"]::before {
+  background-image: url("/assets/tiles/modevia-ordi.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.work-card .mockup-phone-body[data-project="Modevia"]::before {
+  background-image: url("/assets/tiles/modevia-mobile.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+
+/* Nathan Photo */
+.work-card .mockup-body[data-project="Nathan Photo"]::before {
+  background-image: url("/assets/tiles/nathan-photo-ordi.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.work-card .mockup-phone-body[data-project="Nathan Photo"]::before {
+  background-image: url("/assets/tiles/nathan-photo-mobile.jpg");
+  background-size: cover;
+  background-position: top center;
+}

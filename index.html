@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="/css/base.css">
 <link rel="stylesheet" href="/css/components.css">
 <link rel="stylesheet" href="/css/pages.css">
-<link rel="stylesheet" href="/css/v8.css">
+<link rel="stylesheet" href="/css/v8.css?v=8.4">
 <script>
   (function(){
     try {
@@ -453,45 +453,91 @@
   </div>
 </section>
 
-<!-- ============ AVANT / APRÈS ============ -->
+<!-- ============ AVANT / APRÈS (Clair & Net) ============ -->
 <section class="before-after">
   <div class="before-after-inner">
     <span class="eyebrow reveal">◆ Refonte, en vrai</span>
     <h2 class="reveal reveal-delay-1">Une refonte, ça <span class="accent">change tout</span>.</h2>
-    <p class="ba-lead reveal reveal-delay-2">Glissez la poignée pour voir la différence sur un vrai projet.</p>
+    <p class="ba-lead reveal reveal-delay-2">Glissez la poignée pour voir la transformation du site Clair &amp; Net.</p>
 
     <div class="ba-slider reveal" data-slider>
+
+      <!-- AVANT · site 2015 WordPress générique -->
       <div class="ba-image ba-before">
-        <div class="mockup mockup--fill">
-          <div class="mockup-frame">
-            <div class="mockup-topbar mockup-topbar--old"><span></span><span></span><span></span>
-              <span class="mockup-url">exemple.fr</span>
+        <div class="old-site">
+          <div class="old-header">
+            <div class="old-header-top">
+              <span class="old-tel">✆ Tel : 06.50.94.46.65</span>
+              <span class="old-lang">FR | EN</span>
             </div>
-            <div class="mockup-body mockup-body--old">
-              <span class="mockup-brand-old">Exemple SARL</span>
-              <span class="mockup-desc-old">Bienvenue sur notre site internet.</span>
-              <span class="mockup-tag-old">Menu · Services · Contact</span>
+            <div class="old-header-main">
+              <span class="old-logo">CLAIR &amp; NET SARL</span>
+              <nav class="old-nav">
+                <a>Accueil</a> ·
+                <a>Nos services</a> ·
+                <a>Tarifs</a> ·
+                <a>Photos</a> ·
+                <a>Contact</a>
+              </nav>
             </div>
+            <div class="old-banner">
+              <div class="old-slider-dots">◄ ● ● ● ●  ►</div>
+              <span class="old-banner-title">BIENVENUE SUR NOTRE SITE INTERNET</span>
+              <span class="old-banner-sub">Votre société de nettoyage à Bussy-Saint-Georges - Depuis 2015</span>
+            </div>
+          </div>
+
+          <div class="old-content">
+            <div class="old-col-main">
+              <h2 class="old-h2">Qui sommes-nous ?</h2>
+              <p class="old-p">Bienvenue sur le site internet de la société CLAIR &amp; NET SARL. Nous sommes une entreprise de nettoyage professionnel située à Bussy-Saint-Georges dans le département de la Seine-et-Marne (77).</p>
+              <p class="old-p">N'hésitez pas à nous contacter par téléphone ou par mail pour tous renseignements complémentaires. Un devis gratuit vous sera envoyé sous 24h à 48h ouvrées.</p>
+              <h2 class="old-h2">Nos prestations</h2>
+              <ul class="old-list">
+                <li>» Ménage à domicile</li>
+                <li>» Repassage de linge</li>
+                <li>» Nettoyage de vitres</li>
+                <li>» Nettoyage de bureaux</li>
+                <li>» Sortie de poubelles</li>
+              </ul>
+              <p class="old-p"><a class="old-link">» Cliquez ici pour voir toutes nos prestations</a></p>
+            </div>
+
+            <div class="old-col-side">
+              <div class="old-widget">
+                <div class="old-widget-title">CONTACTEZ-NOUS !</div>
+                <div class="old-widget-body">
+                  <b>CLAIR &amp; NET SARL</b><br>
+                  12 rue de la Paix<br>
+                  77600 Bussy-St-Georges<br><br>
+                  ✆ 06.50.94.46.65<br>
+                  ✉ contact@clairnet.fr
+                </div>
+              </div>
+              <div class="old-widget">
+                <div class="old-widget-title">HORAIRES</div>
+                <div class="old-widget-body">
+                  Lundi-Vendredi<br>
+                  8h00 - 18h00<br>
+                  Samedi sur RDV
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="old-footer">
+            © 2015 CLAIR &amp; NET SARL - Tous droits réservés | Site créé par WebMaster77
           </div>
         </div>
       </div>
+
+      <!-- APRÈS · vraie capture cnet77.fr -->
       <div class="ba-image ba-after">
-        <div class="mockup mockup--fill">
-          <div class="mockup-frame">
-            <div class="mockup-topbar">
-              <span></span><span></span><span></span>
-              <span class="mockup-url">exemple.fr</span>
-            </div>
-            <div class="mockup-body mockup-body--lg" data-project="Exemple">
-              <span class="mockup-brand">Exemple</span>
-              <span class="mockup-desc">Le meilleur service, pensé pour vos clients.</span>
-              <span class="mockup-cta">Prendre rendez-vous</span>
-            </div>
-          </div>
-        </div>
+        <img src="/assets/tiles/clair-net-ordi.jpg" alt="Site actuel Clair &amp; Net refait par Vera Studio" class="ba-shot">
       </div>
-      <!-- Labels HORS des zones clippées pour rester toujours visibles -->
-      <span class="ba-label ba-label--before">Avant · 2019</span>
+
+      <!-- Labels toujours visibles -->
+      <span class="ba-label ba-label--before">Avant · 2015</span>
       <span class="ba-label ba-label--after">Après · Vera Studio</span>
       <div class="ba-handle" aria-label="Glissez pour comparer" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
         <span class="ba-handle-line"></span>
@@ -501,7 +547,7 @@
       </div>
     </div>
 
-    <p class="ba-note reveal">Exemple présenté à titre indicatif. On applique la même transformation à votre site actuel.</p>
+    <p class="ba-note reveal">Refonte complète pour Clair &amp; Net · <a href="https://cnet77.fr" target="_blank" rel="noopener">cnet77.fr</a></p>
   </div>
 </section>
 
@@ -752,8 +798,8 @@
   </div>
 </footer>
 
-<script src="/js/main.js" defer></script>
-<script src="/js/v8.js" defer></script>
-<script src="/js/contact.js" defer></script>
+<script src="/js/main.js?v=8.4" defer></script>
+<script src="/js/v8.js?v=8.4" defer></script>
+<script src="/js/contact.js?v=8.4" defer></script>
 </body>
 </html>
