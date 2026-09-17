@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Portfolio · Vera Studio · Sites, applications, photo et vidéo</title>
-<meta name="description" content="Nos réalisations : sites internet, applications métier, photo et vidéo pour artisans, hébergeurs et entreprises. Vraies réalisations client et aperçus de prospection, clairement distingués.">
-<meta name="theme-color" content="#0F1520">
+<title>Le travail · Vera Studio · Nos réalisations en ligne</title>
+<meta name="description" content="Toutes nos réalisations : sites internet, applications métier. Des projets en ligne, pas des maquettes. Cliquez sur un domaine, tout fonctionne.">
+<meta name="theme-color" content="#F7F5EE">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Portfolio · Vera Studio">
-<meta property="og:description" content="Nos réalisations client et aperçus de prospection, filtrés par service.">
+<meta property="og:title" content="Le travail · Vera Studio">
+<meta property="og:description" content="Toutes nos réalisations, en ligne aujourd'hui.">
 <meta property="og:url" content="https://trame-site-fawn.vercel.app/portfolio.html">
 <meta property="og:image" content="https://trame-site-fawn.vercel.app/assets/og/og-portfolio.jpg">
 
@@ -24,342 +24,351 @@
 <link rel="stylesheet" href="/css/base.css">
 <link rel="stylesheet" href="/css/components.css">
 <link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="/css/v8.css">
 <script>
   (function(){
     try {
       var t = localStorage.getItem('vera-theme');
-      if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
     } catch(e) {}
   })();
 </script>
 </head>
-<body>
+<body class="portfolio-overlay">
 
-<header class="header">
-  <a href="/" class="brand-logo">Vera Studio<span class="dot">.</span></a>
-  <nav class="nav" aria-label="Principale">
-    <a href="/">Accueil</a>
-    <div class="nav-item nav-item--dropdown">
-      <button type="button" class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Services
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="nav-dropdown">
-        <a href="/services/sites-internet.html">Sites internet</a>
-        <a href="/services/applications.html">Applications métier</a>
-        <a href="/services/photo-video-drone.html">Photo, vidéo et drone</a>
-        <a href="/services/chef-de-projet.html">Chef de projet digital</a>
-      </div>
-    </div>
-    <div class="nav-item nav-item--dropdown">
-      <button type="button" class="nav-link nav-toggle active" aria-haspopup="true" aria-expanded="false">Portfolio
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="nav-dropdown">
-        <a href="/portfolio.html">Tous les projets</a>
-        <a href="/portfolio.html?filter=sites">Sites internet</a>
-        <a href="/portfolio.html?filter=photo">Photo</a>
-        <a href="/portfolio.html?filter=video">Vidéo et drone</a>
-        <a href="/portfolio.html?filter=applications">Applications</a>
-      </div>
-    </div>
-    <a href="/formules.html">Formules</a>
-    <a href="/contact.html">Contact</a>
-  </nav>
+<!-- ============ HEADER MINIMALISTE (juste retour + logo) ============ -->
+<header class="header header--minimal" id="site-header">
+  <a href="/" class="portfolio-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span>Retour à l'accueil</span>
+  </a>
+  <a href="/" class="brand-logo brand-logo--center">Vera Studio<span class="dot">.</span></a>
   <div class="header-cta">
-        <button type="button" class="theme-toggle" aria-label="Basculer clair / sombre" title="Basculer clair / sombre">
+    <button type="button" class="theme-toggle" aria-label="Basculer clair / sombre" title="Basculer clair / sombre">
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
-    <a href="/contact.html" class="btn btn-primary btn-icon">Prendre contact
-      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-    </a>
   </div>
-  <button class="burger" aria-label="Ouvrir le menu"><span></span><span></span></button>
 </header>
 
-<div class="mobile-nav">
-  <ul>
-    <li><a href="/">Accueil</a></li>
-    <li class="mobile-nav-group">
-      <button type="button" class="mobile-nav-toggle" aria-expanded="false">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
-      <ul class="mobile-nav-sub">
-        <li><a href="/services/sites-internet.html">Sites internet</a></li>
-        <li><a href="/services/applications.html">Applications métier</a></li>
-        <li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li>
-        <li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li>
-      </ul>
-    </li>
-    <li class="mobile-nav-group">
-      <button type="button" class="mobile-nav-toggle" aria-expanded="true">Portfolio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
-      <ul class="mobile-nav-sub">
-        <li><a href="/portfolio.html">Tous les projets</a></li>
-        <li><a href="/portfolio.html?filter=sites">Sites internet</a></li>
-        <li><a href="/portfolio.html?filter=photo">Photo</a></li>
-        <li><a href="/portfolio.html?filter=video">Vidéo et drone</a></li>
-        <li><a href="/portfolio.html?filter=applications">Applications</a></li>
-      </ul>
-    </li>
-    <li><a href="/formules.html">Formules</a></li>
-    <li><a href="/contact.html">Contact</a></li>
-    <li><a href="/contact.html" class="btn btn-primary">Prendre contact →</a></li>
-  </ul>
-</div>
-
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <span class="eyebrow reveal">◆ Portfolio</span>
-    <h1 class="reveal reveal-delay-1">Ce qu'on a <span class="accent">fait</span>.<br>Et ce qu'on peut faire pour vous.</h1>
-    <p class="page-hero-desc reveal reveal-delay-2">Vraies réalisations livrées à des clients, aperçus créés en prospection, et projets internes du duo. Chaque projet indique clairement de quoi il s'agit.</p>
+<!-- ============ HERO PORTFOLIO ============ -->
+<section class="portfolio-hero">
+  <div class="portfolio-hero-inner">
+    <span class="eyebrow reveal">◆ Le travail</span>
+    <h1 class="reveal reveal-delay-1">Des sites entiers,<br><span class="accent">en ligne aujourd'hui.</span></h1>
+    <p class="reveal reveal-delay-2">Cliquez sur un domaine, tout fonctionne. Ces réalisations sont soit des projets clients soit des études de notre duo, clairement identifiées.</p>
   </div>
 </section>
 
-<section class="portfolio-filters">
-  <div class="portfolio-filters-inner">
-    <div class="filters-group" role="tablist" aria-label="Filtrer par service">
-      <button type="button" class="filter-btn is-active" data-filter="all">Tous les projets</button>
-      <button type="button" class="filter-btn" data-filter="sites">Sites internet</button>
-      <button type="button" class="filter-btn" data-filter="photo">Photo</button>
-      <button type="button" class="filter-btn" data-filter="video">Vidéo et drone</button>
-      <button type="button" class="filter-btn" data-filter="applications">Applications</button>
+<!-- ============ RÉALISATIONS ============ -->
+<section class="works works--portfolio">
+
+  <!-- Villa Nikkita -->
+  <article class="work-card reveal" data-category="client sites">
+    <div class="work-mockup">
+      <div class="mockup mockup--lg">
+        <div class="mockup-frame">
+          <div class="mockup-topbar"><span></span><span></span><span></span><span class="mockup-url">villa-nikkita.fr</span></div>
+          <div class="mockup-body mockup-body--lg" data-project="Villa Nikkita">
+            <span class="mockup-brand">Villa Nikkita</span>
+            <span class="mockup-desc">Location saisonnière · Gironde</span>
+            <span class="mockup-cta">Réserver</span>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-phone">
+        <div class="mockup-phone-frame">
+          <div class="mockup-phone-notch"></div>
+          <div class="mockup-phone-body"><span class="mockup-brand">Villa Nikkita</span></div>
+        </div>
+      </div>
+      <a class="work-domain" href="/projets/villa-nikkita.html">villa-nikkita.fr <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <span class="work-badge">Location saisonnière</span>
     </div>
-    <div class="filters-count">
-      <span id="filter-count">9</span> projets
+    <div class="work-meta">
+      <span class="work-kind">◆ Réalisation client</span>
+      <h3>Villa Nikkita</h3>
+      <p>Une maison d'exception présentée à sa juste hauteur, avec réservation et calendrier en ligne. Refonte complète du parcours de conviction pour transformer les visites en séjours confirmés.</p>
+      <a href="/projets/villa-nikkita.html" class="work-link">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
     </div>
-  </div>
+  </article>
+
+  <!-- Clair & Net -->
+  <article class="work-card work-card--reverse reveal" data-category="client sites">
+    <div class="work-mockup">
+      <div class="mockup mockup--lg">
+        <div class="mockup-frame">
+          <div class="mockup-topbar"><span></span><span></span><span></span><span class="mockup-url">cnet77.fr</span></div>
+          <div class="mockup-body mockup-body--lg" data-project="Clair &amp; Net">
+            <span class="mockup-brand">Clair &amp; Net</span>
+            <span class="mockup-desc">Entreprise de nettoyage</span>
+            <span class="mockup-cta">Devis en ligne</span>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-phone">
+        <div class="mockup-phone-frame">
+          <div class="mockup-phone-notch"></div>
+          <div class="mockup-phone-body"><span class="mockup-brand">Clair &amp; Net</span></div>
+        </div>
+      </div>
+      <a class="work-domain" href="/projets/clair-net.html">cnet77.fr <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <span class="work-badge">Nettoyage</span>
+    </div>
+    <div class="work-meta">
+      <span class="work-kind">◆ Réalisation client</span>
+      <h3>Clair &amp; Net</h3>
+      <p>Un site qui rassure et qui convertit, pensé pour transformer les visites en devis remplis. Formulaires optimisés, preuves sociales, contact rapide.</p>
+      <a href="/projets/clair-net.html" class="work-link">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </article>
+
+  <!-- Modevia -->
+  <article class="work-card reveal" data-category="duo apps">
+    <div class="work-mockup">
+      <div class="mockup mockup--lg">
+        <div class="mockup-frame">
+          <div class="mockup-topbar"><span></span><span></span><span></span><span class="mockup-url">modevia.fr</span></div>
+          <div class="mockup-body mockup-body--lg" data-project="Modevia">
+            <span class="mockup-brand">Modevia</span>
+            <span class="mockup-desc">E-commerce de mode</span>
+            <span class="mockup-cta">Boutique</span>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-phone">
+        <div class="mockup-phone-frame">
+          <div class="mockup-phone-notch"></div>
+          <div class="mockup-phone-body"><span class="mockup-brand">Modevia</span></div>
+        </div>
+      </div>
+      <a class="work-domain" href="/projets/modevia.html">modevia.fr <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <span class="work-badge">E-commerce</span>
+    </div>
+    <div class="work-meta">
+      <span class="work-kind">◆ Projet du duo</span>
+      <h3>Modevia</h3>
+      <p>Boutique complète avec catalogue, paiement, gestion des stocks et espace client. Un projet mené par Manon, aujourd'hui en production.</p>
+      <a href="/projets/modevia.html" class="work-link">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </article>
+
+  <!-- Nathan Photo -->
+  <article class="work-card work-card--reverse reveal" data-category="duo sites">
+    <div class="work-mockup">
+      <div class="mockup mockup--lg">
+        <div class="mockup-frame">
+          <div class="mockup-topbar"><span></span><span></span><span></span><span class="mockup-url">nathanfritsch.com</span></div>
+          <div class="mockup-body mockup-body--lg" data-project="Nathan Photo">
+            <span class="mockup-brand">Nathan Photo</span>
+            <span class="mockup-desc">Portfolio photographe</span>
+            <span class="mockup-cta">Voir les séries</span>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-phone">
+        <div class="mockup-phone-frame">
+          <div class="mockup-phone-notch"></div>
+          <div class="mockup-phone-body"><span class="mockup-brand">Nathan Photo</span></div>
+        </div>
+      </div>
+      <a class="work-domain" href="/projets/nathan-photo.html">nathanfritsch.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <span class="work-badge">Photographe</span>
+    </div>
+    <div class="work-meta">
+      <span class="work-kind">◆ Projet du duo</span>
+      <h3>Nathan Photo</h3>
+      <p>Portfolio silencieux, où la photo raconte. Chargement instantané, mise en avant des séries. Un site pensé pour être une extension du travail, pas une brochure.</p>
+      <a href="/projets/nathan-photo.html" class="work-link">Voir le projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </article>
+
+  <!-- Franck Labasse -->
+  <article class="work-card reveal" data-category="prospect sites">
+    <div class="work-mockup">
+      <div class="mockup mockup--lg">
+        <div class="mockup-frame">
+          <div class="mockup-topbar"><span></span><span></span><span></span><span class="mockup-url">franck-labasse.fr</span></div>
+          <div class="mockup-body mockup-body--lg" data-project="Franck Labasse">
+            <span class="mockup-brand">Franck Labasse</span>
+            <span class="mockup-desc">Artisan pyrograveur</span>
+            <span class="mockup-cta">Découvrir l'atelier</span>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-phone">
+        <div class="mockup-phone-frame">
+          <div class="mockup-phone-notch"></div>
+          <div class="mockup-phone-body"><span class="mockup-brand">Franck Labasse</span></div>
+        </div>
+      </div>
+      <a class="work-domain" href="/projets/franck-labasse.html">franck-labasse.fr <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <span class="work-badge">Artisanat</span>
+    </div>
+    <div class="work-meta">
+      <span class="work-kind">◇ Aperçu de prospection</span>
+      <h3>Franck Labasse</h3>
+      <p>Direction proposée pour un artisan pyrograveur. Bientôt disponible.</p>
+      <a href="/projets/franck-labasse.html" class="work-link">Voir l'aperçu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </article>
+
+  <!-- Comme une fleur -->
+  <article class="work-card work-card--reverse reveal" data-category="prospect sites">
+    <div class="work-mockup">
+      <div class="mockup mockup--lg">
+        <div class="mockup-frame">
+          <div class="mockup-topbar"><span></span><span></span><span></span><span class="mockup-url">comme-une-fleur.fr</span></div>
+          <div class="mockup-body mockup-body--lg" data-project="Comme une fleur">
+            <span class="mockup-brand">Comme une fleur</span>
+            <span class="mockup-desc">Fleuriste local</span>
+            <span class="mockup-cta">Commander</span>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-phone">
+        <div class="mockup-phone-frame">
+          <div class="mockup-phone-notch"></div>
+          <div class="mockup-phone-body"><span class="mockup-brand">Comme une fleur</span></div>
+        </div>
+      </div>
+      <a class="work-domain" href="/projets/comme-une-fleur.html">comme-une-fleur.fr <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <span class="work-badge">Fleuriste</span>
+    </div>
+    <div class="work-meta">
+      <span class="work-kind">◇ Aperçu de prospection</span>
+      <h3>Comme une fleur</h3>
+      <p>Direction proposée pour un fleuriste local. Bientôt disponible.</p>
+      <a href="/projets/comme-une-fleur.html" class="work-link">Voir l'aperçu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </article>
+
+  <!-- Fromagerie Croute -->
+  <article class="work-card reveal" data-category="prospect sites">
+    <div class="work-mockup">
+      <div class="mockup mockup--lg">
+        <div class="mockup-frame">
+          <div class="mockup-topbar"><span></span><span></span><span></span><span class="mockup-url">fromagerie-croute.fr</span></div>
+          <div class="mockup-body mockup-body--lg" data-project="Fromagerie Croûte">
+            <span class="mockup-brand">Fromagerie Croûte</span>
+            <span class="mockup-desc">Fromagerie artisanale</span>
+            <span class="mockup-cta">Découvrir la carte</span>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-phone">
+        <div class="mockup-phone-frame">
+          <div class="mockup-phone-notch"></div>
+          <div class="mockup-phone-body"><span class="mockup-brand">Fromagerie Croûte</span></div>
+        </div>
+      </div>
+      <a class="work-domain" href="/projets/fromagerie-croute.html">fromagerie-croute.fr <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <span class="work-badge">Fromagerie</span>
+    </div>
+    <div class="work-meta">
+      <span class="work-kind">◇ Aperçu de prospection</span>
+      <h3>Fromagerie Croûte</h3>
+      <p>Direction proposée pour une fromagerie artisanale. Bientôt disponible.</p>
+      <a href="/projets/fromagerie-croute.html" class="work-link">Voir l'aperçu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </article>
+
+  <!-- La Calèche -->
+  <article class="work-card work-card--reverse reveal" data-category="prospect sites">
+    <div class="work-mockup">
+      <div class="mockup mockup--lg">
+        <div class="mockup-frame">
+          <div class="mockup-topbar"><span></span><span></span><span></span><span class="mockup-url">la-caleche.fr</span></div>
+          <div class="mockup-body mockup-body--lg" data-project="La Calèche">
+            <span class="mockup-brand">La Calèche</span>
+            <span class="mockup-desc">Restaurant traditionnel</span>
+            <span class="mockup-cta">Réserver une table</span>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-phone">
+        <div class="mockup-phone-frame">
+          <div class="mockup-phone-notch"></div>
+          <div class="mockup-phone-body"><span class="mockup-brand">La Calèche</span></div>
+        </div>
+      </div>
+      <a class="work-domain" href="/projets/la-caleche.html">la-caleche.fr <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <span class="work-badge">Restaurant</span>
+    </div>
+    <div class="work-meta">
+      <span class="work-kind">◇ Aperçu de prospection</span>
+      <h3>La Calèche</h3>
+      <p>Direction proposée pour un restaurant traditionnel. Bientôt disponible.</p>
+      <a href="/projets/la-caleche.html" class="work-link">Voir l'aperçu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </article>
+
+  <!-- Villa Zenith -->
+  <article class="work-card reveal" data-category="prospect sites">
+    <div class="work-mockup">
+      <div class="mockup mockup--lg">
+        <div class="mockup-frame">
+          <div class="mockup-topbar"><span></span><span></span><span></span><span class="mockup-url">villa-zenith.fr</span></div>
+          <div class="mockup-body mockup-body--lg" data-project="Villa Zenith">
+            <span class="mockup-brand">Villa Zenith</span>
+            <span class="mockup-desc">Location prestige</span>
+            <span class="mockup-cta">Découvrir</span>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-phone">
+        <div class="mockup-phone-frame">
+          <div class="mockup-phone-notch"></div>
+          <div class="mockup-phone-body"><span class="mockup-brand">Villa Zenith</span></div>
+        </div>
+      </div>
+      <a class="work-domain" href="/projets/villa-zenith.html">villa-zenith.fr <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <span class="work-badge">Location prestige</span>
+    </div>
+    <div class="work-meta">
+      <span class="work-kind">◇ Aperçu de prospection</span>
+      <h3>Villa Zenith</h3>
+      <p>Direction proposée pour une location de prestige. Bientôt disponible.</p>
+      <a href="/projets/villa-zenith.html" class="work-link">Voir l'aperçu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+  </article>
+
 </section>
 
-<section class="portfolio-grid-section">
-  <div class="portfolio-grid" id="portfolio-grid">
-
-    <!-- ============ RÉALISATIONS CLIENT (5 nouveaux + Villa Zénith, etc.) ============ -->
-
-    <a href="/projets/villa-nikkita.html" class="project-window project-card" data-tags="sites photo">
-      <div class="project-badge project-badge--client">◆ Réalisation client</div>
-      <div class="project-chrome">
-        <div class="project-chrome-dots"><span></span><span></span><span></span></div>
-        <div class="project-chrome-url">villa-nikkita.com</div>
-        <div class="project-chrome-tag">Livré</div>
-      </div>
-      <div class="project-screenshot" style="aspect-ratio: 16/10;">
-        <div class="project-placeholder">
-          <span>Villa Nikkita</span>
-          <small>Bientôt disponible</small>
-        </div>
-      </div>
-      <div class="project-caption">
-        <div class="project-caption-head">
-          <h3>Villa Nikkita.</h3>
-          <span class="project-caption-tag">Voir →</span>
-        </div>
-        <p>Hébergement à Lacanau Océan. Site vitrine multi-pages livré et en ligne.</p>
-      </div>
-    </a>
-
-    <a href="/projets/clair-net.html" class="project-window project-card" data-tags="sites">
-      <div class="project-badge project-badge--client">◆ Réalisation client</div>
-      <div class="project-chrome">
-        <div class="project-chrome-dots"><span></span><span></span><span></span></div>
-        <div class="project-chrome-url">cnet77.fr</div>
-        <div class="project-chrome-tag">En ligne</div>
-      </div>
-      <div class="project-screenshot" style="aspect-ratio: 16/10;">
-        <div class="project-placeholder">
-          <span>Clair &amp; Net</span>
-          <small>Bientôt disponible</small>
-        </div>
-      </div>
-      <div class="project-caption">
-        <div class="project-caption-head">
-          <h3>Clair &amp; Net.</h3>
-          <span class="project-caption-tag">Voir →</span>
-        </div>
-        <p>Entreprise de nettoyage professionnel en Seine-et-Marne. Site vitrine.</p>
-      </div>
-    </a>
-
-    <!-- ============ PROJETS DUO (Nathan Photo + Modevia) ============ -->
-
-    <a href="/projets/nathan-photo.html" class="project-window project-card" data-tags="sites photo">
-      <div class="project-badge project-badge--duo">◇ Projet du duo</div>
-      <div class="project-chrome">
-        <div class="project-chrome-dots"><span></span><span></span><span></span></div>
-        <div class="project-chrome-url">nathanfritsch.com</div>
-        <div class="project-chrome-tag">En ligne</div>
-      </div>
-      <div class="project-screenshot" style="aspect-ratio: 16/10;">
-        <img src="/assets/screenshots/nathanfritsch.jpg" alt="Nathan Fritsch, site photographe" loading="lazy">
-      </div>
-      <div class="project-caption">
-        <div class="project-caption-head">
-          <h3>Nathan Fritsch, Photo.</h3>
-          <span class="project-caption-tag">Voir →</span>
-        </div>
-        <p>Portfolio du photographe du duo. Direction éditoriale, ambiance galerie.</p>
-      </div>
-    </a>
-
-    <a href="/projets/modevia.html" class="project-window project-card" data-tags="applications sites">
-      <div class="project-badge project-badge--duo">◇ Projet du duo</div>
-      <div class="project-chrome">
-        <div class="project-chrome-dots"><span></span><span></span><span></span></div>
-        <div class="project-chrome-url">modevia.fr</div>
-        <div class="project-chrome-tag">En production</div>
-      </div>
-      <div class="project-screenshot" style="aspect-ratio: 16/10;">
-        <img src="/assets/screenshots/modevia.jpg" alt="Modevia, plateforme SaaS" loading="lazy">
-      </div>
-      <div class="project-caption">
-        <div class="project-caption-head">
-          <h3>Modevia.</h3>
-          <span class="project-caption-tag">Voir →</span>
-        </div>
-        <p>Plateforme SaaS complète : comptes, paiement, automatisations. En production avec vrais clients.</p>
-      </div>
-    </a>
-
-    <!-- ============ APERÇUS DE PROSPECTION (5) ============ -->
-
-    <a href="/projets/villa-zenith.html" class="project-window project-card" data-tags="sites photo">
-      <div class="project-badge project-badge--apercu">◇ Aperçu de prospection</div>
-      <div class="project-chrome">
-        <div class="project-chrome-dots"><span></span><span></span><span></span></div>
-        <div class="project-chrome-url">apercu-lacanau-zenith.vercel.app</div>
-        <div class="project-chrome-tag">Aperçu</div>
-      </div>
-      <div class="project-screenshot" style="aspect-ratio: 16/10;">
-        <img src="/assets/screenshots/villa-zenith.jpg" alt="Villa Zénith Hostel, aperçu" loading="lazy">
-      </div>
-      <div class="project-caption">
-        <div class="project-caption-head">
-          <h3>Villa Zénith Hostel.</h3>
-          <span class="project-caption-tag">Voir →</span>
-        </div>
-        <p>Aperçu 7 pages pour une auberge de charme à Lacanau-Océan.</p>
-      </div>
-    </a>
-
-    <a href="/projets/comme-une-fleur.html" class="project-window project-card" data-tags="sites">
-      <div class="project-badge project-badge--apercu">◇ Aperçu de prospection</div>
-      <div class="project-chrome">
-        <div class="project-chrome-dots"><span></span><span></span><span></span></div>
-        <div class="project-chrome-url">apercu-comme-une-fleur.vercel.app</div>
-        <div class="project-chrome-tag">Aperçu</div>
-      </div>
-      <div class="project-screenshot" style="aspect-ratio: 16/10;">
-        <img src="/assets/screenshots/comme-une-fleur.jpg" alt="Comme une Fleur, aperçu" loading="lazy">
-      </div>
-      <div class="project-caption">
-        <div class="project-caption-head">
-          <h3>Comme une Fleur.</h3>
-          <span class="project-caption-tag">Voir →</span>
-        </div>
-        <p>Aperçu vitrine pour une fleuriste à Mérignac. Animation scroll de la devanture.</p>
-      </div>
-    </a>
-
-    <a href="/projets/fromagerie-croute.html" class="project-window project-card" data-tags="sites">
-      <div class="project-badge project-badge--apercu">◇ Aperçu de prospection</div>
-      <div class="project-chrome">
-        <div class="project-chrome-dots"><span></span><span></span><span></span></div>
-        <div class="project-chrome-url">apercu-fromagerie-croute.vercel.app</div>
-        <div class="project-chrome-tag">Aperçu</div>
-      </div>
-      <div class="project-screenshot" style="aspect-ratio: 16/10;">
-        <img src="/assets/screenshots/fromagerie-croute.jpg" alt="Fromagerie Croûte, aperçu" loading="lazy">
-      </div>
-      <div class="project-caption">
-        <div class="project-caption-head">
-          <h3>Croûte, Fromagerie.</h3>
-          <span class="project-caption-tag">Voir →</span>
-        </div>
-        <p>Aperçu one-page pour une nouvelle fromagerie à Lacanau-Océan.</p>
-      </div>
-    </a>
-
-    <a href="/projets/la-caleche.html" class="project-window project-card" data-tags="sites">
-      <div class="project-badge project-badge--apercu">◇ Aperçu de prospection</div>
-      <div class="project-chrome">
-        <div class="project-chrome-dots"><span></span><span></span><span></span></div>
-        <div class="project-chrome-url">apercu-gites-medoc.vercel.app</div>
-        <div class="project-chrome-tag">Aperçu</div>
-      </div>
-      <div class="project-screenshot" style="aspect-ratio: 16/10;">
-        <img src="/assets/screenshots/la-caleche.jpg" alt="La Calèche, aperçu" loading="lazy">
-      </div>
-      <div class="project-caption">
-        <div class="project-caption-head">
-          <h3>La Calèche, gîtes du Médoc.</h3>
-          <span class="project-caption-tag">Voir →</span>
-        </div>
-        <p>Aperçu 5 pages pour un domaine familial de 8 gîtes de charme.</p>
-      </div>
-    </a>
-
-    <a href="/projets/franck-labasse.html" class="project-window project-card" data-tags="sites">
-      <div class="project-badge project-badge--apercu">◇ Aperçu de prospection</div>
-      <div class="project-chrome">
-        <div class="project-chrome-dots"><span></span><span></span><span></span></div>
-        <div class="project-chrome-url">apercu-franck-labasse.vercel.app</div>
-        <div class="project-chrome-tag">Aperçu</div>
-      </div>
-      <div class="project-screenshot" style="aspect-ratio: 16/10;">
-        <img src="/assets/screenshots/franck-labasse.jpg" alt="Franck Labasse Pâtisserie, aperçu" loading="lazy">
-      </div>
-      <div class="project-caption">
-        <div class="project-caption-head">
-          <h3>Franck Labasse, Pâtisserie.</h3>
-          <span class="project-caption-tag">Voir →</span>
-        </div>
-        <p>Aperçu 4 pages pour un chef pâtissier de Pessac au parcours prestigieux.</p>
-      </div>
-    </a>
-
-  </div>
-
-  <div class="portfolio-empty" id="portfolio-empty" hidden>
-    <p>Rien à afficher dans cette catégorie pour l'instant.</p>
-    <p class="portfolio-empty-hint">Notre portfolio évolue au fil des projets. Revenez bientôt.</p>
-  </div>
-</section>
-
-<section class="cta-final">
-  <div class="cta-final-inner">
-    <span class="eyebrow reveal">◆ Un projet en tête ?</span>
-    <h2 class="reveal reveal-delay-1">Parlons du <span class="accent">vôtre</span>.</h2>
-    <p class="lead reveal reveal-delay-2">On code un aperçu de votre site avant même que vous ayez à sortir la carte. Dites-nous ce que vous cherchez, on revient dans la journée avec un premier retour.</p>
-    <div class="cta-ctas reveal reveal-delay-3">
-      <a href="/contact.html" class="btn btn-primary">Nous écrire
+<!-- ============ CTA FINAL ============ -->
+<section class="portfolio-cta">
+  <div class="portfolio-cta-inner">
+    <h2 class="reveal">Un projet en tête ?</h2>
+    <p class="reveal reveal-delay-1">On vous envoie un aperçu appliqué à votre entreprise, sous 48 heures, sans carte bancaire.</p>
+    <div class="reveal reveal-delay-2">
+      <a href="/#contact" class="btn btn-primary btn-lg">Recevoir mon aperçu
         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
-      <a href="/formules.html" class="btn btn-ghost">Voir les formules</a>
     </div>
   </div>
 </section>
 
+<!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
         <h3>Vera Studio<span class="dot">.</span></h3>
-        <p>Un duo qui code à la main des sites internet pour artisans et petites entreprises. Photo et vidéo en option.</p>
+        <p>Un duo indépendant. Sites internet, applications métier et pilotage de projet, en Nouvelle-Aquitaine.</p>
       </div>
-      <div class="footer-col"><h4>Services</h4><ul><li><a href="/services/sites-internet.html">Sites internet</a></li><li><a href="/services/applications.html">Applications métier</a></li><li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li><li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li></ul></div>
-      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Portfolio</a></li><li><a href="/formules.html">Formules</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="/services/sites-internet.html">Sites internet</a></li><li><a href="/services/applications.html">Applications métier</a></li><li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li></ul></div>
+      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Le travail</a></li><li><a href="/formules.html">L'offre</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
       <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@verastudio.fr">contact@verastudio.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li><li>Nouvelle-Aquitaine</li></ul></div>
     </div>
     <div class="footer-bottom">
-      <span>Vera Studio · Sites, applications, photo et vidéo.</span>
+      <span>Vera Studio · Duo indépendant</span>
       <span>© <span data-year>2026</span> · <a href="/mentions-legales.html">Mentions légales</a></span>
     </div>
   </div>
 </footer>
 
-<a href="/contact.html" class="float-cta" aria-label="Nous contacter">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1 0 2 1 2 2v12c0 1-1 2-2 2H4c-1 0-2-1-2-2V6c0-1 1-2 2-2z"/><path d="M2 6l10 7 10-7"/></svg>
-</a>
-
 <script src="/js/main.js" defer></script>
-<script src="/js/portfolio.js" defer></script>
+<script src="/js/v8.js" defer></script>
 </body>
 </html>

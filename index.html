@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Vera Studio · Duo créatif en Nouvelle-Aquitaine · Sites, applications, photo et vidéo</title>
-<meta name="description" content="Duo créatif basé en Nouvelle-Aquitaine. Sites internet codés à la main, applications métier, photo et vidéo. Vous parlez toujours aux deux personnes qui font le travail.">
-<meta name="theme-color" content="#0F1520">
+<title>Vera Studio · Duo créatif · Sites, applications et pilotage sur mesure</title>
+<meta name="description" content="Duo créatif indépendant. Sites internet, applications métier, pilotage de projet. Direction, réalisation et mise en ligne en trois semaines. Aucune carte bancaire avant de valider votre aperçu.">
+<meta name="theme-color" content="#F7F5EE">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Vera Studio">
-<meta property="og:title" content="Vera Studio · Duo créatif en Nouvelle-Aquitaine">
-<meta property="og:description" content="Sites internet codés à la main, applications métier, photo et vidéo. Un duo, pas une agence.">
+<meta property="og:title" content="Vera Studio · Duo créatif">
+<meta property="og:description" content="Sites, applications et pilotage. Aperçu offert avant paiement. Duo indépendant, peu de projets en parallèle.">
 <meta property="og:url" content="https://trame-site-fawn.vercel.app/">
 <meta property="og:image" content="https://trame-site-fawn.vercel.app/assets/og/og-home.jpg">
 <meta property="og:locale" content="fr_FR">
@@ -27,54 +27,42 @@
 <link rel="stylesheet" href="/css/base.css">
 <link rel="stylesheet" href="/css/components.css">
 <link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="/css/v8.css">
 <script>
   (function(){
     try {
       var t = localStorage.getItem('vera-theme');
-      if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
     } catch(e) {}
   })();
 </script>
 </head>
 <body>
 
-<header class="header">
-  <a href="/" class="brand-logo" aria-label="Vera Studio, accueil">Vera Studio<span class="dot">.</span></a>
+<!-- ============ PRELOADER (2s) ============ -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader-inner">
+    <span class="preloader-brand">Vera Studio<span class="preloader-dot">.</span></span>
+    <span class="preloader-tag">Duo créatif indépendant</span>
+  </div>
+</div>
+
+<!-- ============ HEADER (smart-hide) ============ -->
+<header class="header header--v8" id="site-header">
+  <a href="/" class="brand-logo">Vera Studio<span class="dot">.</span></a>
   <nav class="nav" aria-label="Principale">
-    <a href="/" class="active">Accueil</a>
-    <div class="nav-item nav-item--dropdown">
-      <button type="button" class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Services
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="nav-dropdown">
-        <a href="/services/sites-internet.html">Sites internet</a>
-        <a href="/services/applications.html">Applications métier</a>
-        <a href="/services/photo-video-drone.html">Photo, vidéo et drone</a>
-        <a href="/services/chef-de-projet.html">Chef de projet digital</a>
-      </div>
-    </div>
-    <div class="nav-item nav-item--dropdown">
-      <button type="button" class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Portfolio
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="nav-dropdown">
-        <a href="/portfolio.html">Tous les projets</a>
-        <a href="/portfolio.html?filter=sites">Sites internet</a>
-        <a href="/portfolio.html?filter=photo">Photo</a>
-        <a href="/portfolio.html?filter=video">Vidéo et drone</a>
-        <a href="/portfolio.html?filter=applications">Applications</a>
-      </div>
-    </div>
-    <a href="/formules.html">Formules</a>
-    <a href="/contact.html">Contact</a>
+    <a href="/portfolio.html">Le travail</a>
+    <a href="#offre">L'offre</a>
+    <a href="#comment">Notre méthode</a>
+    <a href="#faq">Questions</a>
   </nav>
   <div class="header-cta">
-        <button type="button" class="theme-toggle" aria-label="Basculer clair / sombre" title="Basculer clair / sombre">
+    <button type="button" class="theme-toggle" aria-label="Basculer clair / sombre" title="Basculer clair / sombre">
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
-    <a href="/contact.html" class="btn btn-primary btn-icon">Prendre contact
+    <a href="#contact" class="btn btn-primary btn-icon">Recevoir un aperçu
       <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
     </a>
   </div>
@@ -83,296 +71,658 @@
 
 <div class="mobile-nav">
   <ul>
-    <li><a href="/">Accueil</a></li>
-    <li class="mobile-nav-group">
-      <button type="button" class="mobile-nav-toggle" aria-expanded="false">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
-      <ul class="mobile-nav-sub">
-        <li><a href="/services/sites-internet.html">Sites internet</a></li>
-        <li><a href="/services/applications.html">Applications métier</a></li>
-        <li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li>
-        <li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li>
-      </ul>
-    </li>
-    <li class="mobile-nav-group">
-      <button type="button" class="mobile-nav-toggle" aria-expanded="false">Portfolio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
-      <ul class="mobile-nav-sub">
-        <li><a href="/portfolio.html">Tous les projets</a></li>
-        <li><a href="/portfolio.html?filter=sites">Sites internet</a></li>
-        <li><a href="/portfolio.html?filter=photo">Photo</a></li>
-        <li><a href="/portfolio.html?filter=video">Vidéo et drone</a></li>
-        <li><a href="/portfolio.html?filter=applications">Applications</a></li>
-      </ul>
-    </li>
-    <li><a href="/formules.html">Formules</a></li>
-    <li><a href="/contact.html">Contact</a></li>
-    <li><a href="/contact.html" class="btn btn-primary">Prendre contact →</a></li>
+    <li><a href="/portfolio.html">Le travail</a></li>
+    <li><a href="#offre">L'offre</a></li>
+    <li><a href="#comment">Notre méthode</a></li>
+    <li><a href="#faq">Questions</a></li>
+    <li><a href="#contact" class="btn btn-primary">Recevoir un aperçu →</a></li>
   </ul>
 </div>
 
 <!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-noise" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <span class="hero-eyebrow eyebrow reveal"><span class="dot-live"></span>Duo créatif · Nouvelle-Aquitaine</span>
-    <h1 class="hero-h1--compact reveal reveal-delay-1">
-      Votre <span class="accent"><span class="underline">projet web</span></span><br>
-      à la hauteur de votre activité.
+<section class="hero-v8">
+  <!-- Bandeau 4 vignettes qui défilent en boucle -->
+  <div class="hero-strip" aria-hidden="true">
+    <div class="hero-strip-track">
+      <div class="hero-thumb" data-tag="Paysagiste">
+        <div class="mockup mockup--sm">
+          <div class="mockup-frame">
+            <div class="mockup-topbar"><span></span><span></span><span></span></div>
+            <div class="mockup-body" data-project="Villa Nikkita">
+              <span class="mockup-brand">Villa Nikkita</span>
+              <span class="mockup-desc">Location saisonnière · Gironde</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-thumb" data-tag="Nettoyage">
+        <div class="mockup mockup--sm">
+          <div class="mockup-frame">
+            <div class="mockup-topbar"><span></span><span></span><span></span></div>
+            <div class="mockup-body" data-project="Clair &amp; Net">
+              <span class="mockup-brand">Clair &amp; Net</span>
+              <span class="mockup-desc">Entreprise de nettoyage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-thumb" data-tag="Mode">
+        <div class="mockup mockup--sm">
+          <div class="mockup-frame">
+            <div class="mockup-topbar"><span></span><span></span><span></span></div>
+            <div class="mockup-body" data-project="Modevia">
+              <span class="mockup-brand">Modevia</span>
+              <span class="mockup-desc">E-commerce de mode</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-thumb" data-tag="Photographe">
+        <div class="mockup mockup--sm">
+          <div class="mockup-frame">
+            <div class="mockup-topbar"><span></span><span></span><span></span></div>
+            <div class="mockup-body" data-project="Nathan Photo">
+              <span class="mockup-brand">Nathan Photo</span>
+              <span class="mockup-desc">Portfolio photographe</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Duplication pour boucle infinie -->
+      <div class="hero-thumb" data-tag="Paysagiste" aria-hidden="true">
+        <div class="mockup mockup--sm">
+          <div class="mockup-frame">
+            <div class="mockup-topbar"><span></span><span></span><span></span></div>
+            <div class="mockup-body" data-project="Villa Nikkita">
+              <span class="mockup-brand">Villa Nikkita</span>
+              <span class="mockup-desc">Location saisonnière · Gironde</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-thumb" data-tag="Nettoyage" aria-hidden="true">
+        <div class="mockup mockup--sm">
+          <div class="mockup-frame">
+            <div class="mockup-topbar"><span></span><span></span><span></span></div>
+            <div class="mockup-body" data-project="Clair &amp; Net">
+              <span class="mockup-brand">Clair &amp; Net</span>
+              <span class="mockup-desc">Entreprise de nettoyage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-v8-inner">
+    <h1 class="hero-v8-title reveal">
+      Votre entreprise mérite <span class="accent">mieux</span> qu'un site de plus.
     </h1>
-    <p class="hero-desc reveal reveal-delay-2">Sites, applications, photo et vidéo. Un duo, pas une agence : vous parlez toujours aux deux personnes qui font le travail.</p>
-    <div class="hero-ctas reveal reveal-delay-3">
-      <a href="/portfolio.html" class="btn btn-primary">Voir nos projets
+    <p class="hero-v8-sub reveal reveal-delay-1">
+      Identité web propriétaire · Direction, réalisation et mise en ligne en trois semaines.
+    </p>
+    <div class="hero-v8-ctas reveal reveal-delay-2">
+      <a href="#contact" class="btn btn-primary btn-lg">Recevoir un aperçu
         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
-      <a href="/contact.html" class="btn btn-ghost">Nous écrire</a>
+      <a href="/portfolio.html" class="btn btn-ghost btn-lg">Voir le travail</a>
     </div>
-    <div class="hero-scroll reveal reveal-delay-4">Faites défiler</div>
-  </div>
-</section>
-
-<!-- ============ STATS ============ -->
-<section class="stats" id="resultats">
-  <div class="stats-grid">
-    <div class="stat">
-      <div class="stat-num">11<span class="unit">projets</span></div>
-      <div class="stat-label">Réalisés</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">3<span class="unit">semaines</span></div>
-      <div class="stat-label">Livraison moyenne</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">6<span class="unit">mois</span></div>
-      <div class="stat-label">Retouches offertes</div>
-    </div>
-    <div class="stat featured">
-      <div class="stat-num">1<span class="unit">plateforme</span></div>
-      <div class="stat-label">En production, vrais clients</div>
+    <div class="hero-v8-badge reveal reveal-delay-3">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 5 5.5.8-4 3.9 1 5.5L12 14.8 7 17.2l1-5.5-4-3.9 5.5-.8z"/></svg>
+      <span>Duo indépendant · Peu de projets en parallèle · Chaque site est réellement sur mesure</span>
     </div>
   </div>
 </section>
 
-<!-- ============ NOTRE EXPERTISE ============ -->
-<section class="services" id="services">
-  <div class="services-head">
-    <span class="eyebrow reveal">◆ Notre expertise</span>
-    <h2 class="reveal reveal-delay-1">Quatre <span class="accent">métiers</span>,<br>tenus par les deux mêmes personnes.</h2>
-  </div>
-  <div class="services-grid services-grid--four">
-
-    <a href="/services/sites-internet.html" class="service-card reveal">
-      <span class="service-num">01</span>
-      <h3>Sites internet.</h3>
-      <p>Codés à la main, sans template ni constructeur. Rapides, trouvables sur Google, et à vous entièrement.</p>
-      <span class="service-arrow" aria-hidden="true">→</span>
-    </a>
-
-    <a href="/services/applications.html" class="service-card reveal reveal-delay-1">
-      <span class="service-num">02</span>
-      <h3>Applications métier.</h3>
-      <p>Quand le tableur ne suffit plus et qu'aucun logiciel du marché ne correspond à votre façon de travailler.</p>
-      <span class="service-arrow" aria-hidden="true">→</span>
-    </a>
-
-    <a href="/services/photo-video-drone.html" class="service-card reveal reveal-delay-2">
-      <span class="service-num">03</span>
-      <h3>Photo, vidéo et drone.</h3>
-      <p>Le photographe est dans l'équipe. Il ne découvre pas votre lieu le jour du shooting.</p>
-      <span class="service-arrow" aria-hidden="true">→</span>
-    </a>
-
-    <a href="/services/chef-de-projet.html" class="service-card reveal reveal-delay-3">
-      <span class="service-num">04</span>
-      <h3>Chef de projet digital.</h3>
-      <p>Piloter un projet du cadrage à la mise en production, en sachant réaliser ce qu'on pilote.</p>
-      <span class="service-arrow" aria-hidden="true">→</span>
-    </a>
-
+<!-- ============ MARQUEE PROMESSES ============ -->
+<section class="promises-marquee" aria-hidden="true">
+  <div class="promises-track">
+    <span class="promises-item">Aperçu offert sous 48 h</span>
+    <span class="promises-sep">✦</span>
+    <span class="promises-item">Identité prête en trois semaines</span>
+    <span class="promises-sep">✦</span>
+    <span class="promises-item">Textes, design et développement inclus</span>
+    <span class="promises-sep">✦</span>
+    <span class="promises-item">Trente jours d'accompagnement offerts</span>
+    <span class="promises-sep">✦</span>
+    <span class="promises-item">Aucune carte bancaire avant validation</span>
+    <span class="promises-sep">✦</span>
+    <span class="promises-item">Aperçu offert sous 48 h</span>
+    <span class="promises-sep">✦</span>
+    <span class="promises-item">Identité prête en trois semaines</span>
+    <span class="promises-sep">✦</span>
+    <span class="promises-item">Textes, design et développement inclus</span>
+    <span class="promises-sep">✦</span>
+    <span class="promises-item">Trente jours d'accompagnement offerts</span>
+    <span class="promises-sep">✦</span>
+    <span class="promises-item">Aucune carte bancaire avant validation</span>
+    <span class="promises-sep">✦</span>
   </div>
 </section>
 
-<!-- ============ NOS COMPÉTENCES ============ -->
-<section class="skills" id="competences">
-  <div class="skills-inner">
-    <div class="skills-head">
-      <span class="eyebrow reveal">◆ Nos compétences</span>
-      <h2 class="reveal reveal-delay-1">Le détail de ce qu'on sait faire.<br>Et de ce qu'on ne fait <span class="accent">pas</span>.</h2>
-    </div>
-
-    <div class="skills-grid">
-      <article class="skill-block reveal">
-        <span class="skill-tag">Côté technique</span>
-        <p>Développement sur mesure en HTML, CSS et JavaScript. WordPress et thèmes développés spécifiquement. Bases de données, comptes utilisateurs, paiement en ligne, automatisations. Référencement local et fiches Google.</p>
-      </article>
-
-      <article class="skill-block reveal reveal-delay-1">
-        <span class="skill-tag">Côté image</span>
-        <p>Photographie de lieu, de produit et de portrait. Vidéo courte, montage, étalonnage. Prises de vue aériennes.</p>
-      </article>
-
-      <article class="skill-block reveal reveal-delay-2">
-        <span class="skill-tag">Côté méthode</span>
-        <p>Cadrage de projet, cahier des charges, coordination des intervenants, recette avant livraison. Direction artistique et écriture des contenus.</p>
-      </article>
-
-      <article class="skill-block skill-block--negative reveal reveal-delay-3">
-        <span class="skill-tag skill-tag--negative">Ce qu'on ne fait pas</span>
-        <p>Pas de boutique en ligne à gros catalogue. Pas de reprise à moitié d'un site laissé par un autre. Pas de création de logo ni d'identité de marque. Ce n'est pas notre métier, et on préfère vous le dire avant.</p>
-      </article>
-    </div>
+<!-- ============ RÉALISATIONS ============ -->
+<section class="works" id="travail">
+  <div class="works-head reveal">
+    <h2>Le travail, d'abord. <span class="accent">Des sites entiers, en ligne aujourd'hui.</span></h2>
+    <p>Pas des maquettes. Cliquez sur un domaine, tout fonctionne, tout est publié.</p>
   </div>
-</section>
 
-<!-- ============ L'ÉQUIPE ============ -->
-<section class="team" id="equipe">
-  <div class="team-inner">
-    <div class="team-head">
-      <span class="eyebrow reveal">◆ L'équipe</span>
-      <h2 class="reveal reveal-delay-1">Deux personnes.<br>Pas <span class="accent">une de plus</span>.</h2>
-    </div>
-
-    <div class="team-grid">
-      <article class="team-card reveal">
-        <div class="team-card-header">
-          <span class="team-role">Photo et vidéo</span>
-          <h3>Nathan Fritsch.</h3>
+  <!-- Carte 1 · Villa Nikkita -->
+  <article class="work-card reveal">
+    <div class="work-mockup">
+      <div class="mockup mockup--lg">
+        <div class="mockup-frame">
+          <div class="mockup-topbar">
+            <span></span><span></span><span></span>
+            <span class="mockup-url">villa-nikkita.fr</span>
+          </div>
+          <div class="mockup-body mockup-body--lg" data-project="Villa Nikkita">
+            <span class="mockup-brand">Villa Nikkita</span>
+            <span class="mockup-desc">Location saisonnière · Gironde</span>
+            <span class="mockup-cta">Réserver</span>
+          </div>
         </div>
-        <p>Photographe et vidéaste. Reportage de lieu, produit, portrait, film court et prises de vue aériennes. Son propre site, <a href="https://nathanfritsch.com" target="_blank" rel="noopener">nathanfritsch.com</a>, donne le ton de son travail.</p>
-      </article>
-
-      <article class="team-card reveal reveal-delay-1">
-        <div class="team-card-header">
-          <span class="team-role">Développement et pilotage</span>
-          <h3>Manon Fritsch.</h3>
+      </div>
+      <div class="mockup-phone">
+        <div class="mockup-phone-frame">
+          <div class="mockup-phone-notch"></div>
+          <div class="mockup-phone-body" data-project="Villa Nikkita">
+            <span class="mockup-brand">Villa Nikkita</span>
+          </div>
         </div>
-        <p>Trois ans en alternance dans un organisme de formation, sur des projets web et des sites WordPress. Puis la conception et le développement complet de <a href="https://modevia.fr" target="_blank" rel="noopener">modevia.fr</a>, une plateforme en production avec comptes clients, paiement en ligne et automatisations.</p>
-      </article>
+      </div>
+      <a class="work-domain" href="/projets/villa-nikkita.html">villa-nikkita.fr <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <span class="work-badge">Location saisonnière</span>
+    </div>
+    <div class="work-meta">
+      <h3>Villa Nikkita</h3>
+      <p>Une maison d'exception présentée à sa juste hauteur, avec réservation et calendrier en ligne.</p>
+    </div>
+  </article>
 
-      <article class="team-card team-card--why reveal reveal-delay-2">
-        <div class="team-card-header">
-          <span class="team-role">Pourquoi un duo</span>
-          <h3>Vous parlez toujours aux deux personnes qui font le travail.</h3>
+  <!-- Carte 2 · Clair & Net -->
+  <article class="work-card work-card--reverse reveal">
+    <div class="work-mockup">
+      <div class="mockup mockup--lg">
+        <div class="mockup-frame">
+          <div class="mockup-topbar">
+            <span></span><span></span><span></span>
+            <span class="mockup-url">cnet77.fr</span>
+          </div>
+          <div class="mockup-body mockup-body--lg" data-project="Clair &amp; Net">
+            <span class="mockup-brand">Clair &amp; Net</span>
+            <span class="mockup-desc">Entreprise de nettoyage</span>
+            <span class="mockup-cta">Devis en ligne</span>
+          </div>
         </div>
-        <p>Entre le commercial qui vous vend et le stagiaire qui code, un projet perd son âme. Ici, pas d'intermédiaire, pas de sous-traitance, pas de brief interne à recopier.</p>
-      </article>
+      </div>
+      <div class="mockup-phone">
+        <div class="mockup-phone-frame">
+          <div class="mockup-phone-notch"></div>
+          <div class="mockup-phone-body" data-project="Clair &amp; Net">
+            <span class="mockup-brand">Clair &amp; Net</span>
+          </div>
+        </div>
+      </div>
+      <a class="work-domain" href="/projets/clair-net.html">cnet77.fr <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <span class="work-badge">Nettoyage professionnel</span>
+    </div>
+    <div class="work-meta">
+      <h3>Clair &amp; Net</h3>
+      <p>Un site qui rassure et qui convertit, pensé pour transformer les visites en devis remplis.</p>
+    </div>
+  </article>
+
+  <!-- Carte 3 · Modevia -->
+  <article class="work-card reveal">
+    <div class="work-mockup">
+      <div class="mockup mockup--lg">
+        <div class="mockup-frame">
+          <div class="mockup-topbar">
+            <span></span><span></span><span></span>
+            <span class="mockup-url">modevia.fr</span>
+          </div>
+          <div class="mockup-body mockup-body--lg" data-project="Modevia">
+            <span class="mockup-brand">Modevia</span>
+            <span class="mockup-desc">E-commerce de mode</span>
+            <span class="mockup-cta">Boutique</span>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-phone">
+        <div class="mockup-phone-frame">
+          <div class="mockup-phone-notch"></div>
+          <div class="mockup-phone-body" data-project="Modevia">
+            <span class="mockup-brand">Modevia</span>
+          </div>
+        </div>
+      </div>
+      <a class="work-domain" href="/projets/modevia.html">modevia.fr <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <span class="work-badge">E-commerce</span>
+    </div>
+    <div class="work-meta">
+      <h3>Modevia</h3>
+      <p>Boutique complète avec catalogue, paiement, gestion des stocks et espace client. Fait par Manon.</p>
+    </div>
+  </article>
+
+  <!-- Carte 4 · Nathan Photo -->
+  <article class="work-card work-card--reverse reveal">
+    <div class="work-mockup">
+      <div class="mockup mockup--lg">
+        <div class="mockup-frame">
+          <div class="mockup-topbar">
+            <span></span><span></span><span></span>
+            <span class="mockup-url">nathanfritsch.com</span>
+          </div>
+          <div class="mockup-body mockup-body--lg" data-project="Nathan Photo">
+            <span class="mockup-brand">Nathan Photo</span>
+            <span class="mockup-desc">Portfolio photographe</span>
+            <span class="mockup-cta">Voir les séries</span>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-phone">
+        <div class="mockup-phone-frame">
+          <div class="mockup-phone-notch"></div>
+          <div class="mockup-phone-body" data-project="Nathan Photo">
+            <span class="mockup-brand">Nathan Photo</span>
+          </div>
+        </div>
+      </div>
+      <a class="work-domain" href="/projets/nathan-photo.html">nathanfritsch.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <span class="work-badge">Photographe</span>
+    </div>
+    <div class="work-meta">
+      <h3>Nathan Photo</h3>
+      <p>Portfolio silencieux, où la photo raconte. Chargement instantané, mise en avant des séries.</p>
+    </div>
+  </article>
+
+  <div class="works-cta reveal">
+    <a href="/portfolio.html" class="btn btn-ghost btn-lg">Voir toutes les réalisations
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============ SIGNATURE (positionnement) ============ -->
+<section class="signature">
+  <div class="signature-inner">
+    <span class="eyebrow reveal">◆ La présence digitale</span>
+    <h2 class="reveal reveal-delay-1">Ce n'est pas un site de plus. <span class="accent">C'est la version numérique de votre entreprise.</span></h2>
+    <p class="signature-lead reveal reveal-delay-2">Vos prospects jugent votre niveau avant même de vous parler. Un site qui hésite, c'est un client qui ne rappelle pas. Un site qui affirme, c'est un rendez-vous pris.</p>
+
+    <ul class="signature-list">
+      <li class="reveal">
+        <span class="signature-num">01</span>
+        <div>
+          <h3>Positionnement immédiatement compréhensible</h3>
+          <p>En cinq secondes, on comprend ce que vous faites, pour qui, et pourquoi vous êtes différent.</p>
+        </div>
+      </li>
+      <li class="reveal reveal-delay-1">
+        <span class="signature-num">02</span>
+        <div>
+          <h3>Direction artistique reconnaissable</h3>
+          <p>Une identité visuelle qui vous ressemble, pas un thème repris sur un catalogue.</p>
+        </div>
+      </li>
+      <li class="reveal reveal-delay-2">
+        <span class="signature-num">03</span>
+        <div>
+          <h3>Textes, design et développement inclus</h3>
+          <p>De l'idée à la mise en ligne, tout est fait par le duo. Aucun sous-traitant, aucun angle mort.</p>
+        </div>
+      </li>
+      <li class="reveal reveal-delay-3">
+        <span class="signature-num">04</span>
+        <div>
+          <h3>Parcours de conviction</h3>
+          <p>Chaque section pousse vers l'action, dans un ordre pensé pour vos clients, pas pour la mode du moment.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ DOUBLE VALIDATION (comment ça se passe) ============ -->
+<section class="method" id="comment">
+  <div class="method-inner">
+    <span class="eyebrow reveal">◆ Notre méthode</span>
+    <h2 class="reveal reveal-delay-1">Vous validez avant qu'on construise. <br><span class="accent">Vous soldez après avoir validé.</span></h2>
+    <p class="method-lead reveal reveal-delay-2">Aucun engagement à l'aveugle. Aucune carte bancaire tant que vous n'avez pas vu ce qu'on vous propose.</p>
+
+    <ol class="method-steps">
+      <li class="reveal">
+        <span class="method-num">01</span>
+        <h3>Premier rendez-vous, cent pour cent gratuit</h3>
+        <p>Trente minutes, en visio ou en atelier. Vous nous racontez votre métier, vos clients, ce qui vous coince. On vous dit franchement si on est les bons.</p>
+      </li>
+      <li class="reveal reveal-delay-1">
+        <span class="method-num">02</span>
+        <h3>On crée un aperçu, avant tout paiement</h3>
+        <p>Sous 48 heures, vous recevez une première direction artistique appliquée à votre projet. Pas un moodboard. Une page réelle, à votre nom. Aucune donnée bancaire demandée.</p>
+      </li>
+      <li class="reveal reveal-delay-2">
+        <span class="method-num">03</span>
+        <h3>La maquette vous plaît, on continue</h3>
+        <p>À ce moment seulement, on signe et vous versez un acompte. Le développement démarre, avec des points réguliers.</p>
+      </li>
+      <li class="reveal reveal-delay-3">
+        <span class="method-num">04</span>
+        <h3>Finalisation, mise en ligne, le site vous appartient</h3>
+        <p>À la validation finale, vous soldez. Le nom de domaine, le code, l'hébergement sont à votre nom. Vous pouvez partir avec demain, chez n'importe qui.</p>
+      </li>
+    </ol>
+
+    <div class="method-echo reveal">
+      <p><strong>Même méthode pour les applications métier.</strong> Un cadrage offert, un premier écran fonctionnel avant tout paiement, un développement qui s'arrête si vous n'y voyez pas votre outil.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ ENGAGEMENTS · pinned deck-flip 5 cartes ============ -->
-<section class="engagements-pin" id="engagements">
-  <div class="engagements-pin-inner">
+<!-- ============ AVANT / APRÈS ============ -->
+<section class="before-after">
+  <div class="before-after-inner">
+    <span class="eyebrow reveal">◆ Refonte, en vrai</span>
+    <h2 class="reveal reveal-delay-1">Une refonte, ça <span class="accent">change tout</span>.</h2>
+    <p class="ba-lead reveal reveal-delay-2">Glissez la poignée pour voir la différence sur un vrai projet.</p>
 
-    <div class="deck" aria-hidden="false">
-      <div class="deck-stage" data-active="0">
-        <article class="deck-card" data-i="0">
-          <span class="deck-card-num">01 / 05 · Aperçu avant devis</span>
-          <h3>Un aperçu <span class="accent">avant tout devis</span>.</h3>
-          <p>On code une première version du site avant de vous facturer quoi que ce soit. Vous voyez ce que vous achetez, sur votre écran, avec votre nom dessus.</p>
-        </article>
-
-        <article class="deck-card" data-i="1">
-          <span class="deck-card-num">02 / 05 · Le photographe est dans l'équipe</span>
-          <h3>Le <span class="accent">photographe</span> est dans l'équipe.</h3>
-          <p>Un beau site sans belles images ne sert à rien. Chez nous les photos ne sont pas sous-traitées : elles sont faites par la personne qui construit le site avec vous.</p>
-        </article>
-
-        <article class="deck-card" data-i="2">
-          <span class="deck-card-num">03 / 05 · Livraison chrono</span>
-          <h3>Livraison en <span class="accent">trois semaines</span>. Chrono.</h3>
-          <p>Du brief à la mise en ligne, trois semaines suffisent quand on ne passe pas par cinq intermédiaires. Si on dépasse, on rembourse la différence au prorata.</p>
-        </article>
-
-        <article class="deck-card" data-i="3">
-          <span class="deck-card-num">04 / 05 · Domaine offert</span>
-          <h3>Nom de domaine <span class="accent">offert un an</span>.</h3>
-          <p>On prend en charge votre nom de domaine la première année. Plus six mois de retouches offertes après la mise en ligne.</p>
-        </article>
-
-        <article class="deck-card" data-i="4">
-          <span class="deck-card-num">05 / 05 · Pensé pour le téléphone</span>
-          <h3>Pensé pour le <span class="accent">téléphone</span>.</h3>
-          <p>Vos clients vous cherchent au téléphone, souvent debout dans la rue. On conçoit chaque page dans ce sens, puis on l'élargit pour l'ordinateur. Jamais l'inverse.</p>
-        </article>
+    <div class="ba-slider reveal" data-slider>
+      <div class="ba-image ba-before">
+        <div class="mockup mockup--fill">
+          <div class="mockup-frame">
+            <div class="mockup-topbar mockup-topbar--old"><span></span><span></span><span></span>
+              <span class="mockup-url">exemple.fr</span>
+            </div>
+            <div class="mockup-body mockup-body--old">
+              <span class="mockup-brand-old">Exemple SARL</span>
+              <span class="mockup-desc-old">Bienvenue sur notre site internet.</span>
+              <span class="mockup-tag-old">Menu · Services · Contact</span>
+            </div>
+          </div>
+        </div>
+        <span class="ba-label ba-label--before">Avant · 2019</span>
+      </div>
+      <div class="ba-image ba-after">
+        <div class="mockup mockup--fill">
+          <div class="mockup-frame">
+            <div class="mockup-topbar">
+              <span></span><span></span><span></span>
+              <span class="mockup-url">exemple.fr</span>
+            </div>
+            <div class="mockup-body mockup-body--lg" data-project="Exemple">
+              <span class="mockup-brand">Exemple</span>
+              <span class="mockup-desc">Le meilleur service, pensé pour vos clients.</span>
+              <span class="mockup-cta">Prendre rendez-vous</span>
+            </div>
+          </div>
+        </div>
+        <span class="ba-label ba-label--after">Après · Vera Studio</span>
+      </div>
+      <div class="ba-handle" aria-label="Glissez pour comparer" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+        <span class="ba-handle-line"></span>
+        <span class="ba-handle-grip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-4 6 4 6M16 6l4 6-4 6"/></svg>
+        </span>
       </div>
     </div>
 
-    <div class="deck-copy">
-      <span class="eyebrow reveal">◆ Nos engagements</span>
-      <h2 class="reveal reveal-delay-1">Cinq promesses<br>sur lesquelles on <span class="accent">ne bouge pas</span>.</h2>
-      <p class="lead reveal reveal-delay-2">Pas des punchlines marketing. Des règles qu'on s'applique à nous-mêmes, sur chaque projet, sans exception.</p>
-      <div class="deck-progress reveal reveal-delay-3" aria-hidden="true">
-        <span class="deck-dot is-active"></span>
-        <span class="deck-dot"></span>
-        <span class="deck-dot"></span>
-        <span class="deck-dot"></span>
-        <span class="deck-dot"></span>
-      </div>
-    </div>
-
+    <p class="ba-note reveal">Exemple présenté à titre indicatif. On applique la même transformation à votre site actuel.</p>
   </div>
 </section>
 
-<!-- ============ CTA FINAL / CONTACT ============ -->
-<section class="cta-final" id="contact-cta">
-  <div class="cta-final-inner">
+<!-- ============ L'OFFRE (Vera Signature) ============ -->
+<section class="offer" id="offre">
+  <div class="offer-inner">
+    <span class="eyebrow reveal">◆ L'offre</span>
+    <h2 class="reveal reveal-delay-1">Une offre. <span class="accent">Impossible à confondre.</span></h2>
+    <p class="offer-lead reveal reveal-delay-2">Une identité complète, pas une addition d'options. Trois métiers, trois façons d'être présents en ligne.</p>
+
+    <div class="offer-card reveal">
+      <div class="offer-card-head">
+        <span class="offer-tag">Vera Signature</span>
+        <h3>Sites internet sur mesure</h3>
+        <p class="offer-desc">Le site complet, pensé pour vos clients, prêt à convertir. Aucun template, aucun constructeur, aucun sous-traitant.</p>
+      </div>
+
+      <div class="offer-price">
+        <span class="offer-price-value">À définir</span>
+        <span class="offer-price-sub">Acompte à la signature · Solde après validation finale · Aucune CB avant l'aperçu</span>
+      </div>
+
+      <div class="offer-meta">
+        <span class="offer-meta-item"><strong>3 semaines</strong> de la validation à la mise en ligne</span>
+        <span class="offer-meta-item"><strong>Aperçu offert</strong> sous 48 h</span>
+        <span class="offer-meta-item"><strong>30 jours</strong> d'optimisation post lancement</span>
+      </div>
+
+      <div class="offer-grid">
+        <div class="offer-col">
+          <h4>Inclus dans l'offre</h4>
+          <ul class="offer-list">
+            <li><span class="check">✓</span> Premier rendez-vous de cadrage, offert</li>
+            <li><span class="check">✓</span> Direction artistique sur mesure</li>
+            <li><span class="check">✓</span> Site web codé à la main, pensé pour vos clients</li>
+            <li><span class="check">✓</span> Navigation optimisée, parcours de conviction</li>
+            <li><span class="check">✓</span> Réservations, contacts, formulaires opérationnels</li>
+            <li><span class="check">✓</span> Mise en ligne et nom de domaine configurés</li>
+            <li><span class="check">✓</span> Performance et référencement SEO optimisés</li>
+            <li><span class="check">✓</span> Site 100 % à votre nom, code compris</li>
+          </ul>
+        </div>
+
+        <div class="offer-col">
+          <h4>Bonus intégrés</h4>
+          <ul class="offer-list">
+            <li>
+              <span class="bonus-tag">Bonus 1</span>
+              <strong>Kit de lancement</strong>
+              <span class="bonus-desc">Un film vertical court et trois visuels avant/après, prêts à publier pour révéler votre nouvelle identité.</span>
+            </li>
+            <li>
+              <span class="bonus-tag">Bonus 2</span>
+              <strong>30 jours d'optimisation</strong>
+              <span class="bonus-desc">Après la mise en ligne, on suit les premiers retours et demandes pour ajuster, préciser et renforcer le parcours.</span>
+            </li>
+          </ul>
+
+          <h4 class="offer-options-title">Options</h4>
+          <ul class="offer-list offer-list--options">
+            <li>
+              <span class="option-tag">Option</span>
+              <strong>Shooting photo</strong>
+              <span class="bonus-desc">Séance photo dédiée à votre activité, par notre photographe interne, pour donner à voir votre lieu et votre travail avec des images à vous.</span>
+            </li>
+            <li>
+              <span class="option-tag">Option</span>
+              <strong>Vidéos de lancement pour vos réseaux</strong>
+              <span class="bonus-desc">Une fois le site en ligne, on filme et monte des réels courts pour annoncer votre nouvelle présence en ligne à votre communauté.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="offer-cta">
+        <a href="#contact" class="btn btn-primary btn-lg">Recevoir mon aperçu
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <span class="offer-cta-sub">Aucune CB. Aucun engagement. Réponse dans la journée.</span>
+      </div>
+    </div>
+
+    <div class="offer-secondary">
+      <a href="/services/applications.html" class="offer-secondary-card reveal">
+        <h4>Applications métier</h4>
+        <p>Un outil sur mesure qui remplace vos tableurs et parle votre langue.</p>
+        <span class="offer-secondary-cta">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a href="/services/chef-de-projet.html" class="offer-secondary-card reveal reveal-delay-1">
+        <h4>Chef de projet digital</h4>
+        <p>Piloter votre projet digital, du cadrage à la mise en production. Par Manon.</p>
+        <span class="offer-secondary-cta">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <span class="eyebrow reveal">◆ Questions</span>
+    <h2 class="reveal reveal-delay-1">Ce qu'on nous <span class="accent">demande souvent</span>.</h2>
+
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary>
+          <span>Est-ce vraiment gratuit d'avoir un aperçu ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="faq-answer">
+          <p>Oui. Aucun paiement, aucune carte bancaire, aucun engagement. On investit du temps parce qu'on veut être sûrs qu'on est les bons pour votre projet. Si l'aperçu ne vous plaît pas, on arrête là, sans frais.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>
+          <span>Combien coûte réellement une identité complète ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="faq-answer">
+          <p>Le prix dépend de la taille du projet, du nombre de pages, des fonctionnalités attendues (réservation, boutique, espace client…). On chiffre après le premier échange, avec un devis clair et sans surprise. La grille exacte est en cours de finalisation, on vous la communique à la prise de contact.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>
+          <span>Qu'est-ce qu'une "identité propriétaire" ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="faq-answer">
+          <p>Le code, le nom de domaine, l'hébergement, les visuels et les textes vous appartiennent en totalité. Aucun abonnement mensuel à un outil qui garde vos données en otage. Vous pouvez confier le site à quelqu'un d'autre demain, changer d'hébergeur, tout emporter.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>
+          <span>Je ne connais rien à la technique, c'est un problème ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="faq-answer">
+          <p>Justement, c'est notre métier. Vous n'avez rien à installer, rien à comprendre, rien à maintenir. On vous livre un site qui marche, on vous montre comment mettre à jour les infos importantes en deux clics, et on reste disponibles.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>
+          <span>En combien de temps mon site sera en ligne ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="faq-answer">
+          <p>Trois semaines pour un site vitrine complet, à partir de la validation de la maquette. Une boutique en ligne prend 4 à 6 semaines. Une application métier, entre 6 et 12 semaines selon la complexité. On vous donne un délai ferme à la signature.</p>
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>
+          <span>Vous travaillez avec quel genre d'entreprises ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </summary>
+        <div class="faq-answer">
+          <p>Artisans, commerces, indépendants, TPE et PME. Des gens qui font les choses bien et dont le site actuel ne le montre pas encore. On refuse les projets où on n'apporte pas assez de valeur, pour être honnête avec vous et avec nous-mêmes.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT FINAL ============ -->
+<section class="contact-final" id="contact">
+  <div class="contact-final-inner">
     <span class="eyebrow reveal">◆ Prendre contact</span>
-    <h2 class="reveal reveal-delay-1">Écrivez-nous.<br>On répond dans <span class="accent">la journée</span>.</h2>
-    <p class="lead reveal reveal-delay-2">Dites-nous en deux lignes ce que vous faites. On revient vers vous avec un premier retour honnête. Si on n'est pas les bons pour votre projet, on vous le dira aussi.</p>
-    <div class="cta-ctas reveal reveal-delay-3">
-      <a href="/contact.html" class="btn btn-primary">Nous écrire
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a href="tel:+33651339482" class="btn btn-ghost">06 51 33 94 82</a>
+    <h2 class="reveal reveal-delay-1">Parlez à Nathan <span class="accent">ou à Manon</span>.</h2>
+    <p class="contact-final-lead reveal reveal-delay-2">Deux lignes sur votre entreprise suffisent. On vous répond dans la journée, avec un premier retour honnête et un aperçu à suivre.</p>
+
+    <div class="contact-final-args reveal reveal-delay-3">
+      <div class="contact-arg"><span class="check">✓</span> Aucune carte bancaire, jamais</div>
+      <div class="contact-arg"><span class="check">✓</span> Une direction appliquée à votre projet, pas un moodboard</div>
+      <div class="contact-arg"><span class="check">✓</span> Sans engagement, aucun frais si on n'est pas les bons</div>
+      <div class="contact-arg"><span class="check">✓</span> Nathan ou Manon en personne, pas un formulaire perdu</div>
     </div>
+
+    <form class="contact-final-form reveal" id="contact-form" novalidate data-endpoint="https://formspree.io/f/xoeqnjnn">
+      <div class="cf-row">
+        <label for="cf-name">Prénom <span class="req-star" aria-hidden="true">*</span></label>
+        <input type="text" id="cf-name" name="name" required autocomplete="given-name" placeholder="Votre prénom" aria-required="true">
+      </div>
+      <div class="cf-row">
+        <label for="cf-company">Entreprise <span class="req-star" aria-hidden="true">*</span></label>
+        <input type="text" id="cf-company" name="company" required autocomplete="organization" placeholder="Le nom de votre entreprise" aria-required="true">
+      </div>
+      <div class="cf-row">
+        <label for="cf-activity">Type d'activité <span class="req-star" aria-hidden="true">*</span></label>
+        <select id="cf-activity" name="project" required aria-required="true">
+          <option value="">Choisir…</option>
+          <option value="site">Site internet</option>
+          <option value="application">Application métier</option>
+          <option value="combine">Site + shooting + vidéo</option>
+          <option value="chef-de-projet">Chef de projet digital</option>
+          <option value="autre">Autre, à discuter</option>
+        </select>
+      </div>
+      <div class="cf-row">
+        <label for="cf-contact">Email ou téléphone <span class="req-star" aria-hidden="true">*</span></label>
+        <input type="text" id="cf-contact" name="email" required autocomplete="email" placeholder="vous@exemple.fr ou 06 XX XX XX XX" aria-required="true">
+      </div>
+      <div class="cf-row cf-row--full">
+        <label for="cf-message">Deux lignes sur votre projet</label>
+        <textarea id="cf-message" name="message" rows="3" placeholder="Dites-nous en quelques mots ce que vous cherchez."></textarea>
+      </div>
+
+      <div class="form-error" id="form-error" role="alert" aria-live="polite"></div>
+
+      <div class="cf-actions">
+        <button type="submit" class="btn btn-primary btn-lg">
+          <span class="btn-label">Recevoir mon aperçu</span>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <span class="cf-disclaimer">Aucune CB. Aucun engagement. Réponse dans la journée.</span>
+      </div>
+    </form>
+
+    <div class="form-success" id="form-success">
+      <p>Message reçu. Nathan ou Manon vous revient dans la journée, souvent bien plus vite. À très bientôt.</p>
+      <button type="button" class="btn btn-ghost" id="new-form-btn">Envoyer un nouveau message
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <p class="contact-final-alt reveal">Ou envoyez un SMS direct au <a href="tel:+33651339482">06 51 33 94 82</a></p>
   </div>
 </section>
 
+<!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
         <h3>Vera Studio<span class="dot">.</span></h3>
-        <p>Un duo qui code à la main des sites internet pour artisans et petites entreprises. Photo et vidéo en option.</p>
+        <p>Un duo indépendant. Sites internet, applications métier et pilotage de projet, en Nouvelle-Aquitaine.</p>
       </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="/services/sites-internet.html">Sites internet</a></li>
-          <li><a href="/services/applications.html">Applications métier</a></li>
-          <li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li>
-          <li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Naviguer</h4>
-        <ul>
-          <li><a href="/">Accueil</a></li>
-          <li><a href="/portfolio.html">Portfolio</a></li>
-          <li><a href="/formules.html">Formules</a></li>
-          <li><a href="/contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Écrire</h4>
-        <ul>
-          <li><a href="mailto:contact@verastudio.fr">contact@verastudio.fr</a></li>
-          <li><a href="tel:+33651339482">06 51 33 94 82</a></li>
-          <li>Nouvelle-Aquitaine</li>
-        </ul>
-      </div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="/services/sites-internet.html">Sites internet</a></li><li><a href="/services/applications.html">Applications métier</a></li><li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li></ul></div>
+      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/portfolio.html">Le travail</a></li><li><a href="/formules.html">L'offre</a></li><li><a href="#faq">Questions</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@verastudio.fr">contact@verastudio.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li><li>Nouvelle-Aquitaine</li></ul></div>
     </div>
     <div class="footer-bottom">
-      <span>Vera Studio · Sites, applications, photo et vidéo.</span>
+      <span>Vera Studio · Duo indépendant</span>
       <span>© <span data-year>2026</span> · <a href="/mentions-legales.html">Mentions légales</a></span>
     </div>
   </div>
 </footer>
 
-<a href="/contact.html" class="float-cta" aria-label="Nous contacter">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1 0 2 1 2 2v12c0 1-1 2-2 2H4c-1 0-2-1-2-2V6c0-1 1-2 2-2z"/><path d="M2 6l10 7 10-7"/></svg>
-</a>
-
 <script src="/js/main.js" defer></script>
+<script src="/js/v8.js" defer></script>
+<script src="/js/contact.js" defer></script>
 </body>
 </html>

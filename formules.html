@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Formules et tarifs · Vera Studio · Sites, applications, photo, chef de projet</title>
 <meta name="description" content="Toutes nos prestations : sites internet, applications métier, photo, vidéo et drone, chef de projet digital. Chiffrages sur devis gratuits, réponse dans la journée.">
-<meta name="theme-color" content="#0F1520">
+<meta name="theme-color" content="#F7F5EE">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Formules et tarifs · Vera Studio">
@@ -24,12 +24,13 @@
 <link rel="stylesheet" href="/css/base.css">
 <link rel="stylesheet" href="/css/components.css">
 <link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="/css/v8.css">
 <script>
   (function(){
     try {
       var t = localStorage.getItem('vera-theme');
-      if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
     } catch(e) {}
   })();
 </script>

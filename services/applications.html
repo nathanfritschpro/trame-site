@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Applications métier · Vera Studio · L'outil qui vous manque, fait pour vous</title>
 <meta name="description" content="Applications web sur mesure pour les entreprises. Comptes utilisateurs, base de données, paiement en ligne, automatisations. Quand le tableur ne suffit plus.">
-<meta name="theme-color" content="#0F1520">
+<meta name="theme-color" content="#F7F5EE">
 
 <meta property="og:type" content="article">
 <meta property="og:title" content="Applications métier · Vera Studio">
@@ -24,12 +24,13 @@
 <link rel="stylesheet" href="/css/base.css">
 <link rel="stylesheet" href="/css/components.css">
 <link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="/css/v8.css">
 <script>
   (function(){
     try {
       var t = localStorage.getItem('vera-theme');
-      if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
     } catch(e) {}
   })();
 </script>

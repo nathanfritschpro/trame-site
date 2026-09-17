@@ -1,44 +1,20 @@
-/* ============ Vera Studio · Design tokens v5 (dark par défaut, light disponible) ============ */
+/* ============ Vera Studio · Design tokens v6 (light par défaut, dark disponible) ============ */
 
 :root {
-  color-scheme: dark;
-
-  /* ---- Couleurs (mode sombre) ---- */
-  --bg:              #0F1520;
-  --bg-elev:         #171F2D;
-  --bg-soft:         #1F2939;
-  --line:            rgba(255, 255, 255, 0.09);
-  --line-strong:     rgba(255, 255, 255, 0.20);
-
-  --text:            #F5F7FA;
-  --text-dim:        #B4BCC9;
-  --text-muted:      #7C8697;
-
-  --accent:          #A5D0F5;
-  --accent-hover:    #7DBAE8;
-  --accent-soft:     rgba(165, 208, 245, 0.14);
-  --accent-glow:     rgba(165, 208, 245, 0.35);
-
-  --lime:            var(--accent);
-  --lime-hover:      var(--accent-hover);
-  --lime-soft:       var(--accent-soft);
-  --lime-glow:       var(--accent-glow);
-}
-
-/* ============ MODE CLAIR ============ */
-:root[data-theme="light"] {
   color-scheme: light;
 
-  --bg:              #F7F8FB;
-  --bg-elev:         #FFFFFF;
-  --bg-soft:         #EEF2F7;
-  --line:            rgba(15, 21, 32, 0.10);
-  --line-strong:     rgba(15, 21, 32, 0.22);
+  /* ---- Couleurs (mode clair, par défaut) ---- */
+  --bg:              #F7F5EE;   /* fond papier légèrement chaud, style tmoo */
+  --bg-elev:         #FFFFFF;   /* surfaces blanches (cards, mockups) */
+  --bg-soft:         #EFEBDF;   /* hover, sections alternées */
+  --line:            rgba(20, 20, 20, 0.10);
+  --line-strong:     rgba(20, 20, 20, 0.22);
 
-  --text:            #0F1520;
-  --text-dim:        #435063;
-  --text-muted:      #6A7688;
+  --text:            #141414;   /* noir profond pour tout le texte */
+  --text-dim:        #4A4A4A;
+  --text-muted:      #6A6A6A;
 
+  /* Bleu Vera (remplace l'orange terracotta de tmoo) */
   --accent:          #1D6FC4;
   --accent-hover:    #164F8C;
   --accent-soft:     rgba(29, 111, 196, 0.10);
@@ -48,9 +24,6 @@
   --lime-hover:      var(--accent-hover);
   --lime-soft:       var(--accent-soft);
   --lime-glow:       var(--accent-glow);
-}
-
-:root { /* reprise des tokens non couleurs */
 
   /* ---- Typographies ---- */
   --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -103,8 +76,33 @@
 
   /* ---- Transitions ---- */
   --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out:  cubic-bezier(0.22, 1, 0.36, 1);
   --dur-fast: 180ms;
   --dur-med:  340ms;
   --dur-slow: 700ms;
+}
+
+/* ============ MODE SOMBRE (opt-in) ============ */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg:              #0F1520;
+  --bg-elev:         #171F2D;
+  --bg-soft:         #1F2939;
+  --line:            rgba(255, 255, 255, 0.09);
+  --line-strong:     rgba(255, 255, 255, 0.20);
+
+  --text:            #F5F7FA;
+  --text-dim:        #B4BCC9;
+  --text-muted:      #7C8697;
+
+  --accent:          #A5D0F5;
+  --accent-hover:    #7DBAE8;
+  --accent-soft:     rgba(165, 208, 245, 0.14);
+  --accent-glow:     rgba(165, 208, 245, 0.35);
+
+  --lime:            var(--accent);
+  --lime-hover:      var(--accent-hover);
+  --lime-soft:       var(--accent-soft);
+  --lime-glow:       var(--accent-glow);
 }
