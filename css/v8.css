@@ -1878,7 +1878,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--sp-4);
-  max-width: 1200px;
+  max-width: 960px;
   margin: 0 auto var(--sp-16);
   padding: 0 var(--gut);
   position: relative;
@@ -1888,16 +1888,16 @@
 .hero-tile {
   position: relative;
   aspect-ratio: 4 / 5;
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
   background: #FFFFFF;
   box-shadow:
-    0 24px 48px -24px rgba(20, 20, 20, 0.22),
+    0 20px 40px -20px rgba(20, 20, 20, 0.22),
     0 2px 4px rgba(20, 20, 20, 0.04);
   text-decoration: none;
   color: inherit;
   transform: rotate(var(--tilt, 0deg));
-  animation: heroTileFloat 6s ease-in-out infinite;
+  animation: heroTileFloat 4.8s ease-in-out infinite;
   animation-delay: var(--float-delay, 0s);
   transition: transform 0.4s var(--ease-out), box-shadow 0.4s ease;
   will-change: transform;
@@ -1905,7 +1905,7 @@
   flex-direction: column;
 }
 .hero-tile:hover {
-  transform: rotate(0deg) translateY(-10px) scale(1.03);
+  transform: rotate(0deg) translateY(-14px) scale(1.03);
   box-shadow:
     0 40px 80px -30px rgba(20, 20, 20, 0.35),
     0 4px 8px rgba(20, 20, 20, 0.06);
@@ -1913,7 +1913,7 @@
 }
 @keyframes heroTileFloat {
   0%, 100% { transform: rotate(var(--tilt, 0deg)) translateY(0); }
-  50%      { transform: rotate(var(--tilt, 0deg)) translateY(-10px); }
+  50%      { transform: rotate(var(--tilt, 0deg)) translateY(-18px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-tile { animation: none; }
@@ -2579,6 +2579,27 @@
 }
 .work-card .mockup-phone-body[data-project="Nathan Photo"]::before {
   background-image: url("/assets/tiles/nathan-photo-mobile.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+
+/* ============ V8.5 · palette verte pour Comme une fleur + capture reelle ============ */
+.hero-tile--verte {
+  background: linear-gradient(180deg, #E8EFE5 0%, #C2D2B8 100%);
+}
+.ts-fleur {
+  background:
+    radial-gradient(ellipse 100% 70% at 30% 30%, rgba(255,180,180,0.28), transparent 60%),
+    linear-gradient(160deg, #E9EFE4 0%, #A8BE9C 100%);
+  color: #1F3D2C;
+}
+.ts-fleur .ts-pill { background: #1F3D2C; color: #E9EFE4; }
+.ts-fleur .ts-btn { background: #1F3D2C; color: #E9EFE4; }
+.ts-fleur em { color: #7A3B4A; font-family: Georgia, serif; font-style: italic; }
+
+/* Charger la vraie capture Comme une fleur */
+.ht-shot[data-project="comme-une-fleur"]::after {
+  background-image: url("/assets/tiles/comme-une-fleur-ordi.jpg");
   background-size: cover;
   background-position: top center;
 }
