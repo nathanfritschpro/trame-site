@@ -1,67 +1,28 @@
-/* ============ Vera Studio · Design tokens v5 (dark + light) ============ */
+/* ============ TRAME · Design tokens v4 (navy + bleu pâle) ============ */
 
 :root {
-  /* Mode SOMBRE par défaut. Passer à [data-theme="light"] pour basculer. */
-  color-scheme: dark;
-
-  /* ---- Couleurs (dark) ---- */
-  --bg:              #0F1520;
-  --bg-elev:         #171F2D;
-  --bg-soft:         #1F2939;
+  /* ---- Couleurs ---- */
+  --bg:              #0F1520;   /* fond principal, navy profond (remplace noir) */
+  --bg-elev:         #171F2D;   /* surfaces élevées, cards */
+  --bg-soft:         #1F2939;   /* hover cards */
   --line:            rgba(255, 255, 255, 0.09);
   --line-strong:     rgba(255, 255, 255, 0.20);
-  --foreground-rgb:  245, 247, 250;
 
-  --text:            #F5F7FA;
-  --text-dim:        #B4BCC9;
-  --text-muted:      #7C8697;
+  --text:            #F5F7FA;   /* texte principal */
+  --text-dim:        #B4BCC9;   /* texte secondaire */
+  --text-muted:      #7C8697;   /* texte muted */
 
-  --accent:          #A5D0F5;
-  --accent-hover:    #7DBAE8;
+  /* Accent bleu pâle (remplace le lime). Variable "--lime" gardée en alias
+     pour éviter de casser toutes les autres feuilles CSS/JS qui la référencent. */
+  --accent:          #A5D0F5;   /* bleu ciel pâle, très joli */
+  --accent-hover:    #7DBAE8;   /* hover un peu plus soutenu */
   --accent-soft:     rgba(165, 208, 245, 0.14);
   --accent-glow:     rgba(165, 208, 245, 0.35);
-  --accent-rgb:      165, 208, 245;
 
   --lime:            var(--accent);
   --lime-hover:      var(--accent-hover);
   --lime-soft:       var(--accent-soft);
   --lime-glow:       var(--accent-glow);
-
-  /* ---- Fond décoratif (grille + spotlight) ---- */
-  --grid-line:       rgba(255, 255, 255, 0.045);
-  --grid-size:       64px;
-  --spotlight-alpha: 0.18;
-}
-
-/* ============ THEME LIGHT ============ */
-:root[data-theme="light"] {
-  color-scheme: light;
-
-  --bg:              #F7F8FB;
-  --bg-elev:         #FFFFFF;
-  --bg-soft:         #EDF1F7;
-  --line:            rgba(15, 21, 32, 0.10);
-  --line-strong:     rgba(15, 21, 32, 0.22);
-  --foreground-rgb:  15, 21, 32;
-
-  --text:            #0F1520;
-  --text-dim:        #435063;
-  --text-muted:      #6A7688;
-
-  --accent:          #1D6FC4;
-  --accent-hover:    #164F8C;
-  --accent-soft:     rgba(29, 111, 196, 0.10);
-  --accent-glow:     rgba(29, 111, 196, 0.25);
-  --accent-rgb:      29, 111, 196;
-
-  --lime:            var(--accent);
-  --lime-hover:      var(--accent-hover);
-  --lime-soft:       var(--accent-soft);
-  --lime-glow:       var(--accent-glow);
-
-  --grid-line:       rgba(15, 21, 32, 0.06);
-  --spotlight-alpha: 0.10;
-}
 
   /* ---- Typographies ---- */
   --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
