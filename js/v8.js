@@ -1,6 +1,17 @@
-/* ============ Vera Studio · V8 (preloader, smart-hide, before/after slider) ============ */
+/* ============ Vera Studio · V8 (preloader, smart-hide, before/after slider, hero tiles auto) ============ */
 
 (() => {
+  // ---- HERO TILES · charge les captures reelles si elles existent
+  const heroShots = document.querySelectorAll('.ht-shot[data-project]');
+  heroShots.forEach(shot => {
+    const slug = shot.dataset.project;
+    const src = `/assets/tiles/${slug}-ordi.jpg`;
+    const probe = new Image();
+    probe.onload = () => shot.classList.add('has-shot');
+    probe.onerror = () => { /* fake reste visible */ };
+    probe.src = src;
+  });
+
   const reducedMotionMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   // ---- PRELOADER (2s la première fois par session)

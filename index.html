@@ -82,52 +82,75 @@
 <!-- ============ HERO ============ -->
 <section class="hero-v8">
   <!-- Bandeau 4 vignettes qui défilent en boucle -->
-  <!-- 4 vignettes fixes qui flottent doucement (float animation) -->
+  <!-- 4 vignettes fixes qui flottent doucement (style tmoo : browser + shot + rotation) -->
   <div class="hero-tiles" aria-hidden="true">
 
     <!-- Villa Nikkita -->
-    <a href="/projets/villa-nikkita.html" class="hero-tile hero-tile--sable" style="--float-delay:0s">
-      <div class="hero-tile-shot" data-project="villa-nikkita">
-        <!-- Screenshot réel à insérer ici : /assets/tiles/villa-nikkita-ordi.jpg -->
-        <div class="tile-fallback">
-          <span class="tile-brand">Villa Nikkita</span>
-          <span class="tile-tag">Location saisonnière</span>
+    <a href="/projets/villa-nikkita.html" class="hero-tile hero-tile--sable" style="--float-delay:0s;--tilt:-2deg">
+      <div class="ht-browser">
+        <span class="ht-dots"><i></i><i></i><i></i></span>
+        <span class="ht-address">villa-nikkita.fr</span>
+      </div>
+      <div class="ht-shot" data-project="villa-nikkita">
+        <div class="tile-shot-fake ts-villa">
+          <span class="ts-pill">◆ LOCATION · GIRONDE</span>
+          <h4 class="ts-title">L'art de recevoir dans une villa d'exception.</h4>
+          <p class="ts-lead">Villa Nikkita, une adresse au bord de l'Atlantique, pensée pour les moments qui comptent.</p>
+          <span class="ts-btn">Réserver un séjour ↗</span>
+          <div class="ts-grid"><span></span><span></span><span></span></div>
         </div>
       </div>
-      <span class="hero-tile-domain">villa-nikkita.fr</span>
     </a>
 
     <!-- Clair & Net -->
-    <a href="/projets/clair-net.html" class="hero-tile hero-tile--bleu" style="--float-delay:-1.5s">
-      <div class="hero-tile-shot" data-project="clair-net">
-        <div class="tile-fallback">
-          <span class="tile-brand">Clair &amp; Net</span>
-          <span class="tile-tag">Nettoyage pro</span>
+    <a href="/projets/clair-net.html" class="hero-tile hero-tile--bleu" style="--float-delay:-1.5s;--tilt:2deg">
+      <div class="ht-browser">
+        <span class="ht-dots"><i></i><i></i><i></i></span>
+        <span class="ht-address">cnet77.fr</span>
+      </div>
+      <div class="ht-shot" data-project="clair-net">
+        <div class="tile-shot-fake ts-clair">
+          <span class="ts-pill">◆ NETTOYAGE PRO · 77</span>
+          <h4 class="ts-title">Le nettoyage pro qui reste <em>net</em>.</h4>
+          <p class="ts-lead">Bureaux, syndics, fins de chantier. Devis en ligne, intervention rapide, résultat impeccable.</p>
+          <span class="ts-btn">Devis en 24 heures ↗</span>
+          <div class="ts-grid"><span></span><span></span><span></span></div>
         </div>
       </div>
-      <span class="hero-tile-domain">cnet77.fr</span>
     </a>
 
     <!-- Modevia -->
-    <a href="/projets/modevia.html" class="hero-tile hero-tile--rose" style="--float-delay:-3s">
-      <div class="hero-tile-shot" data-project="modevia">
-        <div class="tile-fallback">
-          <span class="tile-brand">Modevia</span>
-          <span class="tile-tag">E-commerce mode</span>
+    <a href="/projets/modevia.html" class="hero-tile hero-tile--rose" style="--float-delay:-3s;--tilt:-1deg">
+      <div class="ht-browser">
+        <span class="ht-dots"><i></i><i></i><i></i></span>
+        <span class="ht-address">modevia.fr</span>
+      </div>
+      <div class="ht-shot" data-project="modevia">
+        <div class="tile-shot-fake ts-modevia">
+          <span class="ts-pill">◆ NOUVELLE COLLECTION</span>
+          <h4 class="ts-title">La mode, pensée pour être <em>portée</em>.</h4>
+          <p class="ts-lead">Modevia, une sélection responsable pour une garde-robe qui vous ressemble vraiment.</p>
+          <span class="ts-btn">Découvrir la collection ↗</span>
+          <div class="ts-grid"><span></span><span></span><span></span></div>
         </div>
       </div>
-      <span class="hero-tile-domain">modevia.fr</span>
     </a>
 
     <!-- Nathan Photo -->
-    <a href="/projets/nathan-photo.html" class="hero-tile hero-tile--encre" style="--float-delay:-4.5s">
-      <div class="hero-tile-shot" data-project="nathan-photo">
-        <div class="tile-fallback">
-          <span class="tile-brand">Nathan Photo</span>
-          <span class="tile-tag">Portfolio</span>
+    <a href="/projets/nathan-photo.html" class="hero-tile hero-tile--encre" style="--float-delay:-4.5s;--tilt:2deg">
+      <div class="ht-browser">
+        <span class="ht-dots"><i></i><i></i><i></i></span>
+        <span class="ht-address">nathanfritsch.com</span>
+      </div>
+      <div class="ht-shot" data-project="nathan-photo">
+        <div class="tile-shot-fake ts-nathan">
+          <span class="ts-pill">◆ PORTFOLIO PHOTO</span>
+          <h4 class="ts-title">Regarder ce qui a été. Sans un <em>mot</em>.</h4>
+          <p class="ts-lead">Nathan Fritsch, photographe. Portraits, reportages et séries longues. Un an de travail.</p>
+          <span class="ts-btn">Voir les séries ↗</span>
+          <div class="ts-grid"><span></span><span></span><span></span></div>
         </div>
       </div>
-      <span class="hero-tile-domain">nathanfritsch.com</span>
     </a>
 
   </div>

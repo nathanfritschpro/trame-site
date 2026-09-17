@@ -1871,129 +1871,236 @@
   width: 100%;
 }
 
-/* ============ V8.2 · HERO TILES (4 vignettes fixes qui flottent) ============ */
-.hero-strip { display: none; }
-.hero-strip-track { display: none; }
+/* ============ V8.3 · HERO TILES (style tmoo : browser + shot + rotation) ============ */
+.hero-strip, .hero-strip-track { display: none; }
 
 .hero-tiles {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--sp-6);
+  gap: var(--sp-4);
   max-width: 1200px;
   margin: 0 auto var(--sp-16);
   padding: 0 var(--gut);
   position: relative;
 }
+
+/* Une tuile = un mini-Chrome sur fond papier */
 .hero-tile {
   position: relative;
-  aspect-ratio: 5 / 6;
+  aspect-ratio: 4 / 5;
   border-radius: 20px;
   overflow: hidden;
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  box-shadow: 0 24px 48px -24px rgba(20, 20, 20, 0.22);
+  background: #FFFFFF;
+  box-shadow:
+    0 24px 48px -24px rgba(20, 20, 20, 0.22),
+    0 2px 4px rgba(20, 20, 20, 0.04);
   text-decoration: none;
   color: inherit;
-  animation: heroTileFloat 6s var(--ease-out) infinite;
+  transform: rotate(var(--tilt, 0deg));
+  animation: heroTileFloat 6s ease-in-out infinite;
   animation-delay: var(--float-delay, 0s);
-  transition: transform 0.3s var(--ease-out), box-shadow 0.4s ease;
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s ease;
   will-change: transform;
+  display: flex;
+  flex-direction: column;
 }
 .hero-tile:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 32px 64px -20px rgba(20, 20, 20, 0.28);
+  transform: rotate(0deg) translateY(-10px) scale(1.03);
+  box-shadow:
+    0 40px 80px -30px rgba(20, 20, 20, 0.35),
+    0 4px 8px rgba(20, 20, 20, 0.06);
+  z-index: 5;
 }
 @keyframes heroTileFloat {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-10px); }
+  0%, 100% { transform: rotate(var(--tilt, 0deg)) translateY(0); }
+  50%      { transform: rotate(var(--tilt, 0deg)) translateY(-10px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-tile { animation: none; }
 }
 
-.hero-tile-shot {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: top center;
+/* --- Barre browser (top) --- */
+.ht-browser {
+  height: 30px;
+  background: #F2F2F2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  flex: 0 0 auto;
+  border-bottom: 1px solid rgba(20,20,20,0.06);
 }
-/* Chaque projet charge sa capture réelle si elle existe */
-.hero-tile-shot[data-project="villa-nikkita"] {
-  background-image: url("/assets/tiles/villa-nikkita-ordi.jpg");
+.ht-dots {
+  display: flex;
+  gap: 4px;
+  flex: 0 0 auto;
 }
-.hero-tile-shot[data-project="clair-net"] {
-  background-image: url("/assets/tiles/clair-net-ordi.jpg");
+.ht-dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #DDD;
 }
-.hero-tile-shot[data-project="modevia"] {
-  background-image: url("/assets/tiles/modevia-ordi.jpg");
-}
-.hero-tile-shot[data-project="nathan-photo"] {
-  background-image: url("/assets/tiles/nathan-photo-ordi.jpg");
+.ht-dots i:first-child { background: #FF5F57; }
+.ht-dots i:nth-child(2) { background: #FEBC2E; }
+.ht-dots i:nth-child(3) { background: #28C840; }
+.ht-address {
+  flex: 1;
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #333;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 1px solid rgba(20,20,20,0.06);
 }
 
-/* Fallback stylisé si l'image manque */
-.tile-fallback {
+/* --- Capture (bas) --- */
+.ht-shot {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+.ht-shot::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: top center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+/* Si les captures réelles existent, on les affiche par-dessus le fake */
+.ht-shot[data-project="villa-nikkita"]::after {
+  background-image: url("/assets/tiles/villa-nikkita-ordi.jpg");
+}
+.ht-shot[data-project="clair-net"]::after {
+  background-image: url("/assets/tiles/clair-net-ordi.jpg");
+}
+.ht-shot[data-project="modevia"]::after {
+  background-image: url("/assets/tiles/modevia-ordi.jpg");
+}
+.ht-shot[data-project="nathan-photo"]::after {
+  background-image: url("/assets/tiles/nathan-photo-ordi.jpg");
+}
+.ht-shot.has-shot::after { opacity: 1; }
+
+/* --- Fake shot riche (fallback qui ressemble à un vrai site) --- */
+.tile-shot-fake {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sp-3);
-  text-align: center;
-  padding: var(--sp-6);
+  padding: 16px;
+  gap: 8px;
+  overflow: hidden;
 }
-.tile-brand {
+.ts-pill {
+  align-self: flex-start;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+.ts-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-size: clamp(0.85rem, 0.65rem + 0.9vw, 1.15rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 4px 0 0;
 }
-.tile-tag {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  opacity: 0.7;
+.ts-title em {
+  font-style: italic;
+  font-weight: 700;
 }
-/* Palettes fallback par projet */
-.hero-tile--sable { background: linear-gradient(180deg, #F4E9D8 0%, #E8D9BF 100%); color: #4A3728; }
-.hero-tile--bleu  { background: linear-gradient(180deg, #DDEAF6 0%, #BCD4EC 100%); color: #1D3E5C; }
-.hero-tile--rose  { background: linear-gradient(180deg, #F5E4E4 0%, #E8CDD1 100%); color: #6B2E36; }
-.hero-tile--encre { background: linear-gradient(180deg, #1B1F2A 0%, #0F131B 100%); color: #E9EBF0; }
-
-/* Si l'image est chargée, on cache le fallback */
-.hero-tile-shot:not([style*="none"]).is-loaded + .tile-fallback { display: none; }
-
-/* Nom de domaine en bas */
-.hero-tile-domain {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  right: 12px;
-  padding: 6px 12px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #141414;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.02em;
+.ts-lead {
+  font-size: 9px;
+  line-height: 1.4;
+  margin: 0;
+  opacity: 0.75;
+}
+.ts-btn {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 5px 10px;
   border-radius: 999px;
-  text-align: center;
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(20, 20, 20, 0.06);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
 }
-:root[data-theme="dark"] .hero-tile-domain {
-  background: rgba(15, 21, 32, 0.92);
-  color: #F5F7FA;
-  border-color: rgba(255, 255, 255, 0.08);
+.ts-grid {
+  display: flex;
+  gap: 4px;
+  margin-top: auto;
 }
+.ts-grid span {
+  flex: 1;
+  height: 28px;
+  border-radius: 4px;
+  opacity: 0.15;
+  background: currentColor;
+}
+
+/* ---- 4 palettes tmoo-like ---- */
+.ts-villa {
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 100%, rgba(74, 55, 40, 0.32), transparent 65%),
+    linear-gradient(160deg, #E7D6BA 0%, #C9AB80 60%, #7C5D3E 100%);
+  color: #241A10;
+}
+.ts-villa .ts-pill { background: rgba(36, 26, 16, 0.85); color: #F4E9D8; }
+.ts-villa .ts-btn { background: #241A10; color: #F4E9D8; }
+.ts-villa em { color: #7C4A20; }
+
+.ts-clair {
+  background:
+    radial-gradient(ellipse 90% 60% at 30% 20%, rgba(29, 111, 196, 0.28), transparent 60%),
+    linear-gradient(160deg, #EAF3FC 0%, #B8D4EF 100%);
+  color: #0F2338;
+}
+.ts-clair .ts-pill { background: #1D6FC4; color: #FFFFFF; }
+.ts-clair .ts-btn { background: #1D6FC4; color: #FFFFFF; }
+.ts-clair em { color: #1D6FC4; }
+
+.ts-modevia {
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 100%, rgba(107, 46, 54, 0.25), transparent 60%),
+    linear-gradient(160deg, #F5E4E4 0%, #DDB6BC 100%);
+  color: #3F1A20;
+}
+.ts-modevia .ts-pill { background: #6B2E36; color: #F5E4E4; }
+.ts-modevia .ts-btn { background: #6B2E36; color: #F5E4E4; }
+.ts-modevia em { color: #6B2E36; font-family: Georgia, serif; }
+
+.ts-nathan {
+  background:
+    radial-gradient(ellipse 100% 70% at 50% 0%, rgba(255,255,255,0.06), transparent 60%),
+    linear-gradient(180deg, #262B36 0%, #0F131B 100%);
+  color: #E9EBF0;
+}
+.ts-nathan .ts-pill { background: rgba(233, 235, 240, 0.15); color: #E9EBF0; }
+.ts-nathan .ts-btn { background: #E9EBF0; color: #0F131B; }
+.ts-nathan em { color: #E9EBF0; font-family: Georgia, serif; opacity: 0.9; }
+
+/* Une fois qu'un vrai shot est chargé, on masque le fake */
+.ht-shot.has-shot .tile-shot-fake { opacity: 0; }
 
 @media (max-width: 900px) {
   .hero-tiles { grid-template-columns: repeat(2, 1fr); gap: var(--sp-4); }
 }
 @media (max-width: 480px) {
   .hero-tiles { grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
+  .ht-browser { height: 24px; }
+  .ht-address { font-size: 9px; padding: 2px 8px; }
 }
 
 /* ============ V8.2 · OFFRE PODIUM (site big center + 2 côtés compacts) ============ */
