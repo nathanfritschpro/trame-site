@@ -1,21 +1,21 @@
-/* ============ TRAME · Design tokens v4 (navy + bleu pâle) ============ */
+/* ============ Vera Studio · Design tokens v5 (dark par défaut, light disponible) ============ */
 
 :root {
-  /* ---- Couleurs ---- */
-  --bg:              #0F1520;   /* fond principal, navy profond (remplace noir) */
-  --bg-elev:         #171F2D;   /* surfaces élevées, cards */
-  --bg-soft:         #1F2939;   /* hover cards */
+  color-scheme: dark;
+
+  /* ---- Couleurs (mode sombre) ---- */
+  --bg:              #0F1520;
+  --bg-elev:         #171F2D;
+  --bg-soft:         #1F2939;
   --line:            rgba(255, 255, 255, 0.09);
   --line-strong:     rgba(255, 255, 255, 0.20);
 
-  --text:            #F5F7FA;   /* texte principal */
-  --text-dim:        #B4BCC9;   /* texte secondaire */
-  --text-muted:      #7C8697;   /* texte muted */
+  --text:            #F5F7FA;
+  --text-dim:        #B4BCC9;
+  --text-muted:      #7C8697;
 
-  /* Accent bleu pâle (remplace le lime). Variable "--lime" gardée en alias
-     pour éviter de casser toutes les autres feuilles CSS/JS qui la référencent. */
-  --accent:          #A5D0F5;   /* bleu ciel pâle, très joli */
-  --accent-hover:    #7DBAE8;   /* hover un peu plus soutenu */
+  --accent:          #A5D0F5;
+  --accent-hover:    #7DBAE8;
   --accent-soft:     rgba(165, 208, 245, 0.14);
   --accent-glow:     rgba(165, 208, 245, 0.35);
 
@@ -23,6 +23,34 @@
   --lime-hover:      var(--accent-hover);
   --lime-soft:       var(--accent-soft);
   --lime-glow:       var(--accent-glow);
+}
+
+/* ============ MODE CLAIR ============ */
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg:              #F7F8FB;
+  --bg-elev:         #FFFFFF;
+  --bg-soft:         #EEF2F7;
+  --line:            rgba(15, 21, 32, 0.10);
+  --line-strong:     rgba(15, 21, 32, 0.22);
+
+  --text:            #0F1520;
+  --text-dim:        #435063;
+  --text-muted:      #6A7688;
+
+  --accent:          #1D6FC4;
+  --accent-hover:    #164F8C;
+  --accent-soft:     rgba(29, 111, 196, 0.10);
+  --accent-glow:     rgba(29, 111, 196, 0.22);
+
+  --lime:            var(--accent);
+  --lime-hover:      var(--accent-hover);
+  --lime-soft:       var(--accent-soft);
+  --lime-glow:       var(--accent-glow);
+}
+
+:root { /* reprise des tokens non couleurs */
 
   /* ---- Typographies ---- */
   --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;

@@ -204,4 +204,19 @@
   // ---- Année dynamique dans le footer
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // ---- Theme toggle (clair / sombre) avec persistance localStorage
+  const applyTheme = (t) => {
+    if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    else document.documentElement.removeAttribute('data-theme');
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', t === 'light' ? '#F7F8FB' : '#0F1520');
+    try { localStorage.setItem('vera-theme', t); } catch(e) {}
+  };
+  document.querySelectorAll('.theme-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      applyTheme(cur === 'light' ? 'dark' : 'light');
+    });
+  });
 })();

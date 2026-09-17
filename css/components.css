@@ -389,3 +389,45 @@
 .reveal-delay-2 { transition-delay: 0.16s; }
 .reveal-delay-3 { transition-delay: 0.24s; }
 .reveal-delay-4 { transition-delay: 0.32s; }
+
+/* ============ THEME TOGGLE (clair / sombre) ============ */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  margin-right: var(--sp-3);
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+.theme-toggle:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  transition: opacity 0.25s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+:root .theme-toggle .icon-sun { opacity: 0; transform: rotate(-90deg) scale(0.6); }
+:root .theme-toggle .icon-moon { opacity: 1; transform: rotate(0) scale(1); }
+:root[data-theme="light"] .theme-toggle .icon-sun { opacity: 1; transform: rotate(0) scale(1); }
+:root[data-theme="light"] .theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.6); }
+
+/* Contrastes en mode clair pour les éléments qui posent question */
+:root[data-theme="light"] .btn-primary { color: #FFFFFF; }
+:root[data-theme="light"] .btn-primary:hover { color: #FFFFFF; }
+
+@media (max-width: 640px) {
+  .theme-toggle { width: 36px; height: 36px; margin-right: var(--sp-2); }
+  .theme-toggle svg { width: 16px; height: 16px; }
+}
