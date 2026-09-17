@@ -3005,3 +3005,367 @@
 
 /* --- Hide the OLD signature-grid quand on utilise v3 --- */
 .signature--v3 .signature-grid { display: none; }
+
+/* ============================================================================
+   V8.10 · Optimisation responsive iPhone (mobile-first tune-up style tmoo)
+   Cibles : ≤ 480px prioritairement, avec des respirations pour ≤ 720px
+   ============================================================================ */
+
+/* --- HEADER MOBILE : logo compact, plus de wrap, bouton CTA cache ---------- */
+@media (max-width: 720px) {
+  .header--v8 {
+    padding: 12px 16px;
+    gap: 8px;
+  }
+  .header--v8 .brand-logo {
+    font-size: 1.1rem;
+    white-space: nowrap;
+    letter-spacing: -0.02em;
+  }
+  .header--v8 .nav { display: none; }
+  .header--v8 .header-cta {
+    gap: 6px;
+  }
+  .header--v8 .header-cta .btn {
+    /* CTA "Recevoir un aperçu" prend trop de place a cote du logo+burger */
+    display: none;
+  }
+  .header--v8 .header-cta .theme-toggle {
+    padding: 8px;
+  }
+  .header--v8 .burger {
+    padding: 8px;
+  }
+}
+
+/* --- HERO MOBILE : titre lisible, sous-titre plus concis ------------------- */
+@media (max-width: 720px) {
+  .hero-v8 {
+    padding-top: calc(var(--sp-8) + 44px); /* espace header */
+    padding-bottom: var(--sp-10);
+  }
+  .hero-tiles {
+    grid-template-columns: 1fr 1fr !important;
+    max-width: 100% !important;
+    gap: 12px !important;
+    padding: 0 16px;
+    margin-bottom: var(--sp-8) !important;
+  }
+  .hero-tile {
+    aspect-ratio: 4 / 5;
+    border-radius: 14px;
+  }
+  .hero-tile .ht-address {
+    font-size: 9px;
+  }
+  .hero-v8-title {
+    font-size: clamp(1.9rem, 6.5vw + 0.5rem, 2.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    max-width: 100%;
+    margin-bottom: var(--sp-5);
+    padding: 0 8px;
+  }
+  .hero-v8-sub {
+    font-size: 0.85rem;
+    margin-bottom: var(--sp-6);
+    padding: 0 12px;
+  }
+  .hero-v8-ctas {
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 10px;
+  }
+  .hero-v8-ctas .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-v8-badge {
+    font-size: 0.72rem;
+    padding: 10px 16px;
+    line-height: 1.4;
+    margin-top: var(--sp-6);
+  }
+}
+
+/* --- BANDEAU PROMESSES MOBILE : angle plus doux, taille moins agressive --- */
+@media (max-width: 720px) {
+  .promises-band { padding: var(--sp-6) 0; }
+  .promises-band .promises-strip { padding: 12px 0; }
+  .promises-band .promises-strip--dark {
+    transform: rotate(-3deg);
+  }
+  .promises-band .promises-strip--accent {
+    transform: rotate(2deg);
+    margin-top: -14px;
+  }
+  .promises-band .promises-item-2 {
+    font-size: 0.85rem;
+  }
+}
+
+/* --- WORKS HEAD V3 MOBILE : titre lisible, ghost text tres discret -------- */
+@media (max-width: 720px) {
+  .works-head--v3 {
+    padding: 0 20px;
+    margin-bottom: var(--sp-8);
+    min-height: 90px;
+  }
+  .works-head--v3 .works-head-title h2 {
+    font-size: 2.4rem;
+    max-width: 100%;
+  }
+  .works-head--v3 .works-ghost-text {
+    font-size: 3rem;
+    opacity: 0.5;
+    padding-right: 0;
+  }
+  .works-head--v3 .works-head-ghost {
+    top: auto;
+    bottom: -10px;
+    align-items: flex-end;
+    justify-content: flex-start;
+    left: -20px;
+    right: -20px;
+  }
+}
+
+/* --- WORK CARDS MOBILE : mockup ordi + phone tiennent dans la carte -------- */
+@media (max-width: 720px) {
+  .works { padding: var(--sp-10) 16px; }
+  .work-card {
+    grid-template-columns: 1fr !important;
+    gap: var(--sp-6) !important;
+    margin-bottom: var(--sp-10);
+  }
+  .work-card--reverse .work-mockup { order: 1; }
+  .work-card--reverse .work-meta { order: 2; }
+  .work-mockup {
+    padding: 0;
+    max-width: 100%;
+  }
+  .work-mockup .mockup--lg { max-width: 100%; }
+  .work-card .mockup-phone {
+    width: 90px !important;
+    right: 4px !important;
+    bottom: 6px !important;
+  }
+  .work-card--reverse .mockup-phone {
+    left: 4px !important;
+    right: auto !important;
+  }
+  .work-meta h3 {
+    font-size: 1.6rem;
+    letter-spacing: -0.03em;
+  }
+  .work-meta p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+  .work-kind {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+  }
+}
+
+/* --- SIGNATURE V3 MOBILE : le sticky lache, tailles s'ajustent ------------ */
+@media (max-width: 720px) {
+  .signature--v3 { padding: var(--sp-10) 16px; }
+  .signature--v3 .signature-inner {
+    grid-template-columns: 1fr;
+    gap: var(--sp-8);
+  }
+  .signature--v3 .signature-left { position: static; }
+  .signature--v3 .signature-left h2 {
+    font-size: 1.8rem;
+    letter-spacing: -0.03em;
+  }
+  .signature--v3 .signature-lead {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+  .signature--v3 .signature-checks li {
+    font-size: 0.9rem;
+  }
+  .signature--v3 .validation-box {
+    padding: var(--sp-6) var(--sp-5);
+    border-radius: 20px;
+  }
+  .signature--v3 .validation-box h3 {
+    font-size: 1.3rem;
+  }
+  .signature--v3 .validation-box p {
+    font-size: 0.9rem;
+  }
+}
+
+/* --- OFFER PODIUM MOBILE : centre en tete, cotes empiles ------------------ */
+@media (max-width: 900px) {
+  .offer--v3 .offer-podium {
+    grid-template-columns: 1fr !important;
+    gap: var(--sp-6) !important;
+  }
+  .offer--v3 .offer-center {
+    order: 1;
+    transform: none !important;
+  }
+  .offer--v3 .offer-side:nth-of-type(1) { order: 2; }
+  .offer--v3 .offer-side:nth-of-type(3) { order: 3; }
+}
+@media (max-width: 720px) {
+  .offer--v3 { padding: var(--sp-10) 16px; }
+  .offer--v3 h2 { font-size: 1.9rem; }
+  .offer--v3 .offer-center { padding: var(--sp-6) var(--sp-5); }
+  .offer--v3 .offer-plan-value { font-size: 1.5rem; }
+  .offer--v3 .offer-side { padding: var(--sp-5) var(--sp-4); }
+  .offer--v3 .offer-side h3 { font-size: 1.1rem; }
+}
+
+/* --- METHODE MOBILE : 2x2 -> 1 colonne ------------------------------------ */
+@media (max-width: 720px) {
+  .method--v2 { padding: var(--sp-10) 16px; }
+  .method--v2 h2 { font-size: 1.9rem; letter-spacing: -0.03em; }
+  .method--v2 .method-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-6);
+  }
+  .method--v2 .method-step {
+    padding: var(--sp-5) var(--sp-4);
+  }
+  .method--v2 .method-num {
+    font-size: 1.8rem;
+  }
+}
+
+/* --- BEFORE/AFTER SLIDER MOBILE : hauteur reduite, labels lisibles -------- */
+@media (max-width: 720px) {
+  .before-after { padding: var(--sp-10) 16px; }
+  .before-after h2 { font-size: 1.8rem; }
+  .ba-slider {
+    aspect-ratio: 4/5 !important;
+    border-radius: 14px;
+  }
+  .ba-label {
+    font-size: 0.65rem !important;
+    padding: 4px 8px !important;
+  }
+}
+
+/* --- FAQ MOBILE : padding revu, taille questions ------------------------- */
+@media (max-width: 720px) {
+  .faq { padding: var(--sp-10) 16px; }
+  .faq h2 { font-size: 1.9rem; }
+  .faq-item summary,
+  .faq-item .faq-q {
+    font-size: 1rem;
+    padding: var(--sp-4) 0;
+  }
+  .faq-item p { font-size: 0.9rem; }
+}
+
+/* --- CONTACT MOBILE : formulaire pleine largeur + labels visibles --------- */
+@media (max-width: 720px) {
+  .contact-final { padding: var(--sp-10) 16px; }
+  .contact-final-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--sp-8) !important;
+  }
+  .contact-final-text .eyebrow { font-size: 0.7rem; }
+  .contact-final h2 { font-size: 1.9rem; letter-spacing: -0.03em; }
+  .contact-final-text {
+    position: static;
+    max-width: 100%;
+  }
+  .contact-final-form {
+    padding: var(--sp-6) var(--sp-5);
+    border-radius: 20px;
+  }
+  .cf-row label {
+    font-size: 0.85rem;
+  }
+  .cf-row input,
+  .cf-row select,
+  .cf-row textarea {
+    font-size: 16px; /* evite le zoom auto iOS */
+  }
+}
+
+/* --- FOOTER MOBILE : 4 col -> 1 col, centre --------------------------- */
+@media (max-width: 720px) {
+  .site-footer { padding: var(--sp-10) 16px var(--sp-6); }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-6);
+    text-align: center;
+  }
+  .footer-brand h3 { font-size: 1.5rem; }
+  .footer-col h4 { margin-bottom: var(--sp-2); }
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--sp-2);
+    text-align: center;
+    font-size: 0.75rem;
+  }
+}
+
+/* --- HEADER MINIMAL (portfolio, service, projet) MOBILE ------------------- */
+@media (max-width: 720px) {
+  .header--minimal {
+    padding: 10px 12px;
+    grid-template-columns: auto 1fr auto;
+    gap: 8px;
+  }
+  .header--minimal .portfolio-back span { display: none; }
+  .header--minimal .portfolio-back svg {
+    width: 22px;
+    height: 22px;
+  }
+  .header--minimal .brand-logo--center {
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+  .header--minimal .theme-toggle {
+    padding: 6px;
+  }
+  /* Portfolio hero mobile */
+  .portfolio-hero {
+    padding: calc(var(--sp-10) + 20px) 16px var(--sp-8);
+  }
+  .portfolio-hero h1 {
+    font-size: clamp(1.8rem, 6vw + 0.5rem, 2.6rem);
+    line-height: 1.05;
+  }
+  .portfolio-hero p {
+    font-size: 0.95rem;
+  }
+  /* Portfolio CTA mobile */
+  .portfolio-cta { padding: var(--sp-10) 16px; }
+  .portfolio-cta h2 { font-size: 1.9rem; letter-spacing: -0.03em; }
+}
+
+/* --- HERO TILE V8 MOBILE : reduire l'ombre des tiles trop lourdes -------- */
+@media (max-width: 720px) {
+  .hero-tile {
+    box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.25);
+  }
+  .ht-shot .ts-title {
+    font-size: 0.9rem !important;
+    line-height: 1.15;
+  }
+  .ht-shot .ts-lead { display: none; }
+  .ht-shot .ts-btn {
+    font-size: 0.55rem !important;
+    padding: 4px 8px !important;
+  }
+  .ht-shot .ts-pill {
+    font-size: 0.5rem !important;
+  }
+}
+
+/* --- BODY SCROLL SMOOTH + touche iOS ------------------------------------ */
+@media (max-width: 720px) {
+  html { scroll-behavior: smooth; }
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
+}
