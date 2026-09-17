@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="/css/base.css">
 <link rel="stylesheet" href="/css/components.css">
 <link rel="stylesheet" href="/css/pages.css">
-<link rel="stylesheet" href="/css/v8.css">
+<link rel="stylesheet" href="/css/v8.css?v=8.6">
 <script>
   (function(){
     try {
@@ -35,87 +35,34 @@
   })();
 </script>
 </head>
-<body>
+<body class="portfolio-overlay">
 
-<header class="header">
-  <a href="/" class="brand-logo">Vera Studio<span class="dot">.</span></a>
-  <nav class="nav" aria-label="Principale">
-    <a href="/">Accueil</a>
-    <div class="nav-item nav-item--dropdown">
-      <button type="button" class="nav-link nav-toggle active" aria-haspopup="true" aria-expanded="false">Services
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="nav-dropdown">
-        <a href="/services/sites-internet.html">Sites internet</a>
-        <a href="/services/applications.html">Applications métier</a>
-        <a href="/services/photo-video-drone.html">Photo, vidéo et drone</a>
-        <a href="/services/chef-de-projet.html">Chef de projet digital</a>
-      </div>
-    </div>
-    <div class="nav-item nav-item--dropdown">
-      <button type="button" class="nav-link nav-toggle" aria-haspopup="true" aria-expanded="false">Portfolio
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-caret"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div class="nav-dropdown">
-        <a href="/portfolio.html">Tous les projets</a>
-        <a href="/portfolio.html?filter=sites">Sites internet</a>
-        <a href="/portfolio.html?filter=photo">Photo</a>
-        <a href="/portfolio.html?filter=video">Vidéo et drone</a>
-        <a href="/portfolio.html?filter=applications">Applications</a>
-      </div>
-    </div>
-    <a href="/formules.html">Formules</a>
-    <a href="/contact.html">Contact</a>
-  </nav>
+<!-- ============ HEADER MINIMAL (retour + logo + toggle) ============ -->
+<header class="header header--minimal" id="site-header">
+  <a href="/" class="portfolio-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span>Retour à l'accueil</span>
+  </a>
+  <a href="/" class="brand-logo brand-logo--center">Vera Studio<span class="dot">.</span></a>
   <div class="header-cta">
-        <button type="button" class="theme-toggle" aria-label="Basculer clair / sombre" title="Basculer clair / sombre">
+    <button type="button" class="theme-toggle" aria-label="Basculer clair / sombre" title="Basculer clair / sombre">
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
-    <a href="/contact.html" class="btn btn-primary btn-icon">Prendre contact
-      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-    </a>
   </div>
-  <button class="burger" aria-label="Ouvrir le menu"><span></span><span></span></button>
 </header>
 
-<div class="mobile-nav">
-  <ul>
-    <li><a href="/">Accueil</a></li>
-    <li class="mobile-nav-group">
-      <button type="button" class="mobile-nav-toggle" aria-expanded="true">Services <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
-      <ul class="mobile-nav-sub">
-        <li><a href="/services/sites-internet.html">Sites internet</a></li>
-        <li><a href="/services/applications.html">Applications métier</a></li>
-        <li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li>
-        <li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li>
-      </ul>
-    </li>
-    <li class="mobile-nav-group">
-      <button type="button" class="mobile-nav-toggle" aria-expanded="false">Portfolio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
-      <ul class="mobile-nav-sub">
-        <li><a href="/portfolio.html">Tous les projets</a></li>
-        <li><a href="/portfolio.html?filter=sites">Sites internet</a></li>
-        <li><a href="/portfolio.html?filter=photo">Photo</a></li>
-        <li><a href="/portfolio.html?filter=video">Vidéo et drone</a></li>
-        <li><a href="/portfolio.html?filter=applications">Applications</a></li>
-      </ul>
-    </li>
-    <li><a href="/formules.html">Formules</a></li>
-    <li><a href="/contact.html">Contact</a></li>
-    <li><a href="/contact.html" class="btn btn-primary">Prendre contact →</a></li>
-  </ul>
-</div>
-
-<section class="page-hero">
-  <div class="page-hero-inner">
+<!-- ============ HERO SERVICE ============ -->
+<section class="portfolio-hero">
+  <div class="portfolio-hero-inner">
     <span class="eyebrow reveal">◆ Service · Applications métier</span>
     <h1 class="reveal reveal-delay-1">L'outil qui vous <span class="accent">manque</span>,<br>fait pour vous.</h1>
-    <p class="page-hero-desc reveal reveal-delay-2">Quand le tableur ne suffit plus et qu'aucun logiciel du marché ne correspond à votre façon de travailler.</p>
-    <p class="page-hero-meta reveal reveal-delay-3"><strong>Pour qui :</strong> les entreprises qui jonglent entre plusieurs fichiers, plusieurs outils, et beaucoup de ressaisie. Celles qui paient un abonnement pour un logiciel dont elles n'utilisent que 10 %.</p>
+    <p class="reveal reveal-delay-2">Quand le tableur ne suffit plus et qu'aucun logiciel du marché ne correspond à votre façon de travailler.</p>
+    <p class="reveal reveal-delay-3" style="max-width:640px;margin:var(--sp-4) auto 0;color:var(--text-soft);font-size:0.95rem"><strong>Pour qui :</strong> les entreprises qui jonglent entre plusieurs fichiers, plusieurs outils, et beaucoup de ressaisie. Celles qui paient un abonnement pour un logiciel dont elles n'utilisent que 10 %.</p>
   </div>
 </section>
 
+<!-- ============ CE QU'ON CONSTRUIT ============ -->
 <section class="service-detail">
   <div class="service-detail-inner">
     <div class="service-detail-block reveal">
@@ -130,129 +77,74 @@
       <p>Plateforme complète conçue et développée intégralement en interne. Comptes clients, base de données, paiement en ligne, relances automatiques, tâches programmées. Elle tourne en production, avec de vrais utilisateurs qui paient.</p>
       <a href="/projets/modevia.html" class="btn btn-ghost">Voir le projet →</a>
     </div>
+
+    <div class="service-detail-block reveal reveal-delay-2">
+      <span class="service-tag">◆ Bientôt en ligne</span>
+      <h3>Prospune.</h3>
+      <p>Notre seconde application métier, en cours de développement en interne. Un SaaS de prospection pour les photographes et vidéastes. Une nouvelle preuve que Vera Studio ne fait pas que des sites internet.</p>
+    </div>
   </div>
 </section>
 
-<section class="formules" id="prix">
-  <div class="formules-head">
-    <span class="eyebrow reveal">◆ Les prix</span>
-    <h2 class="reveal reveal-delay-1">Quatre <span class="accent">niveaux</span> selon votre besoin.</h2>
-  </div>
-
-  <div class="formules-grid formules-grid--four">
-
-    <article class="formule reveal">
-      <div class="formule-head">
-        <span class="formule-tag">01 · Cadrage</span>
-        <h3>Audit et cadrage.</h3>
-        <p class="formule-price"><a class="devis-link" href="/contact.html?devis=app-cadrage">Sur devis gratuit<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></p>
-      </div>
-      <p class="formule-desc">Deux demi-journées avec vous, puis un document qui décrit l'outil à construire : les écrans, les données, les rôles, les priorités, et une estimation chiffrée.</p>
-      <ul class="formule-list">
-        <li>Deux demi-journées d'atelier</li>
-        <li>Document de cadrage complet</li>
-        <li>Estimation chiffrée du projet</li>
-        <li><strong>Déduit du projet si vous nous le confiez</strong></li>
-      </ul>
-      <a href="/contact.html?devis=app-cadrage" class="btn btn-ghost btn-full">Demander un devis →</a>
-    </article>
-
-    <article class="formule reveal reveal-delay-1">
-      <div class="formule-head">
-        <span class="formule-tag">02 · Simple</span>
-        <h3>Application simple.</h3>
-        <p class="formule-price"><a class="devis-link" href="/contact.html?devis=app-simple">Sur devis gratuit<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></p>
-      </div>
-      <p class="formule-desc">Un métier, quelques écrans, une base de données, des comptes utilisateurs. Devis, plannings, suivi de clients, gestion de stock.</p>
-      <ul class="formule-list">
-        <li>Comptes utilisateurs et rôles</li>
-        <li>Base de données sur mesure</li>
-        <li>Interfaces adaptées à votre métier</li>
-        <li>Formation à la prise en main</li>
-      </ul>
-      <a href="/contact.html?devis=app-simple" class="btn btn-primary btn-full">Demander un devis →</a>
-    </article>
-
-    <article class="formule reveal reveal-delay-2">
-      <div class="formule-head">
-        <span class="formule-tag">03 · Complète</span>
-        <h3>Application complète.</h3>
-        <p class="formule-price"><a class="devis-link" href="/contact.html?devis=app-complete">Sur devis gratuit<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></p>
-      </div>
-      <p class="formule-desc">Plusieurs rôles, paiement en ligne, automatisations, tableaux de bord, connexion à vos outils existants.</p>
-      <ul class="formule-list">
-        <li>Plusieurs rôles utilisateurs</li>
-        <li>Paiement en ligne intégré</li>
-        <li>Automatisations et tâches programmées</li>
-        <li>Tableaux de bord et exports</li>
-        <li>Connexions à vos outils existants</li>
-      </ul>
-      <a href="/contact.html?devis=app-complete" class="btn btn-ghost btn-full">Demander un devis →</a>
-    </article>
-
-    <article class="formule reveal reveal-delay-3">
-      <div class="formule-head">
-        <span class="formule-tag">04 · Suivi</span>
-        <h3>Maintenance et évolutions.</h3>
-        <p class="formule-price"><a class="devis-link" href="/contact.html?devis=app-suivi">Sur devis gratuit<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></p>
-      </div>
-      <p class="formule-desc">Correctifs, sauvegardes, petites évolutions. Sans engagement de durée.</p>
-      <ul class="formule-list">
-        <li>Correctifs prioritaires</li>
-        <li>Sauvegardes automatiques</li>
-        <li>Petites évolutions incluses</li>
-        <li>Sans engagement de durée</li>
-      </ul>
-      <a href="/contact.html?devis=app-suivi" class="btn btn-ghost btn-full">Demander un devis →</a>
-    </article>
-
-  </div>
-</section>
-
+<!-- ============ POURQUOI LE CADRAGE ============ -->
 <section class="service-detail">
   <div class="service-detail-inner">
     <div class="service-detail-block reveal">
       <h2>Pourquoi le <span class="accent">cadrage</span> d'abord.</h2>
       <p>Parce qu'aucune application sérieuse ne se chiffre sur une conversation de vingt minutes. Le cadrage protège tout le monde : vous savez ce que vous achetez, nous savons ce que nous construisons, et personne ne découvre en cours de route que le projet fait le double.</p>
+      <p>Deux demi-journées avec vous, puis un document qui décrit l'outil à construire : les écrans, les données, les rôles, les priorités, et une estimation chiffrée. <strong>Déduit du projet si vous nous le confiez.</strong></p>
     </div>
   </div>
 </section>
 
-<section class="cta-final">
-  <div class="cta-final-inner">
-    <span class="eyebrow reveal">◆ Un projet en tête ?</span>
-    <h2 class="reveal reveal-delay-1">Parlons-en.<br>On répond dans <span class="accent">la journée</span>.</h2>
-    <div class="cta-ctas reveal reveal-delay-2">
-      <a href="/contact.html" class="btn btn-primary">Nous écrire
+<!-- ============ TARIF ============ -->
+<section class="devis-band">
+  <div class="devis-inner">
+    <span class="eyebrow reveal">◆ Tarif</span>
+    <h2 class="reveal reveal-delay-1">Sur <span class="accent">devis gratuit</span>.</h2>
+    <p class="reveal reveal-delay-2 devis-lead">Chaque projet est différent, le prix se construit après le cadrage. Cadrage offert et déduit si vous poursuivez avec nous. Aucun paiement avant d'avoir vu le premier écran fonctionnel.</p>
+
+    <div class="cta-ctas reveal">
+      <a href="/#contact" class="btn btn-primary">Demander un devis
         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
-      <a href="/projets/modevia.html" class="btn btn-ghost">Voir Modevia</a>
     </div>
   </div>
 </section>
 
+<!-- ============ CTA FINAL ============ -->
+<section class="portfolio-cta">
+  <div class="portfolio-cta-inner">
+    <h2 class="reveal">Un outil à construire ?</h2>
+    <p class="reveal reveal-delay-1">Décrivez-nous votre besoin. On revient sous 48 heures avec un premier retour, sans engagement.</p>
+    <div class="reveal reveal-delay-2">
+      <a href="/#contact" class="btn btn-primary btn-lg">Nous en parler
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
         <h3>Vera Studio<span class="dot">.</span></h3>
-        <p>Un duo qui code à la main des sites internet pour artisans et petites entreprises. Photo et vidéo en option.</p>
+        <p>Un duo indépendant. Sites internet, applications métier et pilotage de projet, en Nouvelle-Aquitaine.</p>
       </div>
-      <div class="footer-col"><h4>Services</h4><ul><li><a href="/services/sites-internet.html">Sites internet</a></li><li><a href="/services/applications.html">Applications métier</a></li><li><a href="/services/photo-video-drone.html">Photo, vidéo et drone</a></li><li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li></ul></div>
-      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Portfolio</a></li><li><a href="/formules.html">Formules</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="/services/sites-internet.html">Sites internet</a></li><li><a href="/services/applications.html">Applications métier</a></li><li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li></ul></div>
+      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Le travail</a></li><li><a href="/#offre">L'offre</a></li><li><a href="/#contact">Contact</a></li></ul></div>
       <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@verastudio.fr">contact@verastudio.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li><li>Nouvelle-Aquitaine</li></ul></div>
     </div>
     <div class="footer-bottom">
-      <span>Vera Studio · Sites, applications, photo et vidéo.</span>
+      <span>Vera Studio · Duo indépendant</span>
       <span>© <span data-year>2026</span> · <a href="/mentions-legales.html">Mentions légales</a></span>
     </div>
   </div>
 </footer>
 
-<a href="/contact.html" class="float-cta" aria-label="Nous contacter">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1 0 2 1 2 2v12c0 1-1 2-2 2H4c-1 0-2-1-2-2V6c0-1 1-2 2-2z"/><path d="M2 6l10 7 10-7"/></svg>
-</a>
-
-<script src="/js/main.js" defer></script>
+<script src="/js/main.js?v=8.6" defer></script>
+<script src="/js/v8.js?v=8.6" defer></script>
 </body>
 </html>
