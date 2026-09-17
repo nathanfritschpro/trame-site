@@ -1870,3 +1870,373 @@
   gap: 8px;
   width: 100%;
 }
+
+/* ============ V8.2 · HERO TILES (4 vignettes fixes qui flottent) ============ */
+.hero-strip { display: none; }
+.hero-strip-track { display: none; }
+
+.hero-tiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-6);
+  max-width: 1200px;
+  margin: 0 auto var(--sp-16);
+  padding: 0 var(--gut);
+  position: relative;
+}
+.hero-tile {
+  position: relative;
+  aspect-ratio: 5 / 6;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 48px -24px rgba(20, 20, 20, 0.22);
+  text-decoration: none;
+  color: inherit;
+  animation: heroTileFloat 6s var(--ease-out) infinite;
+  animation-delay: var(--float-delay, 0s);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.4s ease;
+  will-change: transform;
+}
+.hero-tile:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 32px 64px -20px rgba(20, 20, 20, 0.28);
+}
+@keyframes heroTileFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-tile { animation: none; }
+}
+
+.hero-tile-shot {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: top center;
+}
+/* Chaque projet charge sa capture réelle si elle existe */
+.hero-tile-shot[data-project="villa-nikkita"] {
+  background-image: url("/assets/tiles/villa-nikkita-ordi.jpg");
+}
+.hero-tile-shot[data-project="clair-net"] {
+  background-image: url("/assets/tiles/clair-net-ordi.jpg");
+}
+.hero-tile-shot[data-project="modevia"] {
+  background-image: url("/assets/tiles/modevia-ordi.jpg");
+}
+.hero-tile-shot[data-project="nathan-photo"] {
+  background-image: url("/assets/tiles/nathan-photo-ordi.jpg");
+}
+
+/* Fallback stylisé si l'image manque */
+.tile-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  text-align: center;
+  padding: var(--sp-6);
+}
+.tile-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.tile-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+/* Palettes fallback par projet */
+.hero-tile--sable { background: linear-gradient(180deg, #F4E9D8 0%, #E8D9BF 100%); color: #4A3728; }
+.hero-tile--bleu  { background: linear-gradient(180deg, #DDEAF6 0%, #BCD4EC 100%); color: #1D3E5C; }
+.hero-tile--rose  { background: linear-gradient(180deg, #F5E4E4 0%, #E8CDD1 100%); color: #6B2E36; }
+.hero-tile--encre { background: linear-gradient(180deg, #1B1F2A 0%, #0F131B 100%); color: #E9EBF0; }
+
+/* Si l'image est chargée, on cache le fallback */
+.hero-tile-shot:not([style*="none"]).is-loaded + .tile-fallback { display: none; }
+
+/* Nom de domaine en bas */
+.hero-tile-domain {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #141414;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  text-align: center;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(20, 20, 20, 0.06);
+}
+:root[data-theme="dark"] .hero-tile-domain {
+  background: rgba(15, 21, 32, 0.92);
+  color: #F5F7FA;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 900px) {
+  .hero-tiles { grid-template-columns: repeat(2, 1fr); gap: var(--sp-4); }
+}
+@media (max-width: 480px) {
+  .hero-tiles { grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
+}
+
+/* ============ V8.2 · OFFRE PODIUM (site big center + 2 côtés compacts) ============ */
+.offer--v3 .offer-triptych { display: none; }
+.offer-podium {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr 1fr;
+  gap: var(--sp-6);
+  align-items: center;
+}
+
+/* Cartes côté (gauche/droite) */
+.offer-side {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.35s var(--ease-out);
+}
+.offer-side:hover { transform: translateY(-4px); }
+.offer-side-inner {
+  padding: var(--sp-8);
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--br-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  min-height: 380px;
+  justify-content: space-between;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.offer-side:hover .offer-side-inner {
+  border-color: var(--accent);
+  box-shadow: 0 24px 48px -24px rgba(20,20,20,0.15);
+}
+.offer-side-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background: color-mix(in oklab, var(--text) 8%, transparent);
+  color: var(--text-dim);
+  border-radius: var(--br-pill);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+.offer-side h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0;
+}
+.offer-side-desc {
+  color: var(--text-dim);
+  font-size: var(--fs-base);
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+.offer-side-price {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--line);
+}
+.offer-side-price strong {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  margin-right: 4px;
+}
+.offer-side-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: gap 0.3s var(--ease-out);
+}
+.offer-side-cta svg { width: 14px; height: 14px; }
+.offer-side:hover .offer-side-cta { gap: 10px; }
+
+/* Carte centrale (site internet, la grande) */
+.offer-center {
+  background: linear-gradient(180deg, var(--bg-elev), color-mix(in oklab, var(--accent-soft) 45%, var(--bg-elev) 55%));
+  border: 2px solid var(--accent);
+  border-radius: var(--br-xl);
+  padding: var(--sp-10) var(--sp-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+  position: relative;
+  transform: scale(1.02);
+  z-index: 2;
+  box-shadow: 0 32px 64px -30px var(--accent-glow), 0 12px 24px -12px rgba(20,20,20,0.15);
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s ease;
+}
+.offer-center:hover {
+  transform: scale(1.04) translateY(-4px);
+}
+.offer-center-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 16px;
+  background: var(--accent);
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: var(--br-pill);
+  white-space: nowrap;
+  box-shadow: 0 8px 16px -4px var(--accent-glow);
+}
+
+.offer-center h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 1.3rem + 1.5vw, 2.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin: 0 0 var(--sp-3);
+}
+.offer-center .offer-plan-desc {
+  color: var(--text-dim);
+  font-size: var(--fs-base);
+  line-height: 1.55;
+  margin: 0;
+}
+
+@media (max-width: 1000px) {
+  .offer-podium {
+    grid-template-columns: 1fr;
+    gap: var(--sp-8);
+  }
+  .offer-center { transform: none; order: -1; }
+  .offer-side-inner { min-height: 0; }
+}
+
+/* ============ V8.2 · SIGNATURE (présence digitale) 4 vignettes design ============ */
+.signature--v2 .signature-list { display: none; }
+.signature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-6);
+}
+.sig-card {
+  padding: var(--sp-8);
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--br-lg);
+  display: flex;
+  gap: var(--sp-6);
+  align-items: flex-start;
+  transition: border-color 0.3s ease, transform 0.35s var(--ease-out), box-shadow 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+.sig-card::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 60%;
+  height: 200%;
+  background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.sig-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -20px rgba(20,20,20,0.15);
+}
+.sig-card:hover::before { opacity: 1; }
+
+.sig-icon {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.4s var(--ease-out), background 0.3s ease, color 0.3s ease;
+}
+.sig-icon svg { width: 28px; height: 28px; position: relative; z-index: 2; }
+.sig-card:hover .sig-icon {
+  background: var(--accent);
+  color: #FFFFFF;
+  transform: rotate(-4deg) scale(1.08);
+}
+:root[data-theme="dark"] .sig-card:hover .sig-icon { color: var(--bg); }
+
+.sig-body { flex: 1; min-width: 0; position: relative; z-index: 2; }
+.sig-num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: var(--sp-2);
+}
+.sig-body h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0 0 var(--sp-3);
+}
+.sig-body p {
+  color: var(--text-dim);
+  font-size: var(--fs-base);
+  line-height: 1.55;
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .signature-grid { grid-template-columns: 1fr; gap: var(--sp-4); }
+  .sig-card { padding: var(--sp-6); gap: var(--sp-4); }
+  .sig-icon { width: 48px; height: 48px; }
+  .sig-icon svg { width: 24px; height: 24px; }
+}

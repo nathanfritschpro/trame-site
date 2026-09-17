@@ -82,124 +82,54 @@
 <!-- ============ HERO ============ -->
 <section class="hero-v8">
   <!-- Bandeau 4 vignettes qui défilent en boucle -->
-  <div class="hero-strip" aria-hidden="true">
-    <div class="hero-strip-track">
+  <!-- 4 vignettes fixes qui flottent doucement (float animation) -->
+  <div class="hero-tiles" aria-hidden="true">
 
-      <!-- Villa Nikkita · scheme "sable" -->
-      <div class="hero-thumb hero-thumb--sable">
-        <div class="ht-bar"><i></i><i></i><i></i><span class="ht-url">villa-nikkita.fr</span></div>
-        <div class="ht-inside">
-          <div class="ht-nav"><span class="ht-logo">VN</span><span class="ht-links"><em></em><em></em><em></em></span></div>
-          <div class="ht-hero">
-            <span class="ht-eyebrow">◆ LOCATION SAISONNIÈRE</span>
-            <span class="ht-title">Villa Nikkita</span>
-            <span class="ht-sub">Une maison d'exception au bord de l'Atlantique.</span>
-            <span class="ht-btn">Réserver ↗</span>
-          </div>
-          <div class="ht-row"><span></span><span></span><span></span></div>
+    <!-- Villa Nikkita -->
+    <a href="/projets/villa-nikkita.html" class="hero-tile hero-tile--sable" style="--float-delay:0s">
+      <div class="hero-tile-shot" data-project="villa-nikkita">
+        <!-- Screenshot réel à insérer ici : /assets/tiles/villa-nikkita-ordi.jpg -->
+        <div class="tile-fallback">
+          <span class="tile-brand">Villa Nikkita</span>
+          <span class="tile-tag">Location saisonnière</span>
         </div>
       </div>
+      <span class="hero-tile-domain">villa-nikkita.fr</span>
+    </a>
 
-      <!-- Clair & Net · scheme "bleu net" -->
-      <div class="hero-thumb hero-thumb--bleu">
-        <div class="ht-bar"><i></i><i></i><i></i><span class="ht-url">cnet77.fr</span></div>
-        <div class="ht-inside">
-          <div class="ht-nav"><span class="ht-logo">C&amp;N</span><span class="ht-links"><em></em><em></em><em></em></span></div>
-          <div class="ht-hero">
-            <span class="ht-eyebrow">◆ NETTOYAGE PRO</span>
-            <span class="ht-title">Clair &amp; Net</span>
-            <span class="ht-sub">Un service impeccable, dans les temps.</span>
-            <span class="ht-btn">Devis en 24h ↗</span>
-          </div>
-          <div class="ht-row"><span></span><span></span><span></span></div>
+    <!-- Clair & Net -->
+    <a href="/projets/clair-net.html" class="hero-tile hero-tile--bleu" style="--float-delay:-1.5s">
+      <div class="hero-tile-shot" data-project="clair-net">
+        <div class="tile-fallback">
+          <span class="tile-brand">Clair &amp; Net</span>
+          <span class="tile-tag">Nettoyage pro</span>
         </div>
       </div>
+      <span class="hero-tile-domain">cnet77.fr</span>
+    </a>
 
-      <!-- Modevia · scheme "rose mode" -->
-      <div class="hero-thumb hero-thumb--rose">
-        <div class="ht-bar"><i></i><i></i><i></i><span class="ht-url">modevia.fr</span></div>
-        <div class="ht-inside">
-          <div class="ht-nav"><span class="ht-logo">MV</span><span class="ht-links"><em></em><em></em><em></em></span></div>
-          <div class="ht-hero">
-            <span class="ht-eyebrow">◆ NOUVELLE COLLECTION</span>
-            <span class="ht-title">Modevia</span>
-            <span class="ht-sub">La mode, pensée pour être portée.</span>
-            <span class="ht-btn">Découvrir ↗</span>
-          </div>
-          <div class="ht-row"><span></span><span></span><span></span></div>
+    <!-- Modevia -->
+    <a href="/projets/modevia.html" class="hero-tile hero-tile--rose" style="--float-delay:-3s">
+      <div class="hero-tile-shot" data-project="modevia">
+        <div class="tile-fallback">
+          <span class="tile-brand">Modevia</span>
+          <span class="tile-tag">E-commerce mode</span>
         </div>
       </div>
+      <span class="hero-tile-domain">modevia.fr</span>
+    </a>
 
-      <!-- Nathan Photo · scheme "encre" -->
-      <div class="hero-thumb hero-thumb--encre">
-        <div class="ht-bar"><i></i><i></i><i></i><span class="ht-url">nathanfritsch.com</span></div>
-        <div class="ht-inside">
-          <div class="ht-nav"><span class="ht-logo">NF</span><span class="ht-links"><em></em><em></em><em></em></span></div>
-          <div class="ht-hero">
-            <span class="ht-eyebrow">◆ PORTFOLIO</span>
-            <span class="ht-title">Nathan Photo</span>
-            <span class="ht-sub">Regarder ce qui a été. Sans un mot.</span>
-            <span class="ht-btn">Voir les séries ↗</span>
-          </div>
-          <div class="ht-row"><span></span><span></span><span></span></div>
+    <!-- Nathan Photo -->
+    <a href="/projets/nathan-photo.html" class="hero-tile hero-tile--encre" style="--float-delay:-4.5s">
+      <div class="hero-tile-shot" data-project="nathan-photo">
+        <div class="tile-fallback">
+          <span class="tile-brand">Nathan Photo</span>
+          <span class="tile-tag">Portfolio</span>
         </div>
       </div>
+      <span class="hero-tile-domain">nathanfritsch.com</span>
+    </a>
 
-      <!-- Duplication pour la boucle infinie -->
-      <div class="hero-thumb hero-thumb--sable" aria-hidden="true">
-        <div class="ht-bar"><i></i><i></i><i></i><span class="ht-url">villa-nikkita.fr</span></div>
-        <div class="ht-inside">
-          <div class="ht-nav"><span class="ht-logo">VN</span><span class="ht-links"><em></em><em></em><em></em></span></div>
-          <div class="ht-hero">
-            <span class="ht-eyebrow">◆ LOCATION SAISONNIÈRE</span>
-            <span class="ht-title">Villa Nikkita</span>
-            <span class="ht-sub">Une maison d'exception au bord de l'Atlantique.</span>
-            <span class="ht-btn">Réserver ↗</span>
-          </div>
-          <div class="ht-row"><span></span><span></span><span></span></div>
-        </div>
-      </div>
-      <div class="hero-thumb hero-thumb--bleu" aria-hidden="true">
-        <div class="ht-bar"><i></i><i></i><i></i><span class="ht-url">cnet77.fr</span></div>
-        <div class="ht-inside">
-          <div class="ht-nav"><span class="ht-logo">C&amp;N</span><span class="ht-links"><em></em><em></em><em></em></span></div>
-          <div class="ht-hero">
-            <span class="ht-eyebrow">◆ NETTOYAGE PRO</span>
-            <span class="ht-title">Clair &amp; Net</span>
-            <span class="ht-sub">Un service impeccable, dans les temps.</span>
-            <span class="ht-btn">Devis en 24h ↗</span>
-          </div>
-          <div class="ht-row"><span></span><span></span><span></span></div>
-        </div>
-      </div>
-      <div class="hero-thumb hero-thumb--rose" aria-hidden="true">
-        <div class="ht-bar"><i></i><i></i><i></i><span class="ht-url">modevia.fr</span></div>
-        <div class="ht-inside">
-          <div class="ht-nav"><span class="ht-logo">MV</span><span class="ht-links"><em></em><em></em><em></em></span></div>
-          <div class="ht-hero">
-            <span class="ht-eyebrow">◆ NOUVELLE COLLECTION</span>
-            <span class="ht-title">Modevia</span>
-            <span class="ht-sub">La mode, pensée pour être portée.</span>
-            <span class="ht-btn">Découvrir ↗</span>
-          </div>
-          <div class="ht-row"><span></span><span></span><span></span></div>
-        </div>
-      </div>
-      <div class="hero-thumb hero-thumb--encre" aria-hidden="true">
-        <div class="ht-bar"><i></i><i></i><i></i><span class="ht-url">nathanfritsch.com</span></div>
-        <div class="ht-inside">
-          <div class="ht-nav"><span class="ht-logo">NF</span><span class="ht-links"><em></em><em></em><em></em></span></div>
-          <div class="ht-hero">
-            <span class="ht-eyebrow">◆ PORTFOLIO</span>
-            <span class="ht-title">Nathan Photo</span>
-            <span class="ht-sub">Regarder ce qui a été. Sans un mot.</span>
-            <span class="ht-btn">Voir les séries ↗</span>
-          </div>
-          <div class="ht-row"><span></span><span></span><span></span></div>
-        </div>
-      </div>
-
-    </div>
   </div>
 
   <div class="hero-v8-inner">
@@ -395,42 +325,72 @@
 </section>
 
 <!-- ============ SIGNATURE (positionnement) ============ -->
-<section class="signature">
+<section class="signature signature--v2">
   <div class="signature-inner">
     <span class="eyebrow reveal">◆ La présence digitale</span>
     <h2 class="reveal reveal-delay-1">Ce n'est pas un site de plus. <span class="accent">C'est la version numérique de votre entreprise.</span></h2>
     <p class="signature-lead reveal reveal-delay-2">Vos prospects jugent votre niveau avant même de vous parler. Un site qui hésite, c'est un client qui ne rappelle pas. Un site qui affirme, c'est un rendez-vous pris.</p>
 
-    <ul class="signature-list">
-      <li class="reveal">
-        <span class="signature-num">01</span>
-        <div>
+    <div class="signature-grid">
+
+      <div class="sig-card reveal">
+        <div class="sig-icon" data-num="01">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>
+          </svg>
+        </div>
+        <div class="sig-body">
+          <span class="sig-num">01</span>
           <h3>Positionnement immédiatement compréhensible</h3>
           <p>En cinq secondes, on comprend ce que vous faites, pour qui, et pourquoi vous êtes différent.</p>
         </div>
-      </li>
-      <li class="reveal reveal-delay-1">
-        <span class="signature-num">02</span>
-        <div>
+      </div>
+
+      <div class="sig-card reveal reveal-delay-1">
+        <div class="sig-icon" data-num="02">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+            <path d="M2 2l7.586 7.586"/>
+            <circle cx="11" cy="11" r="2"/>
+          </svg>
+        </div>
+        <div class="sig-body">
+          <span class="sig-num">02</span>
           <h3>Direction artistique reconnaissable</h3>
           <p>Une identité visuelle qui vous ressemble, pas un thème repris sur un catalogue.</p>
         </div>
-      </li>
-      <li class="reveal reveal-delay-2">
-        <span class="signature-num">03</span>
-        <div>
+      </div>
+
+      <div class="sig-card reveal reveal-delay-2">
+        <div class="sig-icon" data-num="03">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <div class="sig-body">
+          <span class="sig-num">03</span>
           <h3>Textes, design et développement inclus</h3>
           <p>De l'idée à la mise en ligne, tout est fait par le duo. Aucun sous-traitant, aucun angle mort.</p>
         </div>
-      </li>
-      <li class="reveal reveal-delay-3">
-        <span class="signature-num">04</span>
-        <div>
+      </div>
+
+      <div class="sig-card reveal reveal-delay-3">
+        <div class="sig-icon" data-num="04">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l3 6 6 1-4.5 4.5 1 6.5L12 17l-5.5 3 1-6.5L3 9l6-1z"/>
+          </svg>
+        </div>
+        <div class="sig-body">
+          <span class="sig-num">04</span>
           <h3>Parcours de conviction</h3>
           <p>Chaque section pousse vers l'action, dans un ordre pensé pour vos clients, pas pour la mode du moment.</p>
         </div>
-      </li>
-    </ul>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -522,31 +482,45 @@
   </div>
 </section>
 
-<!-- ============ L'OFFRE (3 métiers, côte à côte) ============ -->
-<section class="offer offer--v2" id="offre">
+<!-- ============ L'OFFRE (site big center + 2 côtés compacts) ============ -->
+<section class="offer offer--v3" id="offre">
   <div class="offer-inner">
     <span class="eyebrow reveal">◆ L'offre</span>
     <h2 class="reveal reveal-delay-1">Trois métiers. <span class="accent">Une seule exigence.</span></h2>
     <p class="offer-lead reveal reveal-delay-2">Site, application, pilotage. La même façon de travailler : aperçu offert, aucun paiement avant validation, tout vous appartient à la livraison.</p>
 
-    <div class="offer-triptych">
+    <div class="offer-podium">
 
-      <!-- Carte 1 · Site internet -->
-      <article class="offer-plan offer-plan--featured reveal">
+      <!-- Côté gauche · Application métier (compact) -->
+      <a href="/services/applications.html" class="offer-side reveal">
+        <div class="offer-side-inner">
+          <span class="offer-side-tag">02 · Métier</span>
+          <h3>Applications métier</h3>
+          <p class="offer-side-desc">L'outil sur mesure qui remplace vos tableurs et parle votre langue.</p>
+          <span class="offer-side-price"><strong>À définir</strong> · Cadrage offert</span>
+          <span class="offer-side-cta">Voir l'offre
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Milieu · Sites internet (grand) -->
+      <article class="offer-center reveal reveal-delay-1">
+        <div class="offer-center-badge">★ Le plus demandé</div>
         <div class="offer-plan-head">
           <span class="offer-tag">01 · Signature</span>
           <h3>Sites internet</h3>
-          <p class="offer-plan-desc">Le site complet, pensé pour vos clients, prêt à convertir. Codé à la main, aucun template.</p>
+          <p class="offer-plan-desc">Le site complet, pensé pour vos clients, prêt à convertir. Codé à la main, aucun template, aucun sous-traitant.</p>
         </div>
 
         <div class="offer-plan-price">
           <span class="offer-plan-value">À définir</span>
-          <span class="offer-plan-sub">Acompte à la signature · Solde à la validation finale</span>
+          <span class="offer-plan-sub">Acompte à la signature · Solde à la validation finale · Aucune CB avant l'aperçu</span>
         </div>
 
         <div class="offer-plan-meta">
           <span><strong>3 semaines</strong></span>
-          <span><strong>Aperçu 48h</strong></span>
+          <span><strong>Aperçu offert 48 h</strong></span>
           <span><strong>Aucune CB</strong></span>
         </div>
 
@@ -558,7 +532,7 @@
           <li><span class="check">✓</span> Parcours de conviction et navigation optimisée</li>
           <li><span class="check">✓</span> Réservations, contacts, formulaires opérationnels</li>
           <li><span class="check">✓</span> Mise en ligne et nom de domaine configurés</li>
-          <li><span class="check">✓</span> Performance et SEO optimisés</li>
+          <li><span class="check">✓</span> Performance et référencement SEO optimisés</li>
           <li><span class="check">✓</span> Site 100 % à votre nom, code compris</li>
         </ul>
 
@@ -580,103 +554,18 @@
         </a>
       </article>
 
-      <!-- Carte 2 · Application métier -->
-      <article class="offer-plan reveal reveal-delay-1">
-        <div class="offer-plan-head">
-          <span class="offer-tag">02 · Métier</span>
-          <h3>Applications métier</h3>
-          <p class="offer-plan-desc">L'outil sur mesure qui remplace vos tableurs et parle votre langue. Quand le logiciel du marché ne correspond pas.</p>
-        </div>
-
-        <div class="offer-plan-price">
-          <span class="offer-plan-value">À définir</span>
-          <span class="offer-plan-sub">Cadrage offert · Chiffrage global après audit</span>
-        </div>
-
-        <div class="offer-plan-meta">
-          <span><strong>6 à 12 sem.</strong></span>
-          <span><strong>Cadrage offert</strong></span>
-          <span><strong>Aucune CB</strong></span>
-        </div>
-
-        <h4>Inclus dans l'offre</h4>
-        <ul class="offer-plan-list">
-          <li><span class="check">✓</span> Deux demi-journées de cadrage, offertes</li>
-          <li><span class="check">✓</span> Document de cadrage complet</li>
-          <li><span class="check">✓</span> Base de données sur mesure</li>
-          <li><span class="check">✓</span> Comptes utilisateurs et rôles</li>
-          <li><span class="check">✓</span> Interfaces adaptées à votre métier</li>
-          <li><span class="check">✓</span> Formation à la prise en main</li>
-          <li><span class="check">✓</span> Documentation en français, claire</li>
-          <li><span class="check">✓</span> Hébergement sécurisé, données à vous</li>
-        </ul>
-
-        <div class="offer-star-bonus">
-          <span class="star-tag">★ Le bonus</span>
-          <strong>30 jours de suivi actif</strong>
-          <span class="star-desc">Après la mise en production, on reste disponibles pour les premiers ajustements, les questions et les micro-évolutions. Trente jours pour que l'outil devienne un réflexe.</span>
-        </div>
-
-        <h4>Options disponibles</h4>
-        <ul class="offer-plan-options">
-          <li><span class="option-pill">+</span> Paiement en ligne intégré</li>
-          <li><span class="option-pill">+</span> Automatisations et connexions API</li>
-          <li><span class="option-pill">+</span> Maintenance mensuelle</li>
-        </ul>
-
-        <a href="/services/applications.html" class="btn btn-ghost btn-full">Découvrir en détail
-          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-      </article>
-
-      <!-- Carte 3 · Chef de projet -->
-      <article class="offer-plan reveal reveal-delay-2">
-        <div class="offer-plan-head">
-          <span class="offer-tag">03 · Pilotage</span>
+      <!-- Côté droit · Chef de projet (compact) -->
+      <a href="/services/chef-de-projet.html" class="offer-side reveal reveal-delay-2">
+        <div class="offer-side-inner">
+          <span class="offer-side-tag">03 · Pilotage</span>
           <h3>Chef de projet digital</h3>
-          <p class="offer-plan-desc">Piloter votre projet digital du cadrage à la mise en production. Prestation assurée par Manon.</p>
+          <p class="offer-side-desc">Piloter votre projet digital, du cadrage à la mise en production. Par Manon.</p>
+          <span class="offer-side-price"><strong>À définir</strong> · À la journée</span>
+          <span class="offer-side-cta">Voir l'offre
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </span>
         </div>
-
-        <div class="offer-plan-price">
-          <span class="offer-plan-value">À définir</span>
-          <span class="offer-plan-sub">À la journée ou en forfait mission</span>
-        </div>
-
-        <div class="offer-plan-meta">
-          <span><strong>Immédiat</strong></span>
-          <span><strong>1 à 3 j / sem.</strong></span>
-          <span><strong>Aucune CB</strong></span>
-        </div>
-
-        <h4>Inclus dans la prestation</h4>
-        <ul class="offer-plan-list">
-          <li><span class="check">✓</span> Cadrage du besoin et cahier des charges</li>
-          <li><span class="check">✓</span> Pilotage des équipes techniques</li>
-          <li><span class="check">✓</span> Recette et validation à chaque étape</li>
-          <li><span class="check">✓</span> Points hebdomadaires structurés</li>
-          <li><span class="check">✓</span> Suivi du budget et des délais</li>
-          <li><span class="check">✓</span> Documentation projet complète</li>
-          <li><span class="check">✓</span> Mise en production accompagnée</li>
-          <li><span class="check">✓</span> À distance ou sur site en Nouvelle-Aquitaine</li>
-        </ul>
-
-        <div class="offer-star-bonus">
-          <span class="star-tag">★ Le bonus</span>
-          <strong>30 jours de passation soignée</strong>
-          <span class="star-desc">À la fin de mission, un mois de disponibilité pour transmettre proprement et former vos équipes internes. Aucune dépendance créée, aucun angle mort à la sortie.</span>
-        </div>
-
-        <h4>Options disponibles</h4>
-        <ul class="offer-plan-options">
-          <li><span class="option-pill">+</span> Audit de projet en cours</li>
-          <li><span class="option-pill">+</span> Formation équipes internes</li>
-          <li><span class="option-pill">+</span> Sauvetage de projet en difficulté</li>
-        </ul>
-
-        <a href="/services/chef-de-projet.html" class="btn btn-ghost btn-full">Découvrir en détail
-          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-      </article>
+      </a>
 
     </div>
   </div>
