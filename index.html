@@ -23,11 +23,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/css/tokens.css?v=8.18">
-<link rel="stylesheet" href="/css/base.css?v=8.18">
-<link rel="stylesheet" href="/css/components.css?v=8.18">
-<link rel="stylesheet" href="/css/pages.css?v=8.18">
-<link rel="stylesheet" href="/css/v8.css?v=8.18">
+<link rel="stylesheet" href="/css/tokens.css?v=8.19">
+<link rel="stylesheet" href="/css/base.css?v=8.19">
+<link rel="stylesheet" href="/css/components.css?v=8.19">
+<link rel="stylesheet" href="/css/pages.css?v=8.19">
+<link rel="stylesheet" href="/css/v8.css?v=8.19">
 <script>
   (function(){
     try {
@@ -447,34 +447,80 @@
 </section>
 
 <!-- ============ DOUBLE VALIDATION (comment ça se passe) ============ -->
-<section class="method method--v2" id="comment">
+<section class="method method--v2 method--v3" id="comment">
   <div class="method-inner">
     <span class="eyebrow reveal">◆ Notre méthode</span>
     <h2 class="reveal reveal-delay-1">Vous validez avant qu'on construise. <span class="accent">Vous soldez après avoir validé.</span></h2>
     <p class="method-lead reveal reveal-delay-2">Aucun engagement à l'aveugle. Aucune carte bancaire tant que vous n'avez pas vu ce qu'on vous propose.</p>
 
-    <div class="method-grid">
-      <div class="method-step reveal">
-        <span class="method-num">01</span>
-        <h3>Premier rendez-vous gratuit</h3>
-        <p>Trente minutes en visio ou en atelier. Vous nous racontez votre métier et vos clients, on vous dit franchement si on est les bons.</p>
+    <!-- Regle de paiement : l'info la plus importante, lisible en une seconde -->
+    <div class="method-ruler reveal reveal-delay-2">
+      <div class="mr-seg mr-seg--free">
+        <span class="mr-amount">0 €</span>
+        <span class="mr-label">Rendez-vous, aperçu et direction artistique</span>
       </div>
-      <div class="method-step reveal reveal-delay-1">
-        <span class="method-num">02</span>
-        <h3>Aperçu créé avant paiement</h3>
-        <p>Sous 48 heures, une direction artistique appliquée à votre projet. Une page réelle, à votre nom. Aucune donnée bancaire demandée.</p>
-      </div>
-      <div class="method-step reveal reveal-delay-2">
-        <span class="method-num">03</span>
-        <h3>La maquette vous plaît, on continue</h3>
-        <p>À ce moment seulement, on signe et vous versez un acompte. Le développement démarre, avec des points réguliers.</p>
-      </div>
-      <div class="method-step reveal reveal-delay-3">
-        <span class="method-num">04</span>
-        <h3>Mise en ligne, le site vous appartient</h3>
-        <p>À la validation finale, vous soldez. Domaine, code et hébergement à votre nom. Vous pouvez partir avec demain.</p>
+      <div class="mr-seg mr-seg--paid">
+        <span class="mr-amount">Acompte, puis solde</span>
+        <span class="mr-label">Uniquement après votre accord</span>
       </div>
     </div>
+
+    <ol class="method-timeline">
+      <li class="mt-step mt-step--free reveal">
+        <div class="mt-marker"><span class="mt-num">01</span></div>
+        <div class="mt-body">
+          <div class="mt-head">
+            <span class="mt-when">Jour 1</span>
+            <span class="mt-cost mt-cost--free">0 €</span>
+          </div>
+          <h3>Premier rendez-vous gratuit</h3>
+          <p>Trente minutes en visio ou en atelier. Vous nous racontez votre métier et vos clients, on vous dit franchement si on est les bons.</p>
+        </div>
+      </li>
+
+      <li class="mt-step mt-step--free reveal reveal-delay-1">
+        <div class="mt-marker"><span class="mt-num">02</span></div>
+        <div class="mt-body">
+          <div class="mt-head">
+            <span class="mt-when">Sous 48 heures</span>
+            <span class="mt-cost mt-cost--free">0 €</span>
+          </div>
+          <h3>Votre aperçu, créé avant tout paiement</h3>
+          <p>Une direction artistique appliquée à votre projet. Une page réelle, à votre nom. Aucune donnée bancaire demandée.</p>
+        </div>
+      </li>
+
+      <li class="mt-pivot reveal">
+        <div class="mt-pivot-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          <span><strong>Vous décidez ici.</strong> Si c'est non, vous ne nous devez rien et vous gardez l'aperçu.</span>
+        </div>
+      </li>
+
+      <li class="mt-step mt-step--paid reveal">
+        <div class="mt-marker"><span class="mt-num">03</span></div>
+        <div class="mt-body">
+          <div class="mt-head">
+            <span class="mt-when">Semaines 1 à 3</span>
+            <span class="mt-cost mt-cost--paid">Acompte</span>
+          </div>
+          <h3>La maquette vous plaît, on construit</h3>
+          <p>À ce moment seulement, on signe et vous versez un acompte. Le développement démarre, avec des points réguliers.</p>
+        </div>
+      </li>
+
+      <li class="mt-step mt-step--paid reveal reveal-delay-1">
+        <div class="mt-marker"><span class="mt-num">04</span></div>
+        <div class="mt-body">
+          <div class="mt-head">
+            <span class="mt-when">Mise en ligne</span>
+            <span class="mt-cost mt-cost--paid">Solde</span>
+          </div>
+          <h3>Le site est en ligne, et il vous appartient</h3>
+          <p>À la validation finale, vous soldez. Domaine, code et hébergement à votre nom. Vous pouvez partir avec demain.</p>
+        </div>
+      </li>
+    </ol>
 
     <div class="method-echo reveal">
       <p><strong>Même méthode pour les applications métier.</strong> Un cadrage offert, un premier écran fonctionnel avant tout paiement, un développement qui s'arrête si vous n'y voyez pas votre outil.</p>
@@ -826,8 +872,8 @@
   </div>
 </footer>
 
-<script src="/js/main.js?v=8.18" defer></script>
-<script src="/js/v8.js?v=8.18" defer></script>
-<script src="/js/contact.js?v=8.18" defer></script>
+<script src="/js/main.js?v=8.19" defer></script>
+<script src="/js/v8.js?v=8.19" defer></script>
+<script src="/js/contact.js?v=8.19" defer></script>
 </body>
 </html>

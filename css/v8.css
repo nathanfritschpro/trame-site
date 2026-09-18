@@ -599,54 +599,6 @@
   max-width: 60ch;
   margin: 0 0 var(--sp-16);
 }
-.method-steps {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 var(--sp-12);
-  counter-reset: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-8);
-}
-.method-steps > li {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--sp-8);
-  padding: var(--sp-8);
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  border-radius: var(--br-lg);
-  align-items: start;
-  transition: border-color 0.3s ease, transform 0.3s var(--ease-out);
-}
-.method-steps > li:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
-}
-.method-num {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 2.5rem;
-  color: var(--accent);
-  line-height: 1;
-  letter-spacing: -0.03em;
-  min-width: 60px;
-}
-.method-steps h3 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: var(--fs-xl);
-  line-height: 1.2;
-  color: var(--text);
-  margin: 0 0 var(--sp-3);
-  letter-spacing: -0.02em;
-}
-.method-steps p {
-  color: var(--text-dim);
-  font-size: var(--fs-base);
-  line-height: 1.6;
-  margin: 0;
-}
 .method-echo {
   padding: var(--sp-8);
   background: var(--accent-soft);
@@ -660,6 +612,201 @@
   margin: 0;
 }
 .method-echo strong { color: var(--accent); }
+
+/* ============ V8.19 · METHODE V3 · timeline de paiement ============ */
+/* Regle de paiement : deux segments, le gratuit domine visuellement */
+.method--v3 .method-ruler {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin: var(--sp-10) 0 var(--sp-12);
+  border-radius: var(--br-pill);
+  overflow: hidden;
+  background: var(--line);
+  padding: 4px;
+}
+.method--v3 .mr-seg {
+  padding: var(--sp-5) var(--sp-6);
+  border-radius: var(--br-pill);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.method--v3 .mr-seg--free {
+  background: var(--bg-elev);
+  border: 1px dashed color-mix(in oklab, var(--text) 25%, transparent);
+}
+.method--v3 .mr-seg--paid {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+}
+.method--v3 .mr-amount {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.15rem, 0.9rem + 0.8vw, 1.6rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.method--v3 .mr-seg--free .mr-amount { color: var(--text); }
+.method--v3 .mr-seg--paid .mr-amount { color: #FFFFFF; }
+/* En sombre l'accent devient clair : on repasse le texte en fonce pour le contraste */
+:root[data-theme="dark"] .method--v3 .mr-seg--paid .mr-amount { color: var(--bg); }
+:root[data-theme="dark"] .method--v3 .mr-seg--paid .mr-label {
+  color: color-mix(in srgb, var(--bg) 78%, transparent);
+}
+:root[data-theme="dark"] .method--v3 .mt-cost--paid { color: var(--bg); }
+:root[data-theme="dark"] .method--v3 .mt-step--paid .mt-marker { color: var(--bg); }
+.method--v3 .mr-label {
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+.method--v3 .mr-seg--free .mr-label { color: var(--text-dim); }
+.method--v3 .mr-seg--paid .mr-label { color: color-mix(in srgb, #FFFFFF 80%, transparent); }
+
+/* Timeline */
+.method--v3 .method-timeline {
+  list-style: none;
+  margin: 0 0 var(--sp-12);
+  padding: 0;
+  position: relative;
+}
+/* La ligne verticale qui relie les jalons */
+.method--v3 .method-timeline::before {
+  content: "";
+  position: absolute;
+  left: 23px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--text) 22%, transparent) 0%,
+    color-mix(in oklab, var(--text) 22%, transparent) 42%,
+    var(--accent) 52%,
+    var(--accent) 100%
+  );
+}
+.method--v3 .mt-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: var(--sp-6);
+  align-items: start;
+  padding-bottom: var(--sp-10);
+}
+.method--v3 .mt-step:last-child { padding-bottom: 0; }
+
+/* Pastille numerotee posee sur la ligne */
+.method--v3 .mt-marker {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+.method--v3 .mt-step--free .mt-marker {
+  background: var(--bg-elev);
+  border: 2px dashed color-mix(in oklab, var(--text) 28%, transparent);
+  color: var(--text-dim);
+}
+.method--v3 .mt-step--paid .mt-marker {
+  background: var(--accent);
+  border: 2px solid var(--accent);
+  color: #FFFFFF;
+  box-shadow: 0 8px 20px -8px var(--accent-glow);
+}
+.method--v3 .mt-num {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.method--v3 .mt-body { padding-top: 2px; min-width: 0; }
+.method--v3 .mt-head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-3);
+}
+.method--v3 .mt-when {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.method--v3 .mt-cost {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--br-pill);
+  white-space: nowrap;
+}
+.method--v3 .mt-cost--free {
+  background: color-mix(in oklab, var(--text) 8%, transparent);
+  color: var(--text-dim);
+  border: 1px dashed color-mix(in oklab, var(--text) 25%, transparent);
+}
+.method--v3 .mt-cost--paid {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+.method--v3 .mt-body h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.15rem, 0.95rem + 0.6vw, 1.45rem);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin: 0 0 var(--sp-3);
+}
+.method--v3 .mt-body p {
+  color: var(--text-dim);
+  font-size: var(--fs-base);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 62ch;
+}
+
+/* Le pivot : le moment ou le client decide */
+.method--v3 .mt-pivot {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: var(--sp-6);
+  padding-bottom: var(--sp-10);
+}
+.method--v3 .mt-pivot-inner {
+  grid-column: 2;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding: var(--sp-5) var(--sp-6);
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in oklab, var(--accent) 30%, transparent);
+  border-radius: var(--br-md);
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.method--v3 .mt-pivot-inner svg {
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.method--v3 .mt-pivot-inner strong { color: var(--accent); }
 
 /* ============ AVANT / APRÈS SLIDER ============ */
 .before-after {
@@ -1493,58 +1640,6 @@
 
 @media (max-width: 640px) {
   .hero-thumb { width: 240px !important; }
-}
-
-/* ============ V8.1 · MÉTHODE 2×2 ============ */
-.method--v2 .method-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--sp-6);
-  margin: 0 0 var(--sp-8);
-}
-.method--v2 .method-steps { display: none; }
-.method-step {
-  padding: var(--sp-8);
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  border-radius: var(--br-lg);
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-3);
-  transition: border-color 0.3s ease, transform 0.3s var(--ease-out);
-}
-.method-step:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
-}
-.method-step .method-num {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  color: var(--accent);
-  font-weight: 600;
-  min-width: 0;
-  padding: 0;
-  margin: 0 0 var(--sp-2);
-}
-.method-step h3 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.25rem;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: var(--text);
-  margin: 0;
-}
-.method-step p {
-  color: var(--text-dim);
-  font-size: var(--fs-base);
-  line-height: 1.55;
-  margin: 0;
-}
-@media (max-width: 720px) {
-  .method--v2 .method-grid { grid-template-columns: 1fr; gap: var(--sp-4); }
-  .method-step { padding: var(--sp-6); }
 }
 
 /* ============ V8.1 · FIX BA LABELS toujours visibles ============ */
@@ -3628,46 +3723,79 @@
     line-height: 1.6;
     margin-bottom: var(--sp-6);
   }
-  .method--v2 .method-grid {
-    display: flex !important;
-    flex-direction: column;
-    grid-template-columns: none !important;
-    gap: var(--sp-5);
-    overflow: visible;
-    scroll-snap-type: none;
-    padding: 0;
-    margin: 0 0 var(--sp-6);
-  }
-  .method--v2 .method-step {
-    flex: none;
-    max-width: 100%;
-    scroll-snap-align: none;
-    padding: var(--sp-5);
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 18px;
-  }
-  .method--v2 .method-num {
-    font-size: 1.5rem;
-    color: var(--accent);
-    margin-bottom: var(--sp-2);
-  }
-  .method--v2 .method-step h3 {
-    font-size: 1.1rem;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin-bottom: var(--sp-2);
-  }
-  .method--v2 .method-step p {
-    font-size: 0.9rem;
-    line-height: 1.55;
-    color: var(--text-soft);
-  }
   .method--v2 .method-echo {
     margin-top: var(--sp-4);
     padding: var(--sp-5);
   }
   .method--v2 .method-echo p { font-size: 0.9rem; }
+
+  /* --- V8.19 · METHODE V3 mobile : timeline compacte, memes proportions --- */
+  /* Regle de paiement : les deux segments passent l'un sous l'autre */
+  .method--v3 .method-ruler {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    margin: var(--sp-7) 0 var(--sp-9);
+    border-radius: 20px;
+  }
+  .method--v3 .mr-seg {
+    padding: var(--sp-4) var(--sp-5);
+    border-radius: 16px;
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--sp-3);
+    flex-wrap: wrap;
+  }
+  .method--v3 .mr-amount { font-size: 1.15rem; }
+  .method--v3 .mr-label { font-size: 0.78rem; flex: 1 1 100%; }
+
+  /* Timeline : gouttiere reduite, ligne recalee sur la pastille */
+  .method--v3 .method-timeline { margin-bottom: var(--sp-8); }
+  .method--v3 .method-timeline::before {
+    left: 17px;
+    top: 10px;
+    bottom: 10px;
+  }
+  .method--v3 .mt-step,
+  .method--v3 .mt-pivot {
+    grid-template-columns: 36px 1fr;
+    gap: var(--sp-4);
+    padding-bottom: var(--sp-7);
+  }
+  .method--v3 .mt-marker {
+    width: 36px;
+    height: 36px;
+  }
+  .method--v3 .mt-num { font-size: 0.72rem; }
+  .method--v3 .mt-head {
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-2);
+  }
+  .method--v3 .mt-when { font-size: 0.64rem; letter-spacing: 0.08em; }
+  .method--v3 .mt-cost {
+    font-size: 0.64rem;
+    padding: 3px 8px;
+  }
+  .method--v3 .mt-body h3 {
+    font-size: 1.05rem;
+    line-height: 1.22;
+    margin-bottom: var(--sp-2);
+  }
+  .method--v3 .mt-body p {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--text-soft);
+  }
+  /* Le pivot prend toute la largeur pour ressortir */
+  .method--v3 .mt-pivot { grid-template-columns: 1fr; }
+  .method--v3 .mt-pivot-inner {
+    grid-column: 1;
+    padding: var(--sp-4);
+    font-size: 0.88rem;
+    line-height: 1.45;
+    border-radius: 14px;
+    gap: var(--sp-2);
+  }
+  .method--v3 .mt-pivot-inner svg { width: 17px; height: 17px; }
 }
 
 /* --- OFFRE mobile : 3 cartes stack, centre en premier --- */
