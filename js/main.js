@@ -61,6 +61,117 @@
     }
   });
 
+  // ---- Decoupage des titres en mots (doit tourner AVANT le reveal)
+  // Chaque mot devient <span class="rw"><i>mot</i></span> : le span porte le
+  // masque (overflow), le <i> porte le mouvement. Les <br> et les <span>
+  // interieurs sont conserves tels quels.
+  const motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const splitWords = (root, step) => {
+    let i = 0;
+    const walk = (node) => {
+      Array.from(node.childNodes).forEach((child) => {
+        if (child.nodeType === Node.TEXT_NODE) {
+          if (!child.nodeValue.trim()) return;
+          const frag = document.createDocumentFragment();
+          // On capture les separateurs pour garder les espaces d'origine
+          child.nodeValue.split(/(\s+)/).forEach((part) => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) {
+              frag.appendChild(document.createTextNode(part));
+              return;
+            }
+            const mask = document.createElement('span');
+            mask.className = 'rw';
+            const inner = document.createElement('i');
+            inner.textContent = part;
+            // Decalage plafonne : un titre long ne doit pas trainer
+            inner.style.setProperty('--rw-d', Math.min(i * step, 0.66).toFixed(3) + 's');
+            i++;
+            mask.appendChild(inner);
+            frag.appendChild(mask);
+          });
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === Node.ELEMENT_NODE) {
+          walk(child);
+        }
+      });
+    };
+    walk(root);
+    if (i > 0) root.classList.add('has-words', 'words-ready');
+    return i;
+  };
+
+  if (motionOK) {
+    document.querySelectorAll('h2.reveal').forEach((h) => {
+      if (h.closest('[data-nosplit], .preloader')) return;
+      // Structures complexes : le reveal classique fait deja le travail
+      if (h.querySelector('br, img, svg, a, button')) return;
+      if (h.textContent.trim().split(/\s+/).length > 18) return;
+      splitWords(h, 0.055);
+    });
+  }
+
+  // ---- Intro du hero : elle se joue au chargement, pas au scroll
+  // Sans ca les elements du hero sont deja dans le viewport, donc reveles
+  // instantanement par l'observer : on ne verrait jamais l'animation.
+  // Le hero, c'est le bloc d'arrivee qui porte le h1 de la page
+  const heroRoot = [...document.querySelectorAll(
+    '.hero-v8, .page-hero, .portfolio-hero, .contact-side'
+  )].find((el) => el.querySelector('h1'));
+  const heroSkip = new Set();
+
+  if (heroRoot && motionOK) {
+    heroRoot.classList.add('hero-intro');
+
+    const heroEls = [...heroRoot.querySelectorAll('.reveal')];
+    const heroTitle = heroRoot.querySelector('h1');
+
+    // Le titre joue mot a mot ; le reste glisse, en cascade
+    let rank = 0;
+    heroEls.forEach((el) => {
+      heroSkip.add(el);
+      el.classList.remove('reveal', 'reveal-delay-1', 'reveal-delay-2',
+                          'reveal-delay-3', 'reveal-delay-4');
+      if (el === heroTitle) {
+        splitWords(el, 0.06);
+      } else {
+        el.classList.add('hi-item');
+        rank++;
+        el.style.setProperty('--hi-d', (0.22 + rank * 0.11).toFixed(2) + 's');
+      }
+    });
+
+    // Un h1 sans .reveal doit quand meme jouer, sinon il reste fige pendant
+    // que tout le reste du hero s'anime autour de lui
+    if (heroTitle && !heroEls.includes(heroTitle)) splitWords(heroTitle, 0.06);
+
+    // Les vignettes sont au-dessus du titre : elles entrent en premier, sinon
+    // le regard descend puis doit remonter
+    const tiles = heroRoot.querySelector('.hero-tiles');
+    if (tiles) {
+      tiles.classList.add('hi-item', 'hi-item--tiles');
+      tiles.style.setProperty('--hi-d', '0.04s');
+    }
+
+    let started = false;
+    const startHero = () => {
+      if (started) return;
+      started = true;
+      heroRoot.classList.add('hero-in');
+    };
+
+    if (document.getElementById('preloader')) {
+      // Le preloader previent quand son voile se leve. Filet de securite au
+      // cas ou ce script ne repondrait pas : le hero ne doit jamais rester
+      // invisible.
+      document.addEventListener('vera:intro-done', startHero);
+      setTimeout(startHero, 3000);
+    } else {
+      requestAnimationFrame(() => requestAnimationFrame(startHero));
+    }
+  }
+
   // ---- Reveal on scroll (IntersectionObserver + filet de securite au scroll)
   const revealEls = document.querySelectorAll('.reveal');
   if (revealEls.length && 'IntersectionObserver' in window) {
@@ -106,6 +217,7 @@
     };
 
     revealEls.forEach(el => {
+      if (heroSkip.has(el)) return;
       pending.add(el);
       io.observe(el);
       revealIfInView(el);

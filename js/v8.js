@@ -45,9 +45,17 @@
   // ---- PRELOADER (2s la première fois par session)
   const preloader = document.getElementById('preloader');
   if (preloader) {
+    // Le hero attend ce signal pour jouer son entree (voir main.js).
+    // Deux frames d'attente pour laisser main.js finir sa mise en place : au
+    // refresh, ce bloc s'execute dans la meme tache que lui.
+    const introDone = () => requestAnimationFrame(() => requestAnimationFrame(
+      () => document.dispatchEvent(new CustomEvent('vera:intro-done'))
+    ));
+
     const seen = sessionStorage.getItem('vera-intro-seen');
     if (seen || reducedMotionMQ.matches) {
       preloader.classList.add('is-done');
+      introDone();
       setTimeout(() => preloader.remove(), 100);
     } else {
       document.body.style.overflow = 'hidden';
@@ -55,6 +63,9 @@
         preloader.classList.add('is-done');
         document.body.style.overflow = '';
         try { sessionStorage.setItem('vera-intro-seen', '1'); } catch(e) {}
+        // Le hero demarre pendant que le voile s'efface : les deux mouvements
+        // se chevauchent au lieu de s'enchainer platement
+        setTimeout(introDone, 180);
         setTimeout(() => preloader.remove(), 700);
       }, 1800);
     }
@@ -144,76 +155,28 @@
   });
 })();
 
-/* ============ V8.20 · ANIMATIONS AU SCROLL ============ */
+/* ============ V8.20 · METHODE · la ligne se dessine au rythme du scroll ============ */
 (() => {
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  /* ---- 1. Titres : chaque mot est masque puis remonte, avec un decalage ----
-     On enveloppe chaque mot dans <span class="rw"><i>mot</i></span>.
-     Le span porte l'overflow (le masque), le <i> porte le mouvement.        */
-  const splitWords = (root) => {
-    let i = 0;
-    const walk = (node) => {
-      Array.from(node.childNodes).forEach((child) => {
-        if (child.nodeType === Node.TEXT_NODE) {
-          if (!child.nodeValue.trim()) return;
-          const frag = document.createDocumentFragment();
-          // On capture les separateurs pour garder les espaces d'origine
-          child.nodeValue.split(/(\s+)/).forEach((part) => {
-            if (!part) return;
-            if (/^\s+$/.test(part)) {
-              frag.appendChild(document.createTextNode(part));
-              return;
-            }
-            const mask = document.createElement('span');
-            mask.className = 'rw';
-            const inner = document.createElement('i');
-            inner.textContent = part;
-            // Decalage plafonne : un titre long ne doit pas trainer
-            inner.style.setProperty('--rw-d', Math.min(i * 0.055, 0.66).toFixed(3) + 's');
-            i++;
-            mask.appendChild(inner);
-            frag.appendChild(mask);
-          });
-          node.replaceChild(frag, child);
-        } else if (child.nodeType === Node.ELEMENT_NODE) {
-          walk(child);
-        }
-      });
-    };
-    walk(root);
-    return i;
-  };
-
-  if (!reduced) {
-    document.querySelectorAll('h2.reveal').forEach((h) => {
-      if (h.closest('[data-nosplit], .hero, .preloader')) return;
-      // Structures complexes : on laisse le reveal classique faire le travail
-      if (h.querySelector('br, img, svg, a, button')) return;
-      if (h.textContent.trim().split(/\s+/).length > 18) return;
-      if (splitWords(h) > 0) h.classList.add('has-words', 'words-ready');
-    });
-  }
-
-  /* ---- 2. Methode : la ligne verticale se dessine au rythme du scroll ---- */
   const timeline = document.querySelector('.method--v3 .method-timeline');
-  if (timeline && !reduced) {
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-      const rect = timeline.getBoundingClientRect();
-      // La "ligne de lecture" : le trait suit l'oeil, un peu sous le milieu
-      const readLine = window.innerHeight * 0.8;
-      const p = (readLine - rect.top) / Math.max(rect.height, 1);
-      timeline.style.setProperty('--mt-p', Math.min(1, Math.max(0, p)).toFixed(4));
-    };
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(update);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    update();
-  }
+  if (!timeline) return;
+
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const rect = timeline.getBoundingClientRect();
+    // La "ligne de lecture" : le trait suit l'oeil, un peu sous le milieu
+    const readLine = window.innerHeight * 0.8;
+    const p = (readLine - rect.top) / Math.max(rect.height, 1);
+    timeline.style.setProperty('--mt-p', Math.min(1, Math.max(0, p)).toFixed(4));
+  };
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
 })();

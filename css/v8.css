@@ -4267,3 +4267,76 @@
   .method--v3 .method-echo::before { transform: scaleY(1); transition: none; }
   .method--v3 .method-timeline::after { clip-path: none; }
 }
+
+/* ============ V8.21 · INTRO DU HERO (au chargement, pas au scroll) ============ */
+/* Les elements du hero sont deja visibles a l'ouverture : ils ne peuvent donc
+   pas etre declenches par le scroll. main.js leur retire .reveal, pose l'etat
+   cache ci-dessous, puis ajoute .hero-in quand le voile du preloader se leve
+   (ou tout de suite sur les pages sans preloader).
+
+   Ici on anime avec des @keyframes et pas des transitions : une transition ne
+   part que si le navigateur a peint l'etat de depart, ce qui n'est pas garanti
+   quand le declencheur tombe dans la meme tache que la mise en place. Avec
+   animation-fill-mode: both, l'etat de depart est tenu pendant le delai, quel
+   que soit le moment ou la classe arrive.                                    */
+
+/* Etat cache, avant le declenchement */
+.hero-intro .hi-item { opacity: 0; }
+.hero-intro .eyebrow.hi-item { letter-spacing: 0.42em; }
+
+/* Entree */
+.hero-intro.hero-in .hi-item {
+  animation: heroItemIn 1s var(--ease-out) var(--hi-d, 0s) both;
+}
+@keyframes heroItemIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Les vignettes portent le decor : mouvement plus ample, et elles ouvrent */
+.hero-intro.hero-in .hi-item--tiles {
+  animation: heroTilesIn 1.2s var(--ease-out) var(--hi-d, 0s) both;
+}
+@keyframes heroTilesIn {
+  from { opacity: 0; transform: translateY(34px) scale(0.965); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* L'eyebrow se resserre en arrivant */
+.hero-intro.hero-in .eyebrow.hi-item {
+  animation: heroEyebrowIn 1s var(--ease-out) var(--hi-d, 0s) both;
+}
+@keyframes heroEyebrowIn {
+  from { opacity: 0; transform: translateY(24px); letter-spacing: 0.42em; }
+  to   { opacity: 1; transform: none; letter-spacing: 0.14em; }
+}
+
+/* Le titre du hero joue mot a mot, meme principe */
+.hero-intro.hero-in .rw > i {
+  animation: heroWordIn 0.9s var(--ease-out) var(--rw-d, 0s) both;
+}
+@keyframes heroWordIn {
+  from { opacity: 0; transform: translateY(108%); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Le flou desktop ne s'applique pas au hero : il a sa propre entree */
+@media (min-width: 901px) {
+  .hero-intro h2,
+  .hero-intro p,
+  .hero-intro .eyebrow { filter: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-intro .hi-item,
+  .hero-intro.hero-in .hi-item,
+  .hero-intro.hero-in .hi-item--tiles,
+  .hero-intro.hero-in .eyebrow.hi-item,
+  .hero-intro.hero-in .rw > i {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .hero-intro .eyebrow.hi-item,
+  .hero-intro.hero-in .eyebrow.hi-item { letter-spacing: 0.14em; }
+}
