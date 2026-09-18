@@ -3006,170 +3006,223 @@
 /* --- Hide the OLD signature-grid quand on utilise v3 --- */
 .signature--v3 .signature-grid { display: none; }
 
+
 /* ============================================================================
-   V8.10 · Optimisation responsive iPhone (mobile-first tune-up style tmoo)
-   Cibles : ≤ 480px prioritairement, avec des respirations pour ≤ 720px
+   V8.11 · RESPONSIVE MOBILE ADAPTATIF
+   Approche : au lieu d'ecraser les layouts desktop, on utilise des CAROUSELS
+   HORIZONTAUX A SWIPE pour les grilles (tiles, works, offer, method), et
+   on garde les vraies proportions des cartes. Chaque carte est autonome et
+   fait ~85vw, l'utilisateur swipe pour voir les suivantes.
+   Cibles : <= 900px principalement, avec ajustements <= 480px
    ============================================================================ */
 
-/* --- HEADER MOBILE : logo compact, plus de wrap, bouton CTA cache ---------- */
-@media (max-width: 720px) {
+/* --- HEADER V8 mobile : compact et lisible --- */
+@media (max-width: 900px) {
   .header--v8 {
-    padding: 12px 16px;
+    padding: 10px 14px;
     gap: 8px;
   }
   .header--v8 .brand-logo {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     white-space: nowrap;
     letter-spacing: -0.02em;
   }
   .header--v8 .nav { display: none; }
-  .header--v8 .header-cta {
-    gap: 6px;
-  }
-  .header--v8 .header-cta .btn {
-    /* CTA "Recevoir un aperçu" prend trop de place a cote du logo+burger */
-    display: none;
-  }
-  .header--v8 .header-cta .theme-toggle {
-    padding: 8px;
-  }
-  .header--v8 .burger {
-    padding: 8px;
-  }
+  .header--v8 .header-cta { gap: 6px; }
+  .header--v8 .header-cta .btn { display: none; }
+  .header--v8 .header-cta .theme-toggle { padding: 8px; }
+  .header--v8 .burger { padding: 8px; }
 }
 
-/* --- HERO MOBILE : titre lisible, sous-titre plus concis ------------------- */
-@media (max-width: 720px) {
+/* --- HERO mobile : titre tres readable, badge condensed --- */
+@media (max-width: 900px) {
   .hero-v8 {
-    padding-top: calc(var(--sp-8) + 44px); /* espace header */
-    padding-bottom: var(--sp-10);
+    padding-top: calc(var(--sp-6) + 50px);
+    padding-bottom: var(--sp-8);
+    padding-left: 14px;
+    padding-right: 14px;
+    text-align: center;
   }
-  .hero-tiles {
-    grid-template-columns: 1fr 1fr !important;
-    max-width: 100% !important;
-    gap: 12px !important;
-    padding: 0 16px;
-    margin-bottom: var(--sp-8) !important;
-  }
-  .hero-tile {
-    aspect-ratio: 4 / 5;
-    border-radius: 14px;
-  }
-  .hero-tile .ht-address {
-    font-size: 9px;
-  }
+  .hero-v8-inner { padding-top: 0; }
   .hero-v8-title {
-    font-size: clamp(1.9rem, 6.5vw + 0.5rem, 2.6rem);
-    line-height: 1.05;
-    letter-spacing: -0.035em;
+    font-size: clamp(1.8rem, 7.5vw, 2.6rem);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    margin: 0 auto var(--sp-4);
     max-width: 100%;
-    margin-bottom: var(--sp-5);
-    padding: 0 8px;
   }
   .hero-v8-sub {
     font-size: 0.85rem;
     margin-bottom: var(--sp-6);
-    padding: 0 12px;
+    padding: 0 6px;
   }
   .hero-v8-ctas {
     flex-direction: column;
-    padding: 0 20px;
     gap: 10px;
+    padding: 0 20px;
+    margin-bottom: var(--sp-6);
   }
-  .hero-v8-ctas .btn {
-    width: 100%;
-    justify-content: center;
-  }
+  .hero-v8-ctas .btn { width: 100%; justify-content: center; }
   .hero-v8-badge {
     font-size: 0.72rem;
-    padding: 10px 16px;
+    padding: 10px 14px;
     line-height: 1.4;
-    margin-top: var(--sp-6);
+    max-width: 92vw;
+    margin: 0 auto;
   }
 }
 
-/* --- BANDEAU PROMESSES MOBILE : angle plus doux, taille moins agressive --- */
-@media (max-width: 720px) {
-  .promises-band { padding: var(--sp-6) 0; }
+/* --- HERO TILES mobile : CAROUSEL HORIZONTAL au lieu de 4 tiles ecrasees --- */
+@media (max-width: 900px) {
+  .hero-tiles {
+    display: flex !important;
+    grid-template-columns: none !important;
+    max-width: none !important;
+    margin: 0 -14px var(--sp-8) !important;
+    padding: 8px 14px !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 14px;
+    gap: 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .hero-tiles::-webkit-scrollbar { display: none; }
+  .hero-tile {
+    flex: 0 0 72vw;
+    max-width: 72vw;
+    aspect-ratio: 4 / 5;
+    scroll-snap-align: center;
+    animation: none !important;      /* pas de flottement dans un carousel */
+    transform: rotate(0deg) !important;
+    border-radius: 14px;
+    box-shadow: 0 10px 22px -12px rgba(0,0,0,0.25);
+  }
+  .hero-tile:hover { transform: rotate(0deg) !important; }
+  .hero-tile .ht-address { font-size: 10px; }
+  .hero-tile .ts-lead { display: none; }
+  .hero-tile .ts-title { font-size: 1rem; }
+  .hero-tile .ts-pill { font-size: 0.55rem; }
+  .hero-tile .ts-btn { font-size: 0.65rem; padding: 6px 10px; }
+}
+
+/* --- BANDEAU PROMESSES mobile : angles preserves --- */
+@media (max-width: 900px) {
+  .promises-band { padding: var(--sp-8) 0; overflow: hidden; }
   .promises-band .promises-strip { padding: 12px 0; }
-  .promises-band .promises-strip--dark {
-    transform: rotate(-3deg);
-  }
-  .promises-band .promises-strip--accent {
-    transform: rotate(2deg);
-    margin-top: -14px;
-  }
-  .promises-band .promises-item-2 {
-    font-size: 0.85rem;
-  }
+  .promises-band .promises-strip--dark { transform: rotate(-3deg); }
+  .promises-band .promises-strip--accent { transform: rotate(2deg); margin-top: -16px; }
+  .promises-band .promises-item-2 { font-size: 0.85rem; }
 }
 
-/* --- WORKS HEAD V3 MOBILE : titre lisible, ghost text tres discret -------- */
-@media (max-width: 720px) {
+/* --- WORKS mobile : CAROUSEL HORIZONTAL de cards autonomes --- */
+@media (max-width: 900px) {
+  .works {
+    padding: var(--sp-10) 0;
+    max-width: none;
+  }
   .works-head--v3 {
     padding: 0 20px;
-    margin-bottom: var(--sp-8);
-    min-height: 90px;
+    margin-bottom: var(--sp-6);
+    min-height: 100px;
   }
-  .works-head--v3 .works-head-title h2 {
-    font-size: 2.4rem;
-    max-width: 100%;
-  }
+  .works-head--v3 .works-head-title h2 { font-size: 2.4rem; max-width: 100%; }
   .works-head--v3 .works-ghost-text {
-    font-size: 3rem;
-    opacity: 0.5;
+    font-size: 3.5rem;
+    opacity: 0.4;
     padding-right: 0;
   }
   .works-head--v3 .works-head-ghost {
     top: auto;
-    bottom: -10px;
-    align-items: flex-end;
-    justify-content: flex-start;
+    bottom: -8px;
     left: -20px;
     right: -20px;
+    align-items: flex-end;
+    justify-content: flex-start;
   }
-}
 
-/* --- WORK CARDS MOBILE : mockup ordi + phone tiennent dans la carte -------- */
-@media (max-width: 720px) {
-  .works { padding: var(--sp-10) 16px; }
-  .work-card {
-    grid-template-columns: 1fr !important;
-    gap: var(--sp-6) !important;
-    margin-bottom: var(--sp-10);
+  .works-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 20px;
+    gap: 16px;
+    padding: 8px 20px var(--sp-4);
+    margin: 0 -4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
-  .work-card--reverse .work-mockup { order: 1; }
-  .work-card--reverse .work-meta { order: 2; }
+  .works-track::-webkit-scrollbar { display: none; }
+
+  .work-card {
+    grid-template-columns: none !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: var(--sp-5) !important;
+    flex: 0 0 85vw;
+    max-width: 85vw;
+    scroll-snap-align: center;
+    padding: var(--sp-6);
+    background: var(--surface);
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    margin: 0 !important;
+  }
+  .work-card--reverse { flex-direction: column !important; }
   .work-mockup {
     padding: 0;
     max-width: 100%;
+    position: relative;
+    min-height: 0;
   }
-  .work-mockup .mockup--lg { max-width: 100%; }
+  .work-card .mockup { max-width: 100%; }
+  .work-card .mockup-frame {
+    aspect-ratio: 16/10;
+    height: auto;
+  }
   .work-card .mockup-phone {
-    width: 90px !important;
-    right: 4px !important;
+    width: 78px !important;
+    right: 6px !important;
     bottom: 6px !important;
+    left: auto !important;
   }
   .work-card--reverse .mockup-phone {
-    left: 4px !important;
+    left: 6px !important;
     right: auto !important;
   }
+  .work-domain {
+    font-size: 0.72rem;
+    padding: 5px 10px;
+  }
+  .work-badge {
+    font-size: 0.65rem;
+    padding: 4px 8px;
+  }
+  .work-meta { padding: 0; }
+  .work-meta .work-kind {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    margin-bottom: var(--sp-2);
+  }
   .work-meta h3 {
-    font-size: 1.6rem;
-    letter-spacing: -0.03em;
+    font-size: 1.35rem;
+    line-height: 1.15;
+    margin-bottom: var(--sp-2);
   }
   .work-meta p {
-    font-size: 0.95rem;
-    line-height: 1.55;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: var(--sp-3);
   }
-  .work-kind {
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-  }
+  .work-link { font-size: 0.85rem; }
+
+  /* CTA sous le carousel */
+  .works-cta { padding: 0 20px; margin-top: var(--sp-6); }
+  .works-cta .btn { width: 100%; justify-content: center; }
 }
 
-/* --- SIGNATURE V3 MOBILE : le sticky lache, tailles s'ajustent ------------ */
-@media (max-width: 720px) {
+/* --- SIGNATURE V3 mobile : 1 col, box condensed --- */
+@media (max-width: 900px) {
   .signature--v3 { padding: var(--sp-10) 16px; }
   .signature--v3 .signature-inner {
     grid-template-columns: 1fr;
@@ -3177,15 +3230,26 @@
   }
   .signature--v3 .signature-left { position: static; }
   .signature--v3 .signature-left h2 {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
     letter-spacing: -0.03em;
+    margin-bottom: var(--sp-5);
   }
   .signature--v3 .signature-lead {
     font-size: 0.95rem;
     line-height: 1.55;
+    margin-bottom: var(--sp-5);
+  }
+  .signature--v3 .signature-checks {
+    gap: var(--sp-3);
+    margin-bottom: var(--sp-6);
   }
   .signature--v3 .signature-checks li {
     font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .signature--v3 .signature-checks li::before {
+    width: 20px; height: 20px;
+    background-size: 12px 12px;
   }
   .signature--v3 .validation-box {
     padding: var(--sp-6) var(--sp-5);
@@ -3193,179 +3257,292 @@
   }
   .signature--v3 .validation-box h3 {
     font-size: 1.3rem;
+    letter-spacing: -0.025em;
+    margin-bottom: var(--sp-4);
   }
   .signature--v3 .validation-box p {
     font-size: 0.9rem;
+    line-height: 1.55;
+    margin-bottom: var(--sp-5);
+  }
+  .signature--v3 .validation-tag {
+    font-size: 0.65rem;
+    margin-bottom: var(--sp-4);
   }
 }
 
-/* --- OFFER PODIUM MOBILE : centre en tete, cotes empiles ------------------ */
+/* --- METHODE mobile : CAROUSEL HORIZONTAL des 4 etapes --- */
 @media (max-width: 900px) {
+  .method--v2 { padding: var(--sp-10) 0; }
+  .method--v2 .method-inner { padding: 0 20px; }
+  .method--v2 h2 {
+    font-size: 1.9rem;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--sp-5);
+  }
+  .method--v2 .method-lead {
+    font-size: 0.95rem;
+    margin-bottom: var(--sp-6);
+  }
+  .method--v2 .method-grid {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 20px;
+    gap: 14px;
+    padding: 4px 20px;
+    margin: 0 -20px var(--sp-6);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .method--v2 .method-grid::-webkit-scrollbar { display: none; }
+  .method--v2 .method-step {
+    flex: 0 0 80vw;
+    max-width: 80vw;
+    scroll-snap-align: center;
+    padding: var(--sp-6) var(--sp-5);
+  }
+  .method--v2 .method-step h3 {
+    font-size: 1.1rem;
+    line-height: 1.2;
+  }
+  .method--v2 .method-step p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .method--v2 .method-echo {
+    margin-top: var(--sp-4);
+    padding: var(--sp-5);
+  }
+  .method--v2 .method-echo p { font-size: 0.9rem; }
+}
+
+/* --- OFFRE PODIUM mobile : CAROUSEL HORIZONTAL --- */
+@media (max-width: 900px) {
+  .offer--v3 { padding: var(--sp-10) 0; }
+  .offer--v3 .offer-inner { padding: 0 20px; }
+  .offer--v3 h2 {
+    font-size: 1.9rem;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--sp-4);
+  }
+  .offer--v3 .offer-lead {
+    font-size: 0.95rem;
+    margin-bottom: var(--sp-6);
+  }
   .offer--v3 .offer-podium {
+    display: flex !important;
+    grid-template-columns: none !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 20px;
+    gap: 14px;
+    padding: 4px 20px;
+    margin: 0 -20px !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    align-items: stretch;
+  }
+  .offer--v3 .offer-podium::-webkit-scrollbar { display: none; }
+  .offer--v3 .offer-center,
+  .offer--v3 .offer-side {
+    flex: 0 0 85vw;
+    max-width: 85vw;
+    scroll-snap-align: center;
+    transform: none !important;
+    padding: var(--sp-6) var(--sp-5) !important;
+  }
+  .offer--v3 .offer-center { order: 2; }
+  .offer--v3 .offer-side:first-of-type { order: 1; }
+  .offer--v3 .offer-side:last-of-type { order: 3; }
+  .offer--v3 .offer-plan-head h3 { font-size: 1.4rem; }
+  .offer--v3 .offer-plan-value { font-size: 1.4rem; }
+  .offer--v3 .offer-plan-meta { flex-wrap: wrap; gap: 6px; }
+  .offer--v3 .offer-plan-meta span { font-size: 0.75rem; }
+  .offer--v3 .offer-plan-list li { font-size: 0.85rem; }
+  .offer--v3 .offer-side h3 { font-size: 1.15rem; }
+  .offer--v3 .offer-side-desc { font-size: 0.85rem; }
+}
+
+/* --- BEFORE/AFTER slider mobile : garde ses proportions --- */
+@media (max-width: 900px) {
+  .before-after { padding: var(--sp-10) 16px; }
+  .before-after h2 {
+    font-size: 1.9rem;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--sp-4);
+  }
+  .before-after .ba-intro,
+  .before-after .ba-note { font-size: 0.9rem; }
+  .ba-slider {
+    aspect-ratio: 3/4;
+    border-radius: 14px;
+    max-width: 100%;
+  }
+  .ba-label {
+    font-size: 0.6rem !important;
+    padding: 4px 8px !important;
+  }
+  .ba-handle-line { width: 3px; }
+  .ba-handle-btn { width: 44px; height: 44px; }
+}
+
+/* --- FAQ mobile --- */
+@media (max-width: 900px) {
+  .faq { padding: var(--sp-10) 16px; }
+  .faq h2 {
+    font-size: 1.9rem;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--sp-6);
+  }
+  .faq-item summary { font-size: 0.95rem; padding: var(--sp-4) 0; }
+  .faq-item p { font-size: 0.88rem; line-height: 1.55; }
+}
+
+/* --- CONTACT FINAL mobile : 1 colonne, form padding compact --- */
+@media (max-width: 900px) {
+  .contact-final { padding: var(--sp-10) 16px; }
+  .contact-final .contact-final-grid {
     grid-template-columns: 1fr !important;
     gap: var(--sp-6) !important;
   }
-  .offer--v3 .offer-center {
-    order: 1;
-    transform: none !important;
-  }
-  .offer--v3 .offer-side:nth-of-type(1) { order: 2; }
-  .offer--v3 .offer-side:nth-of-type(3) { order: 3; }
-}
-@media (max-width: 720px) {
-  .offer--v3 { padding: var(--sp-10) 16px; }
-  .offer--v3 h2 { font-size: 1.9rem; }
-  .offer--v3 .offer-center { padding: var(--sp-6) var(--sp-5); }
-  .offer--v3 .offer-plan-value { font-size: 1.5rem; }
-  .offer--v3 .offer-side { padding: var(--sp-5) var(--sp-4); }
-  .offer--v3 .offer-side h3 { font-size: 1.1rem; }
-}
-
-/* --- METHODE MOBILE : 2x2 -> 1 colonne ------------------------------------ */
-@media (max-width: 720px) {
-  .method--v2 { padding: var(--sp-10) 16px; }
-  .method--v2 h2 { font-size: 1.9rem; letter-spacing: -0.03em; }
-  .method--v2 .method-grid {
-    grid-template-columns: 1fr;
-    gap: var(--sp-6);
-  }
-  .method--v2 .method-step {
-    padding: var(--sp-5) var(--sp-4);
-  }
-  .method--v2 .method-num {
-    font-size: 1.8rem;
-  }
-}
-
-/* --- BEFORE/AFTER SLIDER MOBILE : hauteur reduite, labels lisibles -------- */
-@media (max-width: 720px) {
-  .before-after { padding: var(--sp-10) 16px; }
-  .before-after h2 { font-size: 1.8rem; }
-  .ba-slider {
-    aspect-ratio: 4/5 !important;
-    border-radius: 14px;
-  }
-  .ba-label {
-    font-size: 0.65rem !important;
-    padding: 4px 8px !important;
-  }
-}
-
-/* --- FAQ MOBILE : padding revu, taille questions ------------------------- */
-@media (max-width: 720px) {
-  .faq { padding: var(--sp-10) 16px; }
-  .faq h2 { font-size: 1.9rem; }
-  .faq-item summary,
-  .faq-item .faq-q {
-    font-size: 1rem;
-    padding: var(--sp-4) 0;
-  }
-  .faq-item p { font-size: 0.9rem; }
-}
-
-/* --- CONTACT MOBILE : formulaire pleine largeur + labels visibles --------- */
-@media (max-width: 720px) {
-  .contact-final { padding: var(--sp-10) 16px; }
-  .contact-final-grid {
-    grid-template-columns: 1fr !important;
-    gap: var(--sp-8) !important;
-  }
-  .contact-final-text .eyebrow { font-size: 0.7rem; }
   .contact-final h2 { font-size: 1.9rem; letter-spacing: -0.03em; }
   .contact-final-text {
     position: static;
     max-width: 100%;
   }
+  .contact-final-text p { font-size: 0.95rem; }
+  .contact-arg { font-size: 0.85rem; padding: 6px 0; }
   .contact-final-form {
     padding: var(--sp-6) var(--sp-5);
     border-radius: 20px;
   }
-  .cf-row label {
-    font-size: 0.85rem;
-  }
-  .cf-row input,
-  .cf-row select,
-  .cf-row textarea {
-    font-size: 16px; /* evite le zoom auto iOS */
+  .cf-row label { font-size: 0.85rem; margin-bottom: 4px; }
+  .cf-row input, .cf-row select, .cf-row textarea {
+    font-size: 16px;                        /* evite le zoom auto iOS */
+    padding: 10px 12px;
   }
 }
 
-/* --- FOOTER MOBILE : 4 col -> 1 col, centre --------------------------- */
-@media (max-width: 720px) {
-  .site-footer { padding: var(--sp-10) 16px var(--sp-6); }
+/* --- FOOTER mobile : 1 col centre --- */
+@media (max-width: 900px) {
+  .site-footer { padding: var(--sp-8) 16px var(--sp-5); }
   .footer-grid {
     grid-template-columns: 1fr;
     gap: var(--sp-6);
     text-align: center;
   }
-  .footer-brand h3 { font-size: 1.5rem; }
-  .footer-col h4 { margin-bottom: var(--sp-2); }
+  .footer-brand h3 { font-size: 1.4rem; }
+  .footer-brand p { font-size: 0.9rem; }
+  .footer-col h4 { margin-bottom: var(--sp-2); font-size: 0.75rem; letter-spacing: 0.14em; }
+  .footer-col li { font-size: 0.9rem; }
   .footer-bottom {
     flex-direction: column;
     gap: var(--sp-2);
     text-align: center;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
   }
 }
 
-/* --- HEADER MINIMAL (portfolio, service, projet) MOBILE ------------------- */
-@media (max-width: 720px) {
+/* --- HEADER MINIMAL (pages secondaires) mobile --- */
+@media (max-width: 900px) {
   .header--minimal {
-    padding: 10px 12px;
+    padding: 10px 14px;
     grid-template-columns: auto 1fr auto;
     gap: 8px;
   }
   .header--minimal .portfolio-back span { display: none; }
-  .header--minimal .portfolio-back svg {
-    width: 22px;
-    height: 22px;
+  .header--minimal .portfolio-back {
+    padding: 6px;
+    gap: 0;
   }
+  .header--minimal .portfolio-back svg { width: 22px; height: 22px; }
   .header--minimal .brand-logo--center {
     font-size: 1rem;
     white-space: nowrap;
   }
-  .header--minimal .theme-toggle {
-    padding: 6px;
-  }
-  /* Portfolio hero mobile */
+  .header--minimal .theme-toggle { padding: 6px; }
+
   .portfolio-hero {
     padding: calc(var(--sp-10) + 20px) 16px var(--sp-8);
   }
   .portfolio-hero h1 {
-    font-size: clamp(1.8rem, 6vw + 0.5rem, 2.6rem);
+    font-size: clamp(1.8rem, 6.5vw, 2.6rem);
     line-height: 1.05;
+    letter-spacing: -0.03em;
   }
-  .portfolio-hero p {
-    font-size: 0.95rem;
-  }
-  /* Portfolio CTA mobile */
+  .portfolio-hero p { font-size: 0.95rem; }
   .portfolio-cta { padding: var(--sp-10) 16px; }
   .portfolio-cta h2 { font-size: 1.9rem; letter-spacing: -0.03em; }
+  .portfolio-cta p { font-size: 0.95rem; }
 }
 
-/* --- HERO TILE V8 MOBILE : reduire l'ombre des tiles trop lourdes -------- */
-@media (max-width: 720px) {
-  .hero-tile {
-    box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.25);
+/* --- Service detail pages mobile --- */
+@media (max-width: 900px) {
+  .service-detail { padding: var(--sp-8) 16px; }
+  .service-detail-block h2 {
+    font-size: 1.75rem;
+    letter-spacing: -0.03em;
   }
-  .ht-shot .ts-title {
-    font-size: 0.9rem !important;
-    line-height: 1.15;
+  .service-detail-block h3 { font-size: 1.2rem; }
+  .service-detail-block p { font-size: 0.95rem; line-height: 1.6; }
+  .service-detail-block--highlight {
+    padding: var(--sp-6) var(--sp-5);
+    border-radius: 18px;
   }
-  .ht-shot .ts-lead { display: none; }
-  .ht-shot .ts-btn {
-    font-size: 0.55rem !important;
-    padding: 4px 8px !important;
+  .skill-list-item h3 { font-size: 1.05rem; }
+  .skill-list-item p { font-size: 0.9rem; line-height: 1.55; }
+  .devis-band { padding: var(--sp-10) 16px; }
+  .devis-band h2 { font-size: 1.9rem; letter-spacing: -0.03em; }
+  .devis-band .devis-lead { font-size: 0.95rem; }
+}
+
+/* --- Portfolio page : le carousel mobile ne s'applique PAS (garde stack) --- */
+@media (max-width: 900px) {
+  .works--portfolio {
+    padding: var(--sp-8) 16px;
   }
-  .ht-shot .ts-pill {
-    font-size: 0.5rem !important;
+  .works--portfolio .work-card {
+    flex: none !important;
+    max-width: 100% !important;
+    margin-bottom: var(--sp-6) !important;
   }
 }
 
-/* --- BODY SCROLL SMOOTH + touche iOS ------------------------------------ */
-@media (max-width: 720px) {
-  html { scroll-behavior: smooth; }
-  body {
-    -webkit-text-size-adjust: 100%;
+/* --- Enable smooth touch + prevent horizontal body overflow ------ */
+@media (max-width: 900px) {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { overflow-x: hidden; }
+}
+
+/* --- Indicateur "swipe" sur les carousels mobiles pour l'UX --- */
+@media (max-width: 900px) {
+  .swipe-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-soft);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: var(--sp-3);
+    opacity: 0.6;
   }
+  .swipe-hint::before {
+    content: "";
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: currentColor;
+    margin-right: 4px;
+  }
+  .swipe-hint::after {
+    content: "→";
+    font-size: 0.85rem;
+  }
+}
+@media (min-width: 901px) {
+  .swipe-hint { display: none; }
 }
