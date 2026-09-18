@@ -3165,7 +3165,7 @@
   }
 }
 
-/* --- SECTION "LE TRAVAIL" mobile : titre simple, ghost cache --- */
+/* --- SECTION "LE TRAVAIL" mobile : simple stack, layout classique --- */
 @media (max-width: 900px) {
   .works {
     padding: var(--sp-10) 20px;
@@ -3184,25 +3184,25 @@
     letter-spacing: -0.035em;
     max-width: 100%;
   }
-  .works-head--v3 .works-head-ghost {
-    display: none !important;
-  }
+  .works-head--v3 .works-head-ghost { display: none !important; }
 
-  /* Track = simple stack vertical, pas de carousel */
+  /* Track = simple stack vertical */
   .works-track {
     display: flex;
     flex-direction: column;
-    gap: var(--sp-6);
+    gap: var(--sp-12);
     padding: 0;
     margin: 0;
     overflow: visible;
     scroll-snap-type: none;
   }
 
-  /* Chaque work-card = full width, style tmoo (browser mockup unique) */
-  .work-card {
-    display: block !important;
-    grid-template-columns: none !important;
+  /* Chaque work-card : 1 colonne, mockup au-dessus, meta en dessous */
+  .work-card,
+  .work-card--reverse {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: var(--sp-5) !important;
     width: 100%;
     max-width: 100%;
     padding: 0;
@@ -3211,87 +3211,43 @@
     border-radius: 0;
     margin: 0 !important;
     flex: none !important;
-    scroll-snap-align: none !important;
   }
-  .work-card--reverse { }
+  .work-card--reverse .work-mockup,
+  .work-card--reverse .work-meta { order: 0; }
 
   .work-mockup {
     position: relative;
     padding: 0;
     max-width: 100%;
-    overflow: visible;
   }
-  .work-card .mockup {
-    max-width: 100%;
-  }
+  .work-card .mockup { max-width: 100%; }
   .work-card .mockup-frame {
-    aspect-ratio: 16 / 11;
+    aspect-ratio: 16 / 10;
     height: auto;
-    border-radius: 14px;
   }
-  .work-card .mockup-topbar {
-    padding: 8px 10px;
-    gap: 4px;
-  }
-  .work-card .mockup-topbar > span:not(.mockup-url) {
-    width: 8px;
-    height: 8px;
-  }
-  .work-card .mockup-url {
-    font-size: 0.7rem;
-    padding: 3px 10px;
-  }
-
-  /* Phone mockup en overlay top-right, taille normale */
   .work-card .mockup-phone {
-    position: absolute !important;
-    width: 60px !important;
-    height: auto !important;
-    aspect-ratio: 9/19;
-    top: 32% !important;
-    right: 8px !important;
-    bottom: auto !important;
+    width: 82px !important;
+    right: -6px !important;
+    bottom: -10px !important;
     left: auto !important;
-    transform: rotate(2deg);
-    z-index: 3;
+    top: auto !important;
   }
   .work-card--reverse .mockup-phone {
-    left: 8px !important;
+    left: -6px !important;
     right: auto !important;
-    transform: rotate(-2deg);
   }
-
-  /* work-domain pill : en overlay bas gauche du mockup */
   .work-card .work-domain {
-    position: absolute;
-    bottom: -16px;
-    left: 10px;
     font-size: 0.72rem;
-    padding: 8px 12px;
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    box-shadow: 0 4px 12px -6px rgba(0,0,0,0.15);
-    z-index: 4;
+    padding: 6px 12px;
   }
   .work-card .work-badge {
-    position: absolute;
-    bottom: -16px;
-    left: auto;
-    right: 10px;
     font-size: 0.62rem;
-    padding: 6px 10px;
-    background: var(--bg);
-    border: 1px solid var(--line);
-    color: var(--text);
-    border-radius: 999px;
-    z-index: 4;
+    padding: 5px 9px;
     letter-spacing: 0.06em;
   }
 
-  /* Meta = juste sous le mockup, aligne a gauche */
   .work-meta {
-    padding: var(--sp-6) 0 0;
+    padding: 0;
     text-align: left;
   }
   .work-meta .work-kind {
@@ -3301,25 +3257,24 @@
     margin-bottom: var(--sp-2);
   }
   .work-meta h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     line-height: 1.15;
     letter-spacing: -0.03em;
-    margin: 0 0 var(--sp-2);
+    margin: 0 0 var(--sp-3);
   }
   .work-meta p {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     line-height: 1.55;
     color: var(--text-soft);
-    margin: 0;
+    margin: 0 0 var(--sp-3);
   }
   .work-meta .work-link {
-    display: none;  /* domaine en pill fait le job */
+    display: inline-flex;
+    font-size: 0.9rem;
   }
 
   .swipe-hint { display: none; }
-  .works-cta {
-    margin-top: var(--sp-8);
-  }
+  .works-cta { margin-top: var(--sp-8); }
   .works-cta .btn {
     width: 100%;
     justify-content: center;
