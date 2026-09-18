@@ -1950,11 +1950,22 @@
 .contact-final--v2 .cf-disclaimer { text-align: center; margin-top: var(--sp-3); }
 
 @media (max-width: 900px) {
+  /* minmax(0, 1fr) et pas 1fr : sinon la colonne prend la largeur min-content
+     du formulaire (306px) et deborde de l'ecran sur un iPhone SE (320px). */
   .contact-final--v2 .contact-final-inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--sp-10);
   }
   .contact-final--v2 .contact-final-side { position: static; }
+  .contact-final--v2 .contact-final-side,
+  .contact-final--v2 .contact-final-form-wrap { min-width: 0; }
+  .contact-final--v2 .cf-row,
+  .contact-final--v2 .cf-row input,
+  .contact-final--v2 .cf-row select,
+  .contact-final--v2 .cf-row textarea {
+    min-width: 0;
+    max-width: 100%;
+  }
 }
 
 /* ============ V8.1 · BTN FULL utilitaire ============ */
@@ -4007,4 +4018,252 @@
   }
   .works-soon h4 { font-size: 1.15rem; }
   .works-soon p { font-size: 0.9rem; line-height: 1.55; }
+}
+
+/* ============ V8.20 · ANIMATIONS AU SCROLL ============ */
+/* Trois briques :
+   1. les mots des titres montent de derriere un masque
+   2. les blocs de texte arrivent avec un leger flou qui se dissipe
+   3. la timeline de la methode se dessine au rythme du scroll            */
+
+/* ---- 1. Titres masques mot a mot ---- */
+.rw {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding: 0.16em 0 0.18em;
+  margin: -0.16em 0 -0.18em;
+}
+.rw > i {
+  display: inline-block;
+  font-style: inherit;
+}
+/* Etat cache : uniquement une fois que le JS a fini de decouper */
+.has-words.words-ready .rw > i {
+  transform: translateY(108%);
+  opacity: 0;
+  transition:
+    transform 0.9s var(--ease-out),
+    opacity 0.5s linear;
+  transition-delay: var(--rw-d, 0s);
+  /* Promu seulement tant que le mot n'a pas joue, puis relache */
+  will-change: transform;
+}
+.has-words.words-ready.is-visible .rw > i {
+  transform: translateY(0);
+  opacity: 1;
+  will-change: auto;
+}
+/* Le titre decoupe ne doit plus bouger lui-meme : ce sont les mots qui jouent */
+.reveal.has-words {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition: none;
+}
+
+/* ---- 2. Flou qui se dissipe sur les textes (desktop uniquement) ---- */
+@media (min-width: 901px) {
+  h2.reveal,
+  h3.reveal,
+  p.reveal,
+  .eyebrow.reveal {
+    filter: blur(6px);
+    transition:
+      opacity 0.9s var(--ease-out),
+      transform 0.9s var(--ease-out),
+      filter 0.9s var(--ease-out);
+  }
+  h2.reveal.is-visible,
+  h3.reveal.is-visible,
+  p.reveal.is-visible,
+  .eyebrow.reveal.is-visible { filter: blur(0); }
+}
+
+/* L'eyebrow se resserre en arrivant */
+.eyebrow.reveal {
+  letter-spacing: 0.42em;
+  transition:
+    opacity 0.7s var(--ease-out),
+    transform 0.7s var(--ease-out),
+    letter-spacing 1s var(--ease-out),
+    filter 0.9s var(--ease-out);
+}
+.eyebrow.reveal.is-visible { letter-spacing: 0.14em; }
+
+/* ============ V8.20 · METHODE · choregraphie ============ */
+
+/* La regle de paiement : le gratuit se pose, puis le payant */
+.method--v3 .method-ruler.reveal {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition: none;
+}
+.method--v3 .mr-seg {
+  opacity: 0;
+  transform: translateY(20px) scale(0.975);
+  transition:
+    opacity 0.7s var(--ease-out),
+    transform 0.85s var(--ease-out);
+}
+.method--v3 .method-ruler.is-visible .mr-seg {
+  opacity: 1;
+  transform: none;
+}
+.method--v3 .method-ruler.is-visible .mr-seg--paid { transition-delay: 0.16s; }
+
+/* La ligne verticale : une piste discrete + un trait qui se dessine au scroll */
+.method--v3 .method-timeline::before {
+  background: color-mix(in oklab, var(--text) 9%, transparent);
+}
+.method--v3 .method-timeline::after {
+  content: "";
+  position: absolute;
+  left: 23px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--text) 30%, transparent) 0%,
+    color-mix(in oklab, var(--text) 30%, transparent) 42%,
+    var(--accent) 52%,
+    var(--accent) 100%
+  );
+  /* --mt-p va de 0 a 1, pilote par le scroll ; 1 par defaut si pas de JS */
+  clip-path: inset(0 0 calc(100% - var(--mt-p, 1) * 100%) 0);
+}
+
+/* Les jalons : la pastille pop, puis le texte glisse ligne par ligne */
+.method--v3 .mt-step.reveal,
+.method--v3 .mt-pivot.reveal {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition: none;
+}
+.method--v3 .mt-marker {
+  opacity: 0;
+  transform: scale(0.35);
+  transition:
+    opacity 0.35s var(--ease-soft),
+    transform 0.75s cubic-bezier(0.34, 1.5, 0.5, 1);
+}
+.method--v3 .mt-step.is-visible .mt-marker {
+  opacity: 1;
+  transform: scale(1);
+}
+/* Onde qui part de la pastille au moment ou elle se pose */
+.method--v3 .mt-marker::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  pointer-events: none;
+}
+.method--v3 .mt-step--free .mt-marker::after {
+  border-color: color-mix(in oklab, var(--text) 32%, transparent);
+}
+.method--v3 .mt-step--paid .mt-marker::after { border-color: var(--accent); }
+.method--v3 .mt-step.is-visible .mt-marker::after {
+  animation: mt-ring 1.2s var(--ease-out) 0.28s 1;
+}
+@keyframes mt-ring {
+  from { opacity: 0.5; transform: scale(1); }
+  to   { opacity: 0;   transform: scale(1.95); }
+}
+
+.method--v3 .mt-head,
+.method--v3 .mt-body h3,
+.method--v3 .mt-body p {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s var(--ease-out),
+    transform 0.75s var(--ease-out);
+}
+.method--v3 .mt-step.is-visible .mt-head,
+.method--v3 .mt-step.is-visible .mt-body h3,
+.method--v3 .mt-step.is-visible .mt-body p {
+  opacity: 1;
+  transform: none;
+}
+.method--v3 .mt-step.is-visible .mt-head    { transition-delay: 0.14s; }
+.method--v3 .mt-step.is-visible .mt-body h3 { transition-delay: 0.22s; }
+.method--v3 .mt-step.is-visible .mt-body p  { transition-delay: 0.30s; }
+
+/* Le pivot : le bloc arrive, puis la coche se trace */
+.method--v3 .mt-pivot-inner {
+  opacity: 0;
+  transform: translateY(18px) scale(0.985);
+  transition:
+    opacity 0.7s var(--ease-out),
+    transform 0.85s var(--ease-out);
+}
+.method--v3 .mt-pivot.is-visible .mt-pivot-inner {
+  opacity: 1;
+  transform: none;
+}
+.method--v3 .mt-pivot-inner svg path {
+  stroke-dasharray: 26;
+  stroke-dashoffset: 26;
+  transition: stroke-dashoffset 0.7s var(--ease-out) 0.4s;
+}
+.method--v3 .mt-pivot.is-visible .mt-pivot-inner svg path { stroke-dashoffset: 0; }
+
+/* L'encadre final : le filet bleu se tire de haut en bas */
+.method--v3 .method-echo {
+  position: relative;
+  border-left-color: transparent;
+}
+.method--v3 .method-echo::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 0.85s var(--ease-out) 0.15s;
+}
+.method--v3 .method-echo.is-visible::before { transform: scaleY(1); }
+
+/* Mobile : la ligne dessinee suit la gouttiere reduite */
+@media (max-width: 900px) {
+  .method--v3 .method-timeline::after {
+    left: 17px;
+    top: 10px;
+    bottom: 10px;
+  }
+}
+
+/* ---- Accessibilite : on coupe tout si l'utilisateur le demande ---- */
+@media (prefers-reduced-motion: reduce) {
+  .has-words.words-ready .rw > i,
+  .has-words.words-ready.is-visible .rw > i {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+  h2.reveal, h3.reveal, p.reveal, .eyebrow.reveal { filter: none; }
+  .eyebrow.reveal, .eyebrow.reveal.is-visible { letter-spacing: 0.14em; }
+  .method--v3 .mr-seg,
+  .method--v3 .mt-marker,
+  .method--v3 .mt-head,
+  .method--v3 .mt-body h3,
+  .method--v3 .mt-body p,
+  .method--v3 .mt-pivot-inner {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .method--v3 .mt-step.is-visible .mt-marker::after { animation: none; }
+  .method--v3 .mt-pivot-inner svg path { stroke-dashoffset: 0; transition: none; }
+  .method--v3 .method-echo::before { transform: scaleY(1); transition: none; }
+  .method--v3 .method-timeline::after { clip-path: none; }
 }

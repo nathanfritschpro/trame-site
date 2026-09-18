@@ -61,13 +61,24 @@
     }
   });
 
-  // ---- Reveal on scroll (IntersectionObserver)
+  // ---- Reveal on scroll (IntersectionObserver + filet de securite au scroll)
   const revealEls = document.querySelectorAll('.reveal');
   if (revealEls.length && 'IntersectionObserver' in window) {
+    // Les elements pas encore reveles. Un scroll tres rapide peut faire sauter
+    // une notification de l'observer : on garde une verification manuelle en
+    // secours, sinon un titre reste invisible pour de bon.
+    const pending = new Set();
+
+    const show = (el) => {
+      el.classList.add('is-visible');
+      pending.delete(el);
+      io.unobserve(el);
+    };
+
     const revealIfInView = (el) => {
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight * 0.95 && rect.bottom > 0) {
-        el.classList.add('is-visible');
+        show(el);
         return true;
       }
       return false;
@@ -75,17 +86,35 @@
 
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) show(entry.target);
       });
     }, { rootMargin: '0px 0px -5% 0px', threshold: 0 });
 
+    let sweeping = false;
+    const sweep = () => {
+      sweeping = false;
+      pending.forEach(revealIfInView);
+      if (!pending.size) {
+        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onScroll);
+      }
+    };
+    const onScroll = () => {
+      if (sweeping) return;
+      sweeping = true;
+      requestAnimationFrame(sweep);
+    };
+
     revealEls.forEach(el => {
-      if (revealIfInView(el)) return;
+      pending.add(el);
       io.observe(el);
+      revealIfInView(el);
     });
+
+    if (pending.size) {
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+    }
   } else {
     revealEls.forEach(el => el.classList.add('is-visible'));
   }
