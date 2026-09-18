@@ -218,6 +218,14 @@
 
     revealEls.forEach(el => {
       if (heroSkip.has(el)) return;
+      // Un element display:none n'a pas de rect : l'observer ne le declenche
+      // jamais et le filet de securite au scroll ne peut pas le lever non plus.
+      // On lui met .is-visible tout de suite et on ne l'observe pas : s'il
+      // repasse en display:block plus tard, il sera deja marque visible.
+      if (!el.offsetParent && getComputedStyle(el).display === 'none') {
+        el.classList.add('is-visible');
+        return;
+      }
       pending.add(el);
       io.observe(el);
       revealIfInView(el);

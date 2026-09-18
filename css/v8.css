@@ -3882,34 +3882,86 @@
   .faq-item p { font-size: 0.9rem; line-height: 1.6; }
 }
 
-/* --- CONTACT FINAL mobile --- */
+/* --- CONTACT FINAL mobile (V8.22 · compact) ---
+   Sur telephone la section faisait ~1400px de haut avec 640px avant le
+   formulaire. On enleve tout ce qui est deja repete ailleurs (les 4
+   arguments + la ligne SMS au-dessus du form, qui redisaient ce que
+   la disclaimer sous le bouton dit deja) et on serre la gouttiere pour
+   que le formulaire soit visible des qu'on arrive.                        */
 @media (max-width: 900px) {
-  .contact-final { padding: var(--sp-10) 20px; }
+  .contact-final { padding: var(--sp-8) 20px var(--sp-10); }
   .contact-final .contact-final-grid {
     grid-template-columns: 1fr !important;
     gap: var(--sp-6) !important;
   }
-  .contact-final h2 {
+
+  /* Cote gauche : eyebrow, titre, une seule ligne d'accroche, c'est tout.
+     Le gap du grid parent gere la respiration entre le bloc gauche et le
+     formulaire ; les marges internes gerent celle entre eyebrow/h2/lead.  */
+  .contact-final--v2 .contact-final-inner { gap: var(--sp-5); }
+
+  .contact-final--v2 .eyebrow { margin-bottom: var(--sp-3); }
+  .contact-final--v2 h2 {
     font-size: 1.9rem;
     line-height: 1.05;
     letter-spacing: -0.035em;
+    margin-bottom: var(--sp-3);
+    text-wrap: balance;
   }
-  .contact-final-text {
-    position: static;
-    max-width: 100%;
+  .contact-final--v2 .contact-final-lead {
+    font-size: 0.98rem;
+    line-height: 1.45;
+    color: var(--text-dim);
+    margin: 0;
+    max-width: 32ch;
   }
-  .contact-final-text p { font-size: 0.95rem; }
-  .contact-arg { font-size: 0.9rem; padding: 6px 0; }
+
+  /* Le rappel des 4 arguments et la ligne SMS d'appel disparaissent sur
+     telephone : c'est deja porte par la disclaimer sous le bouton +
+     une pastille compacte qu'on ajoute plus bas.                          */
+  .contact-final--v2 .contact-final-args,
+  .contact-final--v2 .contact-final-alt { display: none; }
+
+  /* Le formulaire arrive juste apres le lead */
+  .contact-final-form-wrap { margin-top: 0; }
   .contact-final-form {
-    padding: var(--sp-6) var(--sp-5);
+    padding: var(--sp-5);
     border-radius: 20px;
+    gap: var(--sp-3) !important;
   }
-  .cf-row label { font-size: 0.85rem; margin-bottom: 6px; }
+  .cf-row label { font-size: 0.8rem; margin-bottom: 4px; }
   .cf-row input, .cf-row select, .cf-row textarea {
     font-size: 16px;                     /* evite le zoom auto iOS */
-    padding: 12px 14px;
+    padding: 11px 13px;
     border-radius: 12px;
   }
+  .cf-row textarea { min-height: 84px; }
+  .cf-actions { margin-top: var(--sp-3); gap: var(--sp-2); }
+  .cf-disclaimer { font-size: 0.72rem; line-height: 1.4; }
+
+  /* Pastille "ou telephonez" : discrete, sous la disclaimer, seulement mobile */
+  .cf-sms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: var(--sp-4) auto 0;
+    padding: 10px 16px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--br-pill);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    color: var(--text-dim);
+    width: fit-content;
+    max-width: 100%;
+  }
+  .cf-sms a { color: var(--accent); font-weight: 700; text-decoration: none; }
+  .cf-sms svg { width: 14px; height: 14px; color: var(--accent); }
+}
+@media (min-width: 901px) {
+  .cf-sms { display: none; }
 }
 
 /* --- FOOTER mobile : 1 col centre, compact --- */
