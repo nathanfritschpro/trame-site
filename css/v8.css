@@ -3008,22 +3008,25 @@
 
 
 /* ============================================================================
-   V8.11 · RESPONSIVE MOBILE ADAPTATIF
-   Approche : au lieu d'ecraser les layouts desktop, on utilise des CAROUSELS
-   HORIZONTAUX A SWIPE pour les grilles (tiles, works, offer, method), et
-   on garde les vraies proportions des cartes. Chaque carte est autonome et
-   fait ~85vw, l'utilisateur swipe pour voir les suivantes.
-   Cibles : <= 900px principalement, avec ajustements <= 480px
+   V8.12 · RESPONSIVE iPhone COPIE FIDELE DE TMOO.SITE
+   Approche : PAS DE CAROUSELS. Tout en stack vertical, compact et dense.
+   Layout et proportions calques sur tmoo.site en 375x812.
    ============================================================================ */
 
-/* --- HEADER V8 mobile : compact et lisible --- */
+/* --- Body / html : securite anti-overflow --- */
+@media (max-width: 900px) {
+  html { -webkit-text-size-adjust: 100%; }
+  body { overflow-x: hidden; }
+}
+
+/* --- HEADER V8 mobile : logo compact, nav cachee, CTA masque --- */
 @media (max-width: 900px) {
   .header--v8 {
-    padding: 10px 14px;
+    padding: 12px 16px;
     gap: 8px;
   }
   .header--v8 .brand-logo {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     white-space: nowrap;
     letter-spacing: -0.02em;
   }
@@ -3034,344 +3037,378 @@
   .header--v8 .burger { padding: 8px; }
 }
 
-/* --- HERO mobile : titre tres readable, badge condensed --- */
+/* --- HERO mobile : 4 tiles en RANGEE fixe, titre GROS, CTAs stack --- */
 @media (max-width: 900px) {
   .hero-v8 {
-    padding-top: calc(var(--sp-6) + 50px);
-    padding-bottom: var(--sp-8);
-    padding-left: 14px;
-    padding-right: 14px;
+    padding: calc(var(--sp-6) + 44px) 20px var(--sp-8);
     text-align: center;
   }
   .hero-v8-inner { padding-top: 0; }
+
+  /* 4 tiles cote a cote, fixes, dans le viewport */
+  .hero-tiles {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 6px !important;
+    max-width: 100% !important;
+    margin: 0 auto var(--sp-8) !important;
+    padding: 0 !important;
+  }
+  .hero-tile {
+    aspect-ratio: 3 / 4;
+    border-radius: 10px;
+    animation: none !important;
+    transform: rotate(var(--tilt, 0deg)) !important;
+    box-shadow: 0 4px 10px -4px rgba(0,0,0,0.2);
+    overflow: hidden;
+  }
+  .hero-tile .ht-browser {
+    padding: 4px 5px;
+    gap: 3px;
+  }
+  .hero-tile .ht-dots i {
+    width: 3px !important;
+    height: 3px !important;
+  }
+  .hero-tile .ht-address {
+    font-size: 6px !important;
+    padding: 1px 3px !important;
+  }
+  .hero-tile .ts-pill,
+  .hero-tile .ts-lead,
+  .hero-tile .ts-btn,
+  .hero-tile .ts-grid {
+    display: none !important;
+  }
+  .hero-tile .ts-title {
+    font-size: 0.55rem !important;
+    line-height: 1.1 !important;
+    padding: 4px 4px !important;
+  }
+  .hero-tile .ht-shot {
+    padding: 4px !important;
+  }
+  .hero-tile.has-shot .ht-shot::after {
+    inset: 4px !important;
+  }
+
+  /* Titre du hero : GROS et dense */
   .hero-v8-title {
-    font-size: clamp(1.8rem, 7.5vw, 2.6rem);
-    line-height: 1.06;
-    letter-spacing: -0.03em;
-    margin: 0 auto var(--sp-4);
+    font-size: clamp(2.1rem, 8.5vw, 2.9rem);
+    line-height: 1.04;
+    letter-spacing: -0.038em;
+    margin: 0 0 var(--sp-4);
     max-width: 100%;
+    padding: 0;
+    text-align: left;
   }
   .hero-v8-sub {
-    font-size: 0.85rem;
-    margin-bottom: var(--sp-6);
-    padding: 0 6px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0 0 var(--sp-6);
+    text-align: left;
+    padding: 0;
+    letter-spacing: 0;
   }
   .hero-v8-ctas {
     flex-direction: column;
-    gap: 10px;
-    padding: 0 20px;
+    gap: 12px;
+    padding: 0;
     margin-bottom: var(--sp-6);
   }
-  .hero-v8-ctas .btn { width: 100%; justify-content: center; }
+  .hero-v8-ctas .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 16px;
+    font-size: 0.95rem;
+    border-radius: 999px;
+  }
   .hero-v8-badge {
-    font-size: 0.72rem;
-    padding: 10px 14px;
-    line-height: 1.4;
-    max-width: 92vw;
-    margin: 0 auto;
+    font-size: 0.75rem;
+    padding: 12px 18px;
+    line-height: 1.45;
+    border-radius: 22px;
+    text-align: left;
+    max-width: 100%;
   }
 }
 
-/* --- HERO TILES mobile : CAROUSEL HORIZONTAL au lieu de 4 tiles ecrasees --- */
+/* --- BANDEAU PROMESSES mobile : UNE seule bande dark, non tiltee --- */
 @media (max-width: 900px) {
-  .hero-tiles {
-    display: flex !important;
-    grid-template-columns: none !important;
-    max-width: none !important;
-    margin: 0 -14px var(--sp-8) !important;
-    padding: 8px 14px !important;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding: 14px;
-    gap: 12px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+  .promises-band {
+    padding: 0;
+    overflow: hidden;
   }
-  .hero-tiles::-webkit-scrollbar { display: none; }
-  .hero-tile {
-    flex: 0 0 72vw;
-    max-width: 72vw;
-    aspect-ratio: 4 / 5;
-    scroll-snap-align: center;
-    animation: none !important;      /* pas de flottement dans un carousel */
-    transform: rotate(0deg) !important;
-    border-radius: 14px;
-    box-shadow: 0 10px 22px -12px rgba(0,0,0,0.25);
+  .promises-band .promises-strip {
+    width: 100%;
+    margin: 0;
+    padding: 16px 0;
+    transform: none !important;
+    border-radius: 0;
   }
-  .hero-tile:hover { transform: rotate(0deg) !important; }
-  .hero-tile .ht-address { font-size: 10px; }
-  .hero-tile .ts-lead { display: none; }
-  .hero-tile .ts-title { font-size: 1rem; }
-  .hero-tile .ts-pill { font-size: 0.55rem; }
-  .hero-tile .ts-btn { font-size: 0.65rem; padding: 6px 10px; }
+  .promises-band .promises-strip--accent {
+    display: none;
+  }
+  .promises-band .promises-strip--dark {
+    background: var(--text);
+    color: var(--bg);
+  }
+  .promises-band .promises-item-2 {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .promises-band .promises-sep-2 {
+    color: var(--accent);
+    opacity: 1;
+  }
 }
 
-/* --- BANDEAU PROMESSES mobile : angles preserves --- */
-@media (max-width: 900px) {
-  .promises-band { padding: var(--sp-8) 0; overflow: hidden; }
-  .promises-band .promises-strip { padding: 12px 0; }
-  .promises-band .promises-strip--dark { transform: rotate(-3deg); }
-  .promises-band .promises-strip--accent { transform: rotate(2deg); margin-top: -16px; }
-  .promises-band .promises-item-2 { font-size: 0.85rem; }
-}
-
-/* --- WORKS mobile : CAROUSEL HORIZONTAL de cards autonomes --- */
+/* --- SECTION "LE TRAVAIL" mobile : titre simple, ghost cache --- */
 @media (max-width: 900px) {
   .works {
-    padding: var(--sp-10) 0;
-    max-width: none;
+    padding: var(--sp-10) 20px;
+    max-width: 100%;
   }
   .works-head--v3 {
-    padding: 0 20px;
+    padding: 0;
     margin-bottom: var(--sp-6);
-    min-height: 100px;
+    text-align: left;
+    min-height: auto;
+    isolation: auto;
   }
-  .works-head--v3 .works-head-title h2 { font-size: 2.4rem; max-width: 100%; }
-  .works-head--v3 .works-ghost-text {
-    font-size: 3.5rem;
-    opacity: 0.4;
-    padding-right: 0;
+  .works-head--v3 .works-head-title h2 {
+    font-size: 2.2rem;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    max-width: 100%;
   }
   .works-head--v3 .works-head-ghost {
-    top: auto;
-    bottom: -8px;
-    left: -20px;
-    right: -20px;
-    align-items: flex-end;
-    justify-content: flex-start;
+    display: none !important;
   }
 
+  /* Track = simple stack vertical, pas de carousel */
   .works-track {
     display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding: 20px;
-    gap: 16px;
-    padding: 8px 20px var(--sp-4);
-    margin: 0 -4px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .works-track::-webkit-scrollbar { display: none; }
-
-  .work-card {
-    grid-template-columns: none !important;
-    display: flex !important;
     flex-direction: column;
-    gap: var(--sp-5) !important;
-    flex: 0 0 85vw;
-    max-width: 85vw;
-    scroll-snap-align: center;
-    padding: var(--sp-6);
-    background: var(--surface);
-    border-radius: 20px;
-    border: 1px solid var(--line);
-    margin: 0 !important;
+    gap: var(--sp-6);
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    scroll-snap-type: none;
   }
-  .work-card--reverse { flex-direction: column !important; }
+
+  /* Chaque work-card = full width, style tmoo (browser mockup unique) */
+  .work-card {
+    display: block !important;
+    grid-template-columns: none !important;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    margin: 0 !important;
+    flex: none !important;
+    scroll-snap-align: none !important;
+  }
+  .work-card--reverse { }
+
   .work-mockup {
+    position: relative;
     padding: 0;
     max-width: 100%;
-    position: relative;
-    min-height: 0;
+    overflow: visible;
   }
-  .work-card .mockup { max-width: 100%; }
+  .work-card .mockup {
+    max-width: 100%;
+  }
   .work-card .mockup-frame {
-    aspect-ratio: 16/10;
+    aspect-ratio: 16 / 11;
     height: auto;
+    border-radius: 14px;
   }
+  .work-card .mockup-topbar {
+    padding: 8px 10px;
+    gap: 4px;
+  }
+  .work-card .mockup-topbar > span:not(.mockup-url) {
+    width: 8px;
+    height: 8px;
+  }
+  .work-card .mockup-url {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+  }
+
+  /* Phone mockup en overlay top-right, taille normale */
   .work-card .mockup-phone {
-    width: 78px !important;
-    right: 6px !important;
-    bottom: 6px !important;
+    position: absolute !important;
+    width: 60px !important;
+    height: auto !important;
+    aspect-ratio: 9/19;
+    top: 32% !important;
+    right: 8px !important;
+    bottom: auto !important;
     left: auto !important;
+    transform: rotate(2deg);
+    z-index: 3;
   }
   .work-card--reverse .mockup-phone {
-    left: 6px !important;
+    left: 8px !important;
     right: auto !important;
+    transform: rotate(-2deg);
   }
-  .work-domain {
+
+  /* work-domain pill : en overlay bas gauche du mockup */
+  .work-card .work-domain {
+    position: absolute;
+    bottom: -16px;
+    left: 10px;
     font-size: 0.72rem;
-    padding: 5px 10px;
+    padding: 8px 12px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    box-shadow: 0 4px 12px -6px rgba(0,0,0,0.15);
+    z-index: 4;
   }
-  .work-badge {
-    font-size: 0.65rem;
-    padding: 4px 8px;
+  .work-card .work-badge {
+    position: absolute;
+    bottom: -16px;
+    left: auto;
+    right: 10px;
+    font-size: 0.62rem;
+    padding: 6px 10px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--text);
+    border-radius: 999px;
+    z-index: 4;
+    letter-spacing: 0.06em;
   }
-  .work-meta { padding: 0; }
+
+  /* Meta = juste sous le mockup, aligne a gauche */
+  .work-meta {
+    padding: var(--sp-6) 0 0;
+    text-align: left;
+  }
   .work-meta .work-kind {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     letter-spacing: 0.14em;
+    color: var(--text-soft);
     margin-bottom: var(--sp-2);
   }
   .work-meta h3 {
-    font-size: 1.35rem;
+    font-size: 1.4rem;
     line-height: 1.15;
-    margin-bottom: var(--sp-2);
+    letter-spacing: -0.03em;
+    margin: 0 0 var(--sp-2);
   }
   .work-meta p {
-    font-size: 0.88rem;
-    line-height: 1.5;
-    margin-bottom: var(--sp-3);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--text-soft);
+    margin: 0;
   }
-  .work-link { font-size: 0.85rem; }
+  .work-meta .work-link {
+    display: none;  /* domaine en pill fait le job */
+  }
 
-  /* CTA sous le carousel */
-  .works-cta { padding: 0 20px; margin-top: var(--sp-6); }
-  .works-cta .btn { width: 100%; justify-content: center; }
+  .swipe-hint { display: none; }
+  .works-cta {
+    margin-top: var(--sp-8);
+  }
+  .works-cta .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 16px;
+    border-radius: 999px;
+  }
 }
 
-/* --- SIGNATURE V3 mobile : 1 col, box condensed --- */
+/* --- SIGNATURE V3 mobile : 1 colonne, checks orange ✓ (pas cercle) --- */
 @media (max-width: 900px) {
-  .signature--v3 { padding: var(--sp-10) 16px; }
+  .signature--v3 { padding: var(--sp-10) 20px; }
   .signature--v3 .signature-inner {
     grid-template-columns: 1fr;
-    gap: var(--sp-8);
+    gap: var(--sp-6);
   }
   .signature--v3 .signature-left { position: static; }
+  .signature--v3 .signature-left .eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    margin-bottom: var(--sp-4);
+  }
   .signature--v3 .signature-left h2 {
-    font-size: 1.75rem;
-    letter-spacing: -0.03em;
+    font-size: 1.85rem;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
     margin-bottom: var(--sp-5);
   }
   .signature--v3 .signature-lead {
     font-size: 0.95rem;
-    line-height: 1.55;
-    margin-bottom: var(--sp-5);
+    line-height: 1.6;
+    margin-bottom: var(--sp-6);
   }
   .signature--v3 .signature-checks {
-    gap: var(--sp-3);
+    gap: var(--sp-4);
     margin-bottom: var(--sp-6);
   }
   .signature--v3 .signature-checks li {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     line-height: 1.5;
+    gap: var(--sp-3);
   }
+  /* Style tmoo : cochon orange simple (pas de cercle) */
   .signature--v3 .signature-checks li::before {
-    width: 20px; height: 20px;
-    background-size: 12px 12px;
+    width: 16px;
+    height: 16px;
+    background: transparent;
+    border: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231D6FC4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 4px;
   }
+
+  /* Validation box = full-width sous les checks */
   .signature--v3 .validation-box {
     padding: var(--sp-6) var(--sp-5);
     border-radius: 20px;
+    margin-top: var(--sp-4);
+  }
+  .signature--v3 .validation-tag {
+    font-size: 0.65rem;
+    padding: 5px 10px;
+    margin-bottom: var(--sp-4);
+    letter-spacing: 0.14em;
   }
   .signature--v3 .validation-box h3 {
     font-size: 1.3rem;
-    letter-spacing: -0.025em;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
     margin-bottom: var(--sp-4);
   }
   .signature--v3 .validation-box p {
     font-size: 0.9rem;
     line-height: 1.55;
-    margin-bottom: var(--sp-5);
-  }
-  .signature--v3 .validation-tag {
-    font-size: 0.65rem;
     margin-bottom: var(--sp-4);
   }
+  .signature--v3 .validation-box .val-link {
+    font-size: 0.85rem;
+  }
 }
 
-/* --- METHODE mobile : CAROUSEL HORIZONTAL des 4 etapes --- */
+/* --- BEFORE/AFTER slider mobile : format vertical --- */
 @media (max-width: 900px) {
-  .method--v2 { padding: var(--sp-10) 0; }
-  .method--v2 .method-inner { padding: 0 20px; }
-  .method--v2 h2 {
-    font-size: 1.9rem;
-    letter-spacing: -0.03em;
-    margin-bottom: var(--sp-5);
-  }
-  .method--v2 .method-lead {
-    font-size: 0.95rem;
-    margin-bottom: var(--sp-6);
-  }
-  .method--v2 .method-grid {
-    display: flex;
-    grid-template-columns: none;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding: 20px;
-    gap: 14px;
-    padding: 4px 20px;
-    margin: 0 -20px var(--sp-6);
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .method--v2 .method-grid::-webkit-scrollbar { display: none; }
-  .method--v2 .method-step {
-    flex: 0 0 80vw;
-    max-width: 80vw;
-    scroll-snap-align: center;
-    padding: var(--sp-6) var(--sp-5);
-  }
-  .method--v2 .method-step h3 {
-    font-size: 1.1rem;
-    line-height: 1.2;
-  }
-  .method--v2 .method-step p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
-  .method--v2 .method-echo {
-    margin-top: var(--sp-4);
-    padding: var(--sp-5);
-  }
-  .method--v2 .method-echo p { font-size: 0.9rem; }
-}
-
-/* --- OFFRE PODIUM mobile : CAROUSEL HORIZONTAL --- */
-@media (max-width: 900px) {
-  .offer--v3 { padding: var(--sp-10) 0; }
-  .offer--v3 .offer-inner { padding: 0 20px; }
-  .offer--v3 h2 {
-    font-size: 1.9rem;
-    letter-spacing: -0.03em;
-    margin-bottom: var(--sp-4);
-  }
-  .offer--v3 .offer-lead {
-    font-size: 0.95rem;
-    margin-bottom: var(--sp-6);
-  }
-  .offer--v3 .offer-podium {
-    display: flex !important;
-    grid-template-columns: none !important;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding: 20px;
-    gap: 14px;
-    padding: 4px 20px;
-    margin: 0 -20px !important;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    align-items: stretch;
-  }
-  .offer--v3 .offer-podium::-webkit-scrollbar { display: none; }
-  .offer--v3 .offer-center,
-  .offer--v3 .offer-side {
-    flex: 0 0 85vw;
-    max-width: 85vw;
-    scroll-snap-align: center;
-    transform: none !important;
-    padding: var(--sp-6) var(--sp-5) !important;
-  }
-  .offer--v3 .offer-center { order: 2; }
-  .offer--v3 .offer-side:first-of-type { order: 1; }
-  .offer--v3 .offer-side:last-of-type { order: 3; }
-  .offer--v3 .offer-plan-head h3 { font-size: 1.4rem; }
-  .offer--v3 .offer-plan-value { font-size: 1.4rem; }
-  .offer--v3 .offer-plan-meta { flex-wrap: wrap; gap: 6px; }
-  .offer--v3 .offer-plan-meta span { font-size: 0.75rem; }
-  .offer--v3 .offer-plan-list li { font-size: 0.85rem; }
-  .offer--v3 .offer-side h3 { font-size: 1.15rem; }
-  .offer--v3 .offer-side-desc { font-size: 0.85rem; }
-}
-
-/* --- BEFORE/AFTER slider mobile : garde ses proportions --- */
-@media (max-width: 900px) {
-  .before-after { padding: var(--sp-10) 16px; }
+  .before-after { padding: var(--sp-10) 20px; }
   .before-after h2 {
     font-size: 1.9rem;
-    letter-spacing: -0.03em;
-    margin-bottom: var(--sp-4);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
   }
   .before-after .ba-intro,
   .before-after .ba-note { font-size: 0.9rem; }
@@ -3384,59 +3421,183 @@
     font-size: 0.6rem !important;
     padding: 4px 8px !important;
   }
-  .ba-handle-line { width: 3px; }
-  .ba-handle-btn { width: 44px; height: 44px; }
+}
+
+/* --- METHODE mobile : 1 colonne, stack simple --- */
+@media (max-width: 900px) {
+  .method--v2 { padding: var(--sp-10) 20px; }
+  .method--v2 h2 {
+    font-size: 1.9rem;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    margin-bottom: var(--sp-4);
+  }
+  .method--v2 .method-lead {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: var(--sp-6);
+  }
+  .method--v2 .method-grid {
+    display: flex !important;
+    flex-direction: column;
+    grid-template-columns: none !important;
+    gap: var(--sp-5);
+    overflow: visible;
+    scroll-snap-type: none;
+    padding: 0;
+    margin: 0 0 var(--sp-6);
+  }
+  .method--v2 .method-step {
+    flex: none;
+    max-width: 100%;
+    scroll-snap-align: none;
+    padding: var(--sp-5);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+  }
+  .method--v2 .method-num {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: var(--sp-2);
+  }
+  .method--v2 .method-step h3 {
+    font-size: 1.1rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--sp-2);
+  }
+  .method--v2 .method-step p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--text-soft);
+  }
+  .method--v2 .method-echo {
+    margin-top: var(--sp-4);
+    padding: var(--sp-5);
+  }
+  .method--v2 .method-echo p { font-size: 0.9rem; }
+}
+
+/* --- OFFRE mobile : 3 cartes stack, centre en premier --- */
+@media (max-width: 900px) {
+  .offer--v3 { padding: var(--sp-10) 20px; }
+  .offer--v3 .offer-inner { padding: 0; }
+  .offer--v3 h2 {
+    font-size: 1.9rem;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    margin-bottom: var(--sp-4);
+  }
+  .offer--v3 .offer-lead {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: var(--sp-6);
+  }
+  .offer--v3 .offer-podium {
+    display: flex !important;
+    grid-template-columns: none !important;
+    flex-direction: column;
+    gap: var(--sp-5);
+    overflow: visible;
+    scroll-snap-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  .offer--v3 .offer-center {
+    order: 1;
+    max-width: 100%;
+    flex: none;
+    scroll-snap-align: none;
+    transform: none !important;
+    padding: var(--sp-6) var(--sp-5) !important;
+    border-radius: 20px;
+  }
+  .offer--v3 .offer-side {
+    order: 2;
+    max-width: 100%;
+    flex: none;
+    scroll-snap-align: none;
+    padding: var(--sp-6) var(--sp-5) !important;
+    border-radius: 20px;
+  }
+  .offer--v3 .offer-side:first-of-type { order: 2; }
+  .offer--v3 .offer-side:last-of-type { order: 3; }
+
+  .offer--v3 .offer-plan-head h3 {
+    font-size: 1.5rem;
+    letter-spacing: -0.03em;
+  }
+  .offer--v3 .offer-plan-value { font-size: 1.6rem; }
+  .offer--v3 .offer-plan-meta { flex-wrap: wrap; gap: 8px; }
+  .offer--v3 .offer-plan-meta span { font-size: 0.75rem; }
+  .offer--v3 .offer-plan-list li { font-size: 0.88rem; line-height: 1.5; }
+  .offer--v3 .offer-side h3 { font-size: 1.2rem; }
+  .offer--v3 .offer-side-desc { font-size: 0.85rem; line-height: 1.5; }
+  .offer--v3 .offer-side-price { font-size: 0.8rem; }
+  .offer--v3 .offer-side-cta { font-size: 0.85rem; }
+  .offer--v3 .offer-star-bonus { padding: var(--sp-5); margin: var(--sp-5) 0; }
 }
 
 /* --- FAQ mobile --- */
 @media (max-width: 900px) {
-  .faq { padding: var(--sp-10) 16px; }
+  .faq { padding: var(--sp-10) 20px; }
   .faq h2 {
     font-size: 1.9rem;
-    letter-spacing: -0.03em;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
     margin-bottom: var(--sp-6);
   }
   .faq-item summary { font-size: 0.95rem; padding: var(--sp-4) 0; }
-  .faq-item p { font-size: 0.88rem; line-height: 1.55; }
+  .faq-item p { font-size: 0.9rem; line-height: 1.6; }
 }
 
-/* --- CONTACT FINAL mobile : 1 colonne, form padding compact --- */
+/* --- CONTACT FINAL mobile --- */
 @media (max-width: 900px) {
-  .contact-final { padding: var(--sp-10) 16px; }
+  .contact-final { padding: var(--sp-10) 20px; }
   .contact-final .contact-final-grid {
     grid-template-columns: 1fr !important;
     gap: var(--sp-6) !important;
   }
-  .contact-final h2 { font-size: 1.9rem; letter-spacing: -0.03em; }
+  .contact-final h2 {
+    font-size: 1.9rem;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+  }
   .contact-final-text {
     position: static;
     max-width: 100%;
   }
   .contact-final-text p { font-size: 0.95rem; }
-  .contact-arg { font-size: 0.85rem; padding: 6px 0; }
+  .contact-arg { font-size: 0.9rem; padding: 6px 0; }
   .contact-final-form {
     padding: var(--sp-6) var(--sp-5);
     border-radius: 20px;
   }
-  .cf-row label { font-size: 0.85rem; margin-bottom: 4px; }
+  .cf-row label { font-size: 0.85rem; margin-bottom: 6px; }
   .cf-row input, .cf-row select, .cf-row textarea {
-    font-size: 16px;                        /* evite le zoom auto iOS */
-    padding: 10px 12px;
+    font-size: 16px;                     /* evite le zoom auto iOS */
+    padding: 12px 14px;
+    border-radius: 12px;
   }
 }
 
-/* --- FOOTER mobile : 1 col centre --- */
+/* --- FOOTER mobile : 1 col centre, compact --- */
 @media (max-width: 900px) {
-  .site-footer { padding: var(--sp-8) 16px var(--sp-5); }
+  .site-footer { padding: var(--sp-8) 20px var(--sp-5); }
   .footer-grid {
     grid-template-columns: 1fr;
     gap: var(--sp-6);
     text-align: center;
   }
   .footer-brand h3 { font-size: 1.4rem; }
-  .footer-brand p { font-size: 0.9rem; }
-  .footer-col h4 { margin-bottom: var(--sp-2); font-size: 0.75rem; letter-spacing: 0.14em; }
-  .footer-col li { font-size: 0.9rem; }
+  .footer-brand p { font-size: 0.9rem; line-height: 1.5; }
+  .footer-col h4 {
+    margin-bottom: var(--sp-2);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+  }
+  .footer-col li { font-size: 0.9rem; padding: 4px 0; }
   .footer-bottom {
     flex-direction: column;
     gap: var(--sp-2);
@@ -3448,7 +3609,7 @@
 /* --- HEADER MINIMAL (pages secondaires) mobile --- */
 @media (max-width: 900px) {
   .header--minimal {
-    padding: 10px 14px;
+    padding: 12px 16px;
     grid-template-columns: auto 1fr auto;
     gap: 8px;
   }
@@ -3464,25 +3625,28 @@
   }
   .header--minimal .theme-toggle { padding: 6px; }
 
-  .portfolio-hero {
-    padding: calc(var(--sp-10) + 20px) 16px var(--sp-8);
-  }
+  .portfolio-hero { padding: calc(var(--sp-10) + 20px) 20px var(--sp-8); }
   .portfolio-hero h1 {
-    font-size: clamp(1.8rem, 6.5vw, 2.6rem);
+    font-size: clamp(1.9rem, 7vw, 2.6rem);
     line-height: 1.05;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.035em;
   }
-  .portfolio-hero p { font-size: 0.95rem; }
-  .portfolio-cta { padding: var(--sp-10) 16px; }
-  .portfolio-cta h2 { font-size: 1.9rem; letter-spacing: -0.03em; }
+  .portfolio-hero p { font-size: 0.95rem; line-height: 1.55; }
+  .portfolio-cta { padding: var(--sp-10) 20px; }
+  .portfolio-cta h2 {
+    font-size: 1.9rem;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
   .portfolio-cta p { font-size: 0.95rem; }
 }
 
 /* --- Service detail pages mobile --- */
 @media (max-width: 900px) {
-  .service-detail { padding: var(--sp-8) 16px; }
+  .service-detail { padding: var(--sp-8) 20px; }
   .service-detail-block h2 {
     font-size: 1.75rem;
+    line-height: 1.05;
     letter-spacing: -0.03em;
   }
   .service-detail-block h3 { font-size: 1.2rem; }
@@ -3493,56 +3657,35 @@
   }
   .skill-list-item h3 { font-size: 1.05rem; }
   .skill-list-item p { font-size: 0.9rem; line-height: 1.55; }
-  .devis-band { padding: var(--sp-10) 16px; }
+  .devis-band { padding: var(--sp-10) 20px; }
   .devis-band h2 { font-size: 1.9rem; letter-spacing: -0.03em; }
   .devis-band .devis-lead { font-size: 0.95rem; }
 }
 
-/* --- Portfolio page : le carousel mobile ne s'applique PAS (garde stack) --- */
+/* --- Portfolio page : garde le stack vertical (mockups en full width) --- */
 @media (max-width: 900px) {
   .works--portfolio {
-    padding: var(--sp-8) 16px;
+    padding: var(--sp-8) 20px;
   }
   .works--portfolio .work-card {
-    flex: none !important;
-    max-width: 100% !important;
-    margin-bottom: var(--sp-6) !important;
+    display: block !important;
+    margin-bottom: var(--sp-10) !important;
   }
 }
 
-/* --- Enable smooth touch + prevent horizontal body overflow ------ */
+/* --- Signal box (chef de projet page) mobile --- */
 @media (max-width: 900px) {
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body { overflow-x: hidden; }
+  .signal-box-wrap { padding: var(--sp-6) 20px; }
+  .signal-box { padding: var(--sp-5); border-radius: 16px; }
+  .signal-box p { font-size: 0.9rem; line-height: 1.55; }
 }
 
-/* --- Indicateur "swipe" sur les carousels mobiles pour l'UX --- */
+/* --- Prospune "bientot" callout mobile --- */
 @media (max-width: 900px) {
-  .swipe-hint {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--text-soft);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: var(--sp-3);
-    opacity: 0.6;
+  .works-soon {
+    padding: var(--sp-6) var(--sp-5);
+    border-radius: 20px;
   }
-  .swipe-hint::before {
-    content: "";
-    display: inline-block;
-    width: 24px; height: 1px;
-    background: currentColor;
-    margin-right: 4px;
-  }
-  .swipe-hint::after {
-    content: "→";
-    font-size: 0.85rem;
-  }
-}
-@media (min-width: 901px) {
-  .swipe-hint { display: none; }
+  .works-soon h4 { font-size: 1.15rem; }
+  .works-soon p { font-size: 0.9rem; line-height: 1.55; }
 }
