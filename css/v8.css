@@ -3165,122 +3165,289 @@
   }
 }
 
-/* --- SECTION "LE TRAVAIL" mobile : simple stack, layout classique --- */
+/* --- SECTION "LE TRAVAIL" mobile V8.16 : reproduction fidèle tmoo.site --- */
+/* Poster card : navigateur + iPhone flottant + pill nom débordant en bas-gauche */
 @media (max-width: 900px) {
   .works {
-    padding: var(--sp-10) 20px;
+    padding: var(--sp-10) 18px calc(var(--sp-10) + 24px);
     max-width: 100%;
+    overflow: visible;
   }
   .works-head--v3 {
     padding: 0;
-    margin-bottom: var(--sp-6);
+    margin-bottom: var(--sp-8);
     text-align: left;
     min-height: auto;
     isolation: auto;
   }
-  .works-head--v3 .works-head-title h2 {
-    font-size: 2.2rem;
+  .works-head--v3 .works-head-title h2,
+  .works-head--v3 h2 {
+    font-size: 2.4rem;
     line-height: 1.02;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.04em;
     max-width: 100%;
   }
-  .works-head--v3 .works-head-ghost { display: none !important; }
-
-  /* Track = simple stack vertical */
-  .works-track {
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-12);
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    scroll-snap-type: none;
+  .works-head--v3 .works-head-ghost,
+  .works-head--v3 #works-ghost,
+  #works-ghost { display: none !important; }
+  .works-head--v3 p,
+  .works-head--v3 .works-head-hint {
+    font-size: 0.98rem;
+    color: var(--text-soft);
+    margin-top: var(--sp-3);
+    line-height: 1.45;
   }
 
-  /* Chaque work-card : 1 colonne, mockup au-dessus, meta en dessous */
+  /* Track = stack vertical, gap large pour laisser les pills déborder */
+  .works-track {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 46px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+  }
+
+  /* Poster wrapper : positionne les débordements */
   .work-card,
   .work-card--reverse {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: var(--sp-5) !important;
+    display: block !important;
+    grid-template-columns: none !important;
+    position: relative;
     width: 100%;
     max-width: 100%;
-    padding: 0;
-    background: transparent;
-    border: none;
-    border-radius: 0;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
     margin: 0 !important;
     flex: none !important;
+    overflow: visible !important;
   }
-  .work-card--reverse .work-mockup,
-  .work-card--reverse .work-meta { order: 0; }
 
-  .work-mockup {
+  .work-card .work-mockup {
     position: relative;
     padding: 0;
     max-width: 100%;
+    isolation: isolate;
   }
-  .work-card .mockup { max-width: 100%; }
+
+  /* Navigateur = carte blanche bordée noir, coins arrondis, ombre offset */
+  .work-card .mockup,
+  .work-card .mockup--lg {
+    max-width: 100%;
+    filter: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
   .work-card .mockup-frame {
-    aspect-ratio: 16 / 10;
-    height: auto;
-  }
-  .work-card .mockup-phone {
-    width: 82px !important;
-    right: -6px !important;
-    bottom: -10px !important;
-    left: auto !important;
-    top: auto !important;
-  }
-  .work-card--reverse .mockup-phone {
-    left: -6px !important;
-    right: auto !important;
-  }
-  .work-card .work-domain {
-    font-size: 0.72rem;
-    padding: 6px 12px;
-  }
-  .work-card .work-badge {
-    font-size: 0.62rem;
-    padding: 5px 9px;
-    letter-spacing: 0.06em;
+    background: #fff !important;
+    border: 2px solid var(--ink, #141414) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    aspect-ratio: 339 / 222;
+    min-height: 0 !important;
+    height: auto !important;
+    box-shadow: 4px 4px 0 rgba(20, 20, 20, 0.08);
+    display: flex;
+    flex-direction: column;
   }
 
-  .work-meta {
-    padding: 0;
-    text-align: left;
+  /* Barre navigateur : 3 pastilles + URL pill + flèche */
+  .work-card .mockup-topbar {
+    background: var(--paper-warm, #f5f2ea) !important;
+    padding: 9px 12px !important;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid rgba(20, 20, 20, 0.06);
+    flex: 0 0 auto;
   }
-  .work-meta .work-kind {
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
-    color: var(--text-soft);
-    margin-bottom: var(--sp-2);
+  .work-card .mockup-topbar > span:not(.mockup-url) {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent, #E85C33) !important;
   }
-  .work-meta h3 {
-    font-size: 1.5rem;
-    line-height: 1.15;
-    letter-spacing: -0.03em;
-    margin: 0 0 var(--sp-3);
+  .work-card .mockup-topbar > span:nth-child(2) {
+    background: var(--accent, #E85C33) !important;
+    opacity: 0.5;
   }
-  .work-meta p {
-    font-size: 0.95rem;
-    line-height: 1.55;
-    color: var(--text-soft);
-    margin: 0 0 var(--sp-3);
+  .work-card .mockup-topbar > span:nth-child(3) {
+    background: var(--accent, #E85C33) !important;
+    opacity: 0.5;
   }
-  .work-meta .work-link {
-    display: inline-flex;
+  .work-card .mockup-topbar .mockup-url {
+    background: #fff !important;
+    border: 1.5px solid var(--ink, #141414) !important;
+    border-radius: 999px !important;
+    padding: 3px 12px !important;
+    font-family: var(--font-text, inherit);
+    font-size: 0.72rem !important;
+    font-weight: 600;
+    color: var(--ink, #141414) !important;
+    margin-left: 6px;
+    max-width: 62%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  /* Flèche ↗ à droite */
+  .work-card .mockup-topbar::after {
+    content: "↗";
+    margin-left: auto;
     font-size: 0.9rem;
+    color: var(--ink, #141414);
+    font-weight: 700;
+    line-height: 1;
   }
 
-  .swipe-hint { display: none; }
-  .works-cta { margin-top: var(--sp-8); }
+  /* Corps = zone screenshot, remplit tout */
+  .work-card .mockup-body,
+  .work-card .mockup-body--lg {
+    padding: 0 !important;
+    height: auto !important;
+    flex: 1 1 auto !important;
+    background-size: cover !important;
+    background-position: top center !important;
+    min-height: 0 !important;
+  }
+  /* Masquer les faux textes (brand/desc/cta) sur mobile */
+  .work-card .mockup-body .mockup-brand,
+  .work-card .mockup-body .mockup-desc,
+  .work-card .mockup-body .mockup-cta {
+    display: none !important;
+  }
+
+  /* iPhone flottant à droite, dépasse en haut et en bas du navigateur */
+  .work-card .mockup-phone {
+    position: absolute !important;
+    width: 92px !important;
+    height: 192px !important;
+    top: 42px !important;
+    right: 10px !important;
+    bottom: auto !important;
+    left: auto !important;
+    background: #111 !important;
+    border: 3px solid var(--ink, #141414) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 18px 44px -14px rgba(20, 20, 20, 0.5) !important;
+    overflow: hidden !important;
+    z-index: 3;
+    transform: none !important;
+    margin: 0 !important;
+  }
+  /* V8.16 : toutes les cartes suivent le même schéma (phone droite, pill gauche) */
+  .work-card--reverse .mockup-phone {
+    left: auto !important;
+    right: 10px !important;
+  }
+  .work-card .mockup-phone-frame {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 17px !important;
+    overflow: hidden !important;
+    border: none !important;
+    background: transparent !important;
+  }
+  .work-card .mockup-phone-notch { display: none !important; }
+  .work-card .mockup-phone-body {
+    width: 100% !important;
+    height: 100% !important;
+    background-size: cover !important;
+    background-position: top center !important;
+    padding: 0 !important;
+    min-height: 0 !important;
+  }
+  .work-card .mockup-phone-body .mockup-brand,
+  .work-card .mockup-phone-body > * {
+    display: none !important;
+  }
+
+  /* Masquer badge et lien domaine (remplacés par la pill nom) */
+  .work-card .work-domain,
+  .work-card .work-badge { display: none !important; }
+
+  /* Pill nom projet : déborde en bas-gauche, style tmoo tag2 */
+  .work-card .work-meta {
+    position: absolute !important;
+    bottom: -16px !important;
+    left: 12px !important;
+    right: 105px !important;
+    z-index: 4;
+    padding: 8px 14px !important;
+    background: var(--paper-warm, #f5f2ea) !important;
+    border: 2px solid var(--ink, #141414) !important;
+    border-radius: 12px !important;
+    box-shadow: 3px 3px 0 rgba(20, 20, 20, 0.15);
+    text-align: left !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: baseline !important;
+    gap: 6px !important;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    margin: 0 !important;
+  }
+  /* V8.16 : reverse gardait pill à droite, on unifie tout à gauche */
+  .work-card--reverse .work-meta {
+    left: 12px !important;
+    right: 105px !important;
+  }
+  .work-card .work-meta h3 {
+    display: inline !important;
+    order: 1;
+    font-family: var(--font-display, inherit);
+    font-size: 0.88rem !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.01em !important;
+    margin: 0 !important;
+    color: var(--ink, #141414) !important;
+    font-weight: 700 !important;
+    white-space: nowrap;
+    overflow: visible;
+    flex-shrink: 0;
+    min-width: 0;
+  }
+  .work-card .work-meta .work-kind {
+    display: inline !important;
+    order: 2;
+    font-size: 0.72rem !important;
+    letter-spacing: 0 !important;
+    color: var(--text-soft, #9c9990) !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    padding: 0 !important;
+    background: none !important;
+    margin: 0 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+  /* Retirer le "◆ " du kicker sur mobile (juste "type" en muted) */
+  .work-card .work-meta .work-kind::first-letter { font-size: 0; }
+  .work-card .work-meta p,
+  .work-card .work-meta .work-link {
+    display: none !important;
+  }
+
+  /* CTA "Voir tout" en bas */
+  .swipe-hint { display: none !important; }
+  .works-cta { margin-top: var(--sp-10) !important; }
   .works-cta .btn {
     width: 100%;
     justify-content: center;
     padding: 16px;
     border-radius: 999px;
   }
+
+  /* Sécurité overflow pour laisser les débordements visibles */
+  section.works,
+  .works .container { overflow: visible !important; }
 }
 
 /* --- SIGNATURE V3 mobile : 1 colonne, checks orange ✓ (pas cercle) --- */
