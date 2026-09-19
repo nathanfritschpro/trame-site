@@ -3964,27 +3964,84 @@
   .cf-sms { display: none; }
 }
 
-/* --- FOOTER mobile : 1 col centre, compact --- */
+/* --- FOOTER mobile (V8.23) : brand compacte, deux colonnes de liens,
+   contact en pastilles, tout tient dans un ecran ---
+   Avant : 834 px de footer, chaque lien pris dans une pile de flex-gap sp-3.
+   Ici : brand en tete, description masquee (elle ne fait que redire ce que
+   les colonnes disent), Services / Naviguer en deux colonnes cote a cote,
+   Ecrire en pastilles horizontales, bas de page sur une seule ligne.       */
 @media (max-width: 900px) {
-  .site-footer { padding: var(--sp-8) 20px var(--sp-5); }
+  .site-footer { padding: var(--sp-6) 20px var(--sp-4); }
+
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: var(--sp-6);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--sp-4);
+    row-gap: var(--sp-5);
+    text-align: left;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  /* Brand : plein largeur, centre, sans description qui redit les services */
+  .footer-brand {
+    grid-column: 1 / -1;
     text-align: center;
   }
-  .footer-brand h3 { font-size: 1.4rem; }
-  .footer-brand p { font-size: 0.9rem; line-height: 1.5; }
+  .footer-brand h3 {
+    font-size: 1.35rem;
+    margin: 0;
+  }
+  .footer-brand p { display: none; }
+
+  /* Deux colonnes de liens : Services a gauche, Naviguer a droite */
+  .footer-col { min-width: 0; }
   .footer-col h4 {
-    margin-bottom: var(--sp-2);
-    font-size: 0.72rem;
+    margin: 0 0 var(--sp-2);
+    font-size: 0.68rem;
     letter-spacing: 0.14em;
   }
-  .footer-col li { font-size: 0.9rem; padding: 4px 0; }
-  .footer-bottom {
-    flex-direction: column;
-    gap: var(--sp-2);
+  .footer-col ul { gap: 6px !important; }
+  .footer-col li, .footer-col a {
+    font-size: 0.86rem;
+    padding: 0;
+    line-height: 1.35;
+  }
+
+  /* La 3e colonne (Ecrire : email, tel, region) prend toute la largeur et
+     ses items deviennent des pastilles horizontales sous les deux colonnes. */
+  .footer-col:last-of-type {
+    grid-column: 1 / -1;
     text-align: center;
-    font-size: 0.72rem;
+  }
+  .footer-col:last-of-type h4 { display: none; }
+  .footer-col:last-of-type ul {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px !important;
+  }
+  .footer-col:last-of-type li {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--br-pill);
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+  }
+  .footer-col:last-of-type a { color: var(--accent); font-weight: 600; }
+
+  /* Bas de page : compact, une seule ligne centree */
+  .footer-bottom {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px 10px;
+    padding-top: var(--sp-4);
+    margin-top: var(--sp-5);
+    text-align: center;
+    font-size: 0.7rem;
   }
 }
 
