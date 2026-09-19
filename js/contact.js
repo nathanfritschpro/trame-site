@@ -143,16 +143,24 @@ Voici quelques éléments sur mon projet :
       showError('Merci d\'écrire un message pour qu\'on comprenne votre besoin.', form.message);
       return false;
     }
-    // Fichier logo : max 5 Mo
+    // Fichier logo : max 2 Mo (limite Formspree en base64)
     const logoInput = form.querySelector('#cf-logo');
     if (logoInput && logoInput.files && logoInput.files[0]) {
-      if (logoInput.files[0].size > 5 * 1024 * 1024) {
-        showError('Le logo dépasse 5 Mo. Essayez un fichier plus léger ou envoyez-le par email.', logoInput);
+      if (logoInput.files[0].size > 2 * 1024 * 1024) {
+        showError('Le logo dépasse 2 Mo. Envoyez-le par email à contact@verastudio.fr après le formulaire.', logoInput);
         return false;
       }
     }
     return true;
   };
+
+  // Lit un fichier en data URL (base64)
+  const readAsDataURL = (file) => new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result);
+    r.onerror = () => reject(r.error);
+    r.readAsDataURL(file);
+  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -163,13 +171,37 @@ Voici quelques éléments sur mon projet :
     submitBtn.disabled = true;
     submitBtnLabel.textContent = 'Envoi…';
 
-    const data = new FormData(form);
+    // Le plan gratuit Formspree n'accepte pas les fichiers en multipart.
+    // On strippe le fichier et on l'envoie en data URL dans un champ texte,
+    // avec un fallback si le fichier est trop gros pour la limite de la requete.
+    const logoInput = form.querySelector('#cf-logo');
+    const logoFile = logoInput && logoInput.files && logoInput.files[0];
+    const payload = {};
+    new FormData(form).forEach((v, k) => {
+      if (k === 'logo') return; // on ne renvoie pas le fichier brut
+      payload[k] = typeof v === 'string' ? v : '';
+    });
+
+    if (logoFile) {
+      try {
+        const dataUrl = await readAsDataURL(logoFile);
+        payload.logo_filename = logoFile.name;
+        payload.logo_size = `${Math.round(logoFile.size / 1024)} Ko`;
+        payload.logo_type = logoFile.type || 'inconnu';
+        payload.logo_data = dataUrl;
+      } catch (err) {
+        payload.logo_note = `Un logo etait joint (${logoFile.name}) mais n'a pas pu etre lu. Il sera envoye par email.`;
+      }
+    }
 
     try {
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
+        body: JSON.stringify(payload),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
       });
 
       if (response.ok) {
@@ -180,7 +212,7 @@ Voici quelques éléments sur mon projet :
         throw new Error('Réponse serveur non OK');
       }
     } catch (err) {
-      showError('L\'envoi a échoué. Écris-nous directement à contact@verastudio.fr, on te répond dans la journée.');
+      showError('L\'envoi a échoué. Écrivez-nous directement à contact@verastudio.fr, on vous répond dans la journée.');
       submitBtn.disabled = false;
       submitBtnLabel.textContent = 'Envoyer';
     }

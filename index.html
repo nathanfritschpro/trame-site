@@ -23,11 +23,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/css/tokens.css?v=8.32">
-<link rel="stylesheet" href="/css/base.css?v=8.32">
-<link rel="stylesheet" href="/css/components.css?v=8.32">
-<link rel="stylesheet" href="/css/pages.css?v=8.32">
-<link rel="stylesheet" href="/css/v8.css?v=8.32">
+<link rel="stylesheet" href="/css/tokens.css?v=8.33">
+<link rel="stylesheet" href="/css/base.css?v=8.33">
+<link rel="stylesheet" href="/css/components.css?v=8.33">
+<link rel="stylesheet" href="/css/pages.css?v=8.33">
+<link rel="stylesheet" href="/css/v8.css?v=8.33">
 </head>
 <body>
 
@@ -832,6 +832,10 @@
     <div class="contact-final-form-wrap">
       <form class="contact-final-form reveal" id="contact-form" novalidate enctype="multipart/form-data" data-endpoint="https://formspree.io/f/xoeqnjnn">
 
+        <div class="cf-legend">
+          <span class="req-star" aria-hidden="true">*</span> champs obligatoires · le reste est facultatif
+        </div>
+
         <!-- Bloc identité -->
         <div class="cf-group">
           <div class="cf-group-head"><span class="cf-step">01</span><span class="cf-step-label">Vous</span></div>
@@ -876,7 +880,7 @@
           <div class="cf-group-head"><span class="cf-step">03</span><span class="cf-step-label">Votre logo</span></div>
 
           <div class="cf-row cf-row--full cf-radio-row">
-            <span class="cf-radio-label">Avez-vous un logo ?</span>
+            <span class="cf-radio-label">Avez-vous un logo ? <span class="cf-optional">Facultatif</span></span>
             <div class="cf-radios" role="radiogroup" aria-labelledby="cf-logo-label">
               <label class="cf-radio">
                 <input type="radio" name="has_logo" value="oui" data-target="cf-logo-file">
@@ -890,8 +894,9 @@
           </div>
 
           <div class="cf-row cf-row--full cf-conditional" id="cf-logo-file" hidden>
-            <label for="cf-logo">Déposer votre logo (PNG, JPG, SVG, PDF · max 5 Mo)</label>
+            <label for="cf-logo">Déposer votre logo (PNG, JPG, SVG, PDF · max 2 Mo)</label>
             <input type="file" id="cf-logo" name="logo" accept="image/png,image/jpeg,image/svg+xml,application/pdf">
+            <span class="cf-hint">Si votre fichier fait plus de 2 Mo, envoyez-le à contact@verastudio.fr après l'envoi du formulaire.</span>
           </div>
         </div>
 
@@ -900,7 +905,7 @@
           <div class="cf-group-head"><span class="cf-step">04</span><span class="cf-step-label">Site existant</span></div>
 
           <div class="cf-row cf-row--full cf-radio-row">
-            <span class="cf-radio-label">Avez-vous déjà un site ?</span>
+            <span class="cf-radio-label">Avez-vous déjà un site ? <span class="cf-optional">Facultatif</span></span>
             <div class="cf-radios" role="radiogroup">
               <label class="cf-radio">
                 <input type="radio" name="has_site" value="oui" data-target="cf-site-url">
@@ -979,8 +984,8 @@
   </div>
 </footer>
 
-<script src="/js/main.js?v=8.32" defer></script>
-<script src="/js/v8.js?v=8.32" defer></script>
-<script src="/js/contact.js?v=8.32" defer></script>
+<script src="/js/main.js?v=8.33" defer></script>
+<script src="/js/v8.js?v=8.33" defer></script>
+<script src="/js/contact.js?v=8.33" defer></script>
 </body>
 </html>
