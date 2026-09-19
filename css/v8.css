@@ -4449,3 +4449,53 @@
   .hero-intro .eyebrow.hi-item,
   .hero-intro.hero-in .eyebrow.hi-item { letter-spacing: 0.14em; }
 }
+
+/* ============ V8.24 · Ghost word repris sur notre methode, avant/apres, l'offre ============ */
+.method,
+.before-after,
+.offer {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.method-inner,
+.before-after-inner,
+.offer-inner {
+  position: relative;
+  z-index: 2;
+}
+.section-ghost {
+  position: absolute;
+  top: var(--sp-10);
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+  padding: 0 var(--gut);
+}
+.section-ghost .works-ghost-text,
+.works-head--v3 .works-ghost-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(4rem, 3rem + 8vw, 12rem);
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--text) 22%, transparent);
+          text-stroke: 1.5px color-mix(in srgb, var(--text) 22%, transparent);
+  white-space: nowrap;
+  transform: translateX(var(--ghost-shift, 0));
+  transition: transform 0.15s linear;
+  will-change: transform;
+  padding-right: 8vw;
+  line-height: 1;
+}
+@media (max-width: 720px) {
+  .section-ghost { top: var(--sp-6); }
+  .section-ghost .works-ghost-text,
+  .works-head--v3 .works-ghost-text { font-size: 3.5rem; }
+}

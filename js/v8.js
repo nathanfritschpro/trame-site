@@ -1,32 +1,35 @@
 /* ============ Vera Studio · V8 (preloader, smart-hide, before/after slider, hero tiles auto) ============ */
 
 (() => {
-  // ---- GHOST TEXT · "realisations" bouge horizontalement selon le scroll
-  const ghost = document.getElementById('works-ghost');
-  if (ghost) {
-    const section = ghost.closest('.works-head--v3');
-    if (section) {
-      let ticking = false;
-      const updateGhost = () => {
-        const rect = section.getBoundingClientRect();
-        const viewportH = window.innerHeight;
-        // progress : 0 quand la section entre dans le viewport, 1 quand elle en sort par le haut
+  // ---- GHOST TEXT · les mots (realisations, methode, avant/apres, offre...) bougent au scroll
+  const ghosts = document.querySelectorAll('.works-ghost-text');
+  if (ghosts.length) {
+    const pairs = [];
+    ghosts.forEach((el) => {
+      const scope = el.closest('.works-head--v3') || el.closest('[data-ghost-scope]') || el.parentElement;
+      if (scope) pairs.push({ el, scope });
+    });
+    let ticking = false;
+    const updateGhosts = () => {
+      const viewportH = window.innerHeight;
+      pairs.forEach(({ el, scope }) => {
+        const rect = scope.getBoundingClientRect();
         const totalDistance = viewportH + rect.height;
         const traveled = viewportH - rect.top;
         const progress = Math.max(0, Math.min(1, traveled / totalDistance));
-        // Deplace de -30% (a droite) a +30% (encore plus a gauche) selon le scroll
         const shiftPct = -30 + progress * 60;
-        ghost.style.setProperty('--ghost-shift', `${shiftPct}%`);
-        ticking = false;
-      };
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(updateGhost);
-          ticking = true;
-        }
-      }, { passive: true });
-      updateGhost();
-    }
+        el.style.setProperty('--ghost-shift', `${shiftPct}%`);
+      });
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateGhosts);
+        ticking = true;
+      }
+    }, { passive: true });
+    window.addEventListener('resize', updateGhosts, { passive: true });
+    updateGhosts();
   }
 
   // ---- HERO TILES · charge les captures reelles si elles existent

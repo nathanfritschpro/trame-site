@@ -20,11 +20,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/css/tokens.css?v=8.23">
-<link rel="stylesheet" href="/css/base.css?v=8.23">
-<link rel="stylesheet" href="/css/components.css?v=8.23">
-<link rel="stylesheet" href="/css/pages.css?v=8.23">
-<link rel="stylesheet" href="/css/v8.css?v=8.23">
+<link rel="stylesheet" href="/css/tokens.css?v=8.24">
+<link rel="stylesheet" href="/css/base.css?v=8.24">
+<link rel="stylesheet" href="/css/components.css?v=8.24">
+<link rel="stylesheet" href="/css/pages.css?v=8.24">
+<link rel="stylesheet" href="/css/v8.css?v=8.24">
 <script>
   (function(){
     try {
@@ -71,36 +71,70 @@
 </section>
 
 <!-- ============ CE QUE JE FAIS ============ -->
-<section class="service-detail">
-  <div class="service-detail-inner">
-    <div class="service-detail-block reveal">
-      <h2>Ce que <span class="accent">je fais</span>.</h2>
+<section class="method method--v2 method--v3">
+  <div class="method-inner">
+    <span class="eyebrow reveal">◆ Ce que je fais</span>
+    <h2 class="reveal reveal-delay-1">Cinq étapes, <span class="accent">un fil clair</span>.</h2>
+    <p class="method-lead reveal reveal-delay-2">Du besoin flou à la mise en ligne, sans que rien ne se perde entre les intervenants.</p>
 
-      <div class="skill-list">
-        <div class="skill-list-item">
+    <ol class="method-timeline">
+      <li class="mt-step mt-step--free reveal">
+        <div class="mt-marker"><span class="mt-num">01</span></div>
+        <div class="mt-body">
+          <div class="mt-head">
+            <span class="mt-when">Point de départ</span>
+          </div>
           <h3>Cadrage.</h3>
           <p>Transformer un besoin flou en périmètre clair : objectifs, utilisateurs, fonctionnalités, priorités, ce qui ne sera pas fait.</p>
         </div>
-        <div class="skill-list-item">
+      </li>
+
+      <li class="mt-step mt-step--free reveal reveal-delay-1">
+        <div class="mt-marker"><span class="mt-num">02</span></div>
+        <div class="mt-body">
+          <div class="mt-head">
+            <span class="mt-when">Avant le code</span>
+          </div>
           <h3>Cahier des charges et spécifications.</h3>
           <p>Un document sur lequel un développeur peut travailler sans revenir poser dix questions.</p>
         </div>
-        <div class="skill-list-item">
+      </li>
+
+      <li class="mt-step mt-step--paid reveal">
+        <div class="mt-marker"><span class="mt-num">03</span></div>
+        <div class="mt-body">
+          <div class="mt-head">
+            <span class="mt-when">Pendant le projet</span>
+          </div>
           <h3>Pilotage.</h3>
           <p>Planning, jalons, budget, arbitrages. Coordination des intervenants : développeurs, designers, photographes, rédacteurs.</p>
         </div>
-        <div class="skill-list-item">
+      </li>
+
+      <li class="mt-step mt-step--paid reveal reveal-delay-1">
+        <div class="mt-marker"><span class="mt-num">04</span></div>
+        <div class="mt-body">
+          <div class="mt-head">
+            <span class="mt-when">Avant livraison</span>
+          </div>
           <h3>Recette et livraison.</h3>
           <p>Vérifier que ce qui est livré correspond à ce qui était demandé, avant que vos utilisateurs le découvrent.</p>
         </div>
-        <div class="skill-list-item">
-          <h3>Suivi après mise en ligne.</h3>
+      </li>
+
+      <li class="mt-step mt-step--paid reveal reveal-delay-2">
+        <div class="mt-marker"><span class="mt-num">05</span></div>
+        <div class="mt-body">
+          <div class="mt-head">
+            <span class="mt-when">Après mise en ligne</span>
+          </div>
+          <h3>Suivi.</h3>
           <p>Ce qui marche, ce qui bloque, ce qu'il faut corriger en priorité.</p>
         </div>
-      </div>
-    </div>
+      </li>
+    </ol>
 
-    <div class="service-detail-block service-detail-block--highlight reveal reveal-delay-1">
+    <div class="service-detail-block service-detail-block--highlight reveal" style="margin-top:var(--sp-8);max-width:720px;margin-left:auto;margin-right:auto">
       <span class="service-tag">◆ Ce qui me distingue</span>
       <h3>Trois ans en alternance, puis Modevia.</h3>
       <p>Trois ans en alternance au sein d'un organisme de formation, à travailler sur des projets web et des sites WordPress. Puis la conception et le développement complet de <a href="/projets/modevia.html">Modevia</a>, une plateforme en production avec comptes clients, paiement et automatisations.</p>
@@ -144,7 +178,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <h3>Vera Studio<span class="dot">.</span></h3>
-        <p>Un duo indépendant. Sites internet, applications métier et pilotage de projet, en Nouvelle-Aquitaine.</p>
+        <p>Un duo indépendant. Sites internet, applications métier et pilotage de projet.</p>
       </div>
       <div class="footer-col"><h4>Services</h4><ul><li><a href="/services/sites-internet.html">Sites internet</a></li><li><a href="/services/applications.html">Applications métier</a></li><li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li></ul></div>
       <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Le travail</a></li><li><a href="/#offre">L'offre</a></li><li><a href="/#contact">Contact</a></li></ul></div>
@@ -157,7 +191,7 @@
   </div>
 </footer>
 
-<script src="/js/main.js?v=8.23" defer></script>
-<script src="/js/v8.js?v=8.23" defer></script>
+<script src="/js/main.js?v=8.24" defer></script>
+<script src="/js/v8.js?v=8.24" defer></script>
 </body>
 </html>
