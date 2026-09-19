@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Contact · Vera Studio</title>
-<meta name="description" content="Un projet en tête ? Écrivez-nous. On répond dans la journée.">
+<meta name="description" content="Parlons de votre projet. Deux lignes suffisent. On vous répond dans la journée.">
 <meta name="theme-color" content="#F7F5EE">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Contact · Vera Studio">
-<meta property="og:description" content="Écrivez-nous. On répond dans la journée.">
+<meta property="og:description" content="Parlons de votre projet. Deux lignes suffisent. On vous répond dans la journée.">
 <meta property="og:url" content="https://trame-site-fawn.vercel.app/contact.html">
 <meta property="og:image" content="https://trame-site-fawn.vercel.app/assets/og/og-home.jpg">
 
@@ -20,109 +20,98 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/css/tokens.css?v=8.30">
-<link rel="stylesheet" href="/css/base.css?v=8.30">
-<link rel="stylesheet" href="/css/components.css?v=8.30">
-<link rel="stylesheet" href="/css/pages.css?v=8.30">
-<link rel="stylesheet" href="/css/v8.css?v=8.30">
+<link rel="stylesheet" href="/css/tokens.css?v=8.31">
+<link rel="stylesheet" href="/css/base.css?v=8.31">
+<link rel="stylesheet" href="/css/components.css?v=8.31">
+<link rel="stylesheet" href="/css/pages.css?v=8.31">
+<link rel="stylesheet" href="/css/v8.css?v=8.31">
 </head>
-<body class="portfolio-overlay">
+<body>
 
-<!-- ============ HEADER MINIMAL (retour + logo + toggle) ============ -->
+<!-- ============ HEADER MINIMAL (retour + logo) ============ -->
 <header class="header header--minimal" id="site-header">
   <a href="/" class="portfolio-back">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
     <span>Retour à l'accueil</span>
   </a>
   <a href="/" class="brand-logo brand-logo--center">Vera Studio<span class="dot">.</span></a>
-  <div class="header-cta">
-    </div>
+  <div class="header-cta"></div>
 </header>
 
-<section class="contact-page">
-  <div class="contact-grid">
-
-    <div class="contact-side">
+<!-- ============ CONTACT FINAL (copie exacte du bloc contact de l'accueil) ============ -->
+<section class="contact-final contact-final--v2" id="contact">
+  <div class="contact-final-inner">
+    <div class="contact-final-side">
       <span class="eyebrow reveal">◆ Prendre contact</span>
-      <h1 class="reveal reveal-delay-1">Écrivez-nous.<br>On répond <span class="accent">vite</span>.</h1>
-      <p class="reveal reveal-delay-2">Dites-nous en deux lignes ce que vous faites, ce que vous voulez. On revient vers vous dans la journée avec un premier retour, honnête. Si on n'est pas les bons pour votre projet, on vous le dira aussi.</p>
+      <h2 class="reveal reveal-delay-1">Parlons de votre <span class="accent">projet.</span></h2>
+      <p class="contact-final-lead reveal reveal-delay-2">Deux lignes suffisent. On vous répond dans la journée.</p>
 
-      <dl class="contact-infos reveal reveal-delay-3">
-        <div>
-          <dt>Email</dt>
-          <dd><a href="mailto:contact@verastudio.fr">contact@verastudio.fr</a></dd>
-        </div>
-        <div>
-          <dt>Téléphone</dt>
-          <dd><a href="tel:+33651339482">06 51 33 94 82</a></dd>
-        </div>
-        <div>
-          <dt>Le duo</dt>
-          <dd>Vera Studio</dd>
-        </div>
-        <div>
-          <dt>Zone d'intervention</dt>
-          <dd>Sur place à Paris et Bordeaux · Partout en France</dd>
-        </div>
-      </dl>
+      <div class="contact-final-args reveal reveal-delay-3">
+        <div class="contact-arg"><span class="check">✓</span> Aucune carte bancaire, jamais</div>
+        <div class="contact-arg"><span class="check">✓</span> Une direction appliquée à votre projet, pas un moodboard</div>
+        <div class="contact-arg"><span class="check">✓</span> Sans engagement, aucun frais si on n'est pas les bons</div>
+        <div class="contact-arg"><span class="check">✓</span> Un contact direct, pas un formulaire perdu</div>
+      </div>
+
+      <p class="contact-final-alt reveal">Ou un SMS direct au <a href="tel:+33651339482">06 51 33 94 82</a></p>
     </div>
 
-    <div class="contact-form reveal reveal-delay-2">
-      <form id="contact-form" novalidate data-endpoint="https://formspree.io/f/xoeqnjnn">
-        <p class="form-legend"><span class="req-star" aria-hidden="true">*</span> désigne un champ obligatoire</p>
-
-        <div class="form-row">
-          <label for="name">Votre nom <span class="req-star" aria-hidden="true">*</span></label>
-          <input type="text" id="name" name="name" required autocomplete="name" placeholder="Prénom et nom" aria-required="true">
+    <div class="contact-final-form-wrap">
+      <form class="contact-final-form reveal" id="contact-form" novalidate data-endpoint="https://formspree.io/f/xoeqnjnn">
+        <div class="cf-row cf-row--full">
+          <label for="cf-name">Prénom <span class="req-star" aria-hidden="true">*</span></label>
+          <input type="text" id="cf-name" name="name" required autocomplete="given-name" placeholder="Votre prénom" aria-required="true">
         </div>
-
-        <div class="form-row">
-          <label for="email">Votre email <span class="req-star" aria-hidden="true">*</span></label>
-          <input type="email" id="email" name="email" required autocomplete="email" placeholder="vous@exemple.fr" aria-required="true">
+        <div class="cf-row cf-row--full">
+          <label for="cf-company">Entreprise <span class="req-star" aria-hidden="true">*</span></label>
+          <input type="text" id="cf-company" name="company" required autocomplete="organization" placeholder="Le nom de votre entreprise" aria-required="true">
         </div>
-
-        <div class="form-row">
-          <label for="phone">Téléphone <span class="optional">(facultatif)</span></label>
-          <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="06 XX XX XX XX">
-        </div>
-
-        <div class="form-row">
-          <label for="project">Type de projet <span class="req-star" aria-hidden="true">*</span></label>
-          <select id="project" name="project" required aria-required="true">
+        <div class="cf-row cf-row--full">
+          <label for="cf-activity">Type d'activité <span class="req-star" aria-hidden="true">*</span></label>
+          <select id="cf-activity" name="project" required aria-required="true">
             <option value="">Choisir…</option>
             <option value="site">Site internet</option>
             <option value="application">Application métier</option>
+            <option value="seo">SEO local (Google + avis clients)</option>
             <option value="autre">Autre, à discuter</option>
           </select>
         </div>
-
-        <div class="form-row">
-          <label for="message">Votre message <span class="req-star" aria-hidden="true">*</span></label>
-          <textarea id="message" name="message" rows="5" required aria-required="true" placeholder="Dites-nous qui vous êtes et ce que vous cherchez."></textarea>
+        <div class="cf-row cf-row--full">
+          <label for="cf-contact">Email ou téléphone <span class="req-star" aria-hidden="true">*</span></label>
+          <input type="text" id="cf-contact" name="email" required autocomplete="email" placeholder="vous@exemple.fr ou 06 XX XX XX XX" aria-required="true">
+        </div>
+        <div class="cf-row cf-row--full">
+          <label for="cf-message">Deux lignes sur votre projet</label>
+          <textarea id="cf-message" name="message" rows="3" placeholder="Dites-nous en quelques mots ce que vous cherchez."></textarea>
         </div>
 
         <div class="form-error" id="form-error" role="alert" aria-live="polite"></div>
 
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary">
-            <span class="btn-label">Envoyer</span>
+        <div class="cf-actions">
+          <button type="submit" class="btn btn-primary btn-lg btn-full">
+            <span class="btn-label">Recevoir mon aperçu</span>
             <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </button>
-          <span class="helper">Réponse dans la journée</span>
+          <span class="cf-disclaimer">Aucune CB. Aucun engagement. Réponse dans la journée.</span>
         </div>
       </form>
 
       <div class="form-success" id="form-success">
-        <p>Message reçu. On revient vers vous dans la journée, souvent bien plus vite. À très bientôt.</p>
+        <p>Message reçu. On vous revient dans la journée, souvent bien plus vite. À très bientôt.</p>
         <button type="button" class="btn btn-ghost" id="new-form-btn">Envoyer un nouveau message
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </button>
       </div>
-    </div>
 
+      <p class="cf-sms">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Ou un appel · <a href="tel:+33651339482">06 51 33 94 82</a>
+      </p>
+    </div>
   </div>
 </section>
 
+<!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
@@ -131,7 +120,7 @@
         <p>Un duo indépendant. Sites internet, applications métier et SEO local.</p>
       </div>
       <div class="footer-col"><h4>Services</h4><ul><li><a href="/services/sites-internet.html">Sites internet</a></li><li><a href="/services/applications.html">Applications métier</a></li><li><a href="/services/seo.html">SEO local</a></li></ul></div>
-      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Réalisations</a></li><li><a href="/#offre">L'offre</a></li><li><a href="/#contact">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/">Accueil</a></li><li><a href="/portfolio.html">Réalisations</a></li><li><a href="/#offre">L'offre</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
       <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@verastudio.fr">contact@verastudio.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li><li>Paris &ndash; Bordeaux</li><li>Partout en France</li></ul></div>
     </div>
     <div class="footer-bottom">
@@ -141,8 +130,8 @@
   </div>
 </footer>
 
-<script src="/js/main.js?v=8.30" defer></script>
-<script src="/js/v8.js?v=8.30" defer></script>
-<script src="/js/contact.js?v=8.30" defer></script>
+<script src="/js/main.js?v=8.31" defer></script>
+<script src="/js/v8.js?v=8.31" defer></script>
+<script src="/js/contact.js?v=8.31" defer></script>
 </body>
 </html>
