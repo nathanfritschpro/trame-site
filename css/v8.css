@@ -4176,12 +4176,12 @@
    les colonnes disent), Services / Naviguer en deux colonnes cote a cote,
    Ecrire en pastilles horizontales, bas de page sur une seule ligne.       */
 @media (max-width: 900px) {
-  .site-footer { padding: var(--sp-6) 16px var(--sp-4); }
+  .site-footer { padding: var(--sp-6) 14px var(--sp-4); }
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: var(--sp-3);
+    grid-template-columns: 0.9fr 0.85fr 1.35fr;
+    column-gap: 10px;
     row-gap: var(--sp-5);
     text-align: left;
     max-width: none;
@@ -4203,14 +4203,14 @@
   .footer-col { min-width: 0; }
   .footer-col h4 {
     margin: 0 0 var(--sp-2);
-    font-size: 0.62rem;
-    letter-spacing: 0.12em;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
     white-space: nowrap;
   }
   .footer-col ul {
     display: flex !important;
     flex-direction: column !important;
-    gap: 5px !important;
+    gap: 6px !important;
     padding: 0 !important;
     margin: 0 !important;
     list-style: none !important;
@@ -4226,14 +4226,24 @@
     color: var(--text-dim);
     font-weight: 400;
     text-align: left;
-    word-break: break-word;
-    overflow-wrap: anywhere;
+    word-break: normal;
+    overflow-wrap: normal;
   }
   .footer-col a { color: var(--text-dim); }
   .footer-col a[href^="mailto:"],
   .footer-col a[href^="tel:"] { color: var(--accent); font-weight: 500; }
   .footer-col:last-of-type { text-align: left; }
   .footer-col:last-of-type h4 { display: block; }
+  /* Colonne Ecrire : tout tient sur une ligne, un peu plus petit pour que le mail rentre */
+  .footer-col:last-of-type li,
+  .footer-col:last-of-type a {
+    font-size: 0.68rem;
+    white-space: nowrap;
+    letter-spacing: -0.005em;
+  }
+  .footer-col:last-of-type a[href^="mailto:"] {
+    letter-spacing: -0.01em;
+  }
 
   /* Bas de page : compact, une seule ligne centree */
   .footer-bottom {
