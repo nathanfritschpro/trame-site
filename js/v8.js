@@ -1,23 +1,31 @@
 /* ============ Vera Studio · V8 (preloader, smart-hide, before/after slider, hero tiles auto) ============ */
 
 (() => {
-  // ---- GHOST TEXT · les mots (realisations, methode, avant/apres, offre...) bougent au scroll
+  // ---- GHOST TEXT · les mots geants bougent au scroll, direction alternee section apres section
   const ghosts = document.querySelectorAll('.works-ghost-text');
   if (ghosts.length) {
     const pairs = [];
-    ghosts.forEach((el) => {
-      const scope = el.closest('.works-head--v3') || el.closest('[data-ghost-scope]') || el.parentElement;
-      if (scope) pairs.push({ el, scope });
+    ghosts.forEach((el, i) => {
+      const scope = el.closest('.works-head--v3') || el.closest('[data-ghost-scope]')
+                 || el.closest('.method') || el.closest('.before-after') || el.closest('.offer')
+                 || el.parentElement;
+      // Direction : gauche->droite pour les rangs pairs, droite->gauche pour les impairs.
+      // data-ghost-dir="rtl" ou "ltr" sur le .works-ghost-text peut forcer manuellement.
+      const forced = el.dataset.ghostDir;
+      const dir = forced === 'rtl' ? -1 : forced === 'ltr' ? 1 : (i % 2 === 0 ? 1 : -1);
+      if (scope) pairs.push({ el, scope, dir });
     });
     let ticking = false;
     const updateGhosts = () => {
       const viewportH = window.innerHeight;
-      pairs.forEach(({ el, scope }) => {
+      pairs.forEach(({ el, scope, dir }) => {
         const rect = scope.getBoundingClientRect();
         const totalDistance = viewportH + rect.height;
         const traveled = viewportH - rect.top;
         const progress = Math.max(0, Math.min(1, traveled / totalDistance));
-        const shiftPct = -30 + progress * 60;
+        // dir=+1 : de -30% (droite) a +30% (gauche) -- traverse en glissant vers la gauche a la lecture inverse
+        // dir=-1 : de +30% (gauche) a -30% (droite) -- traverse dans l'autre sens
+        const shiftPct = dir * (-30 + progress * 60);
         el.style.setProperty('--ghost-shift', `${shiftPct}%`);
       });
       ticking = false;

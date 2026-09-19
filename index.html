@@ -23,20 +23,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/css/tokens.css?v=8.24">
-<link rel="stylesheet" href="/css/base.css?v=8.24">
-<link rel="stylesheet" href="/css/components.css?v=8.24">
-<link rel="stylesheet" href="/css/pages.css?v=8.24">
-<link rel="stylesheet" href="/css/v8.css?v=8.24">
-<script>
-  (function(){
-    try {
-      var t = localStorage.getItem('vera-theme');
-      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-    } catch(e) {}
-  })();
-</script>
+<link rel="stylesheet" href="/css/tokens.css?v=8.25">
+<link rel="stylesheet" href="/css/base.css?v=8.25">
+<link rel="stylesheet" href="/css/components.css?v=8.25">
+<link rel="stylesheet" href="/css/pages.css?v=8.25">
+<link rel="stylesheet" href="/css/v8.css?v=8.25">
 </head>
 <body>
 
@@ -52,16 +43,12 @@
 <header class="header header--v8" id="site-header">
   <a href="/" class="brand-logo">Vera Studio<span class="dot">.</span></a>
   <nav class="nav" aria-label="Principale">
-    <a href="/portfolio.html">Le travail</a>
-    <a href="#offre">L'offre</a>
-    <a href="#comment">Notre méthode</a>
-    <a href="#faq">Questions</a>
+    <a href="/portfolio.html">Réalisations</a>
+    <a href="/services/sites-internet.html">Sites internet</a>
+    <a href="/services/applications.html">Applications métier</a>
+    <a href="/services/chef-de-projet.html">Chef de projet</a>
   </nav>
   <div class="header-cta">
-    <button type="button" class="theme-toggle" aria-label="Basculer clair / sombre" title="Basculer clair / sombre">
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
     <a href="#contact" class="btn btn-primary btn-icon">Recevoir un aperçu
       <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
     </a>
@@ -71,10 +58,10 @@
 
 <div class="mobile-nav">
   <ul>
-    <li><a href="/portfolio.html">Le travail</a></li>
-    <li><a href="#offre">L'offre</a></li>
-    <li><a href="#comment">Notre méthode</a></li>
-    <li><a href="#faq">Questions</a></li>
+    <li><a href="/portfolio.html">Réalisations</a></li>
+    <li><a href="/services/sites-internet.html">Sites internet</a></li>
+    <li><a href="/services/applications.html">Applications métier</a></li>
+    <li><a href="/services/chef-de-projet.html">Chef de projet</a></li>
     <li><a href="#contact" class="btn btn-primary">Recevoir un aperçu →</a></li>
   </ul>
 </div>
@@ -86,7 +73,7 @@
   <div class="hero-tiles" aria-hidden="true">
 
     <!-- Comme une Fleur -->
-    <a href="/projets/comme-une-fleur.html" class="hero-tile hero-tile--verte" style="--float-delay:0s;--tilt:-2deg">
+    <div class="hero-tile hero-tile--verte" style="--float-delay:0s;--tilt:-2deg">
       <div class="ht-browser">
         <span class="ht-dots"><i></i><i></i><i></i></span>
         <span class="ht-address">comme-une-fleur.fr</span>
@@ -100,10 +87,10 @@
           <div class="ts-grid"><span></span><span></span><span></span></div>
         </div>
       </div>
-    </a>
+    </div>
 
     <!-- Clair & Net -->
-    <a href="/projets/clair-net.html" class="hero-tile hero-tile--bleu" style="--float-delay:-1.5s;--tilt:2deg">
+    <div class="hero-tile hero-tile--bleu" style="--float-delay:-1.5s;--tilt:2deg">
       <div class="ht-browser">
         <span class="ht-dots"><i></i><i></i><i></i></span>
         <span class="ht-address">cnet77.fr</span>
@@ -117,10 +104,10 @@
           <div class="ts-grid"><span></span><span></span><span></span></div>
         </div>
       </div>
-    </a>
+    </div>
 
     <!-- Modevia -->
-    <a href="/projets/modevia.html" class="hero-tile hero-tile--rose" style="--float-delay:-3s;--tilt:-1deg">
+    <div class="hero-tile hero-tile--rose" style="--float-delay:-3s;--tilt:-1deg">
       <div class="ht-browser">
         <span class="ht-dots"><i></i><i></i><i></i></span>
         <span class="ht-address">modevia.fr</span>
@@ -134,10 +121,10 @@
           <div class="ts-grid"><span></span><span></span><span></span></div>
         </div>
       </div>
-    </a>
+    </div>
 
     <!-- Nathan Photo -->
-    <a href="/projets/nathan-photo.html" class="hero-tile hero-tile--encre" style="--float-delay:-4.5s;--tilt:2deg">
+    <div class="hero-tile hero-tile--encre" style="--float-delay:-4.5s;--tilt:2deg">
       <div class="ht-browser">
         <span class="ht-dots"><i></i><i></i><i></i></span>
         <span class="ht-address">nathanfritsch.com</span>
@@ -151,26 +138,44 @@
           <div class="ts-grid"><span></span><span></span><span></span></div>
         </div>
       </div>
-    </a>
+    </div>
 
   </div>
 
   <div class="hero-v8-inner">
-    <h1 class="hero-v8-title reveal">
+    <span class="hero-v8-eyebrow reveal">◆ Sites internet · Applications métier · Chef de projet digital</span>
+    <h1 class="hero-v8-title reveal reveal-delay-1">
       Votre entreprise mérite <span class="accent">mieux</span> qu'un site de plus.
     </h1>
-    <p class="hero-v8-sub reveal reveal-delay-1">
-      Identité web propriétaire · Direction, réalisation et mise en ligne en trois semaines.
+    <p class="hero-v8-sub reveal reveal-delay-2">
+      Un duo indépendant à Bordeaux qui dessine, code et met en ligne. On vous rend un aperçu de votre projet <strong>sous 48 h</strong>, gratuitement. <strong>Aucun paiement</strong> tant que vous n'avez pas validé. Tout vous appartient à la livraison.
     </p>
-    <div class="hero-v8-ctas reveal reveal-delay-2">
+    <div class="hero-v8-ctas reveal reveal-delay-3">
       <a href="#contact" class="btn btn-primary btn-lg">Recevoir un aperçu
         <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
-      <a href="/portfolio.html" class="btn btn-ghost btn-lg">Voir le travail</a>
+      <a href="/portfolio.html" class="btn btn-ghost btn-lg">Voir les réalisations</a>
     </div>
-    <div class="hero-v8-badge reveal reveal-delay-3">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 5 5.5.8-4 3.9 1 5.5L12 14.8 7 17.2l1-5.5-4-3.9 5.5-.8z"/></svg>
-      <span>Duo indépendant · Peu de projets en parallèle · Chaque site est réellement sur mesure</span>
+
+    <div class="hero-pillars reveal reveal-delay-3" aria-label="Nos trois metiers">
+      <a href="/services/sites-internet.html" class="hero-pillar">
+        <span class="hero-pillar-num">01</span>
+        <span class="hero-pillar-title">Sites internet</span>
+        <span class="hero-pillar-desc">Codés à la main, rapides, à vous entièrement.</span>
+        <span class="hero-pillar-cta">Voir l'offre <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="/services/applications.html" class="hero-pillar">
+        <span class="hero-pillar-num">02</span>
+        <span class="hero-pillar-title">Applications métier</span>
+        <span class="hero-pillar-desc">L'outil sur mesure qui remplace vos tableurs.</span>
+        <span class="hero-pillar-cta">Voir l'offre <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="/services/chef-de-projet.html" class="hero-pillar">
+        <span class="hero-pillar-num">03</span>
+        <span class="hero-pillar-title">Chef de projet digital</span>
+        <span class="hero-pillar-desc">Piloter votre projet, du cadrage à la mise en ligne.</span>
+        <span class="hero-pillar-cta">Voir l'offre <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
@@ -448,8 +453,8 @@
 
 <!-- ============ DOUBLE VALIDATION (comment ça se passe) ============ -->
 <section class="method method--v2 method--v3" id="comment">
-  <div class="section-ghost" aria-hidden="true">
-    <span class="works-ghost-text">méthode</span>
+  <div class="section-ghost section-ghost--left" aria-hidden="true">
+    <span class="works-ghost-text" data-ghost-dir="rtl">méthode</span>
   </div>
   <div class="method-inner">
     <span class="eyebrow reveal">◆ Notre méthode</span>
@@ -634,8 +639,8 @@
 
 <!-- ============ L'OFFRE (site big center + 2 côtés compacts) ============ -->
 <section class="offer offer--v3" id="offre">
-  <div class="section-ghost" aria-hidden="true">
-    <span class="works-ghost-text">l'offre</span>
+  <div class="section-ghost section-ghost--left" aria-hidden="true">
+    <span class="works-ghost-text" data-ghost-dir="rtl">l'offre</span>
   </div>
   <div class="offer-inner">
     <span class="eyebrow reveal">◆ L'offre</span>
@@ -876,7 +881,7 @@
         <p>Un duo indépendant. Sites internet, applications métier et pilotage de projet.</p>
       </div>
       <div class="footer-col"><h4>Services</h4><ul><li><a href="/services/sites-internet.html">Sites internet</a></li><li><a href="/services/applications.html">Applications métier</a></li><li><a href="/services/chef-de-projet.html">Chef de projet digital</a></li></ul></div>
-      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/portfolio.html">Le travail</a></li><li><a href="/formules.html">L'offre</a></li><li><a href="#faq">Questions</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Naviguer</h4><ul><li><a href="/portfolio.html">Réalisations</a></li><li><a href="/#offre">L'offre</a></li><li><a href="#faq">Questions</a></li><li><a href="#contact">Contact</a></li></ul></div>
       <div class="footer-col"><h4>Écrire</h4><ul><li><a href="mailto:contact@verastudio.fr">contact@verastudio.fr</a></li><li><a href="tel:+33651339482">06 51 33 94 82</a></li><li>Nouvelle-Aquitaine</li></ul></div>
     </div>
     <div class="footer-bottom">
@@ -886,8 +891,8 @@
   </div>
 </footer>
 
-<script src="/js/main.js?v=8.24" defer></script>
-<script src="/js/v8.js?v=8.24" defer></script>
-<script src="/js/contact.js?v=8.24" defer></script>
+<script src="/js/main.js?v=8.25" defer></script>
+<script src="/js/v8.js?v=8.25" defer></script>
+<script src="/js/contact.js?v=8.25" defer></script>
 </body>
 </html>
