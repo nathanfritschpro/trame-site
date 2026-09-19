@@ -143,24 +143,8 @@ Voici quelques éléments sur mon projet :
       showError('Merci d\'écrire un message pour qu\'on comprenne votre besoin.', form.message);
       return false;
     }
-    // Fichier logo : max 2 Mo (limite Formspree en base64)
-    const logoInput = form.querySelector('#cf-logo');
-    if (logoInput && logoInput.files && logoInput.files[0]) {
-      if (logoInput.files[0].size > 2 * 1024 * 1024) {
-        showError('Le logo dépasse 2 Mo. Envoyez-le par email à contact@verastudio.fr après le formulaire.', logoInput);
-        return false;
-      }
-    }
     return true;
   };
-
-  // Lit un fichier en data URL (base64)
-  const readAsDataURL = (file) => new Promise((resolve, reject) => {
-    const r = new FileReader();
-    r.onload = () => resolve(r.result);
-    r.onerror = () => reject(r.error);
-    r.readAsDataURL(file);
-  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -171,28 +155,11 @@ Voici quelques éléments sur mon projet :
     submitBtn.disabled = true;
     submitBtnLabel.textContent = 'Envoi…';
 
-    // Le plan gratuit Formspree n'accepte pas les fichiers en multipart.
-    // On strippe le fichier et on l'envoie en data URL dans un champ texte,
-    // avec un fallback si le fichier est trop gros pour la limite de la requete.
-    const logoInput = form.querySelector('#cf-logo');
-    const logoFile = logoInput && logoInput.files && logoInput.files[0];
+    // Envoi en JSON pur : plus fiable et compatible avec le plan gratuit Formspree.
     const payload = {};
     new FormData(form).forEach((v, k) => {
-      if (k === 'logo') return; // on ne renvoie pas le fichier brut
       payload[k] = typeof v === 'string' ? v : '';
     });
-
-    if (logoFile) {
-      try {
-        const dataUrl = await readAsDataURL(logoFile);
-        payload.logo_filename = logoFile.name;
-        payload.logo_size = `${Math.round(logoFile.size / 1024)} Ko`;
-        payload.logo_type = logoFile.type || 'inconnu';
-        payload.logo_data = dataUrl;
-      } catch (err) {
-        payload.logo_note = `Un logo etait joint (${logoFile.name}) mais n'a pas pu etre lu. Il sera envoye par email.`;
-      }
-    }
 
     try {
       const response = await fetch(FORMSPREE_ENDPOINT, {
@@ -205,6 +172,11 @@ Voici quelques éléments sur mon projet :
       });
 
       if (response.ok) {
+        // Si l'utilisateur a dit qu'il a un logo, on lui rappelle de l'envoyer par email
+        const hasLogo = form.querySelector('input[name="has_logo"]:checked');
+        const logoNote = document.getElementById('success-logo-note');
+        if (logoNote) logoNote.hidden = !(hasLogo && hasLogo.value === 'oui');
+
         form.style.display = 'none';
         successBox.classList.add('show');
         successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });

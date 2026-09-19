@@ -1468,33 +1468,55 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Upload de fichier --- */
-.cf-row input[type="file"] {
-  padding: 10px 12px;
-  cursor: pointer;
-  background: var(--bg);
-  border: 1px dashed color-mix(in srgb, var(--accent) 45%, var(--line));
+/* --- Callout email (envoyer logo par mail) --- */
+.cf-mail-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: color-mix(in srgb, var(--accent) 6%, var(--bg));
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
   border-radius: var(--br-md);
+}
+.cf-mail-callout svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+  margin-top: 2px;
+}
+.cf-mail-callout strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+.cf-mail-callout p {
+  margin: 0;
   font-family: var(--font-text);
-  font-size: 0.88rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
   color: var(--text-dim);
 }
-.cf-row input[type="file"]::file-selector-button {
-  padding: 6px 14px;
-  margin-right: 12px;
-  background: var(--accent);
-  color: #fff;
-  border: 0;
-  border-radius: 999px;
-  font-family: var(--font-text);
-  font-size: 0.82rem;
+.cf-mail-callout a {
+  color: var(--accent);
   font-weight: 600;
-  cursor: pointer;
-  transition: background 0.15s ease;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-word;
 }
-.cf-row input[type="file"]::file-selector-button:hover {
-  background: color-mix(in srgb, var(--accent) 82%, #000);
+.cf-success-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 var(--sp-4);
+  letter-spacing: -0.01em;
 }
+.cf-success-logo { margin: 0 0 var(--sp-5); }
 
 .contact-final-alt {
   margin-top: var(--sp-8);

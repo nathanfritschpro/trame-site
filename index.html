@@ -23,11 +23,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/css/tokens.css?v=8.33">
-<link rel="stylesheet" href="/css/base.css?v=8.33">
-<link rel="stylesheet" href="/css/components.css?v=8.33">
-<link rel="stylesheet" href="/css/pages.css?v=8.33">
-<link rel="stylesheet" href="/css/v8.css?v=8.33">
+<link rel="stylesheet" href="/css/tokens.css?v=8.34">
+<link rel="stylesheet" href="/css/base.css?v=8.34">
+<link rel="stylesheet" href="/css/components.css?v=8.34">
+<link rel="stylesheet" href="/css/pages.css?v=8.34">
+<link rel="stylesheet" href="/css/v8.css?v=8.34">
 </head>
 <body>
 
@@ -830,7 +830,7 @@
     </div>
 
     <div class="contact-final-form-wrap">
-      <form class="contact-final-form reveal" id="contact-form" novalidate enctype="multipart/form-data" data-endpoint="https://formspree.io/f/xoeqnjnn">
+      <form class="contact-final-form reveal" id="contact-form" novalidate data-endpoint="https://formspree.io/f/xoeqnjnn">
 
         <div class="cf-legend">
           <span class="req-star" aria-hidden="true">*</span> champs obligatoires · le reste est facultatif
@@ -893,10 +893,14 @@
             </div>
           </div>
 
-          <div class="cf-row cf-row--full cf-conditional" id="cf-logo-file" hidden>
-            <label for="cf-logo">Déposer votre logo (PNG, JPG, SVG, PDF · max 2 Mo)</label>
-            <input type="file" id="cf-logo" name="logo" accept="image/png,image/jpeg,image/svg+xml,application/pdf">
-            <span class="cf-hint">Si votre fichier fait plus de 2 Mo, envoyez-le à contact@verastudio.fr après l'envoi du formulaire.</span>
+          <div class="cf-row cf-row--full cf-conditional cf-logo-instructions" id="cf-logo-file" hidden>
+            <div class="cf-mail-callout">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              <div>
+                <strong>Envoyez votre logo par email</strong>
+                <p>Une fois le formulaire envoyé, joignez votre logo à <a href="mailto:contact@verastudio.fr?subject=Logo%20pour%20mon%20apercu">contact@verastudio.fr</a>. On le récupère et on l'intègre à votre aperçu.</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -951,7 +955,14 @@
       </form>
 
       <div class="form-success" id="form-success">
-        <p>Message reçu. On vous revient dans la journée, souvent bien plus vite. À très bientôt.</p>
+        <p class="cf-success-title">Message reçu. On vous recontacte dans la journée.</p>
+        <div class="cf-mail-callout cf-success-logo" id="success-logo-note" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          <div>
+            <strong>N'oubliez pas votre logo</strong>
+            <p>Envoyez-le à <a href="mailto:contact@verastudio.fr?subject=Logo%20pour%20mon%20apercu">contact@verastudio.fr</a> pour qu'on puisse l'intégrer à votre aperçu.</p>
+          </div>
+        </div>
         <button type="button" class="btn btn-ghost" id="new-form-btn">Envoyer un nouveau message
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </button>
@@ -984,8 +995,8 @@
   </div>
 </footer>
 
-<script src="/js/main.js?v=8.33" defer></script>
-<script src="/js/v8.js?v=8.33" defer></script>
-<script src="/js/contact.js?v=8.33" defer></script>
+<script src="/js/main.js?v=8.34" defer></script>
+<script src="/js/v8.js?v=8.34" defer></script>
+<script src="/js/contact.js?v=8.34" defer></script>
 </body>
 </html>
