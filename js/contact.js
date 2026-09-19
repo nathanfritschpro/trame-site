@@ -83,31 +83,73 @@ Voici quelques éléments sur mon projet :
     el.addEventListener('change', () => el.classList.remove('is-invalid'));
   });
 
+  // ---- Champs conditionnels : les radios avec data-target dévoilent un bloc
+  const conditionalGroups = new Map(); // targetId -> Set(radios du même name)
+  form.querySelectorAll('input[type="radio"]').forEach(radio => {
+    const name = radio.name;
+    radio.addEventListener('change', () => {
+      const siblings = form.querySelectorAll(`input[type="radio"][name="${name}"]`);
+      siblings.forEach(sib => {
+        const targetId = sib.dataset.target;
+        if (!targetId) return;
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        if (sib.checked) {
+          target.hidden = false;
+        } else {
+          target.hidden = true;
+          // Vide le champ conditionnel quand il se referme
+          target.querySelectorAll('input').forEach(inp => { inp.value = ''; });
+        }
+      });
+    });
+  });
+
   const validate = () => {
     const name = form.name.value.trim();
+    const company = form.company.value.trim();
     const email = form.email.value.trim();
     const project = form.project.value.trim();
+    const subject = form.subject.value.trim();
     const message = form.message.value.trim();
 
     if (!name) {
-      showError('Merci d\'indiquer votre nom.', form.name);
+      showError('Merci d\'indiquer votre prénom.', form.name);
+      return false;
+    }
+    if (!company) {
+      showError('Merci d\'indiquer le nom de votre entreprise.', form.company);
       return false;
     }
     if (!email) {
-      showError('Merci d\'indiquer votre email pour qu\'on puisse vous répondre.', form.email);
+      showError('Merci d\'indiquer votre email ou téléphone pour qu\'on puisse vous répondre.', form.email);
       return false;
     }
-    if (!EMAIL_RE.test(email)) {
-      showError('Cet email ne semble pas valide. Vérifiez le format, par exemple : vous@exemple.fr', form.email);
+    // Email OU téléphone : on accepte si ça ressemble à un email OU si ça contient 8+ chiffres
+    const digits = (email.match(/\d/g) || []).length;
+    if (!EMAIL_RE.test(email) && digits < 8) {
+      showError('Indiquez un email valide (vous@exemple.fr) ou un numéro de téléphone.', form.email);
       return false;
     }
     if (!project) {
       showError('Merci de choisir un type de projet.', form.project);
       return false;
     }
-    if (!message) {
-      showError('Merci d\'écrire un petit message pour qu\'on comprenne votre besoin.', form.message);
+    if (!subject) {
+      showError('Merci d\'indiquer l\'objet de la demande.', form.subject);
       return false;
+    }
+    if (!message) {
+      showError('Merci d\'écrire un message pour qu\'on comprenne votre besoin.', form.message);
+      return false;
+    }
+    // Fichier logo : max 5 Mo
+    const logoInput = form.querySelector('#cf-logo');
+    if (logoInput && logoInput.files && logoInput.files[0]) {
+      if (logoInput.files[0].size > 5 * 1024 * 1024) {
+        showError('Le logo dépasse 5 Mo. Essayez un fichier plus léger ou envoyez-le par email.', logoInput);
+        return false;
+      }
     }
     return true;
   };

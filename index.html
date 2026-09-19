@@ -23,11 +23,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/css/tokens.css?v=8.31">
-<link rel="stylesheet" href="/css/base.css?v=8.31">
-<link rel="stylesheet" href="/css/components.css?v=8.31">
-<link rel="stylesheet" href="/css/pages.css?v=8.31">
-<link rel="stylesheet" href="/css/v8.css?v=8.31">
+<link rel="stylesheet" href="/css/tokens.css?v=8.32">
+<link rel="stylesheet" href="/css/base.css?v=8.32">
+<link rel="stylesheet" href="/css/components.css?v=8.32">
+<link rel="stylesheet" href="/css/pages.css?v=8.32">
+<link rel="stylesheet" href="/css/v8.css?v=8.32">
 </head>
 <body>
 
@@ -830,32 +830,108 @@
     </div>
 
     <div class="contact-final-form-wrap">
-      <form class="contact-final-form reveal" id="contact-form" novalidate data-endpoint="https://formspree.io/f/xoeqnjnn">
-        <div class="cf-row cf-row--full">
-          <label for="cf-name">Prénom <span class="req-star" aria-hidden="true">*</span></label>
-          <input type="text" id="cf-name" name="name" required autocomplete="given-name" placeholder="Votre prénom" aria-required="true">
+      <form class="contact-final-form reveal" id="contact-form" novalidate enctype="multipart/form-data" data-endpoint="https://formspree.io/f/xoeqnjnn">
+
+        <!-- Bloc identité -->
+        <div class="cf-group">
+          <div class="cf-group-head"><span class="cf-step">01</span><span class="cf-step-label">Vous</span></div>
+          <div class="cf-row cf-row--full">
+            <label for="cf-name">Prénom <span class="req-star" aria-hidden="true">*</span></label>
+            <input type="text" id="cf-name" name="name" required autocomplete="given-name" placeholder="Votre prénom" aria-required="true">
+          </div>
+          <div class="cf-row cf-row--full">
+            <label for="cf-company">Nom de l'entreprise <span class="req-star" aria-hidden="true">*</span></label>
+            <input type="text" id="cf-company" name="company" required autocomplete="organization" placeholder="Le nom de votre entreprise" aria-required="true">
+          </div>
+          <div class="cf-row cf-row--full">
+            <label for="cf-contact">Email ou téléphone <span class="req-star" aria-hidden="true">*</span></label>
+            <input type="text" id="cf-contact" name="email" required autocomplete="email" placeholder="vous@exemple.fr ou 06 XX XX XX XX" aria-required="true">
+          </div>
         </div>
-        <div class="cf-row cf-row--full">
-          <label for="cf-company">Entreprise <span class="req-star" aria-hidden="true">*</span></label>
-          <input type="text" id="cf-company" name="company" required autocomplete="organization" placeholder="Le nom de votre entreprise" aria-required="true">
+
+        <!-- Bloc projet -->
+        <div class="cf-group">
+          <div class="cf-group-head"><span class="cf-step">02</span><span class="cf-step-label">Le projet</span></div>
+
+          <div class="cf-row cf-row--full">
+            <label for="cf-project">Type de projet <span class="req-star" aria-hidden="true">*</span></label>
+            <select id="cf-project" name="project" required aria-required="true">
+              <option value="">Choisir…</option>
+              <option value="site-vitrine">Site vitrine</option>
+              <option value="site-ecommerce">Site e-commerce</option>
+              <option value="application">Application métier</option>
+              <option value="seo">SEO local (Google + avis clients)</option>
+              <option value="je-ne-sais-pas">Je ne sais pas quoi choisir</option>
+            </select>
+          </div>
+
+          <div class="cf-row cf-row--full">
+            <label for="cf-subject">Objet de la demande <span class="req-star" aria-hidden="true">*</span></label>
+            <input type="text" id="cf-subject" name="subject" required placeholder="Ex : refonte du site + réservation en ligne" aria-required="true">
+          </div>
         </div>
-        <div class="cf-row cf-row--full">
-          <label for="cf-activity">Type d'activité <span class="req-star" aria-hidden="true">*</span></label>
-          <select id="cf-activity" name="project" required aria-required="true">
-            <option value="">Choisir…</option>
-            <option value="site">Site internet</option>
-            <option value="application">Application métier</option>
-            <option value="seo">SEO local (Google + avis clients)</option>
-            <option value="autre">Autre, à discuter</option>
-          </select>
+
+        <!-- Bloc logo -->
+        <div class="cf-group">
+          <div class="cf-group-head"><span class="cf-step">03</span><span class="cf-step-label">Votre logo</span></div>
+
+          <div class="cf-row cf-row--full cf-radio-row">
+            <span class="cf-radio-label">Avez-vous un logo ?</span>
+            <div class="cf-radios" role="radiogroup" aria-labelledby="cf-logo-label">
+              <label class="cf-radio">
+                <input type="radio" name="has_logo" value="oui" data-target="cf-logo-file">
+                <span>Oui, je le joins</span>
+              </label>
+              <label class="cf-radio">
+                <input type="radio" name="has_logo" value="non">
+                <span>Je n'ai pas de logo</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="cf-row cf-row--full cf-conditional" id="cf-logo-file" hidden>
+            <label for="cf-logo">Déposer votre logo (PNG, JPG, SVG, PDF · max 5 Mo)</label>
+            <input type="file" id="cf-logo" name="logo" accept="image/png,image/jpeg,image/svg+xml,application/pdf">
+          </div>
         </div>
-        <div class="cf-row cf-row--full">
-          <label for="cf-contact">Email ou téléphone <span class="req-star" aria-hidden="true">*</span></label>
-          <input type="text" id="cf-contact" name="email" required autocomplete="email" placeholder="vous@exemple.fr ou 06 XX XX XX XX" aria-required="true">
+
+        <!-- Bloc ancien site -->
+        <div class="cf-group">
+          <div class="cf-group-head"><span class="cf-step">04</span><span class="cf-step-label">Site existant</span></div>
+
+          <div class="cf-row cf-row--full cf-radio-row">
+            <span class="cf-radio-label">Avez-vous déjà un site ?</span>
+            <div class="cf-radios" role="radiogroup">
+              <label class="cf-radio">
+                <input type="radio" name="has_site" value="oui" data-target="cf-site-url">
+                <span>Oui</span>
+              </label>
+              <label class="cf-radio">
+                <input type="radio" name="has_site" value="non">
+                <span>Non</span>
+              </label>
+              <label class="cf-radio">
+                <input type="radio" name="has_site" value="je-ne-sais-pas">
+                <span>Je ne sais pas</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="cf-row cf-row--full cf-conditional" id="cf-site-url" hidden>
+            <label for="cf-old-site">Lien de votre site actuel</label>
+            <input type="url" id="cf-old-site" name="old_site" placeholder="https://…">
+          </div>
         </div>
-        <div class="cf-row cf-row--full">
-          <label for="cf-message">Deux lignes sur votre projet</label>
-          <textarea id="cf-message" name="message" rows="3" placeholder="Dites-nous en quelques mots ce que vous cherchez."></textarea>
+
+        <!-- Bloc message -->
+        <div class="cf-group">
+          <div class="cf-group-head"><span class="cf-step">05</span><span class="cf-step-label">Vos besoins</span></div>
+
+          <div class="cf-row cf-row--full">
+            <label for="cf-message">Message détaillé <span class="req-star" aria-hidden="true">*</span></label>
+            <textarea id="cf-message" name="message" rows="6" required aria-required="true" placeholder="Formulaire de contact ? Réservation en ligne ? Pages précises (à propos, boutique, prestations, blog…) ? Ou carte blanche sur la maquette, avec ajustements ensemble une fois qu'elle est prête ? Dites-nous tout ce qui compte."></textarea>
+            <span class="cf-hint">Plus vous en dites, plus l'aperçu sera proche de ce que vous imaginez.</span>
+          </div>
         </div>
 
         <div class="form-error" id="form-error" role="alert" aria-live="polite"></div>
@@ -903,8 +979,8 @@
   </div>
 </footer>
 
-<script src="/js/main.js?v=8.31" defer></script>
-<script src="/js/v8.js?v=8.31" defer></script>
-<script src="/js/contact.js?v=8.31" defer></script>
+<script src="/js/main.js?v=8.32" defer></script>
+<script src="/js/v8.js?v=8.32" defer></script>
+<script src="/js/contact.js?v=8.32" defer></script>
 </body>
 </html>

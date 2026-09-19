@@ -1336,6 +1336,139 @@
   color: var(--text-muted);
   letter-spacing: 0.04em;
 }
+
+/* --- Groupes numérotés dans le form --- */
+.cf-group {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-5) 0;
+  border-top: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+}
+.cf-group:first-of-type { border-top: 0; padding-top: 0; }
+.cf-group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.cf-step {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  font-weight: 700;
+}
+.cf-step-label {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.cf-hint {
+  font-family: var(--font-text);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* --- Radios en pilules --- */
+.cf-radio-row .cf-radio-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.cf-radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.cf-radio {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+.cf-radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.cf-radio span {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--font-text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0;
+  text-transform: none;
+  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+.cf-radio:hover span {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+  color: var(--text);
+}
+.cf-radio input[type="radio"]:checked + span {
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg));
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.cf-radio input[type="radio"]:focus-visible + span {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* --- Champ conditionnel (upload / URL) --- */
+.cf-conditional[hidden] { display: none; }
+.cf-conditional {
+  animation: cfSlideDown 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes cfSlideDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Upload de fichier --- */
+.cf-row input[type="file"] {
+  padding: 10px 12px;
+  cursor: pointer;
+  background: var(--bg);
+  border: 1px dashed color-mix(in srgb, var(--accent) 45%, var(--line));
+  border-radius: var(--br-md);
+  font-family: var(--font-text);
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+.cf-row input[type="file"]::file-selector-button {
+  padding: 6px 14px;
+  margin-right: 12px;
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  font-family: var(--font-text);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.cf-row input[type="file"]::file-selector-button:hover {
+  background: color-mix(in srgb, var(--accent) 82%, #000);
+}
+
 .contact-final-alt {
   margin-top: var(--sp-8);
   color: var(--text-dim);
