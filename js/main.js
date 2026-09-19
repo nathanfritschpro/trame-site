@@ -134,17 +134,21 @@
       el.classList.remove('reveal', 'reveal-delay-1', 'reveal-delay-2',
                           'reveal-delay-3', 'reveal-delay-4');
       if (el === heroTitle) {
-        splitWords(el, 0.06);
+        el.classList.add('hi-item', 'hi-item--title');
+        el.style.setProperty('--hi-d', '0.12s');
       } else {
         el.classList.add('hi-item');
         rank++;
-        el.style.setProperty('--hi-d', (0.22 + rank * 0.11).toFixed(2) + 's');
+        el.style.setProperty('--hi-d', (0.28 + rank * 0.11).toFixed(2) + 's');
       }
     });
 
     // Un h1 sans .reveal doit quand meme jouer, sinon il reste fige pendant
     // que tout le reste du hero s'anime autour de lui
-    if (heroTitle && !heroEls.includes(heroTitle)) splitWords(heroTitle, 0.06);
+    if (heroTitle && !heroEls.includes(heroTitle)) {
+      heroTitle.classList.add('hi-item', 'hi-item--title');
+      heroTitle.style.setProperty('--hi-d', '0.12s');
+    }
 
     // Les vignettes sont au-dessus du titre : elles entrent en premier, sinon
     // le regard descend puis doit remonter

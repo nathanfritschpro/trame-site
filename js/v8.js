@@ -20,11 +20,11 @@
       const viewportH = window.innerHeight;
       pairs.forEach(({ el, scope, dir }) => {
         const rect = scope.getBoundingClientRect();
+        // Skip hors viewport pour ne pas forcer un layout inutile
+        if (rect.bottom < -80 || rect.top > viewportH + 80) return;
         const totalDistance = viewportH + rect.height;
         const traveled = viewportH - rect.top;
         const progress = Math.max(0, Math.min(1, traveled / totalDistance));
-        // dir=+1 : de -30% (droite) a +30% (gauche) -- traverse en glissant vers la gauche a la lecture inverse
-        // dir=-1 : de +30% (gauche) a -30% (droite) -- traverse dans l'autre sens
         const shiftPct = dir * (-30 + progress * 60);
         el.style.setProperty('--ghost-shift', `${shiftPct}%`);
       });
@@ -177,7 +177,7 @@
   const update = () => {
     ticking = false;
     const rect = timeline.getBoundingClientRect();
-    // La "ligne de lecture" : le trait suit l'oeil, un peu sous le milieu
+    if (rect.bottom < -120 || rect.top > window.innerHeight + 120) return;
     const readLine = window.innerHeight * 0.8;
     const p = (readLine - rect.top) / Math.max(rect.height, 1);
     timeline.style.setProperty('--mt-p', Math.min(1, Math.max(0, p)).toFixed(4));
