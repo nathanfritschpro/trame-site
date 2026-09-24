@@ -6917,3 +6917,19 @@
     box-sizing: border-box;
   }
 }
+
+/* ============================================================
+   V8.60 · Advantages : uniformiser sur mobile (flush partout)
+   Desktop : padding par defaut (cards moyennes comme sites-internet)
+   Mobile : padding 0 (cards larges comme applications l'etait avant)
+   ============================================================ */
+@media (max-width: 720px) {
+  .advantages-inner {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .adv-grid {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
