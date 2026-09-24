@@ -5737,3 +5737,45 @@
   .sig-card h3 { font-size: 1.4rem; }
   .sig-big-stat { font-size: 2.8rem; }
 }
+
+/* ============================================================
+   V8.39 · Method v4 : centrer tout le contenu (titre + sous-titres + steps)
+   ============================================================ */
+.method--v4 .method-lead,
+.method--v4 .method-inner .eyebrow,
+.method--v4 .method-inner h2 {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.method--v4 .method-lead {
+  max-width: 720px;
+}
+
+/* Timeline : centrer titre ET sous-titre de chaque etape */
+.method--v4 .mt-body,
+.method--v4 .mt-body h3,
+.method--v4 .mt-body p,
+.method--v4 .mt-head {
+  text-align: center;
+}
+.method--v4 .mt-head {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.method--v4 .mt-body p {
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Pivot : contenu centre aussi */
+.method--v4 .mt-pivot-inner {
+  justify-content: center;
+  text-align: center;
+}
+.method--v4 .mt-pivot-inner span {
+  text-align: center !important;
+}
