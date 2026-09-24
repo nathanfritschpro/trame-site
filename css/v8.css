@@ -7002,3 +7002,73 @@
     padding-right: 9% !important;
   }
 }
+
+/* ============================================================
+   V8.63 · Fix carousel adv-grid : texte plus coupé, cards respirent
+   Le probleme sur applications venait de :
+   - overflow:hidden sur .adv-card qui rognait le texte
+   - .service-detail-inner qui ajoutait du padding non desire
+   - flex align stretch qui figeait toutes les hauteurs sans laisser respirer
+   ============================================================ */
+@media (max-width: 720px) {
+  /* Neutraliser les paddings des containers parents pour laisser le carousel prendre la pleine largeur */
+  .service-detail {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .service-detail-inner {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: 100% !important;
+  }
+  .service-detail-inner > .advantages-inner,
+  .service-detail > .advantages-inner {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+  /* Le eyebrow / h2 / lead au-dessus du carousel gardent un padding */
+  .service-detail-inner > .advantages-inner > .eyebrow,
+  .service-detail-inner > .advantages-inner > h2,
+  .service-detail-inner > .advantages-inner > .advantages-lead,
+  .advantages-inner > .eyebrow,
+  .advantages-inner > h2,
+  .advantages-inner > .advantages-lead {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  /* Le service-detail-block (Modevia, Prospune) reste avec du padding */
+  .service-detail-inner > .service-detail-block {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
+
+  /* Cards : sans overflow rognant, hauteur qui s'adapte au contenu */
+  .adv-card {
+    overflow: visible !important;
+    align-items: stretch;
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+  }
+  /* Chaque titre / paragraphe peut wrap normalement */
+  .adv-card h3 {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    word-wrap: break-word;
+  }
+  .adv-card p {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    word-wrap: break-word;
+  }
+
+  /* La piste : bien align:stretch pour cards de meme hauteur (la plus haute) */
+  .adv-grid,
+  .adv-grid--3 {
+    align-items: stretch !important;
+  }
+}
