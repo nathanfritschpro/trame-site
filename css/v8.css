@@ -5351,7 +5351,7 @@
   color: rgba(0, 0, 0, 0.55);
 }
 .offer-card h3 {
-  font-family: var(--font-serif, 'Instrument Serif', serif);
+  font-family: var(--font-display);
   font-size: 1.9rem;
   font-weight: 500;
   line-height: 1.1;
@@ -5376,7 +5376,7 @@
   border-bottom: 1px dashed rgba(0, 0, 0, 0.12);
 }
 .offer-card-value {
-  font-family: var(--font-serif, 'Instrument Serif', serif);
+  font-family: var(--font-display);
   font-size: 2rem;
   line-height: 1;
   color: var(--text);
@@ -5590,7 +5590,7 @@
   color: var(--accent);
 }
 .signature-sticky h2 {
-  font-family: var(--font-serif, 'Instrument Serif', serif);
+  font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3.2rem);
   line-height: 1.05;
   letter-spacing: -0.015em;
@@ -5669,7 +5669,7 @@
   color: var(--accent);
 }
 .sig-card h3 {
-  font-family: var(--font-serif, 'Instrument Serif', serif);
+  font-family: var(--font-display);
   font-size: 1.6rem;
   line-height: 1.15;
   letter-spacing: -0.005em;
@@ -5698,7 +5698,7 @@
 .sig-card--stat h3 strong { color: #FFC96B; font-weight: 500; }
 .sig-card--stat p { color: rgba(255, 255, 255, 0.78); }
 .sig-big-stat {
-  font-family: var(--font-serif, 'Instrument Serif', serif);
+  font-family: var(--font-display);
   font-size: 3.4rem;
   line-height: 1;
   color: #FFC96B;
@@ -6032,4 +6032,89 @@
   }
   .method--v4 .mt-num { font-size: 0.95rem !important; }
   .method--v4 .mt-step { padding-bottom: 32px; }
+}
+
+/* ============================================================
+   V8.44 · Offer cards : intertitres qui ressortent + polices site
+   ============================================================ */
+
+/* Intertitres Inclus / En option : bien detaches, en accent */
+.offer-card-h4 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase;
+  color: var(--accent) !important;
+  margin: 10px 0 -2px !important;
+  padding-top: 14px;
+  border-top: 1px solid rgba(47, 107, 216, 0.18);
+}
+.offer-card-h4::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.offer-card-h4 span {
+  display: inline-block;
+}
+.offer-card-h4--alt {
+  color: rgba(0, 0, 0, 0.55) !important;
+  border-top-color: rgba(0, 0, 0, 0.1);
+}
+.offer-card-h4--alt::before {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* Cartes offer : ecart resserre entre blocs */
+.offer-card { gap: 14px !important; }
+.offer-card-head { gap: 6px !important; }
+.offer-card-hook {
+  font-family: var(--font-text);
+  font-size: 0.92rem !important;
+  color: rgba(0,0,0,0.72) !important;
+  font-weight: 500;
+}
+.offer-card-price {
+  padding: 12px 0 10px !important;
+}
+.offer-card-list li, .offer-card-options li {
+  font-size: 0.88rem !important;
+  line-height: 1.45 !important;
+}
+.offer-card-list, .offer-card-options {
+  gap: 6px !important;
+}
+
+/* Ajuster h3 en Space Grotesk pour matcher le reste du site */
+.offer-card h3 {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  font-size: 1.4rem !important;
+  letter-spacing: -0.015em;
+}
+.offer-card-value {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  font-size: 1.7rem !important;
+  letter-spacing: -0.02em;
+}
+
+/* Ancien offer-card-bonus : plus utilise, on le masque au cas ou */
+.offer-card-bonus { display: none !important; }
+
+/* Sig-cards : uniformiser police */
+.sig-card h3 {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+}
+.sig-big-stat {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
 }
