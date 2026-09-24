@@ -3372,8 +3372,6 @@
   .hero-tile {
     aspect-ratio: 3 / 4;
     border-radius: 10px;
-    animation: none !important;
-    transform: rotate(var(--tilt, 0deg)) !important;
     box-shadow: 0 4px 10px -4px rgba(0,0,0,0.2);
     overflow: hidden;
   }
