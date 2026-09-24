@@ -6497,3 +6497,69 @@
   .hero-v8-ctas { margin-bottom: 32px !important; }
   .hero-tiles { margin-bottom: calc(var(--sp-8) + 20px) !important; gap: 8px !important; }
 }
+
+/* ============================================================
+   V8.49 · Project pages : preview cliquable + prospune cover
+   ============================================================ */
+
+/* Wrap anchor du preview */
+.project-window-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  border-radius: 18px;
+}
+.project-window-link:hover {
+  transform: translateY(-4px);
+}
+.project-window-link:hover .project-window {
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.25);
+}
+
+/* Cover placeholder Prospune */
+.project-screenshot--placeholder {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1A1A1A 0%, #2F6BD8 100%);
+  color: #fff;
+}
+.prospune-cover {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  text-align: center;
+  padding: 40px 24px;
+  max-width: 640px;
+}
+.prospune-cover-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.prospune-cover-brand .dot { color: var(--accent); }
+.prospune-cover-tag {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+  font-weight: 500;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  line-height: 1.35;
+}
+.prospune-cover-cta {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
