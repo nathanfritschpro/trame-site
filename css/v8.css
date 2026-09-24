@@ -6888,3 +6888,34 @@
     z-index: 12 !important;
   }
 }
+
+/* ============================================================
+   V8.57 · Notre methode : forcer padding gauche/droite pour que le texte
+   ne passe JAMAIS sous la ligne / marker, tout en restant centre
+   ============================================================ */
+@media (max-width: 720px) {
+  .method--v4 .mt-body {
+    padding-left: 44px !important;
+    padding-right: 44px !important;
+    box-sizing: border-box;
+  }
+  .method--v4 .mt-body h3,
+  .method--v4 .mt-body p,
+  .method--v4 .mt-head {
+    max-width: 100% !important;
+  }
+  /* Pivot inner : marges laterales pour ne pas coller au bord gauche non plus */
+  .method--v4 .mt-pivot .mt-pivot-inner {
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+  }
+}
+
+/* Desktop : meme securite symmetrique */
+@media (min-width: 721px) {
+  .method--v4 .mt-body {
+    padding-left: 64px !important;
+    padding-right: 64px !important;
+    box-sizing: border-box;
+  }
+}
