@@ -6933,3 +6933,72 @@
     padding-right: 12px;
   }
 }
+
+/* ============================================================
+   V8.62 · PHONE : advantages 4/3 vignettes -> carousel horizontal swipe
+   Sur mobile, .adv-grid devient une piste scroll-snap comme .offer-trio.
+   Concerne : Sites internet, Applications metier, SEO
+   ============================================================ */
+@media (max-width: 720px) {
+  .adv-grid,
+  .adv-grid--3 {
+    display: flex !important;
+    flex-direction: row !important;
+    grid-template-columns: none !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-inline: 12%;
+    padding: 16px 12% 24px !important;
+    gap: 14px !important;
+    scrollbar-width: none;
+    max-width: 100%;
+  }
+  .adv-grid::-webkit-scrollbar,
+  .adv-grid--3::-webkit-scrollbar {
+    display: none;
+  }
+  .adv-card {
+    flex: 0 0 76% !important;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    padding: 22px 20px !important;
+    box-sizing: border-box;
+  }
+  .adv-card h3 {
+    font-size: 1.05rem !important;
+  }
+  .adv-card p {
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+  }
+  .adv-num {
+    font-size: 0.72rem !important;
+  }
+  .adv-icon {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 10px !important;
+  }
+  .adv-icon svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  /* Retirer le padding lateral 0 sur advantages-inner (v8.60) pour que le peek fonctionne */
+  .advantages-inner {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .adv-card {
+    flex-basis: 82% !important;
+  }
+  .adv-grid,
+  .adv-grid--3 {
+    scroll-padding-inline: 9% !important;
+    padding-left: 9% !important;
+    padding-right: 9% !important;
+  }
+}
