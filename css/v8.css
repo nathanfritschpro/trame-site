@@ -5552,3 +5552,188 @@
   font-family: "Times New Roman", serif !important;
   color: #3a2f20 !important;
 }
+
+/* ============================================================
+   V8.37b · Signature v4 (deroule progressif au scroll)
+   Colonne gauche sticky + cartes qui defilent une par une a droite
+   ============================================================ */
+.signature--v4 {
+  padding: 110px 0 140px;
+  background: #F5F1EA;
+}
+.signature-inner-v4 {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+  gap: 80px;
+  align-items: start;
+}
+
+/* GAUCHE : sticky pendant tout le scroll de la section */
+.signature-left-v4 {
+  position: relative;
+}
+.signature-sticky {
+  position: sticky;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.signature-sticky .eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.signature-sticky h2 {
+  font-family: var(--font-serif, 'Instrument Serif', serif);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  font-weight: 500;
+  color: var(--text);
+  margin: 0;
+}
+.signature-sticky .signature-lead {
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.75);
+  margin: 0;
+}
+.signature-sticky .u-accent {
+  position: relative;
+  display: inline-block;
+}
+.signature-sticky .u-accent::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transform-origin: left center;
+  animation: sig-underline 1.2s 0.6s ease-out both;
+  transform: scaleX(0);
+}
+@keyframes sig-underline {
+  to { transform: scaleX(1); }
+}
+.signature-sticky .signature-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 12px 20px;
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
+  width: fit-content;
+  transition: background 0.24s ease, color 0.24s ease;
+}
+.signature-sticky .signature-more:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* DROITE : cartes empilees avec grand espacement pour reveal individuel */
+.signature-right-v4 {
+  display: flex;
+  flex-direction: column;
+  gap: 34vh;
+  padding-bottom: 30vh;
+}
+.sig-card {
+  position: relative;
+  padding: 34px 32px 30px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 20px 50px -30px rgba(0, 0, 0, 0.18);
+}
+.sig-card-num {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.sig-card h3 {
+  font-family: var(--font-serif, 'Instrument Serif', serif);
+  font-size: 1.6rem;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  font-weight: 500;
+  color: var(--text);
+  margin: 0;
+}
+.sig-card h3 strong { font-weight: 500; color: var(--accent); }
+.sig-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.72);
+  margin: 0;
+}
+.sig-card--intro {
+  background: linear-gradient(180deg, #fff 0%, rgba(47, 107, 216, 0.05) 100%);
+  border-color: rgba(47, 107, 216, 0.2);
+}
+.sig-card--stat {
+  background: linear-gradient(160deg, var(--text) 0%, #2c2c2c 100%);
+  border-color: transparent;
+  color: #fff;
+}
+.sig-card--stat .sig-card-num { color: rgba(255, 255, 255, 0.65); }
+.sig-card--stat h3 { color: #fff; }
+.sig-card--stat h3 strong { color: #FFC96B; font-weight: 500; }
+.sig-card--stat p { color: rgba(255, 255, 255, 0.78); }
+.sig-big-stat {
+  font-family: var(--font-serif, 'Instrument Serif', serif);
+  font-size: 3.4rem;
+  line-height: 1;
+  color: #FFC96B;
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: -0.05em;
+  font-weight: 500;
+}
+.sig-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: #FFC96B;
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-top: 8px;
+}
+.sig-card-cta:hover { color: #fff; }
+
+/* Responsive : sticky abandonne, tout se lit en pile normale */
+@media (max-width: 960px) {
+  .signature-inner-v4 {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+  .signature-sticky {
+    position: static;
+    gap: 16px;
+  }
+  .signature-right-v4 {
+    gap: 22px;
+    padding-bottom: 0;
+  }
+  .sig-card { padding: 28px 24px 26px; }
+  .sig-card h3 { font-size: 1.4rem; }
+  .sig-big-stat { font-size: 2.8rem; }
+}
