@@ -6231,3 +6231,237 @@
   .offer-card { flex-basis: 82% !important; }
   .offer-trio { padding-left: 9% !important; padding-right: 9% !important; scroll-padding: 0 9%; }
 }
+
+/* ============================================================
+   V8.47 · Ajustements desktop + gros pack mobile
+   ============================================================ */
+
+/* ----- DESKTOP + MOBILE : offer card h3 plus gros que le prix ----- */
+.offer-card h3 {
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--text) !important;
+}
+.offer-card-value {
+  font-size: 1.35rem !important;
+  font-weight: 700 !important;
+}
+.offer-card--featured .offer-card-value { color: var(--accent) !important; }
+
+/* ----- Clickable work-card via stretched-link pattern ----- */
+.work-card { position: relative; }
+.work-card .work-domain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.work-card > *:not(.work-domain) {
+  position: relative;
+  z-index: 2;
+}
+.work-card { cursor: pointer; }
+
+/* ----- MOBILE ONLY ----- */
+@media (max-width: 720px) {
+
+  /* 1. Ghost text "realisations" reactive sur mobile */
+  .works-head--v3 .works-head-ghost,
+  .works-head--v3 #works-ghost,
+  #works-ghost {
+    display: block !important;
+    position: absolute;
+    right: -30px;
+    top: 40%;
+    font-size: 3.2rem !important;
+    color: rgba(0, 0, 0, 0.05);
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    pointer-events: none;
+    z-index: 0;
+    white-space: nowrap;
+    transform: translateY(-50%);
+  }
+  .works-head--v3 {
+    position: relative;
+    overflow: hidden;
+    padding-right: 20px;
+  }
+  .works-head--v3 .works-head-title { position: relative; z-index: 1; }
+
+  /* 2. CTAs Portfolio cote a cote */
+  .works-cta--v2 {
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 0 16px !important;
+  }
+  .works-cta--v2 .btn {
+    width: auto !important;
+    flex: 1 1 0;
+    padding: 12px 14px !important;
+    font-size: 0.78rem !important;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .works-cta--v2 .btn .arrow { width: 14px !important; height: 14px !important; }
+
+  /* 3. Signature v3 : reorder titre / vignette / lead / checks */
+  .signature--v3 .signature-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  .signature--v3 .signature-left {
+    display: contents !important;
+  }
+  .signature--v3 .signature-left .eyebrow { order: 1; }
+  .signature--v3 .signature-left h2 { order: 2; font-size: 2.4rem !important; line-height: 1.02 !important; letter-spacing: -0.04em !important; margin: 0 !important; }
+  .signature--v3 .signature-right { order: 3; }
+  .signature--v3 .signature-lead { order: 4; margin: 0 !important; font-size: 0.98rem !important; line-height: 1.5 !important; }
+  .signature--v3 .signature-checks { order: 5; margin: 0 !important; }
+  .signature--v3 .signature-more { order: 6; margin-top: 8px !important; }
+
+  /* Chaque check sur une ligne */
+  .signature-checks li {
+    font-size: 0.82rem !important;
+    line-height: 1.35 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 22px !important;
+  }
+  .signature-checks {
+    display: flex;
+    flex-direction: column;
+    gap: 6px !important;
+  }
+
+  /* Vignette 88% adaptee */
+  .signature--v3 .validation-box {
+    padding: 20px 22px !important;
+  }
+  .signature--v3 .validation-box h3 {
+    font-size: 1.15rem !important;
+    line-height: 1.25 !important;
+  }
+  .signature--v3 .validation-box p {
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* 4. Titres de section a 2.4rem partout comme "Le travail d'abord" */
+  .method--v4 .method-inner h2,
+  .offer--v4 .offer-inner h2 {
+    font-size: 2.4rem !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  /* 5. Ruler v2 : deux blocs cote a cote sur mobile */
+  .method-ruler-v2 {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  .method-ruler-v2 .mrv-arrow { display: none !important; }
+  .mrv-seg { padding: 12px 12px !important; }
+  .mrv-badge { font-size: 0.56rem !important; padding: 2px 6px !important; }
+  .mrv-amount { font-size: 0.82rem !important; line-height: 1.2 !important; }
+  .mrv-label { font-size: 0.7rem !important; line-height: 1.3 !important; }
+
+  /* 6. Frise verticale : plus a l'extremite gauche */
+  .method--v4 .method-timeline {
+    padding-left: 32px !important;
+  }
+  .method--v4 .method-timeline::before { left: 10px !important; }
+  .method--v4 .method-timeline::after { left: 10px !important; }
+  .method--v4 .mt-step {
+    grid-template-columns: 32px 1fr !important;
+    gap: 10px !important;
+  }
+  .method--v4 .mt-marker {
+    width: 32px !important;
+    height: 32px !important;
+    box-shadow: 0 0 0 3px var(--bg);
+  }
+  .method--v4 .mt-num { font-size: 0.65rem !important; }
+
+  /* 7. Texte des etapes CENTRE */
+  .method--v4 .mt-body {
+    text-align: center !important;
+  }
+  .method--v4 .mt-body h3, .method--v4 .mt-body p {
+    text-align: center !important;
+  }
+  .method--v4 .mt-head {
+    justify-content: center !important;
+  }
+
+  /* 8. Pivot : recadre sur toute la largeur, ne surpasse pas la ligne */
+  .method--v4 .mt-pivot {
+    padding-left: 0 !important;
+    margin-left: -32px !important;
+    padding-right: 0 !important;
+    padding-bottom: 22px !important;
+  }
+  .method--v4 .mt-pivot .mt-pivot-inner {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: center !important;
+    padding: 14px 16px !important;
+    flex-direction: column;
+    gap: 8px !important;
+  }
+  .method--v4 .mt-pivot-inner span { text-align: center !important; }
+
+  /* 9. Offer trio : scroll-snap avec Sites au centre par defaut */
+  .offer-trio {
+    scroll-snap-type: x mandatory !important;
+    scroll-padding-inline: 12% !important;
+    padding-left: 12% !important;
+    padding-right: 12% !important;
+  }
+  .offer-card {
+    scroll-snap-align: center !important;
+    scroll-snap-stop: always !important;
+    flex: 0 0 76% !important;
+  }
+
+  /* Subtitle offer un peu plus discret */
+  .offer--v4 .offer-lead {
+    font-size: 0.88rem !important;
+    line-height: 1.5;
+  }
+
+  /* 10. Legend obligatoire : force une ligne */
+  .cf-legend {
+    white-space: nowrap;
+    font-size: 0.72rem !important;
+    text-align: center !important;
+    padding: 8px 6px !important;
+  }
+
+  /* 11. Contact final subtitle -> pills */
+  .contact-final--v2 .contact-final-lead { display: none !important; }
+  .contact-final-pills {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 6px 0 8px;
+  }
+  .contact-final-pills span {
+    font-size: 0.7rem;
+    padding: 6px 10px;
+    background: rgba(47, 107, 216, 0.08);
+    color: var(--accent);
+    border-radius: 999px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+}
+
+/* Defaut desktop : les pills mobiles sont masquees */
+.contact-final-pills { display: none; }

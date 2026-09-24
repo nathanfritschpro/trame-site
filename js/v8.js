@@ -219,3 +219,44 @@
     });
   });
 })();
+
+/* ============================================================
+   V8.47 · Mobile : centrer Sites (featured) au chargement du carousel
+   ============================================================ */
+(function offerCarousel(){
+  const trio = document.querySelector('.offer-trio');
+  if (!trio) return;
+  const featured = trio.querySelector('.offer-card--featured');
+  if (!featured) return;
+  const centerIt = () => {
+    if (window.innerWidth > 720) {
+      trio.scrollLeft = 0;
+      return;
+    }
+    // Attendre layout, puis positionner featured au centre
+    const trioRect = trio.getBoundingClientRect();
+    const cardRect = featured.getBoundingClientRect();
+    const currentLeft = trio.scrollLeft;
+    const target = currentLeft + cardRect.left - trioRect.left - (trioRect.width - cardRect.width) / 2;
+    trio.scrollTo({ left: target, behavior: 'instant' in trio.scrollTo ? 'instant' : 'auto' });
+  };
+  requestAnimationFrame(centerIt);
+  window.addEventListener('resize', centerIt);
+})();
+
+/* ============================================================
+   V8.47 · Work-cards cliquables (utile mobile surtout)
+   Delegue le clic vers le lien .work-domain de la meme carte.
+   ============================================================ */
+(function workCardsClickable(){
+  document.querySelectorAll('.work-card').forEach(card => {
+    const link = card.querySelector('.work-domain');
+    if (!link) return;
+    card.addEventListener('click', (e) => {
+      // Si un lien direct a ete clique, laisser faire
+      if (e.target.closest('a')) return;
+      const href = link.getAttribute('href');
+      if (href) window.location.href = href;
+    });
+  });
+})();
