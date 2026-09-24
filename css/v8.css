@@ -5885,3 +5885,47 @@
   margin: 2px 0 !important;
   font-family: "Times New Roman", Times, serif !important;
 }
+
+/* ============================================================
+   V8.41 · Signature v4 : compacter, moins d'espace, harmoniser
+   ============================================================ */
+.signature--v4 {
+  padding: 90px 0 100px;
+}
+.signature-inner-v4 {
+  gap: 60px;
+}
+.signature-right-v4 {
+  gap: 18px !important;
+  padding-bottom: 0 !important;
+}
+.sig-card {
+  padding: 26px 28px 24px;
+  gap: 10px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px -20px rgba(0, 0, 0, 0.15);
+}
+.sig-card h3 {
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+.sig-card p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.sig-card-num {
+  font-size: 0.66rem;
+}
+.sig-card--stat {
+  padding: 30px 28px 28px;
+}
+.sig-big-stat {
+  font-size: 2.6rem;
+}
+@media (max-width: 960px) {
+  .signature--v4 { padding: 70px 0 80px; }
+  .signature-inner-v4 { gap: 32px; }
+  .signature-right-v4 { gap: 14px !important; }
+  .sig-card { padding: 22px 22px 20px; }
+  .sig-card h3 { font-size: 1.25rem; }
+}
