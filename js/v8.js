@@ -191,3 +191,31 @@
   window.addEventListener('resize', onScroll);
   update();
 })();
+
+/* ============================================================
+   V8.37 · Method tabs (Sites / Apps / SEO)
+   ============================================================ */
+(function methodTabs(){
+  const tabs = document.querySelectorAll('.method-tab[data-mtab]');
+  const timelines = document.querySelectorAll('.method-timeline[data-mtimeline]');
+  if (!tabs.length || !timelines.length) return;
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.mtab;
+      tabs.forEach(t => {
+        const active = t === tab;
+        t.classList.toggle('is-active', active);
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      timelines.forEach(tl => {
+        const match = tl.dataset.mtimeline === target;
+        tl.classList.toggle('is-active', match);
+        if (match) {
+          tl.removeAttribute('hidden');
+        } else {
+          tl.setAttribute('hidden', '');
+        }
+      });
+    });
+  });
+})();
