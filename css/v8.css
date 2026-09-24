@@ -6465,3 +6465,35 @@
 
 /* Defaut desktop : les pills mobiles sont masquees */
 .contact-final-pills { display: none; }
+
+/* ============================================================
+   V8.48 · Hero mobile : reactiver le float des tuiles + aerer
+   ============================================================ */
+@media (max-width: 900px) {
+  /* Re-autoriser l'animation heroTileFloat en override du bloc precedent */
+  .hero-tile {
+    animation: heroTileFloat 4.8s ease-in-out infinite !important;
+    animation-delay: var(--float-delay, 0s) !important;
+    /* Retirer le transform !important pour que l'animation prenne le controle */
+    transform: none;
+  }
+  /* Reduction du deplacement pour rester proportionnel a la taille mobile */
+  @keyframes heroTileFloat {
+    0%, 100% { transform: rotate(var(--tilt, 0deg)) translateY(0); }
+    50%      { transform: rotate(var(--tilt, 0deg)) translateY(-10px); }
+  }
+
+  /* Aerer le hero : plus de padding vertical, plus de gap avant les tuiles */
+  .hero-v8 {
+    padding: calc(var(--sp-6) + 60px) 24px calc(var(--sp-8) + 16px) !important;
+  }
+  .hero-v8-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .hero-v8-title { margin-bottom: 18px !important; }
+  .hero-v8-sub { margin-bottom: 20px !important; }
+  .hero-v8-ctas { margin-bottom: 32px !important; }
+  .hero-tiles { margin-bottom: calc(var(--sp-8) + 20px) !important; gap: 8px !important; }
+}
