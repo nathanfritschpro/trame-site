@@ -6800,3 +6800,91 @@
     z-index: 9;
   }
 }
+
+/* ============================================================
+   V8.56 · Notre methode PHONE : marker superpose ligne + texte centre plein largeur
+   ============================================================ */
+@media (max-width: 720px) {
+
+  /* Timeline : padding-left minimal, ligne collee au bord */
+  .method--v4 .method-timeline {
+    padding-left: 0 !important;
+    position: relative;
+  }
+  .method--v4 .method-timeline::before {
+    left: 16px !important;
+  }
+  .method--v4 .method-timeline::after {
+    left: 16px !important;
+  }
+
+  /* Etape : block plein largeur, marker superpose ligne (absolute) */
+  .method--v4 .mt-step {
+    display: block !important;
+    grid-template-columns: none !important;
+    padding-left: 0 !important;
+    padding-bottom: 26px !important;
+    position: relative !important;
+  }
+  .method--v4 .mt-marker {
+    position: absolute !important;
+    left: 0 !important;
+    top: 6px !important;
+    margin-left: 0 !important;
+    width: 32px !important;
+    height: 32px !important;
+    flex: none !important;
+    z-index: 3 !important;
+    box-shadow: 0 0 0 3px var(--bg) !important;
+  }
+  .method--v4 .mt-num {
+    font-size: 0.7rem !important;
+  }
+
+  /* Body : plein largeur, texte centre */
+  .method--v4 .mt-body {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+    text-align: center !important;
+    flex: none !important;
+  }
+  .method--v4 .mt-body h3,
+  .method--v4 .mt-body p {
+    text-align: center !important;
+  }
+  .method--v4 .mt-head {
+    justify-content: center !important;
+  }
+
+  /* Pivot : plein largeur, au-dessus de la ligne */
+  .method--v4 .mt-pivot {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    padding-bottom: 26px !important;
+    position: relative;
+    z-index: 10;
+  }
+  .method--v4 .mt-pivot::before {
+    left: 0 !important;
+    width: 40px !important;
+    top: -8px !important;
+    bottom: -8px !important;
+    background: var(--bg) !important;
+    z-index: 1;
+  }
+  .method--v4 .mt-pivot .mt-pivot-inner {
+    margin-left: 12px !important;
+    margin-right: 12px !important;
+    z-index: 2;
+  }
+  .method--v4 .mt-pivot--v2 .mt-pivot-badge {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 12 !important;
+  }
+}
