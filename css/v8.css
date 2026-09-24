@@ -5779,3 +5779,109 @@
 .method--v4 .mt-pivot-inner span {
   text-align: center !important;
 }
+
+/* ============================================================
+   V8.40 · Before site : ROSE basique tres ancien (override v8.37)
+   Times New Roman, pas de degradés, pas d'effets, thème rose simple
+   ============================================================ */
+.old-site {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  font-family: "Times New Roman", Times, serif !important;
+}
+.old-header {
+  background: #FFFFFF !important;
+  border-bottom: 2px solid #CC3399 !important;
+}
+.old-header-top {
+  background: #FFCCE5 !important;
+  color: #000 !important;
+  padding: 4px 20px !important;
+  border-bottom: 1px solid #CC3399 !important;
+  font-family: "Times New Roman", Times, serif !important;
+  font-weight: normal !important;
+}
+.old-header-main {
+  background: #FFFFFF !important;
+  padding: 10px 20px !important;
+  border-bottom: none !important;
+}
+.old-logo {
+  font-family: "Times New Roman", Times, serif !important;
+  color: #CC3399 !important;
+  font-size: 22px !important;
+  font-weight: bold !important;
+  text-shadow: none !important;
+  letter-spacing: 0 !important;
+  text-transform: none;
+}
+.old-nav {
+  font-family: "Times New Roman", Times, serif !important;
+  color: #000 !important;
+  font-size: 12px !important;
+}
+.old-nav a {
+  color: #0000EE !important;
+  text-decoration: underline !important;
+  font-weight: normal !important;
+}
+.old-banner {
+  padding: 16px 20px !important;
+  background: #FFCCE5 !important;
+  border-top: none !important;
+  color: #000 !important;
+  text-align: center !important;
+}
+.old-slider-dots {
+  color: #000 !important;
+  font-family: "Times New Roman", Times, serif !important;
+  font-size: 12px !important;
+}
+.old-banner-title {
+  font-family: "Times New Roman", Times, serif !important;
+  font-size: 20px !important;
+  color: #CC3399 !important;
+  font-weight: bold !important;
+  text-shadow: none !important;
+  letter-spacing: 0 !important;
+  font-style: normal !important;
+}
+.old-banner-sub {
+  font-family: "Times New Roman", Times, serif !important;
+  font-size: 13px !important;
+  color: #000 !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+}
+.old-content {
+  background: #FFFFFF !important;
+}
+.old-h2 {
+  font-family: "Times New Roman", Times, serif !important;
+  color: #CC3399 !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  border-bottom: 1px solid #CC3399 !important;
+  padding-bottom: 2px !important;
+  margin: 12px 0 6px !important;
+}
+.old-p {
+  font-family: "Times New Roman", Times, serif !important;
+  color: #000 !important;
+  font-size: 12px !important;
+  text-align: left !important;
+  margin: 0 0 8px !important;
+  font-style: normal !important;
+}
+.old-list {
+  font-family: "Times New Roman", Times, serif !important;
+  color: #000 !important;
+  font-size: 12px !important;
+  list-style: disc !important;
+  padding-left: 20px !important;
+  margin: 4px 0 !important;
+}
+.old-list li {
+  margin: 2px 0 !important;
+  font-family: "Times New Roman", Times, serif !important;
+}
