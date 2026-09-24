@@ -6627,3 +6627,106 @@
     overflow: hidden;
   }
 }
+
+/* ============================================================
+   V8.51 · Method mobile : center + ligne collee gauche + pivot propre
+   Signature checks : nouveaux textes courts sans ellipsis
+   ============================================================ */
+@media (max-width: 720px) {
+
+  /* Presence digitale : checks courts, pas de coupure */
+  .signature-checks li {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Method : ligne verticale collee tres a gauche */
+  .method--v4 .method-timeline {
+    padding-left: 44px !important;
+  }
+  .method--v4 .method-timeline::before {
+    left: 20px !important;
+  }
+  .method--v4 .method-timeline::after {
+    left: 20px !important;
+  }
+
+  /* Etapes : marker sur la ligne, body prend le reste, texte CENTRE */
+  .method--v4 .mt-step {
+    display: flex !important;
+    flex-direction: row !important;
+    grid-template-columns: none !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    padding-bottom: 26px !important;
+  }
+  .method--v4 .mt-marker {
+    width: 40px !important;
+    height: 40px !important;
+    margin-left: -20px !important;
+    flex: 0 0 40px !important;
+    box-shadow: 0 0 0 4px var(--bg) !important;
+  }
+  .method--v4 .mt-num {
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+  }
+  .method--v4 .mt-body {
+    flex: 1 1 auto !important;
+    text-align: center !important;
+    max-width: 100% !important;
+    padding-top: 4px !important;
+  }
+  .method--v4 .mt-body h3,
+  .method--v4 .mt-body p {
+    text-align: center !important;
+  }
+  .method--v4 .mt-head {
+    justify-content: center !important;
+  }
+
+  /* Pivot : couvre la ligne verticale avec un fond propre */
+  .method--v4 .mt-pivot {
+    padding-left: 0 !important;
+    margin-left: -44px !important;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    padding-bottom: 26px !important;
+    position: relative;
+    z-index: 5;
+  }
+  .method--v4 .mt-pivot::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 26px;
+    width: 44px;
+    background: var(--bg);
+    z-index: 1;
+  }
+  .method--v4 .mt-pivot .mt-pivot-inner {
+    position: relative;
+    z-index: 2;
+    margin: 0 12px !important;
+    padding: 16px 18px !important;
+    text-align: center !important;
+    flex-direction: column;
+    gap: 8px !important;
+  }
+  .method--v4 .mt-pivot-inner svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  .method--v4 .mt-pivot-inner span {
+    text-align: center !important;
+    font-size: 0.88rem !important;
+    line-height: 1.45 !important;
+  }
+  .method--v4 .mt-pivot--v2 .mt-pivot-badge {
+    top: -10px !important;
+    left: calc(50% + 22px);
+  }
+}
