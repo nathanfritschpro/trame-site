@@ -6730,3 +6730,73 @@
     left: calc(50% + 22px);
   }
 }
+
+/* ============================================================
+   V8.55 · Notre methode DESKTOP : text centre + marker superpose ligne + pivot au-dessus ligne
+   Applique >= 721px pour ne pas casser le pack mobile
+   ============================================================ */
+@media (min-width: 721px) {
+
+  /* Etape : marker superpose sur la ligne, body prend toute la largeur, texte centre */
+  .method--v4 .mt-step {
+    position: relative !important;
+    display: block !important;
+    grid-template-columns: none !important;
+    padding-left: 0 !important;
+    padding-bottom: var(--sp-10);
+  }
+  .method--v4 .mt-marker {
+    position: absolute !important;
+    left: 0 !important;
+    top: 10px !important;
+    width: 48px !important;
+    height: 48px !important;
+    z-index: 3 !important;
+    box-shadow: 0 0 0 4px var(--bg);
+  }
+  .method--v4 .mt-body {
+    width: 100% !important;
+    max-width: 720px !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    padding-left: 0 !important;
+    padding-top: 0 !important;
+  }
+  .method--v4 .mt-body h3,
+  .method--v4 .mt-body p {
+    text-align: center !important;
+  }
+  .method--v4 .mt-head {
+    justify-content: center !important;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* Pivot : par-dessus la ligne bleue (elle passe derriere) */
+  .method--v4 .mt-pivot,
+  .method--v4 .mt-pivot--v2 {
+    position: relative !important;
+    z-index: 10 !important;
+  }
+  .method--v4 .mt-pivot-inner {
+    position: relative;
+    z-index: 11;
+    background: linear-gradient(135deg, rgba(47, 107, 216, 0.1), rgba(47, 107, 216, 0.05)),
+                var(--bg) !important;
+  }
+  .method--v4 .mt-pivot--v2 .mt-pivot-badge {
+    z-index: 12 !important;
+  }
+  /* Petit halo bg autour de la ligne pour l'effacer visuellement derriere la vignette pivot */
+  .method--v4 .mt-pivot::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -8px;
+    bottom: -8px;
+    width: 48px;
+    background: var(--bg);
+    z-index: 9;
+  }
+}
