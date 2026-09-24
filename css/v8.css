@@ -6014,3 +6014,220 @@
   font-family: var(--font-display) !important;
   font-weight: 700 !important;
 }
+
+/* ============================================================
+   V8.46 · Responsive PHONE global : compacter, plus horizontal
+   Vise < 720px et surtout < 520px
+   ============================================================ */
+
+@media (max-width: 720px) {
+
+  /* -------- Notre methode : tabs HORIZONTAUX et petits -------- */
+  .method-tabs {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 999px !important;
+    padding: 4px !important;
+    gap: 2px !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .method-tabs::-webkit-scrollbar { display: none; }
+  .method-tab {
+    flex: 1 1 auto !important;
+    justify-content: center !important;
+    padding: 9px 10px !important;
+    border-radius: 999px !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap;
+    gap: 5px !important;
+  }
+  .method-tab .mtab-icon { display: none; }
+
+  /* -------- Notre methode : etapes plus compactes -------- */
+  .method--v4 .method-inner { padding: 0 18px; }
+  .method--v4 .method-timeline { padding-left: 42px !important; }
+  .method--v4 .method-timeline::before { left: 20px !important; }
+  .method--v4 .method-timeline::after { left: 20px !important; }
+  .method--v4 .mt-step {
+    grid-template-columns: 40px 1fr !important;
+    gap: 12px !important;
+    padding-bottom: 22px !important;
+  }
+  .method--v4 .mt-marker {
+    width: 40px !important;
+    height: 40px !important;
+    box-shadow: 0 0 0 4px var(--bg);
+  }
+  .method--v4 .mt-num {
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+  }
+  .method--v4 .mt-head {
+    gap: 6px !important;
+    margin-bottom: 4px !important;
+    justify-content: flex-start !important;
+  }
+  .method--v4 .mt-head .mt-when,
+  .method--v4 .mt-head .mt-cost {
+    font-size: 0.7rem !important;
+    padding: 3px 8px !important;
+  }
+  .method--v4 .mt-body {
+    text-align: left !important;
+    max-width: none !important;
+    padding-top: 0 !important;
+  }
+  .method--v4 .mt-body h3 {
+    font-size: 1.05rem !important;
+    line-height: 1.25 !important;
+    text-align: left !important;
+    margin: 0 0 4px !important;
+  }
+  .method--v4 .mt-body p {
+    font-size: 0.86rem !important;
+    line-height: 1.45 !important;
+    text-align: left !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+  .method--v4 .mt-pivot {
+    padding-bottom: 22px !important;
+    padding-left: 0 !important;
+    margin-left: -42px;
+    padding-right: 0;
+  }
+  .method--v4 .mt-pivot .mt-pivot-inner {
+    padding: 14px 16px !important;
+    gap: 10px !important;
+    margin-left: 18px;
+    margin-right: 0;
+    text-align: left !important;
+    max-width: none;
+  }
+  .method--v4 .mt-pivot-inner svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .method--v4 .mt-pivot-inner span {
+    text-align: left !important;
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
+  }
+  .method--v4 .mt-pivot--v2 .mt-pivot-badge {
+    font-size: 0.62rem !important;
+    padding: 3px 10px !important;
+    top: -8px;
+  }
+
+  /* Ruler v2 mobile : compact horizontal si assez de place, sinon empile */
+  .method-ruler-v2 { gap: 8px !important; margin-bottom: 26px !important; }
+  .mrv-seg {
+    padding: 14px 16px !important;
+    border-radius: 14px !important;
+    gap: 4px !important;
+  }
+  .mrv-badge { font-size: 0.62rem !important; padding: 3px 8px !important; }
+  .mrv-amount { font-size: 0.92rem !important; }
+  .mrv-label { font-size: 0.76rem !important; }
+  .mrv-arrow { padding: 2px 0 !important; }
+
+  /* Titre section + lead */
+  .method--v4 .method-inner h2 { font-size: 1.7rem !important; line-height: 1.15; }
+  .method--v4 .method-lead { font-size: 0.92rem !important; }
+
+  /* -------- Formules : CAROUSEL horizontal avec peek gauche/droite -------- */
+  .offer--v4 .offer-inner { padding: 0 !important; }
+  .offer--v4 > .offer-inner > .eyebrow,
+  .offer--v4 > .offer-inner > h2,
+  .offer--v4 > .offer-inner > .offer-lead { padding: 0 20px; }
+  .offer--v4 .offer-inner h2 { font-size: 1.7rem !important; }
+
+  .offer-trio {
+    display: flex !important;
+    flex-direction: row !important;
+    grid-template-columns: none !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding: 0 12%;
+    padding: 20px 12% 30px !important;
+    gap: 14px !important;
+    margin-top: 30px !important;
+    scrollbar-width: none;
+  }
+  .offer-trio::-webkit-scrollbar { display: none; }
+  .offer-card {
+    flex: 0 0 76% !important;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    padding: 24px 20px 22px !important;
+    border-radius: 20px !important;
+    gap: 12px !important;
+    transform: none !important;
+  }
+  .offer-card--featured {
+    transform: none !important;
+    padding-top: 32px !important;
+  }
+  .offer-card--featured:hover { transform: none !important; }
+  .offer-card:hover { transform: none !important; }
+  .offer-card h3 { font-size: 1.2rem !important; }
+  .offer-card-value { font-size: 1.5rem !important; }
+  .offer-card-hook { font-size: 0.85rem !important; }
+  .offer-card-list li, .offer-card-options li {
+    font-size: 0.82rem !important;
+  }
+  .offer-card-badges span { font-size: 0.66rem !important; padding: 4px 8px !important; }
+  .offer-card-badge {
+    font-size: 0.62rem !important;
+    padding: 4px 10px !important;
+    top: -10px;
+  }
+  .offer-card-h4 { font-size: 0.64rem !important; padding-top: 10px; }
+
+  /* -------- FAQ : padding contenu, texte pas colle -------- */
+  .faq { padding: 60px 0 60px; }
+  .faq-inner { padding: 0 20px; }
+  .faq-list { gap: 10px; }
+  .faq-item summary {
+    padding: 16px 18px !important;
+    font-size: 0.95rem !important;
+    line-height: 1.35;
+    gap: 12px;
+  }
+  .faq-icon {
+    width: 26px !important;
+    height: 26px !important;
+  }
+  .faq-icon svg { width: 13px !important; height: 13px !important; }
+  .faq-answer {
+    padding: 0 18px 18px !important;
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+  }
+  .faq h2 { font-size: 1.7rem !important; }
+
+  /* -------- Portfolio : CTA plus compact -------- */
+  .works-cta--v2 { padding: 0 20px !important; gap: 10px !important; }
+  .works-cta--v2 .btn { padding: 12px 18px !important; font-size: 0.9rem !important; }
+
+  /* -------- Signature v3 : mobile plus tight -------- */
+  .signature--v3 .signature-inner {
+    padding: 0 20px;
+  }
+  .signature--v3 h2 { font-size: 1.7rem !important; line-height: 1.15; }
+  .signature--v3 .signature-lead { font-size: 0.95rem !important; }
+  .signature-checks li { font-size: 0.88rem !important; }
+}
+
+/* Petits ecrans specifiques (<= 520px) */
+@media (max-width: 520px) {
+  .method-tab span:not(.mtab-icon) { font-size: 0.7rem !important; }
+  .offer-card { flex-basis: 82% !important; }
+  .offer-trio { padding-left: 9% !important; padding-right: 9% !important; scroll-padding: 0 9%; }
+}
