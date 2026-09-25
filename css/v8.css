@@ -7273,3 +7273,20 @@
   margin-top: -20px !important;
   margin-bottom: 40px !important;
 }
+
+/* ============ V8.67 · Ligne de separation entre sections ============ */
+.section-divider {
+  display: block;
+  width: min(1200px, calc(100% - 48px));
+  max-width: 1200px;
+  height: 1px;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  background: rgba(26, 26, 26, 0.18);
+}
+@media (max-width: 720px) {
+  .section-divider {
+    width: calc(100% - 32px);
+  }
+}
