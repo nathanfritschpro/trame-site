@@ -7148,3 +7148,128 @@
   color: var(--text);
   margin: 0 0 var(--sp-4);
 }
+
+/* ============================================================
+   V8.65 · Banniere cookies (informative, thème du site)
+   ============================================================ */
+.cookies-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 90;
+  max-width: 780px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 18px;
+  padding: 16px 20px;
+  box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.25);
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.cookies-banner.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+.cookies-banner.is-dismissed {
+  transform: translateY(30px);
+  opacity: 0;
+}
+.cb-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.cb-body {
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.cb-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.cb-body p {
+  font-family: var(--font-text);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text);
+  margin: 0;
+}
+.cb-body p strong { font-weight: 700; }
+.cb-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.cb-link {
+  font-family: var(--font-text);
+  font-size: 0.85rem;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.cb-link:hover { color: var(--text); }
+.cb-accept {
+  appearance: none;
+  border: 0;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-text);
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 10px 16px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.cb-accept:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px -8px rgba(47, 107, 216, 0.5);
+}
+
+@media (max-width: 640px) {
+  .cookies-banner {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 14px 16px;
+    border-radius: 16px;
+  }
+  .cb-inner {
+    gap: 12px;
+  }
+  .cb-body { flex-basis: 100%; }
+  .cb-body p { font-size: 0.82rem; }
+  .cb-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .cb-accept { padding: 9px 14px; font-size: 0.82rem; }
+  .cb-link { font-size: 0.78rem; }
+}
+
+/* ============================================================
+   V8.65 · Legal pages : petite date de mise a jour
+   ============================================================ */
+.legal-updated {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: rgba(0, 0, 0, 0.55);
+  letter-spacing: 0.02em;
+  margin-top: -20px !important;
+  margin-bottom: 40px !important;
+}

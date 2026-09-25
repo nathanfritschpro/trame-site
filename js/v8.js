@@ -260,3 +260,44 @@
     });
   });
 })();
+
+/* ============================================================
+   V8.65 · Banniere cookies RGPD (informative, dans le theme)
+   ============================================================ */
+(function cookiesBanner(){
+  try {
+    if (localStorage.getItem('vs-cookies-dismissed')) return;
+  } catch(e) {}
+
+  const banner = document.createElement('div');
+  banner.className = 'cookies-banner';
+  banner.setAttribute('role', 'dialog');
+  banner.setAttribute('aria-live', 'polite');
+  banner.setAttribute('aria-label', 'Information cookies');
+  banner.innerHTML = `
+    <div class="cb-inner">
+      <div class="cb-body">
+        <span class="cb-eyebrow">◆ Cookies</span>
+        <p><strong>Ce site n'utilise aucun cookie publicitaire ni traceur.</strong> Uniquement les cookies techniques nécessaires à son fonctionnement.</p>
+      </div>
+      <div class="cb-actions">
+        <a href="/politique-de-confidentialite.html#cookies" class="cb-link">En savoir plus</a>
+        <button type="button" class="cb-accept" aria-label="Fermer la banniere cookies">
+          <span>J'ai compris</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6L9 17l-5-5"/></svg>
+        </button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(banner);
+
+  // Petite attente pour transition
+  requestAnimationFrame(() => banner.classList.add('is-visible'));
+
+  banner.querySelector('.cb-accept').addEventListener('click', () => {
+    try { localStorage.setItem('vs-cookies-dismissed', Date.now().toString()); } catch(e) {}
+    banner.classList.remove('is-visible');
+    banner.classList.add('is-dismissed');
+    setTimeout(() => banner.remove(), 380);
+  });
+})();
