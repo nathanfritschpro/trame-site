@@ -7391,3 +7391,122 @@
   }
   .nav-insta { display: none; }
 }
+
+/* ============================================================
+   V8.70 · Motion design (heros qui se dissout, 3D, magnetisme)
+   Aucun changement de disposition : uniquement transform,
+   opacite, flou et decor. Tout est coupe en reduced-motion.
+   ============================================================ */
+
+/* Fin de l'intro : les elements reprennent leur etat naturel,
+   les styles poses au scroll prennent le relais */
+.hero-intro.hero-settled .hi-item,
+.hero-intro.hero-settled .hi-item--tiles,
+.hero-intro.hero-settled .hi-item--title {
+  animation: none;
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+/* Les 3 services passent au-dessus du heros qui se dissout */
+.hero-v8 .hero-index { position: relative; z-index: 2; }
+.hero-v8 .hero-tiles,
+.hero-v8 .hero-v8-eyebrow,
+.hero-v8 .hero-v8-title,
+.hero-v8 .hero-v8-sub,
+.hero-v8 .hero-v8-ctas { transform-origin: 50% 60%; }
+.hero-v8 .hero-tile { transform-style: preserve-3d; }
+
+/* Lumiere qui suit le curseur sur les lignes de services */
+@media (hover: hover) and (pointer: fine) {
+  .hero-index-row::before {
+    background:
+      radial-gradient(420px circle at var(--mx, 20%) 50%,
+        color-mix(in srgb, var(--accent) 10%, transparent), transparent 70%);
+  }
+}
+
+/* Barre de progression de lecture */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 1200;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 55%, #7fb0ff));
+  transform: scaleX(var(--sp, 0));
+  transform-origin: 0 50%;
+  will-change: transform;
+}
+
+/* Realisations : entree en 3D + inclinaison au survol */
+@media (min-width: 901px) {
+  .work-card.reveal:not(.is-visible) {
+    transform: perspective(1400px) translateY(56px) rotateX(9deg);
+    transform-origin: 50% 0;
+  }
+  .work-card.reveal { transition: opacity 1s var(--ease-out), transform 1.1s var(--ease-out); }
+}
+.work-mockup {
+  transition: transform 0.7s var(--ease-out);
+  transform-style: preserve-3d;
+}
+.work-mockup.is-tilting {
+  transform: perspective(1400px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.18s linear;
+}
+.work-mockup .mockup-phone { transition: transform 0.5s var(--ease-out), translate 0.7s var(--ease-out); }
+.work-mockup.is-tilting .mockup-phone { translate: 0 0 60px; }
+.work-mockup.is-tilting .mockup--lg { box-shadow: 0 50px 90px -50px rgba(20, 20, 40, 0.35); }
+
+/* Offres : inclinaison 3D + reflet au survol (desktop) */
+@media (min-width: 901px) and (hover: hover) and (pointer: fine) {
+  .offer-card { transform-style: preserve-3d; }
+  .offer-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(520px circle at var(--gx, 50%) var(--gy, 0%),
+      rgba(255, 255, 255, 0.55), transparent 55%);
+    mix-blend-mode: soft-light;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 3;
+  }
+  .offer-card.is-tilting::after { opacity: 1; }
+  .offer-card.is-tilting {
+    transform: perspective(1000px) translateY(-6px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 0.18s linear, box-shadow 0.3s ease;
+    box-shadow: 0 34px 70px -38px rgba(20, 20, 40, 0.35);
+  }
+  .offer-card--featured.is-tilting {
+    transform: perspective(1000px) translateY(-14px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    box-shadow: 0 40px 80px -36px rgba(47, 107, 216, 0.5);
+  }
+}
+
+/* Cartes avantages (pages services) : leger relief au survol */
+@media (min-width: 901px) and (hover: hover) and (pointer: fine) {
+  .adv-card { transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out); }
+  .adv-card:hover {
+    transform: perspective(900px) translateY(-4px) rotateX(2deg);
+    box-shadow: 0 30px 60px -40px rgba(20, 20, 40, 0.35);
+  }
+}
+
+/* Bandeau croise : elasticite pilotee par la vitesse de scroll */
+.promises-band { transform: skewY(var(--skew, 0deg)); will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { display: none; }
+  .work-card.reveal:not(.is-visible) { transform: none; }
+  .work-mockup.is-tilting,
+  .offer-card.is-tilting,
+  .adv-card:hover { transform: none; }
+  .promises-band { transform: none; }
+}

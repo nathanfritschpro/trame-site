@@ -301,3 +301,238 @@
     setTimeout(() => banner.remove(), 380);
   });
 })();
+
+/* ============ V8.70 · Motion design : heros qui se dissout, 3D, magnetisme ============ */
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const desktop = window.matchMedia('(min-width: 901px)');
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const smooth = (a, b, v) => {
+    const t = clamp((v - a) / (b - a), 0, 1);
+    return t * t * (3 - 2 * t);
+  };
+  const docTop = (el) => {
+    let y = 0;
+    for (let n = el; n; n = n.offsetParent) y += n.offsetTop;
+    return y;
+  };
+
+  // ---- Barre de progression de lecture
+  const bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  bar.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(bar);
+
+  // ---- Heros : tout ce qui est au-dessus des 3 services se dissout au scroll.
+  // Chaque element descend un peu moins vite que la page (il semble rester sur
+  // place) et s'efface avant que la liste des services ne le recouvre.
+  const hero = document.querySelector('.hero-v8');
+  const heroIndex = hero && hero.querySelector('.hero-index');
+  const layers = [];
+  if (hero && heroIndex) {
+    [
+      ['.hero-tiles', 0.55, true],
+      ['.hero-v8-eyebrow', 0.5],
+      ['.hero-v8-title', 0.45],
+      ['.hero-v8-sub', 0.38],
+      ['.hero-v8-ctas', 0.3],
+    ].forEach(([sel, k, isTiles]) => {
+      const el = hero.querySelector(sel);
+      if (el) layers.push({ el, k, isTiles: !!isTiles, start: 0, end: 1 });
+    });
+  }
+  const tiles = hero ? [...hero.querySelectorAll('.hero-tile')] : [];
+  const tileDepth = [16, -12, 20, -14];
+
+  const measureHero = () => {
+    if (!layers.length) return;
+    const indexTop = docTop(heroIndex);
+    // Tout doit avoir disparu quand les services arrivent sous le header
+    const cap = Math.max(120, indexTop - 170);
+    layers.forEach((l) => {
+      const bottom = docTop(l.el) + l.el.offsetHeight;
+      const gap = Math.max(40, indexTop - bottom);
+      // Efface completement quand l'ecart avec les services tombe a ~12px
+      l.end = Math.min(cap, Math.max(90, (gap - 12) / l.k));
+      l.start = l.isTiles ? 0 : l.end * 0.12;
+    });
+  };
+
+  // Etat du pointeur sur le heros (inclinaison 3D des vignettes)
+  const ptr = { x: 0, y: 0, tx: 0, ty: 0 };
+  if (hero) {
+    hero.addEventListener('pointermove', (e) => {
+      if (!finePointer.matches) return;
+      const r = hero.getBoundingClientRect();
+      ptr.tx = ((e.clientX - r.left) / r.width) * 2 - 1;
+      ptr.ty = ((e.clientY - r.top) / r.height) * 2 - 1;
+      kick();
+    });
+    hero.addEventListener('pointerleave', () => { ptr.tx = 0; ptr.ty = 0; kick(); });
+  }
+
+  const renderHero = (s) => {
+    if (!layers.length) return;
+    const settled = hero.classList.contains('hero-settled') || !hero.classList.contains('hero-intro');
+    layers.forEach((l) => {
+      const fade = smooth(l.start, l.end, s);
+      const o = 1 - fade;
+      const st = l.el.style;
+      if (s <= 0 && Math.abs(ptr.x) < 0.001 && Math.abs(ptr.y) < 0.001) {
+        st.translate = st.scale = st.opacity = st.filter = st.visibility = st.pointerEvents = '';
+        if (l.isTiles && settled) st.transform = '';
+        return;
+      }
+      const y = l.k * Math.min(s, l.end + 40);
+      st.translate = `0 ${y.toFixed(1)}px`;
+      st.scale = (1 - fade * (l.isTiles ? 0.12 : 0.06)).toFixed(4);
+      if (settled) {
+        st.opacity = o.toFixed(3);
+        st.filter = fade > 0.001 ? `blur(${(fade * (l.isTiles ? 8 : 12)).toFixed(2)}px)` : '';
+        if (l.isTiles) {
+          const rx = fade * 24 - ptr.y * 5;
+          const ry = ptr.x * 7;
+          st.transform = `perspective(1300px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+        }
+      }
+      st.visibility = o < 0.01 ? 'hidden' : '';
+      st.pointerEvents = o < 0.5 ? 'none' : '';
+    });
+    tiles.forEach((t, i) => {
+      const d = tileDepth[i % tileDepth.length];
+      t.style.translate = `${(ptr.x * d).toFixed(1)}px ${(ptr.y * d * 0.6).toFixed(1)}px`;
+    });
+  };
+
+  // ---- Lignes de services : la lumiere suit le curseur
+  hero && hero.querySelectorAll('.hero-index-row').forEach((row) => {
+    row.addEventListener('pointermove', (e) => {
+      const r = row.getBoundingClientRect();
+      row.style.setProperty('--mx', `${(((e.clientX - r.left) / r.width) * 100).toFixed(1)}%`);
+    });
+  });
+
+  // ---- Mots geants : leger decalage vertical pour donner de la profondeur
+  const ghostBoxes = [...document.querySelectorAll('.section-ghost, .works-head-ghost')];
+  const renderGhosts = () => {
+    const vh = window.innerHeight;
+    ghostBoxes.forEach((g) => {
+      const r = g.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > vh + 200) return;
+      const off = (r.top + r.height / 2 - vh / 2) * -0.12;
+      g.style.translate = `0 ${off.toFixed(1)}px`;
+    });
+  };
+
+  // ---- Bandeau croise : accelere et se plie avec la vitesse du scroll
+  const band = document.querySelector('.promises-band');
+  const bandAnims = band && band.getAnimations
+    ? () => band.querySelectorAll('.promises-track-2').length
+        ? [...band.querySelectorAll('.promises-track-2')].flatMap((t) => t.getAnimations())
+        : []
+    : () => [];
+  let vel = 0;
+  let skew = 0;
+  const renderBand = (v) => {
+    if (!band) return;
+    const r = band.getBoundingClientRect();
+    if (r.bottom < -100 || r.top > window.innerHeight + 100) return;
+    skew += (clamp(v * 0.06, -2.2, 2.2) - skew) * 0.12;
+    band.style.setProperty('--skew', `${skew.toFixed(3)}deg`);
+    const rate = 1 + Math.min(Math.abs(v) * 0.12, 5);
+    bandAnims().forEach((a) => { a.playbackRate = rate; });
+  };
+
+  // ---- Boucle unique : ne tourne que si quelque chose bouge
+  let lastY = window.scrollY;
+  let raf = 0;
+  let idle = 0;
+  const frame = () => {
+    raf = 0;
+    const s = window.scrollY;
+    const v = s - lastY;
+    lastY = s;
+    vel += (v - vel) * 0.25;
+
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.setProperty('--sp', max > 0 ? (s / max).toFixed(4) : '0');
+
+    ptr.x += (ptr.tx - ptr.x) * 0.08;
+    ptr.y += (ptr.ty - ptr.y) * 0.08;
+    renderHero(s);
+    renderGhosts();
+    renderBand(vel);
+
+    const moving = Math.abs(vel) > 0.05 || Math.abs(skew) > 0.01
+      || Math.abs(ptr.tx - ptr.x) > 0.001 || Math.abs(ptr.ty - ptr.y) > 0.001;
+    idle = moving ? 0 : idle + 1;
+    if (idle < 4) raf = requestAnimationFrame(frame);
+  };
+  function kick() { if (!raf) { idle = 0; raf = requestAnimationFrame(frame); } }
+
+  window.addEventListener('scroll', kick, { passive: true });
+  window.addEventListener('resize', () => { measureHero(); kick(); });
+  window.addEventListener('load', () => { measureHero(); kick(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { measureHero(); kick(); });
+  // A la fin de l'intro du heros, on reapplique l'etat du scroll courant
+  if (hero) new MutationObserver(kick).observe(hero, { attributes: true, attributeFilter: ['class'] });
+  measureHero();
+  kick();
+
+  // ---- Inclinaison 3D qui suit le curseur (desktop uniquement)
+  const tilt = (card, target, maxX, maxY, glare) => {
+    let tr = null;
+    card.addEventListener('pointermove', (e) => {
+      if (!finePointer.matches || !desktop.matches) return;
+      const r = target.getBoundingClientRect();
+      const px = clamp((e.clientX - r.left) / r.width, 0, 1);
+      const py = clamp((e.clientY - r.top) / r.height, 0, 1);
+      if (tr) cancelAnimationFrame(tr);
+      tr = requestAnimationFrame(() => {
+        target.classList.add('is-tilting');
+        target.style.setProperty('--ry', `${((px - 0.5) * 2 * maxY).toFixed(2)}deg`);
+        target.style.setProperty('--rx', `${((0.5 - py) * 2 * maxX).toFixed(2)}deg`);
+        if (glare) {
+          target.style.setProperty('--gx', `${(px * 100).toFixed(1)}%`);
+          target.style.setProperty('--gy', `${(py * 100).toFixed(1)}%`);
+        }
+      });
+    });
+    card.addEventListener('pointerleave', () => {
+      if (tr) cancelAnimationFrame(tr);
+      target.classList.remove('is-tilting');
+    });
+  };
+  document.querySelectorAll('.work-card').forEach((card) => {
+    const m = card.querySelector('.work-mockup');
+    if (m) tilt(card, m, 5, 7, false);
+  });
+  document.querySelectorAll('.offer-card').forEach((c) => tilt(c, c, 4, 5, true));
+
+  // ---- Boutons magnetiques : ils se laissent attirer par le curseur
+  const magnets = document.querySelectorAll('.btn-primary, .btn-ghost.btn-lg, .nav-insta, .fs-btn');
+  magnets.forEach((btn) => {
+    let tx = 0, ty = 0, x = 0, y = 0, loop = 0;
+    const step = () => {
+      x += (tx - x) * 0.2;
+      y += (ty - y) * 0.2;
+      btn.style.translate = `${x.toFixed(2)}px ${y.toFixed(2)}px`;
+      if (Math.abs(tx - x) > 0.05 || Math.abs(ty - y) > 0.05) loop = requestAnimationFrame(step);
+      else {
+        loop = 0;
+        if (tx === 0 && ty === 0) btn.style.translate = '';
+      }
+    };
+    const go = () => { if (!loop) loop = requestAnimationFrame(step); };
+    btn.addEventListener('pointermove', (e) => {
+      if (!finePointer.matches) return;
+      const r = btn.getBoundingClientRect();
+      tx = clamp((e.clientX - (r.left + r.width / 2)) * 0.28, -10, 10);
+      ty = clamp((e.clientY - (r.top + r.height / 2)) * 0.35, -7, 7);
+      go();
+    });
+    btn.addEventListener('pointerleave', () => { tx = 0; ty = 0; go(); });
+  });
+})();

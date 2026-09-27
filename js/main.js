@@ -163,6 +163,9 @@
       if (started) return;
       started = true;
       heroRoot.classList.add('hero-in');
+      // Intro finie : on coupe les keyframes (fill: both) pour que les effets
+      // au scroll puissent piloter opacite, flou et transform
+      setTimeout(() => heroRoot.classList.add('hero-settled'), 2300);
     };
 
     if (document.getElementById('preloader')) {
