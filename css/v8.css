@@ -7894,3 +7894,70 @@
   .md-orb, .md-bar, .md-word { animation: none; }
   .md-orb { transform: translate(-50%, -50%); }
 }
+
+/* ============ V8.73 · Video motion design offerte ============ */
+.gift-section { padding: 0 var(--sp-6) clamp(40px, 6vw, 72px); background: var(--bg); }
+.gift-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 780px;
+  margin: var(--sp-8) auto 0;
+  padding: 16px 20px;
+  border-radius: 18px;
+  text-align: left;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 11%, #fff) 0%, #fff 70%);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  box-shadow: 0 18px 40px -28px rgba(47, 107, 216, 0.45);
+}
+.gift-section .gift-banner { margin-top: 0; }
+.gift-icon {
+  flex: 0 0 46px;
+  height: 46px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: #fff;
+}
+.gift-icon svg { width: 22px; height: 22px; }
+.gift-text { margin: 0; flex: 1; min-width: 0; line-height: 1.45; }
+.gift-text strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.gift-text span { color: var(--text-dim); font-size: 0.95rem; }
+.gift-link {
+  flex: 0 0 auto;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--accent);
+  white-space: nowrap;
+  text-decoration: none;
+}
+.gift-link:hover { text-decoration: underline; }
+.offer-card-list li.offer-gift { color: var(--accent); }
+.offer-card-list li.offer-gift strong { color: var(--accent); font-weight: 700; }
+@media (max-width: 720px) {
+  .gift-section { padding: 0 20px 40px; }
+  .gift-banner { flex-wrap: wrap; padding: 16px; gap: 12px 14px; }
+  .gift-icon { flex-basis: 42px; height: 42px; }
+  .gift-text { flex-basis: calc(100% - 60px); }
+  .gift-link { flex-basis: 100%; padding-left: 56px; }
+}
+.gift-banner p.gift-text {
+  margin: 0 !important;
+  max-width: none !important;
+  font-size: 1rem !important;
+  line-height: 1.45 !important;
+  text-align: left !important;
+}
+.gift-banner p.gift-text span { display: block; line-height: 1.5; }
+@media (max-width: 720px) {
+  .gift-banner { align-items: flex-start; }
+  .gift-banner p.gift-text strong { font-size: 1rem; }
+  .gift-banner p.gift-text span { font-size: 0.9rem; }
+}
