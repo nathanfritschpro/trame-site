@@ -184,7 +184,7 @@ Voici quelques éléments sur mon projet :
         throw new Error('Réponse serveur non OK');
       }
     } catch (err) {
-      showError('L\'envoi a échoué. Écrivez-nous directement à contact@vera-studio.fr, on vous répond dans la journée.');
+      showError('L\'envoi a échoué. Écrivez-nous directement à verastudio.pro@gmail.com, on vous répond dans la journée.');
       submitBtn.disabled = false;
       submitBtnLabel.textContent = 'Envoyer';
     }
