@@ -264,42 +264,109 @@
 /* ============================================================
    V8.65 · Banniere cookies RGPD (informative, dans le theme)
    ============================================================ */
-(function cookiesBanner(){
-  try {
-    if (localStorage.getItem('vs-cookies-dismissed')) return;
-  } catch(e) {}
+/* ============ V8.75 · Consentement cookies + Microsoft Clarity ============ */
+/* Clarity (statistiques de visite, cartes de chaleur, enregistrements de
+   session) n'est charge QUE si le visiteur clique sur "Accepter".
+   Choix memorise : 13 mois si accepte, 6 mois si refuse (recommandations CNIL).
+   Pour activer : renseigner l'identifiant du projet Clarity ci-dessous. */
+(function consent(){
+  const CLARITY_ID = '';
+  const KEY = 'vs-consent';
+  const KEEP = { accepted: 395, refused: 182 }; // jours
 
-  const banner = document.createElement('div');
-  banner.className = 'cookies-banner';
-  banner.setAttribute('role', 'dialog');
-  banner.setAttribute('aria-live', 'polite');
-  banner.setAttribute('aria-label', 'Information cookies');
-  banner.innerHTML = `
-    <div class="cb-inner">
-      <div class="cb-body">
-        <span class="cb-eyebrow">◆ Cookies</span>
-        <p><strong>Ce site n'utilise aucun cookie publicitaire ni traceur.</strong> Uniquement les cookies techniques nécessaires à son fonctionnement.</p>
-      </div>
-      <div class="cb-actions">
-        <a href="/politique-de-confidentialite.html#cookies" class="cb-link">En savoir plus</a>
-        <button type="button" class="cb-accept" aria-label="Fermer la banniere cookies">
-          <span>J'ai compris</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20 6L9 17l-5-5"/></svg>
-        </button>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(banner);
+  const read = () => {
+    try {
+      const v = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (!v || !KEEP[v.choice]) return null;
+      if (Date.now() - v.at > KEEP[v.choice] * 864e5) return null;
+      return v.choice;
+    } catch (e) { return null; }
+  };
+  const save = (choice) => {
+    try {
+      localStorage.setItem(KEY, JSON.stringify({ choice, at: Date.now() }));
+      localStorage.removeItem('vs-cookies-dismissed');
+    } catch (e) {}
+  };
 
-  // Petite attente pour transition
-  requestAnimationFrame(() => banner.classList.add('is-visible'));
+  let clarityLoaded = false;
+  const loadClarity = () => {
+    if (clarityLoaded || !CLARITY_ID) return;
+    clarityLoaded = true;
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, 'clarity', 'script', CLARITY_ID);
+    window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
+  };
+  const stopClarity = () => {
+    if (window.clarity) { try { window.clarity('consent', false); } catch (e) {} }
+    // Efface les cookies Clarity deja deposes
+    ['_clck', '_clsk', 'CLID', 'ANONCHK', 'MR', 'MUID', 'SM'].forEach((n) => {
+      const host = location.hostname.replace(/^www\./, '');
+      [host, '.' + host, ''].forEach((d) => {
+        document.cookie = n + '=; Max-Age=0; path=/' + (d ? '; domain=' + d : '');
+      });
+    });
+  };
 
-  banner.querySelector('.cb-accept').addEventListener('click', () => {
-    try { localStorage.setItem('vs-cookies-dismissed', Date.now().toString()); } catch(e) {}
-    banner.classList.remove('is-visible');
-    banner.classList.add('is-dismissed');
-    setTimeout(() => banner.remove(), 380);
+  let banner = null;
+  const close = () => {
+    if (!banner) return;
+    const b = banner;
+    banner = null;
+    b.classList.remove('is-visible');
+    b.classList.add('is-dismissed');
+    setTimeout(() => b.remove(), 380);
+  };
+  const open = () => {
+    if (banner) return;
+    banner = document.createElement('div');
+    banner.className = 'cookies-banner';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-live', 'polite');
+    banner.setAttribute('aria-label', 'Choix des cookies');
+    banner.innerHTML = `
+      <div class="cb-inner">
+        <div class="cb-body">
+          <span class="cb-eyebrow">◆ Cookies</span>
+          <p><strong>Nous aimerions mesurer l'audience du site</strong> (pages vues, temps passé, parcours de navigation) avec Microsoft Clarity, pour l'améliorer. Aucun cookie publicitaire. Ces cookies ne sont déposés qu'avec votre accord.</p>
+        </div>
+        <div class="cb-actions">
+          <a href="/politique-de-confidentialite.html#cookies" class="cb-link">En savoir plus</a>
+          <button type="button" class="cb-refuse">Refuser</button>
+          <button type="button" class="cb-accept">
+            <span>Accepter</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          </button>
+        </div>
+      </div>`;
+    document.body.appendChild(banner);
+    requestAnimationFrame(() => banner && banner.classList.add('is-visible'));
+    banner.querySelector('.cb-accept').addEventListener('click', () => {
+      save('accepted'); loadClarity(); close();
+    });
+    banner.querySelector('.cb-refuse').addEventListener('click', () => {
+      save('refused'); stopClarity(); close();
+    });
+  };
+
+  // Lien "Gerer les cookies" en bas de chaque page (retirer son accord aussi
+  // facilement qu'on l'a donne)
+  document.querySelectorAll('.footer-bottom > span:last-child').forEach((span) => {
+    span.insertAdjacentHTML('beforeend', ' · <a href="#" class="cb-manage">Gérer les cookies</a>');
   });
+  document.addEventListener('click', (e) => {
+    const t = e.target.closest('.cb-manage');
+    if (!t) return;
+    e.preventDefault();
+    open();
+  });
+
+  const choice = read();
+  if (choice === 'accepted') loadClarity();
+  else if (!choice) open();
 })();
 
 /* ============ V8.72 · Motion design : heros qui se dissout, 3D, magnetisme ============ */

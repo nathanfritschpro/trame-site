@@ -7973,3 +7973,25 @@
   white-space: nowrap;
   vertical-align: 1px;
 }
+
+/* ============ V8.75 · Bandeau cookies : Accepter / Refuser ============ */
+.cb-refuse {
+  appearance: none;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  font-family: var(--font-text);
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.cb-refuse:hover { border-color: var(--text); background: rgba(0, 0, 0, 0.03); }
+.cookies-banner { z-index: 1300; }
+@media (max-width: 640px) {
+  .cb-actions { flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
+  .cb-link { margin-right: auto; }
+  .cb-refuse, .cb-accept { padding: 9px 14px; font-size: 0.82rem; }
+}
