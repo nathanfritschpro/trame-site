@@ -270,7 +270,7 @@
    Choix memorise : 13 mois si accepte, 6 mois si refuse (recommandations CNIL).
    Pour activer : renseigner l'identifiant du projet Clarity ci-dessous. */
 (function consent(){
-  const CLARITY_ID = '';
+  const CLARITY_ID = 'yv6l0locea';
   const KEY = 'vs-consent';
   const KEEP = { accepted: 395, refused: 182 }; // jours
 
