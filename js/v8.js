@@ -592,3 +592,84 @@
     btn.addEventListener('pointerleave', () => { tx = 0; ty = 0; go(); });
   });
 })();
+
+/* ============ V8.77 · Videos : lecture a l'ecran, son, visionneuse ============ */
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const safePlay = (v) => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+
+  // Videos des pages (carte NFC, motion design) : lecture quand visibles
+  const pageVids = [...document.querySelectorAll('video[data-inview]:not(.reel-video)')];
+  if (reduce) pageVids.forEach((v) => { v.controls = true; });
+  else if (pageVids.length && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(({ target, isIntersecting }) => (isIntersecting ? safePlay(target) : target.pause()));
+    }, { threshold: 0.35 });
+    pageVids.forEach((v) => io.observe(v));
+  }
+
+  // Bande qui defile : seules les vignettes a l'ecran tournent (verifie 3x/s)
+  const band = document.querySelector('.reels-band');
+  if (band && !reduce) {
+    const reels = [...band.querySelectorAll('.reel-video')];
+    let timer = 0;
+    const tick = () => {
+      const vw = window.innerWidth;
+      reels.forEach((v) => {
+        const r = v.getBoundingClientRect();
+        const on = r.right > -80 && r.left < vw + 80;
+        if (on && v.paused) safePlay(v);
+        else if (!on && !v.paused) v.pause();
+      });
+    };
+    const start = () => { if (!timer) { tick(); timer = setInterval(tick, 330); } };
+    const stop = () => { clearInterval(timer); timer = 0; reels.forEach((v) => v.pause()); };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([e]) => (e.isIntersecting ? start() : stop()), { rootMargin: '150px 0px' }).observe(band);
+    } else start();
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+  }
+
+  // Bouton son : un seul son a la fois
+  const setSound = (btn, on) => {
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    btn.setAttribute('aria-label', on ? 'Couper le son' : 'Activer le son');
+  };
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.vs-sound');
+    if (!btn) return;
+    e.preventDefault();
+    const v = btn.parentElement.querySelector('video');
+    if (!v) return;
+    const turnOn = v.muted;
+    document.querySelectorAll('.vs-sound').forEach((b) => {
+      const o = b.parentElement.querySelector('video');
+      if (o && o !== v) { o.muted = true; setSound(b, false); }
+    });
+    v.muted = !turnOn;
+    if (turnOn) safePlay(v);
+    setSound(btn, turnOn);
+  });
+
+  // Visionneuse : un clic sur une vignette ouvre la video en grand, avec le son
+  const reelBtns = document.querySelectorAll('.reel[data-full]');
+  if (reelBtns.length && typeof HTMLDialogElement === 'function') {
+    const dlg = document.createElement('dialog');
+    dlg.className = 'reel-lightbox';
+    dlg.setAttribute('aria-label', 'Lecture de la vidéo');
+    dlg.innerHTML = '<button type="button" class="rl-close" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button><video controls playsinline></video>';
+    document.body.appendChild(dlg);
+    const lv = dlg.querySelector('video');
+    const close = () => { lv.pause(); lv.removeAttribute('src'); lv.load(); if (dlg.open) dlg.close(); };
+    dlg.querySelector('.rl-close').addEventListener('click', close);
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) close(); });
+    dlg.addEventListener('cancel', (e) => { e.preventDefault(); close(); });
+    reelBtns.forEach((b) => b.addEventListener('click', () => {
+      lv.src = b.dataset.full;
+      lv.poster = b.dataset.poster || '';
+      lv.muted = false;
+      dlg.showModal();
+      safePlay(lv);
+    }));
+  }
+})();
