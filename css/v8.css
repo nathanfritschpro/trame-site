@@ -2827,6 +2827,18 @@
   background-position: top center;
 }
 
+/* Kizami Paris */
+.work-card .mockup-body[data-project="Kizami Paris"]::before {
+  background-image: url("/assets/tiles/kizami-paris-ordi.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.work-card .mockup-phone-body[data-project="Kizami Paris"]::before {
+  background-image: url("/assets/tiles/kizami-paris-mobile.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+
 /* Clair & Net */
 .work-card .mockup-body[data-project="Clair & Net"]::before {
   background-image: url("/assets/tiles/clair-net-ordi.jpg");
