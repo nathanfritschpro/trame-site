@@ -465,6 +465,24 @@
     });
   };
 
+  // ---- Titre : le curseur vient cliquer sur « méritez » des qu'on descend, et revient en haut de page
+  const curseurTitre = hero && hero.querySelector('.curseur-titre');
+  const motClic = hero && hero.querySelector('.mot-clic');
+  if (curseurTitre && motClic) {
+    const viser = () => {
+      const c = curseurTitre.getBoundingClientRect();
+      const m = motClic.getBoundingClientRect();
+      curseurTitre.style.setProperty('--cx', `${Math.round(m.left + m.width * 0.5 - c.left)}px`);
+      curseurTitre.style.setProperty('--cy', `${Math.round(m.top + m.height * 0.42 - c.top)}px`);
+    };
+    const suivreClic = () => {
+      const clique = hero.classList.contains('curseur-clique');
+      if (!clique && window.scrollY > 24) { viser(); hero.classList.add('curseur-clique'); }
+      else if (clique && window.scrollY < 4) hero.classList.remove('curseur-clique');
+    };
+    window.addEventListener('scroll', suivreClic, { passive: true });
+  }
+
   // ---- Lignes de services : la lumiere suit le curseur
   hero && hero.querySelectorAll('.hero-index-row').forEach((row) => {
     row.addEventListener('pointermove', (e) => {
