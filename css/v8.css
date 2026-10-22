@@ -2255,8 +2255,8 @@
   transition: opacity 0.3s ease;
 }
 /* Si les captures réelles existent, on les affiche par-dessus le fake */
-.ht-shot[data-project="villa-nikkita"]::after {
-  background-image: url("/assets/tiles/villa-nikkita-ordi.jpg");
+.ht-shot[data-project="villa-nikita"]::after {
+  background-image: url("/assets/tiles/villa-nikita-ordi.jpg");
 }
 .ht-shot[data-project="clair-net"]::after {
   background-image: url("/assets/tiles/clair-net-ordi.jpg");
@@ -2815,14 +2815,14 @@
   visibility: hidden;
 }
 
-/* Villa Nikkita */
-.work-card .mockup-body[data-project="Villa Nikkita"]::before {
-  background-image: url("/assets/tiles/villa-nikkita-ordi.jpg");
+/* Villa Nikita */
+.work-card .mockup-body[data-project="Villa Nikita"]::before {
+  background-image: url("/assets/tiles/villa-nikita-ordi.jpg");
   background-size: cover;
   background-position: top center;
 }
-.work-card .mockup-phone-body[data-project="Villa Nikkita"]::before {
-  background-image: url("/assets/tiles/villa-nikkita-mobile.jpg");
+.work-card .mockup-phone-body[data-project="Villa Nikita"]::before {
+  background-image: url("/assets/tiles/villa-nikita-mobile.jpg");
   background-size: cover;
   background-position: top center;
 }
