@@ -7664,10 +7664,10 @@
 .hero-v8 .hero-v8-ctas { will-change: transform, opacity; }
 
 @keyframes heroDissolve {
-  0%   { opacity: 1; translate: 0 0; scale: 1; }
+  0%   { opacity: 1; scale: 1; }
   15%  { opacity: 1; }
   60%  { opacity: 0.42; }
-  100% { opacity: 0; translate: 0 var(--hd-y, 0px); scale: 0.94; visibility: hidden; }
+  100% { opacity: 0; scale: 0.94; visibility: hidden; }
 }
 @keyframes heroTilesDissolve {
   0%   { opacity: 1; translate: 0 0; scale: 1; rotate: x 0deg; }
@@ -7678,8 +7678,7 @@
 @supports (animation-timeline: scroll()) {
   .hero-v8.hero-sd.hero-settled .hero-v8-eyebrow,
   .hero-v8.hero-sd.hero-settled .hero-v8-title,
-  .hero-v8.hero-sd.hero-settled .hero-v8-sub,
-  .hero-v8.hero-sd.hero-settled .hero-v8-ctas {
+  .hero-v8.hero-sd.hero-settled .hero-v8-sub {
     animation: heroDissolve linear both;
     animation-timeline: scroll(root block);
     animation-range: 0px var(--hd-e, 600px);

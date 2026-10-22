@@ -403,7 +403,6 @@
       ['.hero-v8-eyebrow', 0.5],
       ['.hero-v8-title', 0.45],
       ['.hero-v8-sub', 0.38],
-      ['.hero-v8-ctas', 0.3],
     ].forEach(([sel, k, isTiles]) => {
       const el = hero.querySelector(sel);
       if (el) layers.push({ el, k, isTiles: !!isTiles, end: 1 });
@@ -431,7 +430,7 @@
       if (s <= 0) { st.translate = st.scale = st.opacity = st.visibility = st.rotate = ''; return; }
       const p = clamp(s / l.end, 0, 1);
       const fade = clamp((p - 0.15) / 0.85, 0, 1);
-      st.translate = `0 ${(l.k * Math.min(s, l.end)).toFixed(1)}px`;
+      if (l.isTiles) st.translate = `0 ${(l.k * Math.min(s, l.end)).toFixed(1)}px`;
       st.scale = (1 - p * (l.isTiles ? 0.14 : 0.06)).toFixed(4);
       if (l.isTiles) st.rotate = `x ${(p * 22).toFixed(2)}deg`;
       if (hero.classList.contains('hero-settled')) st.opacity = (1 - fade).toFixed(3);
