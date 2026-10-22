@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#0A0A0A"/>
-  <text x="32" y="45" font-family="'Space Grotesk', system-ui, sans-serif" font-weight="700" font-size="42" text-anchor="middle" fill="#F5F5F0" letter-spacing="-2">T</text>
-  <circle cx="48" cy="45" r="4" fill="#C4F542"/>
+  <rect width="64" height="64" rx="12" fill="#F7F5EE"/>
+  <path d="M11 15h8.6l7.4 23.6L34.4 15H43L31.6 49h-9.2z" fill="#141414"/>
+  <circle cx="50" cy="44.5" r="5" fill="#1D6FC4"/>
 </svg>
