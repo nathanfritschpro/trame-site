@@ -489,16 +489,28 @@
       Object.assign(rond.style, { left: `${x - d / 2}px`, top: `${y - d / 2}px`, width: `${d}px`, height: `${d}px` });
       document.body.appendChild(rond);
       const loin = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-      requestAnimationFrame(() => requestAnimationFrame(() => { rond.style.transform = `scale(${(2 * loin) / d + 2})`; }));
-      rond.addEventListener('transitionend', function arrivee(e) {
-        if (e.propertyName !== 'transform') return;
-        rond.removeEventListener('transitionend', arrivee);
+      setTimeout(() => { rond.style.transform = `scale(${(2 * loin) / d + 2})`; }, 30);
+      // Filet de securite : si l'animation ne se termine pas (onglet en arriere-plan), on enchaine quand meme
+      let arrive = false;
+      const arrivee = (e) => {
+        if (arrive || (e && e.propertyName !== 'transform')) return;
+        arrive = true;
         // L'en-tete se replie quand on descend : on cale la suite juste sous le haut de l'ecran
         const cible = suiteHeros.getBoundingClientRect().top + window.scrollY - 24;
         window.scrollTo({ top: Math.max(0, cible), behavior: 'instant' });
-        rond.style.opacity = '0';
-        setTimeout(() => { rond.remove(); enCours = false; fait = true; }, 480);
-      });
+        // Le bleu devient un rideau qui remonte et decouvre la suite
+        const rideau = document.createElement('div');
+        rideau.className = 'rideau-bleu';
+        document.body.appendChild(rideau);
+        rond.remove();
+        let fini = false;
+        const finir = () => { if (fini) return; fini = true; rideau.remove(); enCours = false; fait = true; };
+        rideau.addEventListener('transitionend', finir, { once: true });
+        setTimeout(() => { rideau.style.transform = 'translateY(-100%)'; }, 80);
+        setTimeout(finir, 1200);
+      };
+      rond.addEventListener('transitionend', arrivee);
+      setTimeout(arrivee, 1000);
     };
     window.addEventListener('wheel', (e) => {
       if (enCours) { e.preventDefault(); return; }
