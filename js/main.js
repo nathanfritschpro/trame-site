@@ -316,9 +316,8 @@
   }
 
   // ---- Curseur custom (desktop uniquement, respecte reduced-motion)
-  const supportsCursor =
-    window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
-    !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Desactive le 22/10/2026 : on garde la fleche normale de la souris, plus simple
+  const supportsCursor = false;
   if (supportsCursor) {
     const cursor = document.createElement('div');
     cursor.className = 'cursor';
