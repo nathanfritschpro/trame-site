@@ -107,40 +107,30 @@ Voici quelques éléments sur mon projet :
 
   const validate = () => {
     const name = form.name.value.trim();
-    const company = form.company.value.trim();
     const email = form.email.value.trim();
     const project = form.project.value.trim();
-    const subject = form.subject.value.trim();
     const message = form.message.value.trim();
 
     if (!name) {
-      showError('Merci d\'indiquer votre prénom.', form.name);
-      return false;
-    }
-    if (!company) {
-      showError('Merci d\'indiquer le nom de votre entreprise.', form.company);
+      showError('Merci d\'indiquer votre nom.', form.name);
       return false;
     }
     if (!email) {
-      showError('Merci d\'indiquer votre email ou téléphone pour qu\'on puisse vous répondre.', form.email);
+      showError('Merci d\'indiquer votre e-mail ou votre téléphone pour qu\'on puisse vous répondre.', form.email);
       return false;
     }
     // Email OU téléphone : on accepte si ça ressemble à un email OU si ça contient 8+ chiffres
     const digits = (email.match(/\d/g) || []).length;
     if (!EMAIL_RE.test(email) && digits < 8) {
-      showError('Indiquez un email valide (vous@exemple.fr) ou un numéro de téléphone.', form.email);
+      showError('Indiquez un e-mail valide (vous@exemple.fr) ou un numéro de téléphone.', form.email);
       return false;
     }
     if (!project) {
       showError('Merci de choisir un type de projet.', form.project);
       return false;
     }
-    if (!subject) {
-      showError('Merci d\'indiquer l\'objet de la demande.', form.subject);
-      return false;
-    }
     if (!message) {
-      showError('Merci d\'écrire un message pour qu\'on comprenne votre besoin.', form.message);
+      showError('Dites-nous en deux lignes ce dont vous avez besoin.', form.message);
       return false;
     }
     return true;
@@ -172,11 +162,6 @@ Voici quelques éléments sur mon projet :
       });
 
       if (response.ok) {
-        // Si l'utilisateur a dit qu'il a un logo, on lui rappelle de l'envoyer par email
-        const hasLogo = form.querySelector('input[name="has_logo"]:checked');
-        const logoNote = document.getElementById('success-logo-note');
-        if (logoNote) logoNote.hidden = !(hasLogo && hasLogo.value === 'oui');
-
         form.style.display = 'none';
         successBox.classList.add('show');
         successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -184,7 +169,7 @@ Voici quelques éléments sur mon projet :
         throw new Error('Réponse serveur non OK');
       }
     } catch (err) {
-      showError('L\'envoi a échoué. Écrivez-nous directement à verastudio.pro@gmail.com, on vous répond dans la journée.');
+      showError('L\'envoi a échoué. Écrivez-nous directement à contact@vera-studio.fr, on vous répond dans la journée.');
       submitBtn.disabled = false;
       submitBtnLabel.textContent = 'Envoyer';
     }
