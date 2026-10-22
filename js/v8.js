@@ -465,22 +465,56 @@
     });
   };
 
-  // ---- Titre : le curseur vient cliquer sur « méritez » des qu'on descend, et revient en haut de page
-  const curseurTitre = hero && hero.querySelector('.curseur-titre');
-  const motClic = hero && hero.querySelector('.mot-clic');
-  if (curseurTitre && motClic) {
-    const viser = () => {
-      const c = curseurTitre.getBoundingClientRect();
-      const m = motClic.getBoundingClientRect();
-      curseurTitre.style.setProperty('--cx', `${Math.round(m.left + m.width * 0.5 - c.left)}px`);
-      curseurTitre.style.setProperty('--cy', `${Math.round(m.top + m.height * 0.42 - c.top)}px`);
+  // ---- Titre : au premier geste vers le bas, le point du « i » de « méritez » grossit
+  // jusqu'a remplir l'ecran, puis on arrive sur la suite (une fois par visite)
+  const pointI = hero && hero.querySelector('.i-point');
+  const suiteHeros = hero && hero.querySelector('.hero-index');
+  const moinsDanimation = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (pointI && suiteHeros) {
+    let enCours = false;
+    let fait = false;
+    let departDoigt = null;
+    const pret = () => !fait && !enCours && !moinsDanimation.matches
+      && window.scrollY < 8 && hero.classList.contains('hero-in');
+    const lancer = () => {
+      enCours = true;
+      const r = pointI.getBoundingClientRect();
+      const taille = parseFloat(getComputedStyle(pointI).fontSize);
+      // Position du point du « i » mesurée sur le rendu (la lettre est penchée : le point part vers la droite)
+      const d = taille * 0.15;
+      const x = r.left + taille * 0.288;
+      const y = r.top + taille * 0.35;
+      const rond = document.createElement('div');
+      rond.className = 'point-plein-ecran';
+      Object.assign(rond.style, { left: `${x - d / 2}px`, top: `${y - d / 2}px`, width: `${d}px`, height: `${d}px` });
+      document.body.appendChild(rond);
+      const loin = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+      requestAnimationFrame(() => requestAnimationFrame(() => { rond.style.transform = `scale(${(2 * loin) / d + 2})`; }));
+      rond.addEventListener('transitionend', function arrivee(e) {
+        if (e.propertyName !== 'transform') return;
+        rond.removeEventListener('transitionend', arrivee);
+        // L'en-tete se replie quand on descend : on cale la suite juste sous le haut de l'ecran
+        const cible = suiteHeros.getBoundingClientRect().top + window.scrollY - 24;
+        window.scrollTo({ top: Math.max(0, cible), behavior: 'instant' });
+        rond.style.opacity = '0';
+        setTimeout(() => { rond.remove(); enCours = false; fait = true; }, 480);
+      });
     };
-    const suivreClic = () => {
-      const clique = hero.classList.contains('curseur-clique');
-      if (!clique && window.scrollY > 24) { viser(); hero.classList.add('curseur-clique'); }
-      else if (clique && window.scrollY < 4) hero.classList.remove('curseur-clique');
-    };
-    window.addEventListener('scroll', suivreClic, { passive: true });
+    window.addEventListener('wheel', (e) => {
+      if (enCours) { e.preventDefault(); return; }
+      if (e.deltaY > 0 && pret()) { e.preventDefault(); lancer(); }
+    }, { passive: false });
+    window.addEventListener('touchstart', (e) => { departDoigt = e.touches[0].clientY; }, { passive: true });
+    window.addEventListener('touchmove', (e) => {
+      if (enCours) { e.preventDefault(); return; }
+      if (departDoigt !== null && departDoigt - e.touches[0].clientY > 12 && pret()) { e.preventDefault(); lancer(); }
+    }, { passive: false });
+    window.addEventListener('keydown', (e) => {
+      const champ = e.target.closest && e.target.closest('input, textarea, select, button, a, [contenteditable]');
+      if (champ || !['ArrowDown', 'PageDown', ' '].includes(e.key)) return;
+      if (enCours) { e.preventDefault(); return; }
+      if (pret()) { e.preventDefault(); lancer(); }
+    });
   }
 
   // ---- Lignes de services : la lumiere suit le curseur

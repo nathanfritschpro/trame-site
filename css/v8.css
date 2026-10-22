@@ -2827,6 +2827,18 @@
   background-position: top center;
 }
 
+/* Domiciliation Marne-la-Vallée */
+.work-card .mockup-body[data-project="Domiciliation MLV"]::before {
+  background-image: url("/assets/tiles/domiciliation-mlv-ordi.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+.work-card .mockup-phone-body[data-project="Domiciliation MLV"]::before {
+  background-image: url("/assets/tiles/domiciliation-mlv-mobile.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+
 /* Kizami Paris */
 .work-card .mockup-body[data-project="Kizami Paris"]::before {
   background-image: url("/assets/tiles/kizami-paris-ordi.jpg");
@@ -8199,64 +8211,26 @@
 .reel-label span { color: #fff !important; }
 
 /* ============================================================
-   V8.85 · Titre de l'accueil : un curseur façon Mac remplace le point.
-   Dès qu'on descend, il glisse sur « méritez » et clique dessus.
+   V8.86 · Titre de l'accueil : un tout petit curseur façon Mac
+   remplace le point final (sans animation). Au premier geste vers
+   le bas, le point du « i » de « méritez » grossit jusqu'à remplir
+   l'écran, puis on arrive sur la suite de la page.
    ============================================================ */
 .hero-v8-title .mot-et-curseur { white-space: nowrap; }
-.hero-v8-title .mot-clic { position: relative; display: inline-block; isolation: isolate; }
-.hero-v8-title .mot-clic::before {
-  content: "";
-  position: absolute;
-  inset: 0.1em -0.08em 0.02em -0.04em;
-  border-radius: 0.12em;
-  background: rgba(29, 111, 196, 0.14);
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.4s ease-out;
-  z-index: -1;
-}
 .curseur-titre {
-  position: relative;
   display: inline-block;
-  width: 0.4em;
-  height: 0.58em;
-  margin-left: 0.05em;
-  vertical-align: -0.04em;
-  transition: transform 0.65s cubic-bezier(0.3, 0.7, 0.2, 1);
+  width: 0.17em;
+  height: 0.25em;
+  margin-left: 0.04em;
+  vertical-align: 0;
 }
-.curseur-titre svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  transform-origin: 12% 6%;
-  filter: drop-shadow(0 0.03em 0.05em rgba(0, 0, 0, 0.25));
-}
-.curseur-titre::after {
-  content: "";
-  position: absolute;
-  left: 0.05em;
-  top: 0.03em;
-  width: 0.6em;
-  height: 0.6em;
-  margin: -0.3em 0 0 -0.3em;
+.curseur-titre svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.point-plein-ecran {
+  position: fixed;
+  z-index: 9999;
   border-radius: 50%;
-  border: 0.035em solid var(--accent);
-  opacity: 0;
+  background: var(--accent);
   pointer-events: none;
-}
-.hero-v8.curseur-clique .curseur-titre { transform: translate(var(--cx, -1.8em), var(--cy, -0.2em)); }
-.hero-v8.curseur-clique .curseur-titre svg { animation: curseurAppui 0.3s ease-in-out 0.62s; }
-.hero-v8.curseur-clique .curseur-titre::after { animation: curseurOnde 0.6s ease-out 0.7s; }
-.hero-v8.curseur-clique .mot-clic::before { transform: scaleX(1); transition-delay: 0.72s; }
-@keyframes curseurAppui { 50% { transform: scale(0.8); } }
-@keyframes curseurOnde {
-  0%   { opacity: 0.9; transform: scale(0.2); }
-  100% { opacity: 0;   transform: scale(1.7); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .curseur-titre, .hero-v8-title .mot-clic::before { transition: none; }
-  .hero-v8.curseur-clique .curseur-titre { transform: none; }
-  .hero-v8.curseur-clique .curseur-titre svg,
-  .hero-v8.curseur-clique .curseur-titre::after { animation: none; }
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.85, 0.35), opacity 0.45s ease;
+  will-change: transform, opacity;
 }
