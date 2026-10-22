@@ -8231,6 +8231,91 @@
   border-radius: 50%;
   background: var(--accent);
   pointer-events: none;
-  transition: transform 0.7s cubic-bezier(0.65, 0, 0.85, 0.35), opacity 0.45s ease;
-  will-change: transform, opacity;
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.85, 0.35);
+  will-change: transform;
+}
+.rideau-bleu {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--accent);
+  box-shadow: 0 24px 60px rgba(20, 20, 20, 0.18);
+  pointer-events: none;
+  transition: transform 0.65s cubic-bezier(0.7, 0, 0.25, 1);
+  will-change: transform;
+}
+
+/* ============================================================
+   V8.87 · Méthode courte : 4 étapes d'une ligne, sans onglets
+   ============================================================ */
+.etapes-courtes {
+  list-style: none;
+  margin: var(--sp-10) auto 0;
+  padding: 0;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-4);
+  counter-reset: none;
+}
+.etape-courte {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-6);
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  text-align: left;
+}
+.etape-courte .ec-num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--accent);
+  letter-spacing: 0.08em;
+}
+.etape-courte h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: var(--lh-heading);
+  margin: 0;
+  color: var(--text);
+}
+.etape-courte p {
+  margin: 0;
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+.etape-courte .ec-prix {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.etape-courte p + .ec-prix { margin-top: var(--sp-3); }
+@media (max-width: 900px) {
+  .etapes-courtes { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .etapes-courtes { grid-template-columns: 1fr; gap: var(--sp-2); margin-top: var(--sp-8); }
+  .etape-courte {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: var(--sp-4);
+    row-gap: 2px;
+    padding: var(--sp-4) var(--sp-5);
+    border-radius: 16px;
+  }
+  .etape-courte .ec-num { grid-row: span 3; padding-top: 4px; }
+  .etape-courte .ec-prix, .etape-courte p + .ec-prix { grid-column: 2; justify-self: start; margin-top: var(--sp-2); }
 }

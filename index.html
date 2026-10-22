@@ -27,11 +27,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/css/tokens.css?v=8.86">
-<link rel="stylesheet" href="/css/base.css?v=8.86">
-<link rel="stylesheet" href="/css/components.css?v=8.86">
-<link rel="stylesheet" href="/css/pages.css?v=8.86">
-<link rel="stylesheet" href="/css/v8.css?v=8.86">
+<link rel="stylesheet" href="/css/tokens.css?v=8.87">
+<link rel="stylesheet" href="/css/base.css?v=8.87">
+<link rel="stylesheet" href="/css/components.css?v=8.87">
+<link rel="stylesheet" href="/css/pages.css?v=8.87">
+<link rel="stylesheet" href="/css/v8.css?v=8.87">
 </head>
 <body>
 
@@ -415,219 +415,30 @@
     <span class="eyebrow reveal">◆ Notre méthode</span>
     <h2 class="reveal reveal-delay-1">Quatre étapes claires. <span class="accent">Zéro mauvaise surprise.</span></h2>
 
-    <!-- Tabs : selection du parcours -->
-    <div class="method-tabs reveal reveal-delay-2" role="tablist" aria-label="Choisir votre parcours">
-      <button type="button" class="method-tab is-active" role="tab" data-mtab="sites" aria-selected="true">
-        <span class="mtab-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="1.5"/><path d="M3 8h18M7 14h4"/></svg>
-        </span>
-        <span>Sites internet</span>
-      </button>
-      <button type="button" class="method-tab" role="tab" data-mtab="apps" aria-selected="false">
-        <span class="mtab-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></svg>
-        </span>
-        <span>Applications métier</span>
-      </button>
-      <button type="button" class="method-tab" role="tab" data-mtab="seo" aria-selected="false">
-        <span class="mtab-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-        </span>
-        <span>SEO</span>
-      </button>
-    </div>
-
-    <!-- Ruler v2 : lisible d'un seul coup -->
-    <div class="method-ruler-v2 reveal reveal-delay-2">
-      <div class="mrv-seg mrv-seg--free">
-        <span class="mrv-badge">Étape 01</span>
-        <span class="mrv-amount">Sans engagement · <strong>0 €</strong></span>
-        <span class="mrv-label">Rendez-vous découverte offert</span>
-      </div>
-      <div class="mrv-arrow" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </div>
-      <div class="mrv-seg mrv-seg--paid">
-        <span class="mrv-badge">Étapes 02 · 03 · 04</span>
-        <span class="mrv-amount">Contrat, acompte puis <strong>solde</strong></span>
-        <span class="mrv-label">Une fois seulement que vous avez validé</span>
-      </div>
-    </div>
-
-    <!-- ============ TIMELINE · SITES INTERNET ============ -->
-    <ol class="method-timeline mt--v4 is-active" data-mtimeline="sites">
-      <li class="mt-step mt-step--free reveal">
-        <div class="mt-marker"><span class="mt-num">01</span></div>
-        <div class="mt-body">
-          <div class="mt-head">
-            <span class="mt-when">Jour 1</span>
-            <span class="mt-cost mt-cost--free">0 €</span>
-          </div>
-          <h3>On comprend votre métier et votre demande</h3>
-          <p>On échange sur votre activité, vos clients et vos besoins. On prend tout en note, sans engagement.</p>
-        </div>
+    <!-- V8.87 · Méthode courte : 4 étapes, une ligne chacune, valables pour tous les services -->
+    <ol class="etapes-courtes reveal reveal-delay-2">
+      <li class="etape-courte">
+        <span class="ec-num">01</span>
+        <h3>On se rencontre</h3>
+        <p>Rendez-vous offert, sans engagement.</p>
+        <span class="ec-prix">0 €</span>
       </li>
-
-      <li class="mt-pivot mt-pivot--v2 reveal">
-        <div class="mt-pivot-badge">Point de bascule</div>
-        <div class="mt-pivot-inner">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-          <span><strong>Le devis vous convainc, on signe.</strong> On vous transmet le contrat, l'acompte est versé, et on lance vraiment le projet.</span>
-        </div>
+      <li class="etape-courte">
+        <span class="ec-num">02</span>
+        <h3>On signe</h3>
+        <p>Devis validé, acompte versé.</p>
+        <span class="ec-prix">Acompte</span>
       </li>
-
-      <li class="mt-step mt-step--paid reveal">
-        <div class="mt-marker"><span class="mt-num">02</span></div>
-        <div class="mt-body">
-          <div class="mt-head">
-            <span class="mt-when">Semaines 1 à 3</span>
-            <span class="mt-cost mt-cost--paid">Acompte</span>
-          </div>
-          <h3>Construction réelle du site, dans le détail</h3>
-          <p>Contrat signé, on construit votre site en entier. Vos demandes et vos besoins sont intégrés, avec des points réguliers pour valider chaque avancée.</p>
-        </div>
+      <li class="etape-courte">
+        <span class="ec-num">03</span>
+        <h3>On construit</h3>
+        <p>Vous validez chaque étape.</p>
       </li>
-
-      <li class="mt-step mt-step--paid reveal reveal-delay-1">
-        <div class="mt-marker"><span class="mt-num">03</span></div>
-        <div class="mt-body">
-          <div class="mt-head">
-            <span class="mt-when">Mise en ligne</span>
-            <span class="mt-cost mt-cost--paid">Solde</span>
-          </div>
-          <h3>Votre site part en ligne, entre vos mains</h3>
-          <p>On solde à la livraison. Nom de domaine, code, hébergement : tout est à votre nom. Le site est utilisable immédiatement.</p>
-        </div>
-      </li>
-
-      <li class="mt-step mt-step--follow reveal">
-        <div class="mt-marker"><span class="mt-num">04</span></div>
-        <div class="mt-body">
-          <div class="mt-head">
-            <span class="mt-when">30 jours après</span>
-            <span class="mt-cost mt-cost--follow">Suivi inclus</span>
-          </div>
-          <h3>On peaufine avec vos retours</h3>
-          <p>On récupère vos retours et ceux de vos premiers visiteurs. Les ajustements prévus au contrat sont pris en charge sans surcoût.</p>
-        </div>
-      </li>
-    </ol>
-
-    <!-- ============ TIMELINE · APPLICATIONS METIER ============ -->
-    <ol class="method-timeline mt--v4" data-mtimeline="apps" hidden>
-      <li class="mt-step mt-step--free reveal">
-        <div class="mt-marker"><span class="mt-num">01</span></div>
-        <div class="mt-body">
-          <div class="mt-head">
-            <span class="mt-when">Jour 1</span>
-            <span class="mt-cost mt-cost--free">0 €</span>
-          </div>
-          <h3>On comprend vos process et vos irritants</h3>
-          <p>On échange sur votre métier, vos équipes et ce qui coince. On prend tout en note pour cadrer ce que l'outil devra résoudre.</p>
-        </div>
-      </li>
-
-      <li class="mt-pivot mt-pivot--v2 reveal">
-        <div class="mt-pivot-badge">Point de bascule</div>
-        <div class="mt-pivot-inner">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-          <span><strong>Le devis vous convainc, on signe.</strong> On vous transmet le contrat, l'acompte est versé, et on lance vraiment le projet.</span>
-        </div>
-      </li>
-
-      <li class="mt-step mt-step--paid reveal">
-        <div class="mt-marker"><span class="mt-num">02</span></div>
-        <div class="mt-body">
-          <div class="mt-head">
-            <span class="mt-when">Développement</span>
-            <span class="mt-cost mt-cost--paid">Acompte</span>
-          </div>
-          <h3>Construction par lots, avec démos régulières</h3>
-          <p>Contrat signé, on développe par étapes. À chaque lot, une démo pour valider et ajuster. Un délai précis est fixé dans nos échanges avant tout paiement.</p>
-        </div>
-      </li>
-
-      <li class="mt-step mt-step--paid reveal reveal-delay-1">
-        <div class="mt-marker"><span class="mt-num">03</span></div>
-        <div class="mt-body">
-          <div class="mt-head">
-            <span class="mt-when">Mise en production</span>
-            <span class="mt-cost mt-cost--paid">Solde</span>
-          </div>
-          <h3>Livraison, formation, prise en main</h3>
-          <p>On solde à la livraison. L'outil est déployé, votre équipe est formée. Le code source est à vous.</p>
-        </div>
-      </li>
-
-      <li class="mt-step mt-step--follow reveal">
-        <div class="mt-marker"><span class="mt-num">04</span></div>
-        <div class="mt-body">
-          <div class="mt-head">
-            <span class="mt-when">30 jours après</span>
-            <span class="mt-cost mt-cost--follow">Suivi inclus</span>
-          </div>
-          <h3>On ajuste selon les usages réels</h3>
-          <p>Une fois l'outil en main de vos équipes, on affine les détails d'ergonomie. Les ajustements prévus au contrat sont pris en charge sans surcoût.</p>
-        </div>
-      </li>
-    </ol>
-
-    <!-- ============ TIMELINE · SEO LOCAL ============ -->
-    <ol class="method-timeline mt--v4" data-mtimeline="seo" hidden>
-      <li class="mt-step mt-step--free reveal">
-        <div class="mt-marker"><span class="mt-num">01</span></div>
-        <div class="mt-body">
-          <div class="mt-head">
-            <span class="mt-when">Jour 1</span>
-            <span class="mt-cost mt-cost--free">0 €</span>
-          </div>
-          <h3>On comprend votre visibilité actuelle</h3>
-          <p>On échange sur votre zone, votre concurrence, vos clients types. On prend tout en note pour identifier vos priorités.</p>
-        </div>
-      </li>
-
-      <li class="mt-pivot mt-pivot--v2 reveal">
-        <div class="mt-pivot-badge">Point de bascule</div>
-        <div class="mt-pivot-inner">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-          <span><strong>Le devis vous convainc, on signe.</strong> On vous transmet le contrat, la première mensualité est versée, et on lance les actions.</span>
-        </div>
-      </li>
-
-      <li class="mt-step mt-step--paid reveal">
-        <div class="mt-marker"><span class="mt-num">02</span></div>
-        <div class="mt-body">
-          <div class="mt-head">
-            <span class="mt-when">Chaque mois</span>
-            <span class="mt-cost mt-cost--paid">Mensualité</span>
-          </div>
-          <h3>Fiche Google, cartes NFC, recherches locales</h3>
-          <p>On refait votre fiche Google, on pose vos cartes NFC pour récolter des avis, et on travaille votre position sur les recherches locales.</p>
-        </div>
-      </li>
-
-      <li class="mt-step mt-step--paid reveal reveal-delay-1">
-        <div class="mt-marker"><span class="mt-num">03</span></div>
-        <div class="mt-body">
-          <div class="mt-head">
-            <span class="mt-when">Résultats visibles</span>
-            <span class="mt-cost mt-cost--paid">Mensualité</span>
-          </div>
-          <h3>Vos clients vous trouvent, vos avis grimpent</h3>
-          <p>Vous apparaissez sur les recherches locales. Les cartes NFC posent leurs premiers avis Google. Votre place se consolide, mois après mois.</p>
-        </div>
-      </li>
-
-      <li class="mt-step mt-step--follow reveal">
-        <div class="mt-marker"><span class="mt-num">04</span></div>
-        <div class="mt-body">
-          <div class="mt-head">
-            <span class="mt-when">Suivi mensuel</span>
-            <span class="mt-cost mt-cost--follow">Sans engagement long</span>
-          </div>
-          <h3>On adapte selon vos priorités</h3>
-          <p>Chaque mois, on ajuste les actions selon vos retours et vos résultats. Résiliable à tout moment, sans engagement long.</p>
-        </div>
+      <li class="etape-courte">
+        <span class="ec-num">04</span>
+        <h3>On livre et on suit</h3>
+        <p>Mise en ligne, 30 jours de suivi inclus.</p>
+        <span class="ec-prix">Solde</span>
       </li>
     </ol>
 
@@ -1217,8 +1028,8 @@
   </div>
 </footer>
 
-<script src="/js/main.js?v=8.86" defer></script>
-<script src="/js/v8.js?v=8.86" defer></script>
-<script src="/js/contact.js?v=8.86" defer></script>
+<script src="/js/main.js?v=8.87" defer></script>
+<script src="/js/v8.js?v=8.87" defer></script>
+<script src="/js/contact.js?v=8.87" defer></script>
 </body>
 </html>
