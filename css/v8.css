@@ -8331,3 +8331,8 @@
   .etape-courte .ec-num { grid-row: span 3; padding-top: 4px; }
   .etape-courte .ec-prix, .etape-courte p + .ec-prix { grid-column: 2; justify-self: start; margin-top: var(--sp-2); }
 }
+
+/* Titre long : sur téléphone, le libellé secondaire n'a plus la place et serait coupé */
+@media (max-width: 900px) {
+  .work-card.work-card--titre-long .work-meta .work-kind { display: none !important; }
+}
