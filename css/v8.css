@@ -8336,3 +8336,22 @@
 @media (max-width: 900px) {
   .work-card.work-card--titre-long .work-meta .work-kind { display: none !important; }
 }
+
+/* ============ V8.92 · Le titre principal s'affiche tout de suite ============ */
+/* Masqué le temps de l'intro, le h1 retardait de plusieurs secondes le premier
+   affichage mesuré par Google sur mobile. Le reste du hero garde son entrée. */
+h1.reveal,
+.hero-intro .hi-item--title { opacity: 1; transform: none; filter: none; transition: none; }
+.hero-intro.hero-in:not(.hero-settled) .hi-item--title { animation: none; }
+
+/* Liens dans les textes et les cartes */
+.adv-card p a, .faq-answer a, .devis-lead a, .case-content a { color: var(--accent, #1D6FC4); text-decoration: underline; text-underline-offset: 3px; }
+.adv-card p a { display: inline-block; margin-top: 8px; }
+@media (min-width: 901px) {
+  .adv-grid--deux { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; margin-inline: auto; }
+}
+.insecable, .oeil-zone { white-space: nowrap; }
+@media (max-width: 600px) {
+  .oeil-sep { display: none; }
+  .oeil-zone { display: block; }
+}

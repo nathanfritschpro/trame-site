@@ -12,7 +12,9 @@ Site vitrine + portfolio du duo Nathan & Manon Fritsch. HTML + CSS + JS vanilla,
 
 ## Démarrage local
 
-Aucun build. Un simple serveur statique suffit :
+Aucun build pour les pages. Après toute modification d'un fichier de `css/`, relancer `python3 outils/construire-css.py` : les pages chargent uniquement `css/site.min.css`.
+
+Un simple serveur statique suffit :
 
 ```bash
 cd site-trame
