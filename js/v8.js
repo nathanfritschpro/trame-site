@@ -268,23 +268,28 @@
 /* Clarity (statistiques de visite, cartes de chaleur, enregistrements de
    session) n'est charge QUE si le visiteur clique sur "Accepter".
    Choix memorise : 13 mois si accepte, 6 mois si refuse (recommandations CNIL).
-   Pour activer : renseigner l'identifiant du projet Clarity ci-dessous. */
+   Pour activer : renseigner l'identifiant du projet Clarity ci-dessous.
+   V8.93 : Google Analytics suit exactement la meme regle. */
 (function consent(){
   const CLARITY_ID = 'yv6l0locea';
+  const GA_ID = 'G-4QF8CYBSG4';
   const KEY = 'vs-consent';
   const KEEP = { accepted: 395, refused: 182 }; // jours
+  const OUTILS = 2; // a monter a chaque nouvel outil de mesure
 
   const read = () => {
     try {
       const v = JSON.parse(localStorage.getItem(KEY) || 'null');
       if (!v || !KEEP[v.choice]) return null;
       if (Date.now() - v.at > KEEP[v.choice] * 864e5) return null;
+      // Un accord donne avant l'ajout d'un outil ne le couvre pas : on redemande
+      if (v.choice === 'accepted' && v.outils !== OUTILS) return null;
       return v.choice;
     } catch (e) { return null; }
   };
   const save = (choice) => {
     try {
-      localStorage.setItem(KEY, JSON.stringify({ choice, at: Date.now() }));
+      localStorage.setItem(KEY, JSON.stringify({ choice, at: Date.now(), outils: OUTILS }));
       localStorage.removeItem('vs-cookies-dismissed');
     } catch (e) {}
   };
@@ -300,15 +305,42 @@
     })(window, document, 'clarity', 'script', CLARITY_ID);
     window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' });
   };
+  let gaLoaded = false;
+  const loadGA = () => {
+    if (!GA_ID) return;
+    window['ga-disable-' + GA_ID] = false;
+    if (gaLoaded) return;
+    gaLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'granted'
+    });
+    window.gtag('js', new Date());
+    // Cookies limites a 13 mois (CNIL), aucun usage publicitaire
+    window.gtag('config', GA_ID, {
+      allow_google_signals: false, allow_ad_personalization_signals: false, cookie_expires: 33696000
+    });
+    const t = document.createElement('script');
+    t.async = true;
+    t.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(t);
+  };
+  const effacerCookie = (n) => {
+    const host = location.hostname.replace(/^www\./, '');
+    [host, '.' + host, ''].forEach((d) => {
+      document.cookie = n + '=; Max-Age=0; path=/' + (d ? '; domain=' + d : '');
+    });
+  };
   const stopClarity = () => {
     if (window.clarity) { try { window.clarity('consent', false); } catch (e) {} }
     // Efface les cookies Clarity deja deposes
-    ['_clck', '_clsk', 'CLID', 'ANONCHK', 'MR', 'MUID', 'SM'].forEach((n) => {
-      const host = location.hostname.replace(/^www\./, '');
-      [host, '.' + host, ''].forEach((d) => {
-        document.cookie = n + '=; Max-Age=0; path=/' + (d ? '; domain=' + d : '');
-      });
-    });
+    ['_clck', '_clsk', 'CLID', 'ANONCHK', 'MR', 'MUID', 'SM'].forEach(effacerCookie);
+  };
+  const stopGA = () => {
+    if (GA_ID) window['ga-disable-' + GA_ID] = true;
+    document.cookie.split(';').map((c) => c.split('=')[0].trim())
+      .filter((n) => n.startsWith('_ga')).forEach(effacerCookie);
   };
 
   let banner = null;
@@ -331,7 +363,7 @@
       <div class="cb-inner">
         <div class="cb-body">
           <span class="cb-eyebrow">◆ Cookies</span>
-          <p><strong>Nous aimerions mesurer l'audience du site</strong> (pages vues, temps passé, parcours de navigation) avec Microsoft Clarity, pour l'améliorer. Aucun cookie publicitaire. Ces cookies ne sont déposés qu'avec votre accord.</p>
+          <p><strong>Nous aimerions mesurer l'audience du site</strong> (pages vues, temps passé, parcours de navigation) avec Microsoft Clarity et Google Analytics, pour l'améliorer. Aucun cookie publicitaire. Ces cookies ne sont déposés qu'avec votre accord.</p>
         </div>
         <div class="cb-actions">
           <a href="/politique-de-confidentialite.html#cookies" class="cb-link">En savoir plus</a>
@@ -345,10 +377,10 @@
     document.body.appendChild(banner);
     requestAnimationFrame(() => banner && banner.classList.add('is-visible'));
     banner.querySelector('.cb-accept').addEventListener('click', () => {
-      save('accepted'); loadClarity(); close();
+      save('accepted'); loadClarity(); loadGA(); close();
     });
     banner.querySelector('.cb-refuse').addEventListener('click', () => {
-      save('refused'); stopClarity(); close();
+      save('refused'); stopClarity(); stopGA(); close();
     });
   };
 
@@ -365,7 +397,7 @@
   });
 
   const choice = read();
-  if (choice === 'accepted') loadClarity();
+  if (choice === 'accepted') { loadClarity(); loadGA(); }
   else if (!choice) open();
 })();
 
