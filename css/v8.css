@@ -8396,3 +8396,55 @@ h1.reveal,
   .mv-large .motion-screen { border-radius: 16px; }
 }
 
+/* ============ V8.97 · Sites internet : page classique (formules, réalisations) ============ */
+.si-note {
+  margin: var(--sp-8) auto 0;
+  max-width: 640px;
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+}
+.si-realisations { padding: clamp(64px, 9vw, 120px) 0; }
+.si-realisations-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--gut);
+  text-align: center;
+}
+.si-reali-grille {
+  margin-top: var(--sp-10);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-6);
+  text-align: left;
+}
+.si-reali { display: flex; flex-direction: column; gap: 4px; color: inherit; text-decoration: none; }
+.si-reali-img {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--bg-soft);
+  box-shadow: 0 24px 50px -32px rgba(16, 24, 44, 0.45), 0 0 0 1px var(--line);
+  margin-bottom: var(--sp-3);
+}
+.si-reali-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.6s var(--ease-out); }
+.si-reali:hover .si-reali-img img { transform: scale(1.03); }
+.si-reali-nom { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-lg); color: var(--text); }
+.si-reali-genre { font-size: var(--fs-sm); color: var(--text-dim); }
+.si-tout {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: var(--sp-10);
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+.si-tout svg { width: 16px; height: 16px; }
+.si-zones { max-width: 620px; margin: 0 auto var(--sp-6); color: var(--text-dim); }
+.si-zones a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 900px) {
+  .si-reali-grille { grid-template-columns: 1fr; gap: var(--sp-8); max-width: 520px; margin-inline: auto; }
+}
+
