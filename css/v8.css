@@ -8335,3 +8335,8 @@ h1.reveal,
   .oeil-sep { display: none; }
   .oeil-zone { display: block; }
 }
+
+/* ============ V8.95 · Motion design : trois formats en étapes courtes ============ */
+@media (min-width: 901px) {
+  .etapes-courtes--3 { grid-template-columns: repeat(3, 1fr); }
+}
