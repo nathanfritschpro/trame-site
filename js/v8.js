@@ -634,7 +634,10 @@
   if (reduce) pageVids.forEach((v) => { v.controls = true; });
   else if (pageVids.length && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(({ target, isIntersecting }) => (isIntersecting ? safePlay(target) : target.pause()));
+      entries.forEach(({ target, isIntersecting }) => {
+        if (!isIntersecting) target.pause();
+        else if (!target.dataset.user) safePlay(target);
+      });
     }, { threshold: 0.35 });
     pageVids.forEach((v) => io.observe(v));
   }
@@ -703,4 +706,35 @@
       safePlay(lv);
     }));
   }
+})();
+
+/* ============ Video de presentation (accueil) : lecture avec le son au clic ============ */
+(() => {
+  document.querySelectorAll('.iv-play').forEach((btn) => {
+    const fig = btn.closest('.intro-video-frame');
+    const v = fig && fig.querySelector('video');
+    if (!v) return;
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('video').forEach((o) => { if (o !== v) o.muted = true; });
+      document.querySelectorAll('.vs-sound').forEach((b) => {
+        b.setAttribute('aria-pressed', 'false');
+        b.setAttribute('aria-label', 'Activer le son');
+      });
+      v.dataset.user = '1';
+      v.loop = false;
+      v.muted = false;
+      v.controls = true;
+      try { v.currentTime = 0; } catch (e) {}
+      const p = v.play();
+      if (p && p.catch) p.catch(() => {});
+      fig.classList.add('is-playing');
+    });
+    v.addEventListener('ended', () => {
+      fig.classList.remove('is-playing');
+      v.controls = false;
+      v.muted = true;
+      v.loop = true;
+      delete v.dataset.user;
+    });
+  });
 })();
